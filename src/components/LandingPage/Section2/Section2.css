@@ -1,0 +1,30 @@
+.Section2 {
+  width: 90%;
+  overflow-y: hidden;
+}
+.Section2 h2 {
+  width: 30%;
+}
+.Cards-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+}
+@media (max-width: 800px) {
+  .Section2 {
+    overflow-y: hidden;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .Section2 h2 {
+    width: 100%;
+  }
+  .Cards-wrapper {
+    width: 100%;
+    height: 100%;
+  }
+  .swiper-wrapper {
+    min-height: 200px;
+  }
+}

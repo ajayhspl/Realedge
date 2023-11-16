@@ -1,0 +1,94 @@
+.video-player-container {
+    position: relative;
+    border-radius: 10px;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    overflow: hidden;
+    margin-bottom: 10px;
+
+  }
+  
+  .video-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .video-controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    transition: .2s all;
+  }
+  .video-controls.Fade{
+    opacity: 0;
+  }
+  .progress-bar {
+    width: 60%;
+    height: 10px;
+    background-color: rgba(245, 245, 245, 0.103)!important;
+    cursor: pointer;
+
+    margin: 0 10px;
+  }
+  .progress-bar:hover  .progress-bar-fill{
+    height: 100%;
+
+  }
+  .progress-bar-fill {
+    transition: .2s all;
+    height: 20%;
+    background-color: #ffffffc0; /* Adjust color as desired */
+  }
+  
+  .video-controls .play-pause-button {
+    cursor: pointer;
+    max-width: 25px;
+  }
+  .video-controls .Leftside{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+.volume-control-range {
+  width: 100px;
+  left: -33px;
+  top: -68px;
+  position: absolute;
+  transform: rotate(270deg);
+
+}
+.volume-control-range input {
+  width: 100%;
+}
+
+  .video-controls .skip-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  .volume-control-icon{
+    position: relative;
+  }
+  .video-controls .skip-buttons img,  .full-screen-button img, .volume-control-icon img{
+    max-width: 25px;
+    cursor: pointer;
+  }
+
+  .current-time {
+    font-size: 14px;
+  }
+  

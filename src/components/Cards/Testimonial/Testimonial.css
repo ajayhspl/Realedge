@@ -1,0 +1,108 @@
+.Testimonial {
+  justify-content: space-between;
+  display: flex;
+  width: 90%;
+  margin: auto;
+}
+.Testimonial .Left {
+  width: 50%;
+  padding-top: 60px;
+}
+.Testimonial .Left .ShortDesc {
+  position: relative;
+  color: black;
+  font-size: 1.5rem !important;
+  font-weight: 300;
+  line-height: 31px;
+}
+.Testimonial .Left .ShortDesc:after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  height: 1.5px;
+  width: 30%;
+  background-color: #e0e1e1;
+}
+
+.Testimonial .Left .Review {
+  color: #556170;
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 400;
+  margin-top: 20px;
+  padding-top: 30px;
+  font-size: 14px;
+  line-height: 22px;
+}
+.Testimonial .Left .Person {
+  padding-left: 30px;
+  margin-top: 30px;
+}
+.Testimonial .Left .Person p {
+  color: black;
+  margin: 0;
+  font-weight: 400;
+  line-height: 26px;
+}
+.Testimonial .Left .Person .name {
+  font-size: 1rem;
+}
+.Testimonial .Left .Person .position {
+  font-size: 0.9rem;
+  color: #556170;
+}
+.Testimonial .Project {
+  width: 30%;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  background-color: #f6f7f8;
+  padding-left: 40px;
+}
+.Testimonial .Project .companyLogo {
+  width: 100px;
+  margin-bottom: 30px;
+}
+.Testimonial .Project .Description {
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 31px;
+  margin-top: 10px;
+  text-align: left;
+}
+.Testimonial .Project .miniTitle {
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+.Testimonial .Project .CountryWrapper {
+  display: flex;
+  align-items: center;
+}
+.Testimonial .Project .CountryWrapper .country {
+  font-size: 0.9rem;
+  color: #556170;
+  font-style: normal;
+  font-weight: 400;
+}
+.Testimonial .Project .CountryWrapper img {
+  height: 18px;
+  margin-right: 12px;
+  object-fit: cover;
+  width: 18px;
+}
+@media (max-width: 800px) {
+  .Testimonial .Left .Person {
+    padding: 0;
+  }
+  .Testimonial .Left .ShortDesc:after {
+    width: 100%;
+  }
+  .Testimonial .Left {
+    width: 100%;
+    padding-left: 10px !important;
+    background-color: #f6f7f8;
+  }
+}

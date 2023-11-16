@@ -1,0 +1,25 @@
+.Section3 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  align-items: flex-start;
+}
+.Section3 h2 {
+  padding-left: 30px;
+}
+.Swiper {
+  height: 200px;
+  max-width: 100%;
+}
+.swiper {
+  height: 100%;
+}
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.swiper-slide img {
+  width: 200px;
+}

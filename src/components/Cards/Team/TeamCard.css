@@ -1,0 +1,63 @@
+.TeamCard {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 500px;
+  border: 1px solid transparent;
+  transition: 0.2s all;
+
+  border-radius: 15px;
+}
+.TeamCard:hover {
+  border: 1px solid var(--borders);
+}
+.TeamCard .Photo {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  cursor: pointer;
+  height: 80%;
+}
+.TeamCard .Photo img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transition: 1s all;
+}
+.TeamCard .Photo img:hover {
+  transform: scale(1.1);
+}
+.TeamCard .Details p {
+  font-weight: 300;
+  cursor: pointer;
+  margin-bottom: 0;
+  font-size: 1.3rem;
+}
+.TeamCard .Details .Role {
+  width: 100%;
+  font-size: 1rem;
+  opacity: 0.7;
+  margin: 0;
+  margin-left: 40px;
+}
+.TeamCard .Details {
+  margin: auto;
+  margin-top: 20px;
+  display: flex;
+  width: 90%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.TeamCard .Details img {
+  max-width: 25px;
+  max-height: 25px;
+}
+@media (max-width: 800px) {
+  .TeamCard {
+    width: 100%;
+  }
+}

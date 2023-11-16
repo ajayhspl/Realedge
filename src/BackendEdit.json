@@ -1,0 +1,17 @@
+{
+  "Colors": {
+    "Borders": "#757cc8",
+    "ButtonColors": "#051094",
+    "HoverText": "#757cc8",
+    "Lines": "#609ddb",
+    "LinkLines": "#757cc8",
+    "Text": "#212c58"
+  },
+  "ContactEmail": "info@realedgeassociates.com",
+  "Description": "this is a software development company",
+  "Email": "ajay.rathor@realedgeassociates.com",
+  "FavIcon": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FGeneral%2FFavIcon?alt=media&token=7ba68928-1f73-407e-bdb3-0213521bc22f",
+  "Logo": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FGeneral%2FLogo?alt=media&token=5a8d592b-e626-42aa-a501-72b388eb8382",
+  "ModalDescription": " Reach out to realedge associates to progress your requirement",
+  "WebsiteName": "realedge associates"
+}

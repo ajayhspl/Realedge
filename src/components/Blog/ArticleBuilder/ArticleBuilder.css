@@ -1,0 +1,125 @@
+.ArticleBuilder {
+  display: grid;
+
+  place-items: center;
+
+  grid-template-areas:
+    "Title Category Thumbnail"
+    "Description Description UnderName"
+    "Editor  Editor Editor"
+    "Save Save Save";
+}
+.ArticleBuilder #Save {
+  grid-area: Save;
+}
+.select-container {
+  position: relative;
+  display: inline-block;
+}
+
+.styled-select {
+  appearance: none;
+  padding: 8px 16px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  color: #555;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.styled-select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+.ArticleBuilder #Editor {
+  grid-area: Editor;
+  width: 90%;
+  margin: auto;
+}
+.ArticleBuilder #Editor .Preview {
+  margin-top: 20px;
+  border: 1px solid var(--borders);
+  border-radius: 15px;
+  padding: 15px;
+}
+.ArticleBuilder #Editor #toolbar {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border: 1px solid var(--borders);
+}
+.ArticleBuilder #Editor .quill,
+.ArticleBuilder #Editor .ql-container {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-top: none;
+}
+.ArticleBuilder #Editor .Button {
+  margin: auto;
+  padding: 10px;
+  margin-top: 20px;
+}
+.ArticleBuilder #Thumbnail {
+  grid-area: Thumbnail;
+}
+.ArticleBuilder #Description {
+  width: 70%;
+  grid-area: Description;
+}
+.ArticleBuilder #Category {
+  grid-area: Category;
+  align-items: center;
+}
+.ArticleBuilder #Title {
+  grid-area: Title;
+}
+.ArticleBuilder #UnderName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-area: UnderName;
+}
+.ArticleBuilder .FormItem {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+  width: fit-content;
+  margin: 20px;
+}
+.ArticleBuilder input[type="text"],
+.ArticleBuilder textarea {
+  margin: 0 20px;
+  border: none;
+  border-bottom: 1px solid#A4AAB3;
+}
+.ArticleBuilder input:focus {
+  outline: none;
+}
+.ArticleBuilder textarea {
+  margin: 0;
+}
+@media (max-width: 600px) {
+  .ArticleBuilder {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+  }
+  .ArticleBuilder .FormItem {
+    width: 100%;
+    justify-content: unset;
+  }
+  .ArticleBuilder #Description {
+    width: 100%;
+  }
+  .ArticleBuilder .FormItem input,
+  .ArticleBuilder .FormItem textarea {
+    flex: 1;
+  }
+  .ArticleBuilder .Button {
+    width: 49%;
+    font-size: 1rem;
+  }
+}

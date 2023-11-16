@@ -1,0 +1,192 @@
+.Header {
+  z-index: 1;
+  position: relative;
+  overflow-x: hidden;
+  height: calc(100vh - 60px);
+}
+.Header.Second {
+  height: 130vh;
+}
+.Content {
+  position: relative;
+  color: var(--text);
+  height: 92%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+}
+.Header.Second.NoOverlay .TopBar {
+  flex-direction: column;
+  justify-content: space-between;
+  height: 95vh;
+  align-items: flex-start;
+}
+.Header.Second.NoOverlay .TopBar h2 {
+  margin: 40px;
+}
+.Content .BTM {
+  gap: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 90%;
+  height: fit-content;
+  margin: 0 auto;
+}
+.Content .BTM h1 {
+  user-select: none;
+  margin: 0;
+  width: 70%;
+  font-size: 3.5rem;
+  font-weight: 300;
+}
+.Content .BTM h3 {
+  margin: 0;
+
+  font-size: 1.3rem;
+  width: 48%;
+  font-weight: 400;
+}
+.Content .BTM .Button {
+  cursor: pointer;
+  background-color: var(--buttons);
+  border: none;
+  color: white;
+  width: fit-content;
+  font-size: 1rem;
+  border-radius: 5px;
+  padding: 15px;
+  font-weight: 500;
+  transition: 0.2s all;
+}
+.Content .BTM .Button:hover {
+  scale: 1.02;
+}
+.TopBar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  justify-content: flex-end;
+}
+.TopBar .Left {
+  width: 85%;
+}
+.TopBar .Right {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+}
+.TopBar .Right span {
+  color: var(--text);
+  cursor: pointer;
+  transition: 0.2s all;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.TopBar .Right span:hover {
+  color: var(--HoverText);
+}
+.Header.Second h1 {
+  width: 100%;
+}
+.Header.Second .overlay {
+  height: calc(100vh - 60px);
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  background-repeat: no-repeat;
+  background-size: 100% calc(100vh - 60px);
+  z-index: 0;
+}
+.overlay.Photo {
+  height: 100%;
+}
+.overlay.Video {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.overlay.Video::before {
+  display: none;
+}
+.overlay.Video {
+  position: absolute;
+  width: 100%;
+  height: calc(100vh - 60px);
+
+  overflow: hidden !important;
+}
+
+.overlay.Video video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  object-fit: cover;
+}
+.overlay::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.7) 100%
+  );
+}
+.NoOverlay .overlay::before {
+  background-image: none;
+}
+@media (max-width: 800px) {
+  .Content {
+    height: 95%;
+  }
+  .Content .BTM h3 {
+    color: white;
+  }
+
+  .Header.Second.NoOverlay .TopBar {
+    height: 90%;
+  }
+  .Header.Second {
+    height: 100%;
+  }
+  .Header.Second .overlay {
+    height: 100%;
+    background-size: 100%;
+  }
+
+  .Second .Content {
+    height: 100%;
+  }
+  .Second .Content .BTM h3,
+  .Second .Content .BTM h1 {
+    color: var(--text) !important;
+  }
+  .Content .BTM h1 {
+    color: white;
+    font-size: 2.7rem;
+    width: 100% !important;
+    margin-top: 100px;
+  }
+  .Content .BTM h3 {
+    width: 100% !important;
+  }
+}
+@media (max-width: 400px) {
+  .Header.Second.NoOverlay .TopBar h2 {
+    font-size: 1.5rem !important;
+  }
+}

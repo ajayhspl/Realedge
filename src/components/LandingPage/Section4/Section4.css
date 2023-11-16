@@ -1,0 +1,61 @@
+.Section4 {
+  flex-direction: row;
+  background-color: #020d1c;
+}
+.Left {
+  flex-direction: column;
+  height: 100%;
+  width: 50%;
+  display: flex;
+
+  padding: 15px;
+  padding-left: 60px;
+}
+.Left h2 {
+  color: white;
+  text-align: left;
+}
+.Left p {
+  font-weight: 400;
+  line-height: 26px;
+  font-size: 1.1rem;
+  width: 80%;
+  color: white;
+  text-align: left;
+}
+.Section4 .Right {
+  position: relative;
+  width: 50%;
+  padding-right: 100px;
+}
+.Section4 .Right img {
+  border-radius: 15px;
+  width: 110%;
+}
+.Section4 .Right::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    #020d1c 100%
+  );
+
+  z-index: 1;
+}
+@media (max-width: 800px) {
+  .Section4 {
+    overflow-y: hidden;
+  }
+  .Left {
+    width: 100%;
+  }
+  .Left p {
+    font-size: 14.4px;
+    width: 100%;
+  }
+}

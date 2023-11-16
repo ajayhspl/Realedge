@@ -1,0 +1,198 @@
+.modal {
+  overflow: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.modal::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.ContactForm {
+  scrollbar-width: 2px;
+  scrollbar-color: var(--borders) #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+.ContactForm::-webkit-scrollbar {
+  width: 2px;
+}
+.modal-dialog {
+  margin: 0 0;
+  overflow: hidden;
+  max-width: unset;
+  min-width: 1000px;
+  display: flex;
+  height: 100%;
+  border-radius: 15px;
+}
+.modal-body {
+  display: flex;
+  align-items: flex-start;
+}
+.ContactForm {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  max-height: 500px;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  position: absolute;
+  top: 87px;
+  left: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.ContactForm select {
+  width: 50%;
+  margin: 20px;
+  border: none;
+  border-bottom: 1px solid var(--buttons);
+  height: 50px;
+}
+.ContactForm [name="subject"] {
+  width: 100%;
+}
+.ContactForm button {
+  width: 90%;
+}
+.ContactForm [name="message"] {
+  width: 100%;
+  resize: none;
+  height: 80px;
+  margin: 5px;
+  border: none;
+  border-bottom: 1px solid var(--buttons);
+}
+
+.ContactForm button {
+  height: 50px;
+  border: none;
+  grid-area: Send;
+  border-radius: 5px;
+  background-color: var(--buttons);
+  color: white;
+  margin: 20px;
+}
+.Form-wrapper {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.Form-wrapper h2 {
+  margin-bottom: 30px;
+  z-index: 2;
+  position: relative;
+  background-color: white;
+}
+.modal-header {
+  position: absolute;
+  right: 0;
+  z-index: 999;
+  border: none;
+}
+.btn-close {
+  background: url(../../../assets/x.svg) !important;
+}
+.ContactForm input {
+  margin: 5px;
+  border: none;
+  border-bottom: 1px solid var(--buttons);
+  height: 50px;
+}
+
+.ContactForm input:focus,
+.ContactForm textarea:focus {
+  outline: none;
+  border-bottom: 1px solid var(--buttons);
+}
+.ContactForm [name="Send"] {
+  margin-top: 40px;
+}
+.modal-header {
+  border-bottom: none !important;
+}
+.SidePanel {
+  background-color: #25303e;
+  width: 50%;
+  height: 110%;
+  position: relative;
+  left: 20px;
+  top: -20px;
+  display: flex;
+  padding: 16px;
+  color: white;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 50px;
+}
+.SidePanel .section {
+  width: 100%;
+  height: fit-content;
+  position: relative;
+}
+.SidePanel .section h2 {
+  color: white;
+  font-size: 2rem;
+}
+.SidePanel .section::after {
+  position: absolute;
+  background-color: #a4aab3;
+  height: 1px;
+  width: 100%;
+  content: "";
+  bottom: -40px;
+  opacity: 0.7;
+  left: 0;
+}
+.ContactInfo a {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  gap: 10px;
+  transition: 0.2s all;
+}
+.ContactInfo a img {
+  width: 24px;
+}
+.ContactInfo a:hover {
+  color: var(--HoverText);
+}
+@media (max-width: 1000px) {
+  .modal-content {
+    width: 95vw !important;
+    overflow: hidden;
+    height: fit-content;
+  }
+  .modal-dialog {
+    width: 93vw;
+    overflow: unset;
+  }
+  .Form-wrapper {
+    height: 100vh;
+    width: 100%;
+    background-color: white;
+    padding: 0;
+  }
+  .ContactForm input,
+  .ContactForm select {
+    width: 100%;
+  }
+  .ContactForm {
+    max-height: 300px;
+    grid-template-areas:
+      "Fname"
+      "Lname"
+      "Email "
+      "Subject "
+      "Msg "
+      "Send ";
+  }
+  .btn-close {
+    background: url(../../../assets/x\ black.svg) !important;
+  }
+}

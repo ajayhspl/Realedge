@@ -1,0 +1,203 @@
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: var(--borders) #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 5px;
+}
+.cookie-popup {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 1);
+  padding: 20px;
+  z-index: 1000;
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.cookie-popup .Button{
+  border: 1px solid var(--buttons);
+  background-color: transparent;
+  color: black;
+  width: 100px;
+  padding: 0;
+  height: 40px;
+  transition: .2s all;
+}
+.cookie-popup .Button:hover{
+  border: 2px solid var(--buttons);
+}
+
+.cookie-popup .Link:after{
+  display: none;
+}
+.cookie-popup p{
+  margin: 0;
+}
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--borders);
+}
+body {
+  font-family: "Roboto" !important;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden !important;
+}
+h1,
+h3,
+p {
+  font-family: "Roboto" !important;
+  cursor: default;
+}
+.FADE{
+  opacity: 0;
+  z-index: -1!important;
+
+}
+section {
+  padding: 70px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+blockquote {
+  margin: 0;
+  padding: 10px;
+  border-left: 4px solid #ccc;
+  background-color: #f5f5f5;
+  font-style: italic;
+}
+
+blockquote p {
+  margin: 0;
+}
+
+blockquote footer {
+  margin-top: 10px;
+  font-style: normal;
+}
+button,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Roboto" !important;
+}
+.carousel-inner .active {
+  background-color: transparent !important;
+}
+.swiper-pagination-bullet-active {
+  background-color: var(--buttons) !important;
+}
+h2 {
+  cursor: default;
+  font-family: "Roboto" !important;
+  font-size: 2.6rem !important;
+  color: black;
+  font-weight: 300 !important;
+}
+.Loading-wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  position:fixed;
+  z-index: 10000;
+  justify-content: center;
+  align-items: center;
+  background-color: #e5eff1;
+  overflow: hidden;
+  transition: .2s all;
+}
+.Loading-wrapper img {
+  width: 10%;
+
+}
+
+.Link:focus,
+.Link {
+  margin-left: auto;
+  margin-right: 20px;
+  position: relative;
+  text-decoration: none;
+  width: fit-content;
+  color: black;
+  padding: 20px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: 0.3s;
+  font-size: 0.9rem;
+}
+.Link:before {
+  display: block;
+  content: "";
+  padding-top: 4px;
+  border-bottom: solid 1px var(--LinkLines);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  left: 20px;
+  bottom: 15px;
+  position: absolute;
+  width: 80%;
+  transition: transform 0.3s ease-in-out;
+}
+.Link:hover:before {
+  transform: scaleX(1);
+}
+.Link:after {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='12' fill='none' viewBox='0 0 20 9'%3E%3Cpath stroke='%2317161e' d='M0 4.547h19m0 0L15.544 1M19 4.547l-3.456 3.546'/%3E%3C/svg%3E");
+  background-position: 100%;
+  background-repeat: no-repeat;
+  content: "";
+  height: 25px;
+  padding-left: 10px;
+  padding-top: inherit;
+  position: absolute;
+  right: -7px;
+  transition: background 0.1s ease-in-out;
+  width: 20px;
+  transition: 0.5s all;
+}
+.ql-align-center {
+  text-align: center !important;
+}
+.ql-align-left {
+  text-align: left !important;
+}
+.ql-align-right {
+  text-align: right !important;
+}
+.Link.Reverse:after {
+  transform: rotate(180deg);
+  right: auto;
+  left: -7px;
+}
+.Link.Reverse:hover:after {
+  transform: translateX(-5px) rotate(180deg);
+}
+@media (max-width: 600px) {
+  html {
+    font-size: 12px;
+  }
+  .Loading-wrapper img {
+    width: 50%;
+  }
+  section {
+    padding-right: 15px;
+  }
+}

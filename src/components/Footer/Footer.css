@@ -1,0 +1,153 @@
+.FooterWrapper {
+  background-color: #020d1c;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  padding-top: 50px;
+  padding-bottom: 0;
+}
+.FooterWrapper p {
+  text-align: unset;
+}
+.FooterWrapper a {
+  color: #ee233a;
+  text-decoration: none;
+  transition: 0.2s all;
+}
+.FooterWrapper a:hover {
+  color: white;
+}
+.FooterWrapper ul {
+  list-style: none;
+  padding-left: 0;
+}
+.columns {
+  width: 95%;
+  margin: auto;
+  display: grid;
+  justify-content: center;
+  align-items: flex-start;
+  grid-template-columns: 33% 33% 33%;
+}
+
+.ContactIcon {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white !important;
+  gap: 10px;
+  transition: 0.2s all;
+}
+.ContactIcon img {
+  width: 24px;
+}
+.ContactIcon:hover {
+  color: var(--HoverText) !important;
+}
+.col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.col ul li a {
+  color: white;
+  line-height: 31px;
+  font-size: 1rem;
+  transition: 0.2s all;
+}
+.col ul li a:hover {
+  color: var(--HoverText);
+}
+.col p {
+  color: white;
+  font-weight: bolder;
+  font-size: 1.2rem;
+}
+.field span {
+  color: white;
+  opacity: 0.7;
+}
+.field p {
+  padding-left: 10px;
+  font-size: 1rem;
+  color: #819595;
+  transition: 0.2s all;
+  width: 50%;
+  font-weight: 300;
+}
+.Links {
+  width: 95%;
+  margin: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.Links p {
+  color: white;
+  font-weight: bolder;
+  font-size: 1.2rem;
+}
+.Links ul {
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+.Links ul img {
+  cursor: pointer;
+  width: 30px;
+  transition: 0.2s all;
+}
+.Links ul img:hover {
+  scale: 1.1;
+}
+.CopyRight {
+  padding-left: 50px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  background-color: #020d1c;
+  color: white;
+  height: 60px;
+  width: 100vw;
+  left: -30px;
+}
+.CopyRight span {
+  font-size: 12px;
+}
+.CopyRight p {
+  opacity: 1;
+  margin: 0;
+  font-size: 12px;
+}
+.CopyRight a {
+  text-decoration: underline;
+  margin: 0 5px;
+  color: white;
+  font-size: 12px;
+}
+.CopyRight a:hover {
+  color: var(--HoverText);
+}
+@media (max-width: 800px) {
+  .columns {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .CopyRight p {
+    margin: 0;
+  }
+  .CopyRight {
+    padding: 20px 0px;
+    height: fit-content;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .field p {
+    width: 100%;
+  }
+}

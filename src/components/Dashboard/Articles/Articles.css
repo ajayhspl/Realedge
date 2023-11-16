@@ -1,0 +1,29 @@
+.Articles a {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+}
+.Button-Wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 10px;
+}
+.Button-Wrapper .Details {
+  border: 1px solid green;
+}
+.Button-Wrapper .Details:hover {
+  background-color: green;
+  color: white;
+}
+.Dashboard .View:hover {
+  background-color: var(--LinkLines);
+  color: white;
+}
+.Button-Wrapper .Delete {
+  border: 1px solid red;
+}
+.Button-Wrapper .Delete:hover {
+  background-color: red;
+  color: white;
+}

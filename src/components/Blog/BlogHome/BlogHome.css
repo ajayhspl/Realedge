@@ -1,0 +1,158 @@
+.BlogPage {
+  padding-top: 30px;
+}
+.BlogMain {
+  padding: 0 20px;
+  padding-left: 0;
+  display: flex;
+  gap: 2%;
+}
+.FeaturedArticles {
+  margin: 50px 0;
+}
+.FeaturedArticles .swiper {
+  max-width: 900px;
+}
+.BlogMain .Recent-Blogs {
+  width: 80%;
+  height: 100%;
+}
+.BlogMain .Recent-Blogs h2 {
+  margin-bottom: 40px;
+}
+.BlogMain .SideBar {
+  width: 25%;
+  margin-top: 120px;
+  padding: 15px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.Featured-Articles {
+  width: 100%;
+}
+.Text-wrapper {
+  width: 60%;
+}
+.Categories {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 10px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+}
+.Editor-wrapper {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.Categories h6 {
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+}
+.Categories ul {
+  margin: 10px;
+  list-style: none;
+  padding-left: 0;
+}
+.Categories ul li,
+.ViewArticles {
+  cursor: pointer;
+  position: relative;
+  margin: 10px 0;
+  width: fit-content;
+}
+.ViewArticles {
+  margin-left: auto;
+}
+.Categories ul li a {
+  text-decoration: none;
+  color: var(--Text);
+}
+.Categories ul li a:before,
+.ViewArticles:before {
+  display: block;
+  content: "";
+  padding-top: 4px;
+  border-bottom: solid 3px var(--LinkLines);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  left: 0;
+  bottom: -5px;
+  position: absolute;
+  width: 100%;
+  transition: transform 0.3s ease-in-out;
+}
+.Categories ul li a:hover:before,
+.ViewArticles:hover:before {
+  transform: scaleX(1);
+}
+/* Dropdown container */
+.BlogPage .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown button */
+.BlogPage .dropdown-button {
+  background-color: #f1f1f1;
+  color: #333;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 15px;
+}
+.BlogPage .DropdownsWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  gap: 30px;
+}
+/* Dropdown content */
+.BlogPage .dropdown-content {
+  list-style: none;
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Dropdown content items */
+.BlogPage .dropdown-content a {
+  color: #333;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Show the dropdown content when the button is hovered */
+.BlogPage .dropdown:hover .dropdown-content {
+  display: block;
+}
+@media (max-width: 600px) {
+  .BlogPage {
+    padding-left: 0;
+  }
+  .FeaturedArticles {
+    width: 100%;
+  }
+
+  .BlogMain .Recent-Blogs {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+  }
+
+  .FeaturedArticles .swiper-slide {
+    width: 100% !important;
+  }
+}

@@ -1,0 +1,40 @@
+.SkillCard {
+  position: relative;
+  box-shadow: 0 2px 12px rgba(83, 83, 83, 0.15);
+  width: 220px;
+  height: 215px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.SkillCard img {
+  width: 60%;
+  height: 50%;
+}
+.SkillCard p {
+  padding: 0;
+  text-align: center;
+}
+
+.SkillCard:before {
+  display: block;
+  content: "";
+  padding-top: 4px;
+  border-bottom: solid 3px var(--borders);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  left: 0;
+  bottom: -15px;
+  position: absolute;
+  width: 100%;
+  transition: transform 0.3s ease-in-out;
+}
+.SkillCard:hover:before {
+  transform: scaleX(1);
+}
+.SkillCard:hover {
+  box-shadow: 0 5px 16px rgba(83, 83, 83, 0.15);
+}

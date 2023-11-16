@@ -1,0 +1,80 @@
+.ViewMember.Edit {
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.ViewMember.Edit .Hosting {
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 85%;
+  gap: 20px;
+}
+.ViewMember.Edit .Hosting .formItem {
+  width: 40%;
+}
+.ViewMember .Nav {
+  width: 90%;
+  margin: 20px auto;
+}
+.ViewMember .content {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 40px;
+  gap: 10px;
+}
+.ViewMember .content .Picture {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ViewMember .content .Picture img {
+  border-radius: 15px;
+  width: 90%;
+}
+.ViewMember .content .Details {
+  width: 60%;
+  padding-left: 30px;
+  border-left: 1px solid var(--borders);
+}
+.ViewMember .content .Details h6 {
+  text-align: center;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+.ViewMember .content .Details h5 {
+  letter-spacing: 3px;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+}
+.ViewMember .content .Details img {
+  width: 25px;
+  height: 25px;
+}
+.ViewMember .content .Details .OverView {
+  width: 95%;
+}
+@media (max-width: 800px) {
+  .ViewMember .content {
+    flex-direction: column;
+  }
+  .ViewMember .content .Picture {
+    width: 100%;
+  }
+  .ViewMember .content .Details {
+    border-top: 1px solid var(--borders);
+    border-left: none;
+    width: 100%;
+    padding-top: 20px;
+    padding-left: 0;
+  }
+
+  .ViewMember .content .Details .Socials {
+    margin-top: 20px;
+    padding: 0 20px;
+  }
+}

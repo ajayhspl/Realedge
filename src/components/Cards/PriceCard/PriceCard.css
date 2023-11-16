@@ -1,0 +1,59 @@
+.PriceCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--borders);
+  padding: 15px;
+  border-radius: 15px;
+}
+.PriceCard .TopPart {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+}
+.PriceCard .TopPart .Plan {
+  letter-spacing: 3px;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-left: 0;
+  font-size: 1rem;
+}
+.PriceCard .Price-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.PriceCard .Price-wrapper h4,
+.PriceCard .Price-wrapper span {
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin: 0 5px;
+}
+.PriceCard .BottomPart {
+  margin-top: 30px;
+  flex-direction: column;
+}
+.PriceCard .BottomPart p {
+  margin-left: 0;
+  border: 2px solid transparent;
+  border-bottom: 2px solid var(--borders);
+  border-radius: 15px;
+  margin-bottom: 1rem;
+  padding: 0 15px;
+  transition: 0.2s all;
+}
+.PriceCard .BottomPart .highLight {
+  border: 2px solid var(--borders);
+}
+.PriceCard .Button {
+  background-color: #0098ff !important;
+  width: 90%;
+  margin: auto;
+}

@@ -1,0 +1,102 @@
+.modal {
+  overflow: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.modal::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.carousel {
+  margin-top: 20px;
+  width: 80%;
+  height: 100%;
+  border-radius: 15px;
+}
+.carousel-inner {
+  height: 100%;
+}
+.carousel-inner img {
+  margin: auto;
+  max-width: 80%;
+  border-radius: 15px;
+  max-height: 400px;
+  object-fit: cover;
+  min-height: 400px;
+}
+
+.modal-dialog {
+  margin: 0 auto;
+  overflow: hidden;
+  max-width: unset;
+  width: 1000px;
+  display: flex;
+  height: 100%;
+  border-radius: 15px;
+}
+.ProjectPopupWrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  position: absolute;
+  top: 0px;
+  bottom: 0;
+  left: 0;
+  overflow-y: scroll;
+}
+.ProjectPopupWrapper h3 {
+  margin-bottom: 20px;
+}
+.ProjectPopupWrapper p {
+  color: var(--text);
+}
+.modal-body {
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+}
+
+.modal-header {
+  position: absolute;
+  right: 0;
+  z-index: 999;
+  border: none;
+}
+.btn-close {
+  background: url(../../../assets/x.svg) !important;
+}
+.ProjectData {
+  margin: auto;
+  width: 80%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+@media (max-width: 1000px) {
+  .modal-content {
+    height: auto;
+  }
+  .carousel {
+    margin-top: 50px;
+    width: 100%;
+    padding-bottom: 30px;
+    height: fit-content;
+  }
+  .ProjectData {
+    padding-left: 20px;
+  }
+  .ProjectPopupWrapper {
+    left: 10px;
+  }
+  .modal-dialog {
+    width: 93vw;
+    overflow: unset;
+  }
+
+  .btn-close {
+    background: url(../../../assets/x\ black.svg) !important;
+  }
+}

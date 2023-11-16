@@ -1,0 +1,36 @@
+.TechCard {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 80%;
+  border-radius: 15px;
+  margin: auto;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  cursor: default;
+  transition: 0.2s all;
+  border: 2px solid transparent;
+}
+.TechCard h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 0;
+  width: 25%;
+}
+.TechCard .Text {
+  width: 75%;
+}
+.TechCard:hover {
+  border: 2px solid var(--borders);
+}
+
+@media (max-width: 800px) {
+  .TechCard {
+    flex-direction: column;
+  }
+  .TechCard h2 {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+}

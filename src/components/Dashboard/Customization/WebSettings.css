@@ -1,0 +1,32 @@
+
+.WebSettings .NavWrapper {
+  width: 100%;
+  list-style: none;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+.WebSettings .NavWrapper li {
+  width: 33%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  height: 250px;
+  max-width: 230px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 15px;
+  border: 2px solid transparent;
+  transition: 0.5s all;
+  cursor: pointer;
+  padding: 20px 10px;
+}
+.WebSettings .NavWrapper li:hover {
+  border: 2px solid var(--LinkLines);
+}
+.WebSettings .NavWrapper li p{
+  cursor: pointer;
+}

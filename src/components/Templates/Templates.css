@@ -1,0 +1,496 @@
+.Outsource {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  gap: 15px;
+  align-items: flex-start;
+}
+.Outsource h2 {
+  font-size: 2rem;
+}
+.Outsource h3 {
+  font-size: 1.5rem;
+  position: relative;
+  color: var(--borders);
+  width: fit-content;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.Outsource h4 {
+  font-size: 1.25rem;
+}
+.Outsource h3::after {
+  position: absolute;
+  content: "";
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #e0e1e1;
+}
+.Outsource p {
+  font-size: 1.1rem;
+  color: var(--text);
+  line-height: 29px;
+  margin-left: 30px;
+  margin-bottom: 0;
+}
+.ok-tick {
+  width: 24px;
+  margin: auto;
+}
+.Sec3 ul {
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 30px;
+  width: 100% !important;
+}
+.Sec3 ul li {
+  cursor: pointer;
+  width: fit-content;
+
+  padding: 10px;
+  border-radius: 15px;
+  transition: 0.5s all;
+  border: 4px solid transparent;
+}
+.Sec3 ul li:hover {
+  scale: 1.08;
+}
+.no-wrap {
+  white-space: normal !important;
+  overflow: auto !important;
+  text-overflow: unset !important;
+  text-align: center !important;
+}
+.Sec3 .Content {
+  min-width: 95vw;
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+}
+.Outsource ul {
+  width: 45%;
+  list-style: none; /* Remove default list style */
+  padding: 0;
+}
+.Sec5 ul,
+.Sec6 ul,
+.Sec7 ul {
+  width: 100%;
+}
+.Outsource ul li {
+  position: relative;
+}
+.Outsource ul li p {
+  margin-left: 20px;
+}
+.Outsource ul li .check {
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 16px;
+  height: 16px;
+}
+.Sec4 ul,
+.Sec5 ul,
+.Sec6 ul {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 500px;
+  gap: 5%;
+}
+
+.Sec4 li,
+.Sec5 li,
+.Sec6 li,
+.Sec7 li {
+  background-image: url("../../assets/mark-35780_640.png");
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  padding-left: 30px;
+}
+.Sec7 ul {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 200px;
+  justify-content: center;
+  gap: 20px;
+}
+.Outsource .Cards-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 30px;
+}
+.Outsource .Pricing-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 80%;
+  margin: auto;
+}
+.table-responsive {
+  width: 90vw;
+}
+.CareerContent {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+}
+.ViewJob {
+  width: 75%;
+}
+.sidebarCareer {
+  height: 100%;
+  padding: 15px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sidebarCareer:after {
+  content: "";
+  height: 100%;
+  width: 2px;
+  background-color: var(--borders);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.sidebarCareer p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #609ddb;
+  width: 100%;
+  height: 30px;
+  background: #f8fafa;
+  border-color: #e5eaea;
+  padding: 30px;
+  margin: 0;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  cursor: pointer;
+  border-radius: 15px;
+  transition: 0.2s all;
+  border-left: 3px solid transparent;
+  border-top: 3px solid transparent;
+}
+.sidebarCareer .active {
+  border-left: 3px solid #609ddb !important;
+  border-top: 3px solid #609ddb !important;
+}
+.sidebarCareer p:hover {
+  scale: 1.05;
+}
+.sidebarCareer p:active {
+  scale: 0.9;
+}
+.Portfolio .Categories {
+  flex-direction: row;
+  width: 70%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: none;
+}
+.TabItem {
+  background-color: #f5f7f6;
+  padding: 10px 20px;
+  border-radius: 15px;
+  color: var(--text);
+  cursor: pointer;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border: 2px solid transparent;
+  transition: 0.2s all;
+}
+.TabItem:hover {
+  border: 2px solid var(--borders);
+}
+.active {
+  background-color: #619cdb;
+  color: white;
+  border: 2px solid transparent !important;
+}
+.Portfolio .Projects-wrapper {
+  display: flex;
+  gap: 40px;
+  height: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 90%;
+  margin: auto;
+}
+.pricing .Pricing-container {
+  width: 100%;
+  gap: 30px;
+}
+.pricing .Pricing-container .PlanDesc {
+  font-style: italic;
+  margin: 0;
+  margin: 10px;
+  width: 100%;
+}
+.Product ul {
+  width: 100%;
+  list-style: circle;
+}
+.Product {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row !important;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 95%;
+  margin: auto;
+}
+.Product .LeftSide {
+  width: 53%;
+}
+.Additional form {
+  display: grid;
+  grid-template-areas:
+    "Fname Lname"
+    "JobTitle Company"
+    "Email Phone"
+    "Country Country"
+    "FollowUp FollowUp"
+    "Document Document"
+    "Submit Submit"
+    "disclaimer disclaimer";
+  gap: 20px;
+  padding: 15px;
+}
+.Additional form #Fname {
+  grid-area: Fname;
+}
+.Additional form #Lname {
+  grid-area: Lname;
+}
+.Additional form #disclaimer {
+  grid-area: disclaimer;
+  margin: 0;
+}
+.Additional form #Company {
+  grid-area: Company;
+}
+.Additional form #JobTitle {
+  grid-area: JobTitle;
+}
+.Additional form #Email {
+  grid-area: Email;
+}
+.Additional form #Country {
+  grid-area: Country;
+}
+.Additional form #Phone {
+  grid-area: Phone;
+}
+.Additional form #FollowUp {
+  grid-area: FollowUp;
+}
+.Additional form #Document {
+  grid-area: Document;
+}
+.Additional p {
+  margin-left: 0;
+}
+.Additional .Submit {
+  grid-area: Submit;
+  border: 1px solid var(--borders);
+  background-color: transparent;
+  height: 50px;
+  color: var(--text);
+  transition: 0.2s all;
+  width: 100%;
+  margin: 10px 0;
+}
+.Additional .Hint {
+  border: 1px solid var(--borders);
+  border-radius: 15px;
+  margin: 20px 0;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+.Additional .Submit:hover {
+  border-radius: 5px;
+  scale: 1.02;
+}
+.Additional span {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin-left: 30px;
+  text-align: center;
+}
+.Additional form .formItem input,
+.Additional form .formItem .Select {
+  width: 100%;
+  margin: 10px 0 20px 0;
+  border: none;
+  border-bottom: 1px solid var(--buttons);
+  height: 50px;
+}
+.ProductVideo {
+  width: 60%;
+  margin: auto;
+}
+.Product .RightSide {
+  width: 45%;
+}
+.OverView,
+.Support,
+.Highlights,
+.Additional,
+.SellerData,
+.pricing {
+  padding: 15px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  border: 1px solid var(--borders);
+  margin: 20px 0;
+  padding-left: 25px;
+  border-radius: 10px;
+}
+.Product ul,
+.Product ol {
+  padding-left: 30px;
+  margin-top: 20px;
+}
+.Product .OverView p {
+  margin-left: 0;
+}
+.Product .SellerData {
+  display: Flex;
+  flex-direction: column;
+  width: 100%;
+}
+.Product h2 {
+  margin-left: 0;
+}
+.Product .SellerData div {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--buttons);
+  padding: 20px 10px;
+}
+.Outsource .Team-wrapper {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+.Outsource .Roles {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 10px;
+  border-radius: 15px;
+  display: flex;
+  gap: 30px;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+@media (max-width: 800px) {
+  .Portfolio .Categories {
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 20px;
+  }
+
+  .Portfolio .Categories li {
+    width: 45%;
+    text-align: center;
+  }
+  .Outsource p {
+    margin-left: 0;
+  }
+  .Outsource {
+    padding-bottom: 0;
+  }
+
+  .Outsource .Sec3 ul {
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100% !important;
+    justify-content: flex-start;
+  }
+  .Outsource .Sec3 ul li {
+    text-align: center;
+    width: 40%;
+  }
+  .Outsource .Sec3 .Content {
+    margin: 0;
+    min-width: 85vw;
+  }
+  .Outsource .Sec4 .List-wrapper {
+    flex-direction: column;
+  }
+  .Outsource .Sec4 .List-wrapper ul {
+    width: 100%;
+  }
+  .Outsource .Sec7 ul {
+    max-height: none;
+  }
+  .Product {
+    padding: 0;
+  }
+  .Product .LeftSide {
+    width: 100%;
+  }
+  .Product .RightSide {
+    width: 100%;
+  }
+  .Outsource .Pricing-container {
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+  }
+  .CareerContent {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .CareerContent .ViewJob {
+    width: 100%;
+  }
+
+  .CareerContent .sidebarCareer {
+    width: 100%;
+  }
+  .CareerContent .sidebarCareer::after {
+    right: unset;
+    width: 100%;
+    height: 2px;
+    left: 0;
+  }
+  .Outsource .Roles {
+    gap: 5px;
+  }
+  .Outsource .Team-wrapper {
+    flex-direction: column;
+  }
+  .Sec4 ul,
+  .Sec5 ul,
+  .Sec6 ul {
+    flex-direction: row;
+    width: 100%;
+    max-height: none;
+  }
+}

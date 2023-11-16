@@ -1,0 +1,131 @@
+.Hosting {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+.Hosting .Team-wrapper{
+  margin-top: 20px;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.Hosting .PriceAdding{
+  width: 60%;
+  margin: auto;
+}
+.Hosting .PriceAdding .Button-wrapper{
+  display: flex;  
+  justify-content: center;
+}
+.Hosting .Team-wrapper .Card-wrapper{
+  width: 30%;
+}
+.Hosting .EditorWrapper{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+row-gap: 20px;
+}
+.Hosting .EditorWrapper .Editor-wrapper:nth-child(1),.Hosting .EditorWrapper .Editor-wrapper:nth-child(2){
+  width: 45%!important;
+  margin: 0 10px!important;
+}
+.Hosting .EditorWrapper .Editor-wrapper{
+  border: 1px solid var(--borders);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+
+.Hosting .Team-wrapper .Card-wrapper .Button-wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  margin: auto;
+  margin-top: 20px;
+}
+.Hosting .Team-wrapper .Card-wrapper .TeamCard{
+  width: 100%;
+}
+.PricingModal .modal-dialog {
+  overflow-y: auto;
+  margin: auto !important;
+  width: 35% !important;
+}
+.PricingModal .modal-content {
+  width: 100%;
+}
+.PricingModal .Pros-Adder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.PricingModal .Pros-Wrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.PricingModal .Pros-Wrapper ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+}
+.Hosting #Editor {
+  grid-area: Editor;
+  width: 90%;
+  margin: auto;
+}
+.Hosting #Editor .Preview {
+  margin-top: 20px;
+  border: 1px solid var(--borders);
+  border-radius: 15px;
+  padding: 15px;
+}
+.Hosting #Editor #toolbar {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border: 1px solid var(--borders);
+}
+.Hosting #Editor .quill,
+.Hosting #Editor .ql-container {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-top: none;
+}
+.Hosting #Editor ul {
+  list-style: none !important;
+}
+.Hosting #Editor ul li {
+  background-image: url("../../../../assets/mark-35780_640.png");
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  padding-left: 30px;
+}
+.Hosting .Projects {
+  width: 90%;
+}
+.Hosting .Projects .Categories {
+  width: 90%;
+}
+.Hosting .Projects-wrapper {
+  display: flex;
+  gap: 40px;
+  height: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  margin: auto;
+}

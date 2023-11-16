@@ -1,0 +1,29 @@
+.Section5 {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+.Section5 .Top {
+  padding-left: 120px;
+  height: 20%;
+}
+
+.Section5 .Top p {
+  width: 75%;
+  font-size: 1.2rem;
+  color: black;
+  font-weight: 400;
+}
+.Section5 .Bottom {
+  width: 100%;
+  height: 80%;
+}
+
+@media (max-width: 800px) {
+  .Section5 .Top {
+    padding-left: 30px;
+  }
+  .Section5 .Top p {
+    width: 95%;
+  }
+}
