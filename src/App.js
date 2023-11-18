@@ -10,7 +10,7 @@ import Footer from "./components/Footer/Footer";
 import Header2 from "./components/Header/Header2";
 
 import Loading from "./assets/Loading.gif";
-import { GETCOLLECTION } from "./server";
+import { GETCOLLECTION, GETDOC } from "./server";
 import NotFound from "./components/NotFound/NotFound.js";
 import MainPage from "./components/MainPage";
 import Aos from "aos";
@@ -28,6 +28,8 @@ import Redirect from "./components/Redirect";
 import CookiePopup from "./components/PopUps/CookiePopup";
 import ViewMember from "./components/ViewMember/ViewMember";
 import EditMember from "./components/Dashboard/Memebers/EditMember";
+import EditBlog from "./components/Dashboard/EditBlog/EditBlog.js";
+
 export const CreateToast = (text, type, duration = 4000) => {
   let value;
   switch (type) {
@@ -265,6 +267,7 @@ function App() {
               path="Dashboard/Member/:ID"
               element={<EditMember AllData={Teams} />}
             ></Route>
+            <Route path="Dashboard/Article/:ID" element={<EditBlog />}></Route>
             <Route
               path="/Member/:ID"
               element={

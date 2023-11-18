@@ -158,6 +158,7 @@ const Articles = () => {
       selector: (row) => row.category,
       sortable: true,
       center: true,
+      width: "300px",
       cell: (row) => (
         <div className="select-container ">
           <select
@@ -184,7 +185,7 @@ const Articles = () => {
       selector: (row) => row.Options,
       sortable: false,
       center: true,
-      width: "170px",
+      width: "220px",
     },
   ];
   const data = Articles?.map((Article) => {
@@ -229,6 +230,14 @@ const Articles = () => {
       ),
       Options: (
         <div className="Button-Wrapper">
+          <button
+            className="Button Edit"
+            onClick={() => {
+              window.location.href = `/Dashboard/Article/${Article.id}`;
+            }}
+          >
+            Edit
+          </button>
           <button
             className="Button View"
             onClick={() => {

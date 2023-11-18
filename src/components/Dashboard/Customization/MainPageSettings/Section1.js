@@ -3,6 +3,7 @@ import DataTable from "react-data-table-component";
 import MyModal from "../../../PopUps/Confirm/Confirm";
 import { CreateToast } from "../../../../App";
 import sortBy from "sort-by";
+
 const Section1 = ({ FetchedData, UpdateData }) => {
   const maxCharacters = 120;
 
@@ -241,6 +242,7 @@ const Section1 = ({ FetchedData, UpdateData }) => {
           />
         </label>
       </div>
+
       <div className="FormItem" id="Title">
         <label htmlFor="Title">Title:</label>
         <textarea

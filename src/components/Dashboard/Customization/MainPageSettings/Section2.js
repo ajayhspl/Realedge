@@ -19,6 +19,25 @@ const Section2 = ({ FetchedData, UpdateData }) => {
   });
   const handleShowModal = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
+  const changePhoto = async (e, id) => {
+    CreateToast("uploading photo", "info", 2000);
+    const Photo = e.target.files[0];
+    const url = await UPLOADPHOTO(`/customization/Section8/${id}.png`, Photo);
+
+    const newData = data.Cards.map((card) => {
+      if (card.id === id) {
+        return { ...card, iconURL: url }; // Create a new object with updated URL
+      } else {
+        return card;
+      }
+    });
+
+    setData((prev) => {
+      return { ...prev, Cards: newData };
+    });
+    CreateToast("photo uploaded", "success");
+    setPhotoUploaded(true);
+  };
   const handlePrimaryAction = () => {
     if (!photoUploaded) {
       CreateToast("photo uploading please wait", "error");
@@ -92,7 +111,7 @@ const Section2 = ({ FetchedData, UpdateData }) => {
       selector: (row) => row.url,
       sortable: true,
       center: true,
-      width: "300px",
+      width: "200px",
     },
 
     {
@@ -100,7 +119,7 @@ const Section2 = ({ FetchedData, UpdateData }) => {
       selector: (row) => row.Options,
       sortable: true,
       center: true,
-      width: "200px",
+      width: "300px",
     },
   ];
   const TableData = data.Cards.map((Card) => {
@@ -142,16 +161,29 @@ const Section2 = ({ FetchedData, UpdateData }) => {
       url: <img src={Card.iconURL} style={{ maxWidth: "75px" }} />,
 
       Options: (
-        <>
+        <div className="Button-wrapper">
           <button
             className="Button Danger"
             onClick={() => {
-              DeleteCard(Card.id);
+              DeleteCard(Card.ID);
             }}
           >
             Delete
           </button>
-        </>
+          <div className="FormItem" id="logo">
+            <label htmlFor={`ChangePhoto${Card.id}`}>Change Photo</label>
+            <input
+              type="file"
+              hidden
+              required
+              id={`ChangePhoto${Card.id}`}
+              name="url"
+              onChange={(e) => {
+                changePhoto(e, Card.id);
+              }}
+            />
+          </div>
+        </div>
       ),
     };
   });

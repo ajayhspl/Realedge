@@ -6,10 +6,11 @@ import sortBy from "sort-by";
 import DataTable from "react-data-table-component";
 import date from "date-and-time";
 const pattern = date.compile("MMM DD YYYY");
-import SimpleEditor from "./SimpleEditor";
+import TipTap from "./RichTextEditor/tiptap";
 import MyModal from "../../../PopUps/Confirm/Confirm";
 const Template2 = ({ Data, UpdateData, BackEndName }) => {
   const [data, setData] = useState(Data);
+  const [editingState, setEditingState] = useState(null);
   const [NewJob, setNewJob] = useState({
     DateAdded: "",
     DescriptionContent: "",
@@ -24,6 +25,30 @@ const Template2 = ({ Data, UpdateData, BackEndName }) => {
   const [showModal, setShowModal] = useState(false);
   const handleShowModal = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
+  const SaveJob = () => {
+    const updatedJobs = data.jobs.map((Job) => {
+      if (Job.id === NewJob.id) {
+        return { ...Job, ...NewJob };
+      }
+      return Job;
+    });
+    setData((prev) => {
+      return { ...prev, jobs: updatedJobs };
+    });
+
+    setNewJob({
+      DateAdded: "",
+      DescriptionContent: "",
+      Designation: "",
+      DesiredSkillsContent: "",
+      Experience: "",
+      JobLocation: "",
+      Qualification: "",
+      Vacancy: "",
+      id: "",
+    });
+    handleCloseModal();
+  };
   const handleJobUpdate = (e) => {
     const { name, value } = e.target;
     setNewJob((prev) => {
@@ -185,14 +210,26 @@ const Template2 = ({ Data, UpdateData, BackEndName }) => {
       Description: Job.DescriptionContent,
       DesiredSkills: Job.DesiredSkillsContent,
       Options: (
-        <button
-          className="Button Danger"
-          onClick={() => {
-            DeleteCard(Job.id);
-          }}
-        >
-          Delete
-        </button>
+        <div className="button-wrapper">
+          <button
+            className="Button"
+            onClick={() => {
+              setNewJob(Job);
+              setEditingState(Job.id);
+              handleShowModal();
+            }}
+          >
+            Edit
+          </button>
+          <button
+            className="Button Danger"
+            onClick={() => {
+              DeleteCard(Job.id);
+            }}
+          >
+            Delete
+          </button>
+        </div>
       ),
     };
   });
@@ -217,9 +254,9 @@ const Template2 = ({ Data, UpdateData, BackEndName }) => {
           className="Confirm PricingModal"
           show={showModal}
           handleClose={handleCloseModal}
-          title="add Job"
-          primaryButtonText={`add`}
-          handlePrimaryAction={handlePrimaryAction}
+          title={editingState ? `Edit ${NewJob.Designation}` : "add Job"}
+          primaryButtonText={editingState ? "Save" : "add"}
+          handlePrimaryAction={editingState ? SaveJob : handlePrimaryAction}
         >
           <>
             <div className="formItem ">
@@ -274,24 +311,20 @@ const Template2 = ({ Data, UpdateData, BackEndName }) => {
             </div>
             <div className="formItem" style={{ flexDirection: "column" }}>
               <label htmlFor="DescriptionContent">Description:</label>
-              <SimpleEditor
-                handlePostBodyChange={(value) => {
+              <TipTap
+                setHTML={(value) => {
                   handlePostBodyChange(value, "DescriptionContent");
                 }}
-                toolBarID={"DescriptionContent"}
-                oldValue={NewJob.DescriptionContent}
-                PreviewClassName=""
+                OldData={NewJob.DescriptionContent}
               />
             </div>
             <div className="formItem" style={{ flexDirection: "column" }}>
               <label htmlFor="DesiredSkillsContent">Desired Skills:</label>
-              <SimpleEditor
-                handlePostBodyChange={(value) => {
+              <TipTap
+                setHTML={(value) => {
                   handlePostBodyChange(value, "DesiredSkillsContent");
                 }}
-                toolBarID={"DesiredSkillsContent"}
-                oldValue={NewJob.DesiredSkillsContent}
-                PreviewClassName=""
+                OldData={NewJob.DesiredSkillsContent}
               />
             </div>
           </>

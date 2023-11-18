@@ -1,6 +1,7 @@
 /* eslint-disable no-debugger */
 import React, { useState, useRef, useEffect } from "react";
 import ReactQuill from "react-quill";
+
 import "react-quill/dist/quill.snow.css";
 
 const SimpleEditor = ({
@@ -54,9 +55,9 @@ const SimpleEditor = ({
         </select>
         <select className="ql-size">
           <option defaultValue="small"></option>
-          <option value="normal"></option>
-          <option value="large"></option>
-          <option value="huge"></option>
+          <option value="12">12px</option>
+          <option value="13">13px</option>
+          <option value="14">14px</option>
         </select>
         <button className="ql-bold">Bold</button>
         <button className="ql-italic">Italic</button>

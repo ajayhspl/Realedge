@@ -15,7 +15,6 @@ import "./ArticleBuilder.css";
 import Upload from "../../../assets/upload.png";
 import NotFound from "../../NotFound/NotFound";
 const pattern = date.compile("HH A ,MMM DD YYYY");
-
 const ArticleBuilder = () => {
   const [Categories, setCategories] = useState(null);
   const [authorList, setAuthorList] = useState([]);
@@ -35,9 +34,9 @@ const ArticleBuilder = () => {
     id: "",
     liked: [],
     replies: [],
+    imageContainer: [],
     thumbnail: "",
   });
-
   const [Updated, SetUpdated] = useState(false);
   const handleInput = async (e) => {
     const now = new Date();
@@ -98,6 +97,11 @@ const ArticleBuilder = () => {
       return author.id === event.target.value;
     });
     setChosenAuthor(Author);
+  };
+  const setImageContainer = (imageContainer) => {
+    setArticle((prev) => {
+      return { ...prev, imageContainer };
+    });
   };
   const RenderCategories = Categories?.map((category) => {
     return (
@@ -275,6 +279,9 @@ const ArticleBuilder = () => {
                   handlePostBodyChange={handlePostBodyChange}
                   SetUpdated={SetUpdated}
                   ArticleID={Article.id}
+                  updatePhotoList={(photolist) => {
+                    setImageContainer(photolist);
+                  }}
                 />
               )}
 

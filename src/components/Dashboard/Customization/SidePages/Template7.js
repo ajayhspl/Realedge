@@ -4,10 +4,10 @@ import DataTable from "react-data-table-component";
 import { CreateToast } from "../../../../App";
 import { DELETEPHOTO, UPLOADPHOTO, UPLOADVIDEO } from "../../../../server";
 import Upload from "../../../../assets/upload.png";
-import SimpleEditor from "./SimpleEditor";
 import sortBy from "sort-by";
 import VideoPlayer from "../../../VideoPlayer";
 import shortid from "shortid";
+import TipTap from "./RichTextEditor/tiptap";
 const Template7 = ({ Data, UpdateData, BackEndName }) => {
   const [data, setData] = useState(Data);
   const [ShowAddDocument, setShowAddDocument] = useState(false);
@@ -140,7 +140,7 @@ const Template7 = ({ Data, UpdateData, BackEndName }) => {
       return;
     }
     CreateToast("deleting video", "info");
-    await DELETEPHOTO(`/customization/SidePages/${Data.id}/Video`);
+    await DELETEPHOTO(`/customization/SidePages/${Data.id}/Video.mp4`);
     await UpdateData(BackEndName, { ...data, Video: "" });
     setData((prev) => ({ ...prev, Video: "" }));
     CreateToast("video deleted", "success");
@@ -162,7 +162,7 @@ const Template7 = ({ Data, UpdateData, BackEndName }) => {
       CreateToast("uploading Video", "info", 10000);
       const file = e.target.files[0];
       const url = await UPLOADVIDEO(
-        `/customization/SidePages/${Data.id}/Video`,
+        `/customization/SidePages/${Data.id}/Video.mp4`,
         file,
         handleProgress
       );
@@ -405,27 +405,26 @@ const Template7 = ({ Data, UpdateData, BackEndName }) => {
       </div>
       <h2>Sections</h2>
       <div className="EditorWrapper">
-        <SimpleEditor
-          handlePostBodyChange={(value) => {
+        <TipTap
+          editorClassName="First"
+          setHTML={(value) => {
             handlePostBodyChange(value, "OverViewBody");
           }}
-          toolBarID={"ToolBar2"}
-          oldValue={data.OverViewBody}
+          OldData={data.OverViewBody}
         />
-        <SimpleEditor
-          handlePostBodyChange={(value) => {
+        <TipTap
+          editorClassName="Second"
+          setHTML={(value) => {
             handlePostBodyChange(value, "HighlightsBody");
           }}
-          toolBarID={"ToolBar1"}
-          oldValue={data.HighlightsBody}
+          OldData={data.HighlightsBody}
         />
-
-        <SimpleEditor
-          handlePostBodyChange={(value) => {
+        <TipTap
+          editorClassName="Third"
+          setHTML={(value) => {
             handlePostBodyChange(value, "SupportBody");
           }}
-          toolBarID={"ToolBar4"}
-          oldValue={data.SupportBody}
+          OldData={data.SupportBody}
         />
       </div>
       <h2>Pricing Information</h2>

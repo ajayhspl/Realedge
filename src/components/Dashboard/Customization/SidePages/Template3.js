@@ -4,8 +4,8 @@ import { CreateToast } from "../../../../App";
 import Upload from "../../../../assets/upload.png";
 import sortBy from "sort-by";
 import DataTable from "react-data-table-component";
-import SimpleEditor from "./SimpleEditor";
 import MyModal from "../../../PopUps/Confirm/Confirm";
+import TipTap from "./RichTextEditor/tiptap";
 const Template3 = ({ Data, UpdateData, BackEndName }) => {
   const [data, setData] = useState(Data);
   const [NewCard, setNewCard] = useState({
@@ -306,12 +306,8 @@ const Template3 = ({ Data, UpdateData, BackEndName }) => {
           onChange={handleInput}
         />
       </div>
-      <SimpleEditor
-        handlePostBodyChange={handlePostBodyChange}
-        toolBarID={BackEndName}
-        oldValue={data.PageText}
-        PreviewClassName="Outsource"
-      />
+      <TipTap setHTML={handlePostBodyChange} OldData={data.PageText} />
+
       <button
         className="Button Add"
         style={{ margin: "0px 20px" }}

@@ -6,8 +6,8 @@ import MyModal from "../../../PopUps/Confirm/Confirm";
 import sortBy from "sort-by";
 
 import Upload from "../../../../assets/upload.png";
-import SimpleEditor from "./SimpleEditor";
 import "./SidePages.css";
+import TipTap from "./RichTextEditor/tiptap";
 const Template9 = ({ Data, UpdateData, BackEndName }) => {
   const [data, setData] = useState(Data);
   const [NewCard, setNewCard] = useState({
@@ -192,13 +192,11 @@ const Template9 = ({ Data, UpdateData, BackEndName }) => {
                 }}
               ></input>
             </div>
-            <SimpleEditor
-              handlePostBodyChange={(value) => {
+            <TipTap
+              setHTML={(value) => {
                 handlePostBodyChange(value, "NewCard");
               }}
-              toolBarID={"ToolBar1"}
-              oldValue={NewCard.Content}
-              PreviewClassName="Outsource"
+              OldData={NewCard.Content}
             />
           </>
         </MyModal>
@@ -310,12 +308,11 @@ const Template9 = ({ Data, UpdateData, BackEndName }) => {
             onChange={handleInput}
           />
         </div>
-        <SimpleEditor
-          handlePostBodyChange={(value) => {
+        <TipTap
+          setHTML={(value) => {
             handlePostBodyChange(value, "Section1");
           }}
-          toolBarID={"ToolBar8"}
-          oldValue={data.Sec1Body}
+          OldData={data.Sec1Body}
         />
       </div>
       <div className="Section-wrapper">
@@ -330,12 +327,11 @@ const Template9 = ({ Data, UpdateData, BackEndName }) => {
             onChange={handleInput}
           />
         </div>
-        <SimpleEditor
-          handlePostBodyChange={(value) => {
+        <TipTap
+          setHTML={(value) => {
             handlePostBodyChange(value, "Section2");
           }}
-          toolBarID={"ToolBar2"}
-          oldValue={data.Sec2Body}
+          OldData={data.Sec2Body}
         />
       </div>
       <div className="Section-wrapper">
@@ -360,12 +356,11 @@ const Template9 = ({ Data, UpdateData, BackEndName }) => {
             onChange={handleInput}
           />
         </div>
-        <SimpleEditor
-          handlePostBodyChange={(value) => {
+        <TipTap
+          setHTML={(value) => {
             handlePostBodyChange(value, "Section4");
           }}
-          toolBarID={"ToolBar4"}
-          oldValue={data.Sec4Body}
+          oldData={data.Sec4Body}
         />
       </div>
       <div className="Section-wrapper">
@@ -381,12 +376,11 @@ const Template9 = ({ Data, UpdateData, BackEndName }) => {
           />
         </div>
 
-        <SimpleEditor
-          handlePostBodyChange={(value) => {
+        <TipTap
+          setHTML={(value) => {
             handlePostBodyChange(value, "Section5");
           }}
-          toolBarID={"ToolBar5"}
-          oldValue={data.Sec5Body}
+          oldData={data.Sec5Body}
         />
       </div>
       <div className="Section-wrapper">
@@ -402,12 +396,11 @@ const Template9 = ({ Data, UpdateData, BackEndName }) => {
           />
         </div>
 
-        <SimpleEditor
-          handlePostBodyChange={(value) => {
+        <TipTap
+          setHTML={(value) => {
             handlePostBodyChange(value, "Section6");
           }}
-          toolBarID={"ToolBar6"}
-          oldValue={data.Sec6Body}
+          oldData={data.Sec6Body}
         />
       </div>
       <div className="Section-wrapper">
@@ -423,12 +416,11 @@ const Template9 = ({ Data, UpdateData, BackEndName }) => {
           />
         </div>
 
-        <SimpleEditor
-          handlePostBodyChange={(value) => {
+        <TipTap
+          setHTML={(value) => {
             handlePostBodyChange(value, "Section7");
           }}
-          toolBarID={"ToolBar7"}
-          oldValue={data.Sec7Body}
+          oldData={data.Sec7Body}
         />
       </div>
       <button

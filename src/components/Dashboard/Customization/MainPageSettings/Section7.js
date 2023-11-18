@@ -14,6 +14,7 @@ const Section7 = ({ FetchedData, UpdateData }) => {
     URL: "",
     ID: "",
     Name: "",
+    Link: "",
   });
   const handleShowModal = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
@@ -67,17 +68,43 @@ const Section7 = ({ FetchedData, UpdateData }) => {
       return { ...prev, Slider: NewCards };
     });
   };
+  const changePhoto = async (e, id) => {
+    CreateToast("uploading photo", "info", 2000);
+    const Photo = e.target.files[0];
+    const url = await UPLOADPHOTO(`/customization/section7/${id}.png`, Photo);
+
+    const newData = data.Slider.map((card) => {
+      if (card.ID === id) {
+        return { ...card, URL: url }; // Create a new object with updated URL
+      } else {
+        return card;
+      }
+    });
+
+    setData((prev) => {
+      return { ...prev, Slider: newData };
+    });
+    CreateToast("photo uploaded", "success");
+    setPhotoUploaded(true);
+  };
   const columns = [
     {
       name: "id",
       selector: (row) => row.id,
       sortable: true,
       center: true,
-      width: "200px",
+      width: "100px",
     },
     {
       name: "Name",
       selector: (row) => row.Name,
+      sortable: true,
+      center: true,
+      width: "200px",
+    },
+    {
+      name: "Link",
+      selector: (row) => row.Link,
       sortable: true,
       center: true,
       width: "200px",
@@ -94,17 +121,33 @@ const Section7 = ({ FetchedData, UpdateData }) => {
       selector: (row) => row.Options,
       sortable: true,
       center: true,
-      width: "200px",
+      width: "300px",
     },
   ];
+
   const TableData = data.Slider.map((Card) => {
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      let oldData = data.Slider;
+      let newData = oldData.map((oldCard) => {
+        if (oldCard.ID === Card.ID) {
+          return {
+            ...oldCard,
+            [name]: value,
+          };
+        } else {
+          return oldCard;
+        }
+      });
+      setData((prev) => ({ ...prev, Slider: newData }));
+    };
     return {
       id: Card.ID,
-      Name: Card.Name,
+      Name: <input name="Name" value={Card.Name} onChange={handleChange} />,
       url: <img src={Card.URL} style={{ maxWidth: "75px", margin: "20px" }} />,
-
+      Link: <input name="Link" value={Card.Link} onChange={handleChange} />,
       Options: (
-        <>
+        <div className="Button-wrapper">
           <button
             className="Button Danger"
             onClick={() => {
@@ -113,7 +156,20 @@ const Section7 = ({ FetchedData, UpdateData }) => {
           >
             Delete
           </button>
-        </>
+          <div className="FormItem" id="logo">
+            <label htmlFor={`ChangePhoto${Card.ID}`}>Change Photo</label>
+            <input
+              type="file"
+              hidden
+              required
+              id={`ChangePhoto${Card.ID}`}
+              name="url"
+              onChange={(e) => {
+                changePhoto(e, Card.ID);
+              }}
+            />
+          </div>
+        </div>
       ),
     };
   });
@@ -164,6 +220,7 @@ const Section7 = ({ FetchedData, UpdateData }) => {
                 onChange={handleInput}
               />
             </div>
+
             <div className="FormItem" id="Name">
               <label htmlFor="title">Name:</label>
               <input
@@ -172,6 +229,16 @@ const Section7 = ({ FetchedData, UpdateData }) => {
                 id="title"
                 name="Name"
                 value={NewCard.Name}
+                onChange={handleInput}
+              />
+            </div>
+            <div className="FormItem" id="Name">
+              <label htmlFor="title">Link(optional):</label>
+              <input
+                type="text"
+                id="title"
+                name="Link"
+                value={NewCard.Link}
                 onChange={handleInput}
               />
             </div>

@@ -61,7 +61,7 @@ const Header2 = (props) => {
       ></div>
     </div>
   ) : (
-    <h2>{props.title}</h2>
+    <h2 style={{ textAlign: "center" }}>{props.title}</h2>
   );
 };
 

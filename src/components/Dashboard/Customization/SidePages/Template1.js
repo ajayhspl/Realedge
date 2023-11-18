@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { CreateToast } from "../../../../App";
 import { UPLOADPHOTO } from "../../../../server";
 import Upload from "../../../../assets/upload.png";
-import SimpleEditor from "./SimpleEditor";
-
+import TipTap from "./RichTextEditor/tiptap";
 const Template1 = ({ Data, UpdateData, BackEndName }) => {
   const [data, setData] = useState(Data);
   const [photoUploading, setPhotoUploading] = useState(false);
@@ -123,12 +122,7 @@ const Template1 = ({ Data, UpdateData, BackEndName }) => {
           onChange={handleInput}
         />
       </div>
-      <SimpleEditor
-        handlePostBodyChange={handlePostBodyChange}
-        toolBarID={"ToolBar50"}
-        oldValue={data.Content}
-        PreviewClassName="Outsource"
-      />
+      <TipTap setHTML={handlePostBodyChange} OldData={data.Content} />
       <button
         className="Button View"
         id="Submit"

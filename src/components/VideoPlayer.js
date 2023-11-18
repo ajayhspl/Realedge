@@ -8,13 +8,13 @@ import fullscreen from "../assets/maximize.png";
 import volumeIcon from "../assets/volume.png";
 
 const VideoPlayer = ({ videoUrl }) => {
-  const [isPlaying, setPlaying] = useState(false);
+  const [isPlaying, setPlaying] = useState(true);
   const [showControls, setShowControls] = useState(true);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isFullScreen, setFullScreen] = useState(false);
   const [showVolumeControl, setShowVolumeControl] = useState(false);
-  const [volume, setVolume] = useState(1);
+  const [volume, setVolume] = useState(0);
   const videoRef = useRef(null);
 
   const togglePlay = () => {
@@ -125,6 +125,9 @@ const VideoPlayer = ({ videoUrl }) => {
         className="video-player"
         onTimeUpdate={handleTimeUpdate}
         onLoadedData={handleLoadedData}
+        autoPlay={true}
+        loop={true}
+        muted={volume == 0 ? true : false}
       ></video>
       <div className={`video-controls ${showControls ? "" : "Fade"}`}>
         <div className="Leftside">

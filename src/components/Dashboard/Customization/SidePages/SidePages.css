@@ -5,7 +5,7 @@
   flex-direction: column;
   width: 100%;
 }
-.Hosting .Team-wrapper{
+.Hosting .Team-wrapper {
   margin-top: 20px;
   display: flex;
   width: 100%;
@@ -15,36 +15,45 @@
   align-items: center;
 }
 
-.Hosting .PriceAdding{
+.Hosting .PriceAdding {
   width: 60%;
   margin: auto;
 }
-.Hosting .PriceAdding .Button-wrapper{
-  display: flex;  
+.Hosting .PriceAdding .Button-wrapper {
+  display: flex;
   justify-content: center;
 }
-.Hosting .Team-wrapper .Card-wrapper{
+.Hosting .Team-wrapper .Card-wrapper {
   width: 30%;
 }
-.Hosting .EditorWrapper{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: flex-start;
-row-gap: 20px;
+.Hosting .EditorWrapper {
+  display: grid;
+  width: 95%;
+  margin: auto;
+  grid-template-areas:
+    "First Second"
+    "First Third";
+  column-gap: 20px;
+  height: fit-content;
+  padding: 0 20px;
 }
-.Hosting .EditorWrapper .Editor-wrapper:nth-child(1),.Hosting .EditorWrapper .Editor-wrapper:nth-child(2){
-  width: 45%!important;
-  margin: 0 10px!important;
+.Hosting .EditorWrapper .First {
+  grid-area: First;
 }
-.Hosting .EditorWrapper .Editor-wrapper{
+.Hosting .EditorWrapper .Third {
+  grid-area: Third;
+}
+.Hosting .EditorWrapper .Second {
+  grid-area: Second;
+}
+
+.Hosting .EditorWrapper {
   border: 1px solid var(--borders);
   padding: 15px;
   border-radius: 10px;
 }
 
-
-.Hosting .Team-wrapper .Card-wrapper .Button-wrapper{
+.Hosting .Team-wrapper .Card-wrapper .Button-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -52,7 +61,7 @@ row-gap: 20px;
   margin: auto;
   margin-top: 20px;
 }
-.Hosting .Team-wrapper .Card-wrapper .TeamCard{
+.Hosting .Team-wrapper .Card-wrapper .TeamCard {
   width: 100%;
 }
 .PricingModal .modal-dialog {
@@ -88,11 +97,13 @@ row-gap: 20px;
   width: 90%;
   margin: auto;
 }
-.Hosting #Editor .Preview {
+.Hosting .Preview {
   margin-top: 20px;
   border: 1px solid var(--borders);
   border-radius: 15px;
   padding: 15px;
+  width: 100%;
+  word-break: break-word;
 }
 .Hosting #Editor #toolbar {
   border-top-left-radius: 15px;

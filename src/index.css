@@ -1,4 +1,3 @@
-
 /* ===== Scrollbar CSS ===== */
 /* Firefox */
 * {
@@ -22,25 +21,24 @@
   text-align: center;
   justify-content: space-between;
   align-items: center;
-
 }
-.cookie-popup .Button{
+.cookie-popup .Button {
   border: 1px solid var(--buttons);
   background-color: transparent;
   color: black;
   width: 100px;
   padding: 0;
   height: 40px;
-  transition: .2s all;
+  transition: 0.2s all;
 }
-.cookie-popup .Button:hover{
+.cookie-popup .Button:hover {
   border: 2px solid var(--buttons);
 }
 
-.cookie-popup .Link:after{
+.cookie-popup .Link:after {
   display: none;
 }
-.cookie-popup p{
+.cookie-popup p {
   margin: 0;
 }
 *::-webkit-scrollbar-track {
@@ -62,10 +60,9 @@ p {
   font-family: "Roboto" !important;
   cursor: default;
 }
-.FADE{
+.FADE {
   opacity: 0;
-  z-index: -1!important;
-
+  z-index: -1 !important;
 }
 section {
   padding: 70px 0;
@@ -111,22 +108,22 @@ h2 {
   font-size: 2.6rem !important;
   color: black;
   font-weight: 300 !important;
+  margin-bottom: 30px !important;
 }
 .Loading-wrapper {
   width: 100vw;
   height: 100vh;
   display: flex;
-  position:fixed;
+  position: fixed;
   z-index: 10000;
   justify-content: center;
   align-items: center;
   background-color: #e5eff1;
   overflow: hidden;
-  transition: .2s all;
+  transition: 0.2s all;
 }
 .Loading-wrapper img {
   width: 10%;
-
 }
 
 .Link:focus,

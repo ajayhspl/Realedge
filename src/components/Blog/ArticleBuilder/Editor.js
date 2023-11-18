@@ -6,9 +6,15 @@ import { UPLOADPHOTO, DELETEPHOTO } from "../../../server";
 import { generate as GenerateID } from "shortid";
 import { CreateToast } from "../../../App";
 
-const MyEditor = ({ handlePostBodyChange, SetUpdated, ArticleID }) => {
+const MyEditor = ({
+  handlePostBodyChange,
+  SetUpdated,
+  ArticleID,
+  Content,
+  updatePhotoList,
+}) => {
   const [imageContainer, setImageContainer] = useState([]);
-  const [editorHtml, setEditorHtml] = useState("");
+  const [editorHtml, setEditorHtml] = useState(Content ? Content : "");
   const quillRef = useRef(null);
   useEffect(() => {
     const editor = quillRef.current.getEditor();
@@ -21,7 +27,7 @@ const MyEditor = ({ handlePostBodyChange, SetUpdated, ArticleID }) => {
   }, []);
 
   const SaveArticle = (e) => {
-    CreateToast("Article saved you can now upload it", "success");
+    CreateToast("Article saved you can now upload/update it", "success");
 
     SetUpdated(true);
     e.preventDefault();
@@ -40,13 +46,15 @@ const MyEditor = ({ handlePostBodyChange, SetUpdated, ArticleID }) => {
       (storageObj) =>
         !srcValues.some((editorObj) => editorObj.url === storageObj.url)
     );
+    let TempImgContainer = imageContainer;
     filteredArray.forEach((DeletedPhoto) => {
-      let TempImgContainer = imageContainer.filter((OldPhoto) => {
+      TempImgContainer = imageContainer.filter((OldPhoto) => {
         return OldPhoto.id !== DeletedPhoto.id;
       });
       setImageContainer(TempImgContainer);
       DELETEPHOTO(`Blog/${ArticleID}/${DeletedPhoto.id}`);
     });
+    updatePhotoList(TempImgContainer);
   };
   const handleImageUpload = async () => {
     const input = document.createElement("input");
@@ -72,7 +80,7 @@ const MyEditor = ({ handlePostBodyChange, SetUpdated, ArticleID }) => {
         editor.formatText(range.index + 1, 1, { link: imageUrl }, "user");
         editor.setSelection(range.index + 2, "silent");
       } catch (error) {
-        CreateToast("Image upload error", "error");
+        CreateToast("Image upload/update error", "error");
       }
     };
   };

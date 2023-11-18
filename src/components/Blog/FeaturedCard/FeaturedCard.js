@@ -7,17 +7,14 @@ import Like from "../../../assets/like.png";
 
 const FeaturedCard = ({ Article }) => {
   return (
-    <div className="FeaturedPost">
-      <div className="TopPart">
-        <h2>{Article.Title}</h2>
-        <p>
-          by {Article.Author.Fname} {Article.Author.Lname}
-        </p>
-      </div>
-      <div className="BottomPart">
-        <img src={Article.thumbnail} />
-        <p className="Description">{Article.Description}</p>
-      </div>
+    <div
+      className="FeaturedPost"
+      style={{ backgroundImage: `url(${Article.thumbnail})` }}
+    >
+      <h3>{Article.Title}</h3>
+      <p>
+        by {Article.Author.Fname} {Article.Author.Lname}
+      </p>
       <div className="ExtraData">
         <span>
           <img src={Calendar}></img>
@@ -38,6 +35,7 @@ const FeaturedCard = ({ Article }) => {
           Continue Reading
         </Link>
       </div>
+      <div className="overlay"></div>
     </div>
   );
 };

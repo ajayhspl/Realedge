@@ -285,3 +285,19 @@
 .NewLink .form-check-input[type="checkbox"] {
   border: 1px solid #a4aab3;
 }
+.DataEntry .Button-wrapper .FormItem label {
+  cursor: pointer;
+
+  border: 1px solid green;
+  color: black;
+  width: fit-content;
+  font-size: 1rem;
+  border-radius: 5px;
+  padding: 5px;
+  font-weight: 600;
+  transition: 0.2s all;
+}
+.DataEntry .Button-wrapper .FormItem label:hover {
+  background-color: green;
+  color: white;
+}

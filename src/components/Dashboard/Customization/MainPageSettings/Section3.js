@@ -29,6 +29,25 @@ const Section3 = ({ FetchedData, UpdateData }) => {
     setNewCard({ url: "", id: "" });
     setPhotoUploaded(false);
   };
+  const changePhoto = async (e, id) => {
+    CreateToast("uploading photo", "info", 2000);
+    const Photo = e.target.files[0];
+    const url = await UPLOADPHOTO(`/customization/Section3/${id}.png`, Photo);
+
+    const newData = data.imgList.map((card) => {
+      if (card.id === id) {
+        return { ...card, url }; // Create a new object with updated URL
+      } else {
+        return card;
+      }
+    });
+
+    setData((prev) => {
+      return { ...prev, imgList: newData };
+    });
+    CreateToast("photo uploaded", "success");
+    setPhotoUploaded(true);
+  };
   const handleInput = async (e) => {
     const { name, value } = e.target;
     if (name === "url") {
@@ -82,7 +101,7 @@ const Section3 = ({ FetchedData, UpdateData }) => {
       selector: (row) => row.Options,
       sortable: true,
       center: true,
-      width: "200px",
+      width: "300px",
     },
   ];
   const TableData = data.imgList.map((Card) => {
@@ -93,16 +112,29 @@ const Section3 = ({ FetchedData, UpdateData }) => {
       ),
 
       Options: (
-        <>
+        <div className="Button-wrapper">
           <button
             className="Button Danger"
             onClick={() => {
-              DeleteCard(Card.id);
+              DeleteCard(Card.ID);
             }}
           >
             Delete
           </button>
-        </>
+          <div className="FormItem" id="logo">
+            <label htmlFor={`ChangePhoto${Card.id}`}>Change Photo</label>
+            <input
+              type="file"
+              hidden
+              required
+              id={`ChangePhoto${Card.id}`}
+              name="url"
+              onChange={(e) => {
+                changePhoto(e, Card.id);
+              }}
+            />
+          </div>
+        </div>
       ),
     };
   });

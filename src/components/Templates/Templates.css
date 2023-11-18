@@ -8,14 +8,6 @@
 .Outsource h2 {
   font-size: 2rem;
 }
-.Outsource h3 {
-  font-size: 1.5rem;
-  position: relative;
-  color: var(--borders);
-  width: fit-content;
-  letter-spacing: 2px;
-  margin-bottom: 20px;
-}
 
 .Outsource h4 {
   font-size: 1.25rem;
@@ -345,7 +337,7 @@
   height: 50px;
 }
 .ProductVideo {
-  width: 60%;
+  width: 85%;
   margin: auto;
 }
 .Product .RightSide {
