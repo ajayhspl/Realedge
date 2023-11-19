@@ -3,15 +3,24 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./ArticlePage.css";
 import { useParams, Link } from "react-router-dom";
-import Calendar from "../../../assets/calendar.png";
-import ReadTime from "../../../assets/ReadTime.png";
-import Like from "../../../assets/like.png";
-import LikeFilled from "../../../assets/likefilled.png";
+
 import NotFound from "../../NotFound/NotFound";
-import { GETCOLLECTION, GETDOC, SETDOC, decrypt } from "../../../server";
+import {
+  GETCOLLECTION,
+  GETDOC,
+  SETDOC,
+  UPDATEDOC,
+  decrypt,
+} from "../../../server";
 import { CreateToast } from "../../../App";
 import date from "date-and-time";
 import sortBy from "sort-by";
+import { FiEye } from "react-icons/fi";
+import { SlCalender } from "react-icons/sl";
+import { CiClock1 } from "react-icons/ci";
+import { AiOutlineLike, AiFillLike } from "react-icons/ai";
+import { BiCategory } from "react-icons/bi";
+
 const ArticlePage = ({ Categories, Users, width }) => {
   const [Articles, setArticles] = useState([]);
   const isFirstRender = useRef(true);
@@ -47,7 +56,16 @@ const ArticlePage = ({ Categories, Users, width }) => {
   let TargetCategory = null;
   useEffect(() => {
     const FetchData = async () => {
-      setArticles(await GETCOLLECTION("Articles"));
+      const FetchedArticles = await GETCOLLECTION("Articles");
+      const TargetArticle = FetchedArticles?.find((Article) => {
+        return Article.id == ID;
+      });
+      console.log(TargetArticle);
+      setArticles(FetchedArticles);
+      await UPDATEDOC("Articles", ID, {
+        ...TargetArticle,
+        views: TargetArticle.views++,
+      });
     };
     FetchData();
   }, []);
@@ -221,17 +239,26 @@ const ArticlePage = ({ Categories, Users, width }) => {
             <div className="ArticlePage">
               <div className="ArticleDetails">
                 <span>
-                  <img src={Calendar}></img>
+                  <SlCalender className="icon" />
                   {TargetArticle.DateAdded}
                 </span>
+                <span>
+                  <FiEye className="icon" />
+                  {TargetArticle.views}
+                </span>
                 <span className="LikeButton">
-                  <img src={UserLiked ? LikeFilled : Like} onClick={AddLike} />{" "}
+                  {UserLiked ? (
+                    <AiFillLike className="icon" onClick={AddLike} />
+                  ) : (
+                    <AiOutlineLike className="icon" onClick={AddLike} />
+                  )}
                   {TargetArticle.liked.length}
                 </span>
                 <span>
-                  <img src={ReadTime} /> {TargetArticle.ReadTime} min(s)
+                  <CiClock1 className="icon" /> {TargetArticle.ReadTime} min(s)
                 </span>
                 <div>
+                  <BiCategory className="icon" />
                   <Link
                     to={`/BlogMain/Category/${TargetCategory.id}`}
                     className="Category"

@@ -1,9 +1,11 @@
 import React from "react";
 import "./FeaturedCard.css";
-import Calendar from "../../../assets/calendar.png";
-import ReadTime from "../../../assets/ReadTime.png";
+
 import { Link } from "react-router-dom";
-import Like from "../../../assets/like.png";
+import { SlCalender } from "react-icons/sl";
+import { CiClock1 } from "react-icons/ci";
+import { AiOutlineLike } from "react-icons/ai";
+import { FiEye } from "react-icons/fi";
 
 const FeaturedCard = ({ Article }) => {
   return (
@@ -11,21 +13,29 @@ const FeaturedCard = ({ Article }) => {
       className="FeaturedPost"
       style={{ backgroundImage: `url(${Article.thumbnail})` }}
     >
-      <h3>{Article.Title}</h3>
-      <p>
-        by {Article.Author.Fname} {Article.Author.Lname}
-      </p>
+      <div className="MainData">
+        <h3 className=" animate__animated animate__fadeInUp">
+          {Article.Title}
+        </h3>
+        <p>
+          by {Article.Author.Fname} {Article.Author.Lname}
+        </p>
+      </div>
       <div className="ExtraData">
-        <span>
-          <img src={Calendar}></img>
+        <span className="Date">
+          <SlCalender className="icon" />
           {Article.DateAdded}
         </span>
         <span>
-          <img src={ReadTime} />
+          <FiEye className="icon" />
+          {Article.views}
+        </span>
+        <span>
+          <CiClock1 className="icon" />
           {Article.ReadTime} min(s)
         </span>
         <span className="LikeButton">
-          <img src={Like} /> {Article.liked.length}
+          <AiOutlineLike className="icon" /> {Article.liked.length}
         </span>
         <Link to={`/BlogMain/Article/${Article.id}`} className="Category">
           {Article.category}
@@ -35,6 +45,7 @@ const FeaturedCard = ({ Article }) => {
           Continue Reading
         </Link>
       </div>
+
       <div className="overlay"></div>
     </div>
   );

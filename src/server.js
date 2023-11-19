@@ -10,6 +10,7 @@ import {
   getFirestore,
   getDoc,
   deleteDoc,
+  updateDoc,
 } from "firebase/firestore";
 import {
   getStorage,
@@ -240,6 +241,13 @@ export const SETDOC = async (
 };
 //         SETDOC("users", tempData.id, { ...tempData });
 
+ export const UPDATEDOC = async (collection = String, id, newData = Object) => {
+  try {
+    await updateDoc(doc(db, collection, id.toString()), newData);
+  } catch (error) {
+    console.log(error);
+  }
+};
 export const DELETEDOC = async (collection = String, id = Number) => {
   try {
     await deleteDoc(doc(db, collection, id.toString()));

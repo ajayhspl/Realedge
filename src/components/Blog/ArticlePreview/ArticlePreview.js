@@ -1,10 +1,12 @@
 import React from "react";
 import "./ArticlePreview.css";
-import Calendar from "../../../assets/calendar.png";
-import ReadTime from "../../../assets/ReadTime.png";
-import { Link } from "react-router-dom";
-import Like from "../../../assets/like.png";
 
+import { FiEye } from "react-icons/fi";
+import { SlCalender } from "react-icons/sl";
+import { CiClock1 } from "react-icons/ci";
+import { AiOutlineLike } from "react-icons/ai";
+import { BiCategory } from "react-icons/bi";
+import { Link } from "react-router-dom";
 const ArticlePreview = ({ Article, delay }) => {
   const delayString = delay.toString() + "s";
   return (
@@ -25,17 +27,23 @@ const ArticlePreview = ({ Article, delay }) => {
       </div>
       <div className="ExtraData">
         <span>
-          <img src={Calendar}></img>
+          <FiEye className="icon" />
+          {Article.views}
+        </span>
+        <span>
+          <SlCalender className="icon" />
           {Article.DateAdded}
         </span>
         <span>
-          <img src={ReadTime} />
+          <CiClock1 className="icon" />
           {Article.ReadTime} min(s)
         </span>
         <span className="LikeButton">
-          <img src={Like} /> {Article.liked.length}
+          <AiOutlineLike className="icon" />
+          {Article.liked.length}
         </span>
         <Link to={`/BlogMain/Article/${Article.id}`} className="Category">
+          <BiCategory className="icon" />
           {Article.category}
         </Link>
         <Link to={`/BlogMain/Article/${Article.id}`} className="Link">

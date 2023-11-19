@@ -36,6 +36,7 @@ const ArticleBuilder = () => {
     replies: [],
     imageContainer: [],
     thumbnail: "",
+    views: 0,
   });
   const [Updated, SetUpdated] = useState(false);
   const handleInput = async (e) => {

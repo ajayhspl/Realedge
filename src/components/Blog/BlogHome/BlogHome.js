@@ -89,7 +89,6 @@ const BlogHome = ({ users, General, Categories }) => {
     <div className="BlogPage">
       {filteredBlogs && (
         <div className="FeaturedArticles">
-          <h1>Featured Articles</h1>
           {filteredBlogs.length === 0 && (
             <h4 style={{ textAlign: "center" }}>No Featured Articles yet</h4>
           )}
@@ -100,7 +99,7 @@ const BlogHome = ({ users, General, Categories }) => {
             spaceBetween={10}
             modules={[Autoplay]}
             autoplay={{
-              delay: 2000,
+              delay: 4000,
               disableOnInteraction: false,
               pauseOnMouseEnter: true,
             }}
@@ -135,7 +134,7 @@ const BlogHome = ({ users, General, Categories }) => {
       <div className="BlogMain">
         {activePage === "main" && (
           <div className="Recent-Blogs">
-            <h1>Latest Articles</h1>
+            <h1 style={{ paddingLeft: "20px" }}>Latest Articles</h1>
             {RenderRecent.length === 0 && (
               <h4 style={{ textAlign: "center" }}>No Articles yet</h4>
             )}

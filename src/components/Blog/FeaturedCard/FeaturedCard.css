@@ -13,46 +13,44 @@
   z-index: 1;
   position: relative;
 }
-
-.TopPart {
-  display: flex;
-
-  flex-direction: column;
+.FeaturedPost .overlay {
+  top: unset;
+  bottom: 0;
+  z-index: 2;
+  height: 83%;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.7) 100%
+  );
 }
+
 .Category {
-  opacity: 0.7 !important;
   text-decoration: none;
   color: black;
-  font-size: 0.8rem;
+  font-size: 1rem;
   text-transform: uppercase;
   margin-left: 20px;
   cursor: pointer;
 }
-.TopPart h2 {
-  font-size: 1.5rem;
+
+.FeaturedPost .MainData {
+  z-index: 3;
 }
-.TopPart p {
-  margin-left: 10px;
-  opacity: 0.7;
-  font-size: 0.8rem;
+.FeaturedPost .MainData p {
+  margin-bottom: 0;
 }
-.FeaturedPost .BottomPart {
-  display: flex;
-  height: 80%;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
+.FeaturedPost .MainData h3 {
+  font-size: 5rem;
+  font-weight: bolder;
 }
-.FeaturedPost .BottomPart .Description {
-  width: 50%;
-  text-align: left;
-}
-.FeaturedPost .BottomPart img {
-  border-radius: 15px;
-  width: 40%;
+.ExtraData .icon {
+  margin-left: 15px;
+  margin-right: 5px;
+  font-size: 1.2rem;
 }
 .ExtraData {
-  margin-top: 20px;
+  z-index: 3;
   display: flex;
   align-items: center;
   gap: 5px;
@@ -63,22 +61,32 @@
   font-size: 0.9rem;
 }
 .ExtraData img {
-  width: 18px;
+  width: 25px;
   margin: 0 10px;
 }
+
 @media (max-width: 600px) {
+  .FeaturedPost .MainData h3 {
+    font-size: 2rem;
+    text-align: center;
+  }
   .FeaturedPost {
     min-width: unset;
-    width: 270px;
+    width: 100vw;
+    height: 400px;
   }
-  .FeaturedPost .BottomPart {
-    flex-direction: column;
+  .FeaturedPost .ExtraData {
+    justify-content: center;
+    align-items: center;
+    flex-direction: row-reverse;
   }
-  .FeaturedPost .BottomPart img {
-    width: 100%;
+
+  .FeaturedPost .ExtraData .Link {
+    margin: auto;
+    padding: 0;
   }
-  .FeaturedPost .BottomPart .Description {
-    width: 100%;
+  .FeaturedPost .ExtraData .Link:after {
+    display: none;
   }
   .FeaturedPost .ExtraData {
     flex-wrap: wrap;

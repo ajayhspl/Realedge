@@ -51,13 +51,13 @@
   border-bottom: 1px solid var(--buttons);
   height: 50px;
 }
-.ContactForm [name="subject"] {
+.ContactForm [name="Subject"] {
   width: 100%;
 }
 .ContactForm button {
   width: 90%;
 }
-.ContactForm [name="message"] {
+.ContactForm [name="Message"] {
   width: 100%;
   resize: none;
   height: 80px;

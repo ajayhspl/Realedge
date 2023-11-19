@@ -7,8 +7,6 @@ import Upload from "../../../assets/upload.png";
 const General = ({ Data, UpdateGeneralData }) => {
   const [data, setData] = useState(Data);
   const [emailChanged, setEmailChanged] = useState(false);
-  const [verified, setVerified] = useState(false);
-
   const handleInput = async (e) => {
     const { name, value } = e.target;
     if (name === "Email") {
@@ -40,85 +38,6 @@ const General = ({ Data, UpdateGeneralData }) => {
       setData((prev) => {
         return { ...prev, [name]: value };
       });
-    }
-  };
-
-  const SendEmail = () => {
-    if (!data.Email) {
-      CreateToast("email cant be left empty", "error");
-      return;
-    }
-    CreateToast("Sending email...", "info", 3000);
-    let url = `https://formsubmit.co/ajax/${data.Email}`;
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        message: "This is an email to verify your email address mail",
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.message.includes("This form needs Activation")) {
-          CreateToast(
-            "Email verification is required. check your mail",
-            "info"
-          );
-        }
-        if (data.success === "true") {
-          CreateToast("email is already verified", "success");
-        }
-        setVerified(true);
-        setEmailChanged(false);
-      })
-      .catch((error) => CreateToast(error, "error"));
-  };
-  const checkEmail = async () => {
-    CreateToast("Checking mail", "info");
-    let url = `https://formsubmit.co/ajax/${data.Email}`;
-
-    try {
-      const response = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          message: "Congrats! the email is working",
-        }),
-      });
-
-      const responseData = await response.json();
-      return responseData.success === "true";
-    } catch (error) {
-      console.log(error);
-      return false;
-    }
-  };
-
-  const UpdateData = async () => {
-    const emailSent = await checkEmail();
-    if (emailSent) {
-      if (!emailChanged) {
-        CreateToast("Updating Data..", "info", 1000);
-
-        UpdateGeneralData(data);
-        return;
-      }
-      if (!verified) {
-        CreateToast("Verify the new Email", "error");
-        return;
-      }
-    } else {
-      CreateToast(
-        "Email wasn't verified,new email verification sent",
-        "error",
-        2000
-      );
     }
   };
   const handleColorChange = (colorName, newColor) => {
@@ -162,7 +81,12 @@ const General = ({ Data, UpdateGeneralData }) => {
       );
     }
   );
-
+  const handleCheckboxChange = () => {
+    setData((prev) => ({
+      ...prev,
+      DefaultJobContactTitle: !prev.DefaultJobContactTitle,
+    }));
+  };
   return (
     <div className="DataEntry section4">
       <div className="formItem">
@@ -211,21 +135,127 @@ const General = ({ Data, UpdateGeneralData }) => {
           onChange={handleInput}
         />
       </div>
-      {emailChanged && (
-        <button className="Button View" id="Submit" onClick={SendEmail}>
-          verify Email
-        </button>
-      )}
+      <h3>Contact forms</h3>
+
       <div className="FormItem" id="Title">
-        <label htmlFor="ModalDescription">Contact us Description:</label>
+        <label htmlFor="NavBarContactDescription">
+          Nav bar contact form Description:
+        </label>
         <input
           type="text"
-          id="ModalDescription"
-          name="ModalDescription"
-          value={data.ModalDescription}
+          id="NavBarContactDescription"
+          name="NavBarContactDescription"
+          value={data.NavBarContactDescription}
           onChange={handleInput}
         />
       </div>
+      <div className="FormItem" id="Title">
+        <label htmlFor="NavBarContactTitle">NavBar contact form title:</label>
+        <input
+          type="text"
+          id="NavBarContactTitle"
+          name="NavBarContactTitle"
+          value={data.NavBarContactTitle}
+          onChange={handleInput}
+        />
+      </div>
+      <div className="FormItem" id="Title">
+        <label htmlFor="HeaderContactTitle">header contact form title:</label>
+        <input
+          type="text"
+          id="HeaderContactTitle"
+          name="HeaderContactTitle"
+          value={data.HeaderContactTitle}
+          onChange={handleInput}
+        />
+      </div>
+      <div className="FormItem" id="Title">
+        <label htmlFor="HeaderContactDescription">
+          header contact form Description:
+        </label>
+        <input
+          type="text"
+          id="HeaderContactDescription"
+          name="HeaderContactDescription"
+          value={data.HeaderContactDescription}
+          onChange={handleInput}
+        />
+      </div>
+      <div className="FormItem" id="Title">
+        <label htmlFor="JobRequestDescription">
+          Job Request form Description:
+        </label>
+        <input
+          type="text"
+          id="JobRequestDescription"
+          name="JobRequestDescription"
+          value={data.JobRequestDescription}
+          onChange={handleInput}
+        />
+      </div>
+      <div className="FormItem" id="Title">
+        <label htmlFor="JobRequestTitle">Job Request form Title:</label>
+        <input
+          type="text"
+          id="JobRequestTitle"
+          name="JobRequestTitle"
+          value={data.JobRequestTitle}
+          onChange={handleInput}
+        />
+        <div className="formItem form-check CheckBox">
+          <label className="form-check-label">
+            Default Naming:
+            <input
+              className="form-check-input"
+              type="checkbox"
+              checked={data.DefaultJobContactTitle}
+              onChange={handleCheckboxChange}
+            />
+          </label>
+        </div>
+      </div>
+
+      <div className="FormItem" id="Title">
+        <label htmlFor="PriceContactDescription">
+          Price Plan Request form Description:
+        </label>
+        <input
+          type="text"
+          id="PriceContactDescription"
+          name="PriceContactDescription"
+          value={data.PriceContactDescription}
+          onChange={handleInput}
+        />
+      </div>
+      <div className="FormItem" id="Title">
+        <label htmlFor="PriceContactTitle">
+          Price Plan Request form Title:
+        </label>
+        <input
+          type="text"
+          id="PriceContactTitle"
+          name="PriceContactTitle"
+          value={data.PriceContactTitle}
+          onChange={handleInput}
+        />
+        <div className="formItem form-check CheckBox">
+          <label className="form-check-label">
+            Default Naming:
+            <input
+              className="form-check-input"
+              type="checkbox"
+              checked={data.DefaultPriceContactTitle}
+              onChange={() => {
+                setData((prev) => ({
+                  ...prev,
+                  DefaultPriceContactTitle: !prev.DefaultPriceContactTitle,
+                }));
+              }}
+            />
+          </label>
+        </div>
+      </div>
+      <h3>Meta Data</h3>
       <span style={{ color: "red" }}>
         Warning: the below changes might effect the search engine results
       </span>
@@ -249,11 +279,17 @@ const General = ({ Data, UpdateGeneralData }) => {
           onChange={handleInput}
         />
       </div>
+      <h3>Website Colors</h3>
       <div className="WebTheme">
-        <h2>Website Colors</h2>
         <ul>{RenderColors}</ul>
       </div>
-      <button className="Button View" id="Submit" onClick={UpdateData}>
+      <button
+        className="Button View"
+        id="Submit"
+        onClick={() => {
+          UpdateGeneralData(data);
+        }}
+      >
         Save
       </button>
     </div>
