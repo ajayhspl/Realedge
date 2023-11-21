@@ -1,9 +1,10 @@
 .Section2 {
-  width: 90%;
+  width: 100%;
   overflow-y: hidden;
 }
 .Section2 h2 {
   width: 30%;
+  padding-left: 30px;
 }
 .Cards-wrapper {
   display: flex;

@@ -134,7 +134,6 @@ const BlogHome = ({ users, General, Categories }) => {
       <div className="BlogMain">
         {activePage === "main" && (
           <div className="Recent-Blogs">
-            <h1 style={{ paddingLeft: "20px" }}>Latest Articles</h1>
             {RenderRecent.length === 0 && (
               <h4 style={{ textAlign: "center" }}>No Articles yet</h4>
             )}

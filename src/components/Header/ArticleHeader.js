@@ -19,7 +19,7 @@ const ArticleHeader = ({ Articles, bg, Users }) => {
             <div className="TopBar"></div>
             <div className="BTM" style={{ gap: "10px" }}>
               <h1>{TargetArticle.Title}</h1>
-              <span style={{ paddingLeft: "20px" }}>
+              <span>
                 by {TargetArticle.Author.Fname} {TargetArticle.Author.Lname}
                 {Creator ? "" : " (Deleted User)"}
               </span>

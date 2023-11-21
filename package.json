@@ -7,6 +7,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@tiptap/extension-color": "^2.1.12",
+    "@tiptap/extension-font-family": "^2.1.12",
     "@tiptap/extension-link": "^2.1.12",
     "@tiptap/extension-text-align": "^2.1.12",
     "@tiptap/extension-text-style": "^2.1.12",

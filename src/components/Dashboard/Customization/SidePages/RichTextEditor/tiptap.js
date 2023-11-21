@@ -8,6 +8,7 @@ import React, { useCallback, useState } from "react";
 import Underline from "@tiptap/extension-underline";
 import TextAlign from "@tiptap/extension-text-align";
 import Link from "@tiptap/extension-link";
+import FontFamily from "@tiptap/extension-font-family";
 import {
   FaLink,
   FaLinkSlash,
@@ -47,9 +48,23 @@ const MenuBar = () => {
     "84px",
     "98px",
   ];
-  const textType = ["1", "2", "3", "4", "5", "6"];
-  const [selectedFontSize, setSelectedFontSize] = useState("14px"); // Default font size
-  const [selectedTextType, setSelectedTextType] = useState("1"); // Default text type
+  const fontFamily = [
+    "Inter",
+    "Comic Sans MS",
+    "serif",
+    "Sans-Serif",
+    "monospace",
+    "Fantasy",
+    "Arial Black",
+    "Verdana",
+    "Tahoma",
+    "Trebuchet MS",
+    "Georgia",
+    "Courier",
+    "Bradley Hand",
+    "Luminari",
+  ];
+  const textType = [1, 2, 3, 4, 5, 6];
   const [selectedColor, setSelectedColor] = useState("#0000");
 
   const { editor } = useCurrentEditor();
@@ -79,20 +94,7 @@ const MenuBar = () => {
     editor.chain().focus().setColor(color).run();
     setSelectedColor(color);
   };
-  const handleFontSizeChange = (event) => {
-    const fontSize = event.target.value;
-    editor.commands.setFontSize(fontSize);
-    setSelectedFontSize(fontSize);
-  };
-  const handleTextTypeChange = (event) => {
-    const textType = event.target.value;
-    editor
-      .chain()
-      .focus()
-      .toggleHeading({ level: parseInt(textType) })
-      .run();
-    setSelectedTextType(textType);
-  };
+
   return (
     <div className="toolBar">
       <button
@@ -175,31 +177,66 @@ const MenuBar = () => {
         unsetTextAlign
       </button>
       <div className="text-type-dropdown">
-        <select
-          id="textTypeSelect"
-          value={selectedTextType}
-          onChange={handleTextTypeChange}
-        >
+        <button className="dropdown-button">Header</button>
+        <div className="dropdown-content">
           {textType.map((textType) => (
-            <option key={textType} value={textType}>
+            <div
+              key={textType}
+              onClick={() =>
+                editor.chain().focus().toggleHeading({ level: textType }).run()
+              }
+              className={
+                editor.isActive("heading", { level: textType })
+                  ? "is-active"
+                  : ""
+              }
+            >
               h{textType}
-            </option>
+            </div>
           ))}
-        </select>
+        </div>
       </div>
-      <div className="font-size-dropdown">
-        <select
-          id="fontSizeSelect"
-          value={selectedFontSize}
-          onChange={handleFontSizeChange}
-        >
+      <div className="text-type-dropdown">
+        <button className="dropdown-button">Font Family</button>
+        <div className="dropdown-content">
+          {fontFamily.map((FontFamily) => (
+            <div
+              key={FontFamily}
+              onClick={() => {
+                editor.commands.setFontFamily(FontFamily);
+              }}
+              className={
+                editor.isActive("textStyle", { fontFamily: FontFamily })
+                  ? "is-active"
+                  : ""
+              }
+            >
+              {FontFamily}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="text-type-dropdown">
+        <button className="dropdown-button">Font Size</button>
+        <div className="dropdown-content">
           {fontSizes.map((fontSize) => (
-            <option key={fontSize} value={fontSize}>
+            <div
+              key={fontSize}
+              onClick={() => {
+                editor.commands.setFontSize(fontSize);
+              }}
+              className={
+                editor.isActive("font-size", { FontSize: fontSize })
+                  ? "is-active"
+                  : ""
+              }
+            >
               {fontSize}
-            </option>
+            </div>
           ))}
-        </select>
+        </div>
       </div>
+
       <button
         onClick={() => editor.chain().focus().toggleBulletList().run()}
         className={editor.isActive("bulletList") ? "is-active" : ""}
@@ -253,6 +290,8 @@ const extensions = [
   TextStyle.configure({ types: [ListItem.name] }),
   FontSize.configure(), // Configure FontSize
   Underline,
+
+  FontFamily,
   TextAlign.configure({
     types: ["heading", "paragraph"],
   }),

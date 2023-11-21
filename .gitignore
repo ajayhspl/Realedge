@@ -1,4 +1,4 @@
 /.env
 /node_modules
-
+/build
 src/BackendEdit.json
