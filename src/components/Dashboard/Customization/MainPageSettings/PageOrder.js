@@ -1,8 +1,8 @@
-import React from "react";
 import "./PageOrder.css";
+import React, { useState, useEffect, useRef } from "react";
 
-const PageOrder = ({ FetchedData, UpdateData }) => {
-  const [PageOrder, setPageOrder] = React.useState(FetchedData);
+const PageOrder = ({ FetchedData, UpdateData, setEdited }) => {
+  const [PageOrder, setPageOrder] = useState(FetchedData);
   const handleSelectChange = (key, value) => {
     setPageOrder((prev) => ({
       ...prev,
@@ -19,7 +19,15 @@ const PageOrder = ({ FetchedData, UpdateData }) => {
     "Section7",
     "Section8",
   ];
-
+  const firstRender = useRef(true);
+  useEffect(() => {
+    if (firstRender.current) {
+      // Skip the first render
+      firstRender.current = false;
+    } else {
+      setEdited(true);
+    }
+  }, [PageOrder]);
   const selects = sectionOrder.map((key) => {
     const options = [];
     let name;

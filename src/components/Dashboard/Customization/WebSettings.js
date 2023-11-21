@@ -15,13 +15,25 @@ import Template9 from "./SidePages/Template9";
 import Template10 from "./SidePages/Template10";
 import { CreateToast } from "../../../App";
 import General from "./General";
+import MyModal from "../../PopUps/Confirm/Confirm";
 const WebSettings = ({ SetCustomizationPage, customizationPage }) => {
+  const [edited, setEdited] = useState(false);
+  const [storedNav, setStoredNav] = useState(null);
   const [saving, SetSaving] = useState(false);
+  const [showModal, setShowModal] = React.useState(false);
+
   const [activePage, setActivePage] = useState("");
   const [isLoading, setLoading] = useState(true);
   const [fetchedData, setFetchedData] = useState(null);
   const [componentMapping, setComponentMapping] = useState({});
   const [combinedList, setCombinedList] = useState([]);
+  const handleShowModal = () => setShowModal(true);
+  const handleCloseModal = () => setShowModal(false);
+  const handlePrimaryAction = () => {
+    setEdited(false);
+    handleNav(storedNav, true);
+    handleCloseModal();
+  };
   const objectToArray = (obj) => {
     return Object.keys(obj).map((key) => ({
       key,
@@ -129,6 +141,7 @@ const WebSettings = ({ SetCustomizationPage, customizationPage }) => {
     setFetchedData(await GETCOLLECTION("customization"));
     CreateToast("Data Updated", "success", 2000);
     SetSaving(false);
+    setEdited(false);
   };
   const UpdateData = async (ChangedValue, NewValue) => {
     SetSaving(true);
@@ -164,9 +177,17 @@ const WebSettings = ({ SetCustomizationPage, customizationPage }) => {
     setFetchedData(await GETCOLLECTION("customization"));
     CreateToast("Data Updated", "success", 2000);
     SetSaving(false);
+    setEdited(false);
   };
 
-  const handleNav = (WhereTo) => {
+  const handleNav = (WhereTo, wantToLeave) => {
+    setStoredNav(WhereTo);
+    if (!wantToLeave) {
+      if (edited) {
+        handleShowModal();
+        return;
+      }
+    }
     if (WhereTo === "Tab") {
       if (saving) {
         CreateToast("saving please wait", "error", 2000);
@@ -183,9 +204,24 @@ const WebSettings = ({ SetCustomizationPage, customizationPage }) => {
         SetCustomizationPage("Nav1");
       }
     }
+    setStoredNav(null);
   };
   return (
     <div className="WebSettings">
+      {showModal && (
+        <MyModal
+          className="Confirm"
+          show={showModal}
+          handleClose={handleCloseModal}
+          title="Leave without saving"
+          primaryButtonText="Leave"
+          handlePrimaryAction={handlePrimaryAction}
+        >
+          <p>
+            there are changes that are unsaved are you sure you want to leave?
+          </p>
+        </MyModal>
+      )}
       {!isLoading && (
         <>
           <h1 className="animate__animated animate__backInDown ql-align-center">
@@ -263,10 +299,15 @@ const WebSettings = ({ SetCustomizationPage, customizationPage }) => {
           setFetchedData={setFetchedData}
           setSaving={SetSaving}
           Tabs={fetchedData[1]}
+          setEdited={setEdited}
         />
       )}
       {customizationPage === "General" && (
-        <General Data={fetchedData[2]} UpdateGeneralData={UpdateGeneralData} />
+        <General
+          Data={fetchedData[2]}
+          UpdateGeneralData={UpdateGeneralData}
+          setEdited={setEdited}
+        />
       )}
       {combinedList.map((tab) => {
         const { ComponentToRender, DataToFetch } = componentMapping[tab] || {};
@@ -278,6 +319,7 @@ const WebSettings = ({ SetCustomizationPage, customizationPage }) => {
               Data={fetchedData[1][DataToFetch]}
               UpdateData={UpdateData}
               BackEndName={DataToFetch}
+              setEdited={setEdited}
             />
           );
         }

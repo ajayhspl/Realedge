@@ -179,7 +179,7 @@ const Footer = ({ ServerData, Tabs }) => {
         </div>
         {Location.includes("Dashboard") || Location.includes("Portal") ? (
           <p style={{ marginLeft: "auto", color: "white" }}>
-            Website Version: 2.1
+            Website Version: 2.2
           </p>
         ) : (
           ""

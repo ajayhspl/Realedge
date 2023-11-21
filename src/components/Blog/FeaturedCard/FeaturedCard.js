@@ -14,14 +14,12 @@ const FeaturedCard = ({ Article }) => {
       style={{ backgroundImage: `url(${Article.thumbnail})` }}
     >
       <div className="MainData">
-        <h3 className=" animate__animated animate__fadeInUp">
-          {Article.Title}
-        </h3>
-        <p>
+        <h3 className="animate__animated animate__fadeInUp">{Article.Title}</h3>
+        <p className="animate__animated animate__fadeInUp">
           by {Article.Author.Fname} {Article.Author.Lname}
         </p>
       </div>
-      <div className="ExtraData">
+      <div className="ExtraData animate__animated animate__fadeInUp">
         <span className="Date">
           <SlCalender className="icon" />
           {Article.DateAdded}

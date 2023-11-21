@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import MyModal from "../../../PopUps/Confirm/Confirm";
 import { CreateToast } from "../../../../App";
 import Upload from "../../../../assets/upload.png";
@@ -6,7 +6,7 @@ import { UPLOADPHOTO } from "../../../../server";
 import sortBy from "sort-by";
 import "./SidePages.css";
 import PriceCard from "../../../Cards/PriceCard/PriceCard";
-const Template6 = ({ Data, UpdateData, BackEndName }) => {
+const Template6 = ({ Data, UpdateData, BackEndName, setEdited }) => {
   const [data, setData] = useState(Data);
   const [proText, setProText] = useState("");
   const [highLightedID, setHighlightedId] = useState(null);
@@ -116,7 +116,15 @@ const Template6 = ({ Data, UpdateData, BackEndName }) => {
       return { ...prev, id: PricingID };
     });
   }, [data]);
-
+  const firstRender = useRef(true);
+  useEffect(() => {
+    if (firstRender.current) {
+      // Skip the first render
+      firstRender.current = false;
+    } else {
+      setEdited(true);
+    }
+  }, [data]);
   const renderDummyPricingData = data.Plans.map((PricePlan) => {
     return (
       <div
@@ -145,6 +153,7 @@ const Template6 = ({ Data, UpdateData, BackEndName }) => {
       </div>
     );
   });
+
   return (
     <div className="DataEntry Hosting">
       {showModal && (

@@ -1,17 +1,906 @@
 {
-  "Colors": {
-    "Borders": "#757cc8",
-    "ButtonColors": "#051094",
-    "HoverText": "#757cc8",
-    "Lines": "#609ddb",
-    "LinkLines": "#757cc8",
-    "Text": "#212c58"
+  "About": {
+    "BG": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2FAbout%2FBG.jpg?alt=media&token=f344f781-b878-411b-916a-2e9bcd8d0e86",
+    "BottomColor": "#ffffff",
+    "BottomTitle": "",
+    "Content": "<p>Based in London, UK we are an SME software consultancy company about to celebrate bring a decade old.  It has been and continues to be an exciting journey for us.   We serve an international client base across a range of industries. Our passion is building, supporting, and enhancing value-driven software technology. We are known for our innovations in web technologies, business productivity, and data analytics. We are growing because our clients are central to our philosophy. Daily we are driven to provide the best service possible with the highest level of competence and expertise through our technology skills.</p><p><br></p><p>The world is a fast-moving environment that is constantly changing. So we have to be agile and flexible. However, deep down we are a principle-focused company. We believe old wisdom has much to say and we see part of our service in making sure those well-tried and tested ideas not only preserved but continue to spread. We like new technologies and apply them once their value is clearly understood. We like solving problems and the simpler the solution, we think the higher the quality. It's in our DNA to progress. At every level, we need to know we are becoming better. That's how we make sure we can do the best for our clients.</p>",
+    "DropDownFamily": "3",
+    "HeaderTitle": "Company",
+    "PageName": "Company",
+    "PageType": "Text",
+    "PageURL": "Company",
+    "Template": "Template1",
+    "TopColor": "#ffffff",
+    "TopTitle": "",
+    "id": "13"
   },
-  "ContactEmail": "info@realedgeassociates.com",
-  "Description": "this is a software development company",
-  "Email": "ajay.rathor@realsedgeassociates.com",
-  "FavIcon": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FGeneral%2FFavIcon?alt=media&token=7ba68928-1f73-407e-bdb3-0213521bc22f",
-  "Logo": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FGeneral%2FLogo?alt=media&token=5a8d592b-e626-42aa-a501-72b388eb8382",
-  "ModalDescription": " Reach out to realedge associates to progress your requirement",
-  "WebsiteName": "realedge associatess"
+  "Automation": {
+    "BG": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2FAutomation%2FBG.jpg?alt=media&token=1ccd7012-6b18-4f76-9a62-1e6406417c79",
+    "BottomColor": "#0d0d0d",
+    "BottomTitle": "",
+    "Content": "<p><span style=\"font-size: 20px\">REA offers consultancy services to study data sets and provide insights.</span></p><p><span style=\"font-size: 20px; font-family: monospace\"><strong>Advanced-Data Analysis and Modeling</strong>:</span></p><p><span style=\"font-size: 20px\">- Utilizing cutting-edge data science techniques to analyze market trends, predict future market movements, and optimize trading strategies.</span></p><p><span style=\"font-size: 20px\">- Developing and refining complex financial models to aid in decision-making processes in front and middle office functions.</span></p><p><span style=\"font-size: 20px\"><strong>Risk Management Solutions</strong>:</span></p><p><span style=\"font-size: 20px\">Offering expertise in identifying, assessing, and mitigating various types of financial risks, including market, credit, and operational risks.</span></p><p><span style=\"font-size: 20px\">Implementing advanced risk analytics tools to provide a comprehensive view of risk exposures.</span></p><p><span style=\"font-size: 20px\"><strong>Algorithmic Trading and Automation</strong>:</span></p><p><span style=\"font-size: 20px\">Designing and deploying algorithmic trading strategies to automate trading processes, enhance execution speed, and improve profitability.</span></p><p><span style=\"font-size: 20px\">Providing solutions for automated risk management and compliance monitoring.</span></p><p><span style=\"font-size: 20px\"><strong>Regulatory Compliance and Reporting</strong>:</span></p><p><span style=\"font-size: 20px\">Assisting clients in navigating the complex regulatory landscape of financial markets.</span></p><p><span style=\"font-size: 20px\">Developing systems and processes for effective regulatory reporting and compliance.</span></p><p><span style=\"font-size: 20px\"><strong>Portfolio Management and Optimization</strong>:</span></p><p><span style=\"font-size: 20px\">Offering expertise in constructing and managing investment portfolios using sophisticated quantitative methods.</span></p><p><span style=\"font-size: 20px\">Providing insights and tools for portfolio optimization and asset allocation.</span></p><p><span style=\"font-size: 20px\"><strong>Technology Implementation and Integration</strong>:</span></p><p><span style=\"font-size: 20px\">Guiding financial institutions in selecting and implementing the most suitable technology solutions for their front and middle office operations.</span></p><p><span style=\"font-size: 20px\">Ensuring seamless integration of new technologies with existing systems.</span></p><p><span style=\"font-size: 20px\"><strong>Training and Knowledge Transfer</strong>:</span></p><p><span style=\"font-size: 20px\">Conducting specialized training programs for staff on the latest data science techniques and financial market trends.</span></p><p><span style=\"font-size: 20px\">Facilitating knowledge transfer from academic research to practical, real-world applications.</span></p><p><span style=\"font-size: 20px\"><strong>Customized Consultancy</strong>:</span></p><p><span style=\"font-size: 20px\">Offering bespoke consultancy services tailored to the unique needs of each client, leveraging their extensive expertise in both the academic and practical realms of financial markets.</span></p><p><span style=\"font-size: 20px\"><strong>Research and Development</strong>:</span></p><p><span style=\"font-size: 20px\">Engaging in ongoing research to stay ahead of market developments and technological advancements.</span></p><p><span style=\"font-size: 20px\">Collaborating with academic institutions to bring innovative solutions to market challenges.</span></p><p><span style=\"font-size: 20px\">This team of London-based experts bridges the gap between academic theory and practical application in financial markets, providing a unique and valuable perspective to clients seeking to navigate the complexities of modern financial markets with data-driven strategies.</span></p><h6><span style=\"font-size: 20px\">Reach out to </span><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"info@realedgeassociates.com\"><span style=\"font-size: 20px\">info@realedgeassociates.com</span></a><span style=\"font-size: 20px\"> to find out more.</span></h6>",
+    "DropDownFamily": "1",
+    "HeaderTitle": "Financial Markets Data Science ",
+    "PageName": "Financial Markets Data Science",
+    "PageType": "text",
+    "PageURL": "FMDS",
+    "Template": "Template1",
+    "Title": "Streamlining Operations: The Power of Automation",
+    "TopColor": "#ffffff",
+    "TopTitle": "",
+    "id": "1"
+  },
+  "BigData": {
+    "BG": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2FBigData%2FBG.jpg?alt=media&token=424a02c3-cd58-42cc-8918-5471f005d6c1",
+    "BottomColor": "#ffffff",
+    "BottomTitle": "Building your AI Organisation",
+    "Content": "<h2><span style=\"font-size: 20px\">Applying Artificial Intelligence (AI) in financial markets necessitates a comprehensive approach that considers technological, ethical, legal, and societal aspects. We work with clients on the elements you need to think about when using AI:</span></h2><p><span style=\"font-size: 20px\">Strategy and Objectives</span></p><p><span style=\"font-size: 20px\">Understand and articulate what you hope to achieve with AI in a well-defined and clear goal.  Alignment will ensure the AI initiatives are in sync with the overall business strategy and objectives.</span></p><p><span style=\"font-size: 20px\"><br></span></p><p><span style=\"font-size: 20px\">Data Management, Technology and Infrastructure</span></p><h3><span style=\"font-size: 20px\">Data Quality: Ensure the data used to train and validate AI models is accurate and reliable.</span></h3><p><span style=\"font-size: 20px\">Data Governance: Implement policies and practices to manage data availability, usability, integrity, and security.</span></p><p><span style=\"font-size: 20px\">Select Appropriate Models: Choose AI models that are suitable for your use case.</span></p><p><span style=\"font-size: 20px\">Infrastructure: Ensure robust computational and storage capabilities to train, deploy, and utilize AI models.</span></p><p></p><h3><span style=\"font-size: 20px\">Legal and Compliance, Ethics and Bias</span></h3><h3><span style=\"font-size: 20px\">Data Privacy: Comply with data protection regulations, such as GDPR or CCPA.</span></h3><p><span style=\"font-size: 20px\">Legal Compliance: Ensure all AI activities are in compliance with relevant laws and regulations.</span></p><p><span style=\"font-size: 20px\">Ethical Use: Ensure AI applications are developed and utilized ethically.</span></p><p><span style=\"font-size: 20px\">Bias Mitigation: Identify and mitigate biases in data and models to avoid perpetuating unfairness.</span></p><p></p><p><span style=\"font-size: 20px\">Security, Scalability</span></p><h3><span style=\"font-size: 20px\">Data Security: Ensure robust cybersecurity to protect data and AI models from breaches.</span></h3><p><span style=\"font-size: 20px\">Model Security: Protect AI models against adversarial attacks and unauthorized access.</span></p><p><span style=\"font-size: 20px\">Model Scalability: Design AI models that can scale to accommodate growing data and complexity.</span></p><p><span style=\"font-size: 20px\">Infrastructure Scalability: Ensure the infrastructure can handle the growth in data and computation needs.</span></p><h3><span style=\"font-size: 20px\"><br>Usability and User Experience</span></h3><p><span style=\"font-size: 20px\"><br>User-Centric Design: Develop AI solutions that prioritize the user experience.</span></p><p><span style=\"font-size: 20px\">Accessibility: Ensure AI solutions are accessible to all potential users, considering varied abilities and resources.</span></p><p><span style=\"font-size: 20px\"><br></span></p><p><span style=\"font-size: 20px\">Reliability and Robustness, Interoperability, Measurement and Analytics, Documentation and Knowledge Sharing</span></p><h3><span style=\"font-size: 20px\">Model Validation: Rigorously validate models to ensure their reliability before deployment.</span></h3><p><span style=\"font-size: 20px\">Continuous Monitoring: Implement systems to monitor AI solutions for ongoing accuracy and reliability.</span></p><p><span style=\"font-size: 20px\">Integration: Ensure AI systems can be seamlessly integrated into existing technological ecosystems.</span></p><p><span style=\"font-size: 20px\">Standardization: Adopt standards to ensure compatibility and interoperability with other systems.</span></p><p><span style=\"font-size: 20px\">Performance Metrics: Define and track metrics to evaluate the performance of AI solutions.</span></p><p><span style=\"font-size: 20px\">ROI Analysis: Evaluate the return on investment and impact of AI on business outcomes.</span></p><p><span style=\"font-size: 20px\">Documentation: Maintain thorough documentation of models, data, and processes.</span></p><p><span style=\"font-size: 20px\">Knowledge Transfer: Implement practices for effective knowledge sharing within the team.</span></p><p><span style=\"font-size: 20px\"><br></span></p><p><span style=\"font-size: 20px\">Skillset and Team, Stakeholder Management</span></p><h3><span style=\"font-size: 20px\">Skilled Personnel: Ensure access to skilled data scientists, engineers, and domain experts.</span></h3><p><span style=\"font-size: 20px\">Continuous Training: Invest in the ongoing training and development of the team.</span></p><p><span style=\"font-size: 20px\">Communication: Keep stakeholders informed about AI initiatives, progress, and challenges.</span></p><p><span style=\"font-size: 20px\">Change Management: Implement strategies to navigate changes introduced by AI adoption.</span></p><p><span style=\"font-size: 20px\"><br></span></p><p><span style=\"font-size: 20px\">Societal and Environmental Impact</span></p><p><span style=\"font-size: 20px\">Social Impact: Consider the impact of AI on employment, social structures, and human interactions.</span></p><p><span style=\"font-size: 20px\">Environmental Impact: Be mindful of the energy usage of AI operations and strive for sustainable practices.</span></p><p><span style=\"font-size: 20px\"><br>In summary, the adoption and utilization of AI should be a well-thought-out process that encompasses diverse facets, from technical execution to ethical use and from strategic alignment to legal compliance. Keeping a holistic view and a structured approach will help in effectively leveraging AI to its full potential while navigating associated challenges and implications. We will help you with this framework based on experience and expertise.</span></p><p></p><p><span style=\"font-size: 20px\">Reach out to info@realedgeassociates.com to find out more.</span></p>",
+    "DropDownFamily": "1",
+    "HeaderTitle": "AI Support Services",
+    "PageName": "AI Support Services",
+    "PageType": "text",
+    "PageURL": "AISS",
+    "Template": "Template1",
+    "TopColor": "#ffffff",
+    "TopTitle": "AI Support Services",
+    "id": "5"
+  },
+  "Business": {
+    "BG": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2FBusiness%2FBG.jpg?alt=media&token=eb16ff56-4ba8-4ced-87b3-ff8d9607059a",
+    "BottomColor": "#ffffff",
+    "BottomTitle": "",
+    "Content": "<h2>Start Up Infrastructure As A Service (SUIaaS)</h2><p><br></p><p>We are the first company to provide a fully front-to-back delivery layer for information security as a service.</p>",
+    "DropDownFamily": "1",
+    "HeaderTitle": "",
+    "PageName": "Service Page",
+    "PageType": "Text",
+    "PageURL": "",
+    "Template": "Template1",
+    "TopColor": "#ffffff",
+    "TopTitle": "",
+    "id": "9"
+  },
+  "CardsImgPage1": {
+    "BG": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2FInternet%20Marketing%2FBG.jpg?alt=media&token=9b656aef-e0ad-4989-82cf-3b9fec50cba1",
+    "BottomColor": "#ffffff",
+    "BottomTitle": "",
+    "Cards": [
+      {
+        "id": 2,
+        "img": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2FInternet%20Marketing%2FIcon2.png?alt=media&token=91751e8d-2149-4eae-880b-1b37a79a4c03",
+        "text": "Built a beautiful website with all the bells and whistles? It’s time to invite the whole world wide web to the party. Without search engine optimization, how do you tell your digital audience you exist? You need to shout about it with SEO. Ask Realedgeassociates about optimisation, Search Engine optimisation, guest blogging, web 2.0s, Internet Marketing and everything in between.",
+        "title": "SEO"
+      },
+      {
+        "id": 3,
+        "img": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2FInternet%20Marketing%2FIcon3.png?alt=media&token=4924f9a4-4330-42b0-8016-ff7c68c108ec",
+        "text": "Your updates and offers, delivered directly under your target market’s nose. We design, develop and implement top-notch email marketing campaigns which hit your customers’ inbox at the perfect time, striking the perfect chord. Ready to brighten up inboxes with effective email marketing? Let’s get going…",
+        "title": "EMAIL MARKETING"
+      },
+      {
+        "id": 4,
+        "img": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2FInternet%20Marketing%2FIcon4.png?alt=media&token=ac7129b2-592d-4606-a937-1dfcbbc375d6",
+        "text": "We squeeze every last conversion from your PPC marketing campaign to make sure that every click counts. Our pay per click specialists use insightful market and keyword research, AB testing, landing page optimisation and more to make your click budget go further and to send your conversions skyrocketing.",
+        "title": "PAID SEARCH"
+      },
+      {
+        "id": 6,
+        "img": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2FInternet%20Marketing%2FIcon6.png?alt=media&token=866b044b-62d1-4710-b5ee-c732ddf96272",
+        "text": "Are you being talked about online? With so many diverse social platforms available, you should be. Our social-savvy digital marketers work with your brand to help you tweet, like and share your way to a prominent online presence, better customer interaction and a brilliant brand identity.\n",
+        "title": "media"
+      }
+    ],
+    "DropDownFamily": "0",
+    "HeaderTitle": "Infrastructure Managements",
+    "PageName": "CardsImgPageID8",
+    "PageText": "<h2><span style=\"font-size: 42px\">Hi there,</span></h2><h3><span style=\"font-size: 68px\">this is h3 with font 68.</span></h3><p>this is a <em>basic</em> example of <span style=\"color: rgb(255, 0, 0)\"><strong>advanced </strong></span><span style=\"color: rgb(255, 0, 0); font-size: 32px\"><strong>RICH TEXT EDITOR</strong></span>. Sure, there are all kind of basic text styles you’d probably expect from a text editor. But wait until you see the lists:</p><ul><li><p>That’s a bullet list with one …</p></li><li><p>… or two list items.</p></li></ul><p>I know, I know, this is impressive. It’s only the tip of the iceberg though. Give it a try and click a little bit around. Don’t forget to check the other examples too.</p><blockquote><p>Wow, that’s amazing. Good work, boy! 👏 <br>—<span style=\"color: rgb(0, 0, 0)\"> </span><span style=\"color: rgb(69, 0, 230)\">Mom</span></p></blockquote>",
+    "PageType": "text cards with image and title",
+    "PageURL": "",
+    "Template": "Template3",
+    "Title": "WE PROMOTE",
+    "TopColor": "#ffffff",
+    "TopTitle": "",
+    "id": "8",
+    "para1": "Build it and they will come” isn’t true on the web. You need to get out         there. Smart SEO and social media campaigns will help your website get         the attention it deserves. From content marketing to sensitive         optimisation, we get traffic flowing."
+  },
+  "CardsImgPage2": {
+    "BG": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2F29%2FBG.jpg?alt=media&token=05e614f9-f7db-44f1-a4ab-228126335340",
+    "BottomColor": "#ffffff",
+    "BottomTitle": "",
+    "Cards": [],
+    "DropDownFamily": "0",
+    "HeaderTitle": "CardsImgPage2",
+    "PageName": "CardsImgPageID29",
+    "PageText": "<h1><span style=\"color: rgb(0, 0, 0);\"></span></h1><h2><span style=\"color: rgb(0, 0, 0);\"> ipsum </span></h2><p><span style=\"color: rgb(0, 0, 0);\">dolor sit amet, consectetur adipiscing elit. Donec et faucibus justo. Suspendisse ut aliquet elit, at volutpat nunc. Nulla lacinia eget turpis at varius. Cras luctus venenatis convallis. Donec ullamcorper velit ut mauris tempus posuere. In nec malesuada diam. Nunc bibendum efficitur urna, vitae consectetur felis facilisis at. Vivamus tincidunt vel arcu at aliquam. Pellentesque id sapien a sapien consectetur eleifend ut at . Integer neque est, mollis vel  in, egestas fringilla eros. Suspendisse lacinia nisi mi, et sollicitudin neque facilisis eget.</span></p>",
+    "PageType": "text cards with image and title",
+    "PageURL": "",
+    "Template": "Template3",
+    "TopColor": "#ffffff",
+    "TopTitle": "",
+    "id": "29"
+  },
+  "CardsImgPage3": {
+    "BG": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2F29%2FBG.jpg?alt=media&token=05e614f9-f7db-44f1-a4ab-228126335340",
+    "BottomColor": "#ffffff",
+    "BottomTitle": "",
+    "Cards": [],
+    "DropDownFamily": "0",
+    "HeaderTitle": "CardsImgPage2",
+    "PageName": "CardsImgPageID30",
+    "PageText": "<p>hello dolly</p>",
+    "PageType": "text cards with image and title",
+    "PageURL": "",
+    "Template": "Template3",
+    "TopColor": "#ffffff",
+    "TopTitle": "",
+    "id": "30"
+  },
+  "CardsImgPage4": {
+    "BG": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2F29%2FBG.jpg?alt=media&token=05e614f9-f7db-44f1-a4ab-228126335340",
+    "BottomColor": "#ffffff",
+    "BottomTitle": "",
+    "Cards": [],
+    "DropDownFamily": "0",
+    "HeaderTitle": "CardsImgPage2",
+    "PageName": "CardsImgPageID31",
+    "PageText": "<p>hello dolly</p>",
+    "PageType": "text cards with image and title",
+    "PageURL": "",
+    "Template": "Template3",
+    "TopColor": "#ffffff",
+    "TopTitle": "",
+    "id": "31"
+  },
+  "CardsImgPage5": {
+    "BG": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2F29%2FBG.jpg?alt=media&token=05e614f9-f7db-44f1-a4ab-228126335340",
+    "BottomColor": "#ffffff",
+    "BottomTitle": "",
+    "Cards": [],
+    "DropDownFamily": "0",
+    "HeaderTitle": "CardsImgPageID7",
+    "PageName": "CardsImgPageID7",
+    "PageText": "<p>hello dolly</p>",
+    "PageType": "text cards with image and title",
+    "PageURL": "",
+    "Template": "Template3",
+    "TopColor": "#ffffff",
+    "TopTitle": "",
+    "id": "7"
+  },
+  "Career": {
+    "BG": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2FCareer%2FBG.jpg?alt=media&token=fc3fee25-3022-488a-82da-55018ceb02aa",
+    "BottomColor": "#ffffff",
+    "BottomTitle": "",
+    "DropDownFamily": "3",
+    "HeaderTitle": "Career",
+    "PageName": "Career",
+    "PageType": "Jobs",
+    "PageURL": "career",
+    "Para": "As a fast-growing software company with a global client base and operations in Asia and Europe, we offer a high-paced high-energy environment to develop skills for small to large-scale software technology. Our commitment is to build innovative, high-quality, robust, and value-generating software technology that will turn steps into strides. We do that every day. So we’ll invest in your development, equipping you with the technical skills for the present and ensuring you have a fulfilling, long-term career.   \n\n",
+    "Template": "Template2",
+    "Title": "",
+    "TopColor": "#ffffff",
+    "TopTitle": "",
+    "id": "10",
+    "jobs": [
+      {
+        "DateAdded": "Aug 30 2023",
+        "DescriptionContent": "<p>Working alongside Product Managers, squad engineers, and subject matter experts the Principal Engineers will define a technologically deliverable roadmap. This will be refined and defined as a clear set of Epics and Stories following the INVEST principles and delivered in an agile manner with a clear definition of done, including all operational practices required for the team to follow a DevOps approach to service delivery. Principal Engineers will also work with the Product Manager and Scrum Master to define and shape the skills needed within the squad to meet their specific delivery needs.</p><p><span style=\"color: rgb(45, 45, 45);\">Qualifications</span></p><p><br></p><p><br></p>",
+        "Designation": "Senior Java Dev",
+        "DesiredSkillsContent": "<ul><li>Senior Engineer / Architect with an excellent understanding of well-governed agile delivery in a DevOps environment</li><li>Natural leadership skills with a temperament that leads to cohesion within and across squads through open communication</li><li>Able to navigate rapidly to effective solutions through active listening, clarity of thought, clear documentation, and succinct presentation</li><li>Proven leadership in an operational setting operating either within a regulated environment or a 24*7 operational setting</li><li>Leadership in a multidisciplinary setting working alongside digital colleagues with an intense focus on user needs and user satisfaction</li><li>Strong understanding of architecture, governance, and formal review in design and direction setting</li><li>Strong in automation including test automation, CI/CD, infrastructure as code, and operational monitoring and alerting</li><li>Cloud-first approach to design with strong knowledge of AWS Experience in managing large datasets</li><li>Knowledge of security architecture, web application architecture using Python / React, strong API architecture skills, Java, Postgres/Aurora, and NoSQL databases (Mongo / Document DB).</li></ul><p><br></p>",
+        "Experience": "7 years minimum",
+        "JobLocation": "Vadodara, India",
+        "Qualification": "Engineering/Sciences Degree",
+        "Vacancy": "Immediate",
+        "id": 1
+      }
+    ]
+  },
+  "Data": {
+    "BG": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2FData%2FBG.jpg?alt=media&token=17ad669d-0ff1-45bf-8d37-e6fd3f90f3e8",
+    "BottomColor": "#ffffff",
+    "BottomTitle": "",
+    "Content": "<h2>Unleashing Insights: The Power of Data Analytics</h2><p>The continuous growth of data, both in size and diversity, is making data analytics more interesting to most organisations. In particular as organisations invest in capturing information private to them a real advantage can be achieved through proper data analysis.</p><p>As the core strategic big data asset, the data analytics platform is a bespoke software product that delivers commercial analytics useful to you based on your information. Currently such platforms are based on cutting edge database solutions that can process larger and faster than traditional solutions. Most significantly the platform will contain data science algorithms that use Machine Learning to find valuable patterns in your data from which objective information can be delivered.</p><p>Realedgeassociates have delivered such products for large scale organisations and possess both the technical and data science skills to deliver high value intelligence platforms.</p>",
+    "DropDownFamily": "0",
+    "HeaderTitle": "Data Analytics",
+    "PageName": "Data Analytics",
+    "PageType": "text",
+    "PageURL": "",
+    "Template": "Template1",
+    "TopColor": "#ffffff",
+    "TopTitle": "",
+    "id": "11"
+  },
+  "Hosting": {
+    "BG": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2FHosting%20Solutions%2FBG.jpg?alt=media&token=5de76d60-abe8-4e58-92cc-a3a327e22b01",
+    "BottomColor": "#ffffff",
+    "BottomTitle": "",
+    "Cards": [],
+    "DropDownFamily": "1",
+    "HeaderTitle": "blank",
+    "PageName": "blank",
+    "PageType": "Pricing Plans/Text cards with images and title",
+    "PageURL": "",
+    "Para1": "Graphic design plays a crucial role in the website development process, as it encompasses the visual elements that engage and captivate visitors. It goes beyond just aesthetics, as it contributes to the overall user experience and effectively communicates the brand's message.",
+    "Pricing": [],
+    "Template": "Template4",
+    "Title": "blank",
+    "TopColor": "#ffffff",
+    "TopTitle": "",
+    "id": "15"
+  },
+  "Outsourcing": {
+    "BG": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2FOutsourcing%2FBG.jpg?alt=media&token=9a92a7c0-c470-49b9-ad31-886e9e0612b9",
+    "BottomColor": "#ffffff",
+    "BottomTitle": "",
+    "Content": "<p><span style=\"font-size: 20px\">Our AI consultancy services offer you the opportunity to build a front-to-back AI-based technology for your business problem. Our team of experts will work with you to validate your project and give you options on how to achieve your goals with a clear risk/reward analysis. This service is typically relevant to high-potential decision solutions where the company doesn't necessarily want to employ a full-time team of diverse PhD and MSc personnel across multiple AI disciplines to determine the best solution.</span></p><p><span style=\"font-size: 20px\">A further advantage of REA is that we can extend to become a one-stop shop moving from validation to PoC to production solutions. Our experienced team of engineers who have deployed AI solutions within Banks, Brokers, and Funds can help find the right fit solution to achieve a RoI.</span></p><p><span style=\"font-size: 20px\">Below are some projects we have worked on :</span></p><p><span style=\"font-size: 20px\"><strong>AI-Driven Risk Arbitrage Equity Execution Strategies</strong></span></p><p><span style=\"font-size: 20px\">The Portfolio Managers wanted to increase the capture of high-value research creating good entry and exit opportunities for long/short event arbitrage trades in Equity Markets. REA optimized market entry and exit points using a number of techniques including an AI solution that controlled leg risk in building the position. This led to Alpha capture and in some cases fills when the market was not within limits.</span></p><p><span style=\"font-size: 20px\"><strong>RFQ and RFM AI-Enabled Automatic Pricing</strong></span></p><p><span style=\"font-size: 20px\">Across fixed-income markets, traders are reacting to constant dynamics in pricing liquidity. In this project, REA was able to show how a client can use both complete and incomplete market feedback to create intelligent advice on how to optimally price the RFQ. There was further insight into entry and exit trading patterns that proved significant to both management and traders in understanding risk behaviour.</span></p><p><span style=\"font-size: 20px\"><strong>Emerging FX Spread Adaption</strong></span></p><p><span style=\"font-size: 20px\">Across fixed-income markets, traders are reacting to constant dynamics in pricing liquidity. In this project, REA was able to show how a client can use both complete and incomplete market feedback to create intelligent advice on how to optimally price the RFQ.</span></p><p></p><h2><span style=\"font-size: 20px\">Reach out to info@realedgeassociates.com to find out more.</span></h2>",
+    "DropDownFamily": "1",
+    "HeaderTitle": "Artificial Intelligence Solutions ",
+    "PageName": "Artificial Intelligence Solutions",
+    "PageType": "text",
+    "PageURL": "AIS",
+    "Template": "Template1",
+    "TopColor": "#ffffff",
+    "TopTitle": "",
+    "id": "2"
+  },
+  "Portfolio": {
+    "BG": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2FPortfolio%2FBG.jpg?alt=media&token=0cb412fa-f02f-484d-967d-a042d95db391",
+    "BottomColor": "#ffffff",
+    "BottomTitle": "",
+    "DropDownFamily": "0",
+    "HeaderTitle": "Solutions and Case Studies",
+    "PageName": "Portfolio",
+    "PageType": "Projects",
+    "PageURL": "Portfolio",
+    "Template": "Template5",
+    "Title": "",
+    "TopColor": "#ffffff",
+    "TopTitle": "",
+    "id": "12"
+  },
+  "Pricing": {
+    "BG": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2FPricing%2FBG.jpg?alt=media&token=cf370a85-a268-416e-bde5-885e0f58f031",
+    "BottomColor": "#ffffff",
+    "BottomTitle": "",
+    "DropDownFamily": "0",
+    "HeaderTitle": "Pricing",
+    "PageName": "Pricing",
+    "PageType": "Price Plans",
+    "PageURL": "",
+    "Para": "We offer three distinctive plans designed to cater to your specific needs. Our plans have been carefully crafted to provide flexibility, affordability, and value for our esteemed customers",
+    "Plans": [
+      {
+        "PerMonth": false,
+        "Price": "£750",
+        "description": "Professionally designed and implemented to provide a high value web presence suitable for medium size organisations.",
+        "id": 4124,
+        "pros": [
+          {
+            "id": 1,
+            "text": "Unique design to reflect your web concept"
+          },
+          {
+            "id": 2,
+            "text": "User friendly navigation"
+          },
+          {
+            "id": 3,
+            "text": "Hosting included"
+          },
+          {
+            "id": 4,
+            "text": "Domain Name worth up to £20 per year for two years"
+          },
+          {
+            "id": 5,
+            "text": "SEO optimisation"
+          },
+          {
+            "id": 6,
+            "text": "Compatible with all popular browsers and devices"
+          },
+          {
+            "id": 7,
+            "text": "Site analytics to view"
+          },
+          {
+            "id": 8,
+            "text": "Blog and news sections"
+          },
+          {
+            "id": 9,
+            "text": "Social networks integration"
+          },
+          {
+            "id": 10,
+            "text": "Google Map integration"
+          },
+          {
+            "id": 11,
+            "text": "Online contact form / Enquiry form"
+          },
+          {
+            "id": 12,
+            "text": "Content Management System (CMS)"
+          },
+          {
+            "id": 13,
+            "text": "Bespoke functionality unique to your website [See things we have done]"
+          },
+          {
+            "id": 14,
+            "text": "Responsive for viewing on mobiles and tablets"
+          }
+        ],
+        "title": "ADVANCED"
+      },
+      {
+        "PerMonth": false,
+        "Price": "£2500",
+        "description": "Professionally designed and implemented to provide a high value web presence suitable for medium size organisations.",
+        "id": 4125,
+        "pros": [
+          {
+            "id": 1,
+            "text": "Unique design to reflect your web concept"
+          },
+          {
+            "id": 2,
+            "text": "User friendly navigation"
+          },
+          {
+            "id": 3,
+            "text": "Hosting included"
+          },
+          {
+            "id": 4,
+            "text": "Domain Name worth up to £50 per year for two years"
+          },
+          {
+            "id": 5,
+            "text": "SEO optimisation"
+          },
+          {
+            "id": 6,
+            "text": "Compatible with all popular browsers and devices"
+          },
+          {
+            "id": 7,
+            "text": "Site analytics to view"
+          },
+          {
+            "id": 8,
+            "text": "Blog and news sections"
+          },
+          {
+            "id": 9,
+            "text": "Social networks integration"
+          },
+          {
+            "id": 10,
+            "text": "Google Map integration"
+          },
+          {
+            "id": 11,
+            "text": "Online contact form / Enquiry form"
+          },
+          {
+            "id": 12,
+            "text": "Content Management System (CMS)"
+          },
+          {
+            "id": 13,
+            "text": "Bespoke functionality unique to your website [See things we have done]"
+          },
+          {
+            "id": 14,
+            "text": "Responsive for viewing on mobiles and tablets"
+          },
+          {
+            "id": 15,
+            "text": "Database Functionality"
+          }
+        ],
+        "title": "CORPORATE"
+      },
+      {
+        "PerMonth": false,
+        "Price": "£450",
+        "description": "Professionally designed and implemented to provide a high value web presence suitable for individuals and small organisations",
+        "id": 4126,
+        "pros": [
+          {
+            "id": 0,
+            "text": "Unique design to reflect your web concept"
+          },
+          {
+            "id": 1,
+            "text": "User friendly navigation"
+          },
+          {
+            "id": 2,
+            "text": "Hosting included"
+          },
+          {
+            "id": 3,
+            "text": "Domain Name worth up to £20 per year for two years"
+          },
+          {
+            "id": 4,
+            "text": "SEO optimisation"
+          },
+          {
+            "id": 5,
+            "text": "Compatible with all popular browsers and devices"
+          },
+          {
+            "id": 6,
+            "text": "Blog and news sections"
+          },
+          {
+            "id": 7,
+            "text": "Social networks integration"
+          },
+          {
+            "id": 8,
+            "text": "Google Map integration"
+          },
+          {
+            "id": 9,
+            "text": "Online contact form / Enquiry form"
+          },
+          {
+            "id": 10,
+            "text": "Content Management System (CMS)"
+          }
+        ],
+        "title": "ESSENTIAL"
+      }
+    ],
+    "Template": "Template6",
+    "Title": "",
+    "TopColor": "#ffffff",
+    "TopTitle": "",
+    "id": "14"
+  },
+  "Privacy": {
+    "BG": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2FPrivacy%2FBG.jpg?alt=media&token=5ffdb296-089a-4256-99f3-8b4967fa2b7a",
+    "BottomColor": "#ffffff",
+    "BottomTitle": "",
+    "Content": "<h2>Privacy</h2><p>Thank you for visiting{\"<a href=\"/\" rel=\"noopener noreferrer\" target=\"_blank\">www.Realedgeassociates.co </a>} (together with all other websites and services operated by or on behalf of Realedgeassociates Limited, the \"Site\"). Your privacy is important to us. To better protect your privacy, we provide this privacy policy (\"Privacy Policy\") explaining our online information practices and the choices you can make about the way your information is collected and used at the Site. This Privacy Policy forms part of the {\"<a href=\"/Terms\" rel=\"noopener noreferrer\" target=\"_blank\">Terms of Use</a>\"} .</p><h3>1. Introduction</h3><p>We are committed to respecting your online privacy, and recognize your need for appropriate protection and management of any personally identifiable information (\"Personal Information\") you share with us.</p><p>Personal Information means any information that may be used to identify an individual, including, but not limited to, a first and last name, personal profile, a home or other physical address and an email address or other contact information, whether at work or at home. Currently, we do not require you to provide Personal Information in order to have access to the free commentary, analysis and news available on our Site. However, in order to provide you with some of the Site's services, you must create a profile, register and provide your email address, username, password and other specified information. At a later time, you may add additional Personal Information to your profile.</p><p>If you are a registered user, you will have your own Realedgeassociates Limited email account (\"Realedgeassociates Limited Email Account\"). By using your Realedgeassociates Limited Email Account, you may send messages to and receive messages from other registered users and contributors. You are strictly prohibited from sending unsolicited or unauthorized advertisements, spam, chain letters, etc. Any information that you send within such a message is visible only to the message recipients. Please note that some actions you take, such as replying to a topic, posting comments, etc. may subscribe you automatically to getting notifications to your Realedgeassociates Limited email account. Please further note that some notifications, such as a notification for receiving a private message to your Realedgeassociates Limited email account, may be enabled by default.</p><p>We may use your email address and Realedgeassociates Limited email account to send updates, a newsletter or news regarding our services, and those of our advertisers who may have relevant offers.</p><p>You may choose not to receive email from a particular sender by rolling your mouse over the text of an email in your Realedgeassociates Limited email account and blocking that sender. If you receive the email from Realedgeassociates Limited in an email account other than your Realedgeassociates Limited email account and wish to block that sender, simply go into your Realedgeassociates Limited email account and block that sender in the same way. Furthermore, if you do not wish to receive email from one of our advertisers, you may unsubscribe from receiving further email from that advertiser.</p><p>If you choose to provide us with your Personal Information on the Site, we may transfer that Personal Information within Realedgeassociates Limited or to Realedgeassociates Limited's third-party service providers, but only to provide services on the Site, across borders, and from your country or jurisdiction to other countries or jurisdictions around the world. The services provided by our third-party service providers may include fulfilling orders, providing customer service and marketing assistance, performing business and sales analysis, supporting our website functionality, and supporting contests, surveys and other features offered through our Site. If any transactions are conducted, such as your subscribing to Realedgeassociates Limited Pro, we may also share your name, contact information and credit card information with our authorized service providers who process credit card payments. These service providers may have access to personal information needed to perform their functions, and will process it in accordance with their privacy policies. Our current credit card service provider is \"Braintree\"; we recommend reading their privacy policy. The above provisions do not apply to personal information you provide us as a contributor such as date of birth or address. However, contributor details may be shared with our secure third party identification partners for the purpose of verifying contributor identities. Our current identity verification partner is \"Idology\"; we recommend reading their privacy policy.</p><p>Realedgeassociates Limited strives to comply with all applicable laws around the globe that are designed to protect your privacy. Although legal requirements may vary from country to country, Realedgeassociates Limited intends to adhere to the principles set forth in this Privacy Policy even if, in connection with the above, we transfer your Personal Information from your country to countries that may not require an \"adequate\" level of protection for your Personal Information. In other words, our goal is to provide protection for your Personal Information no matter where that Personal Information is collected, transferred, or retained. Finally, we may disclose your Personal Information or any information you submitted via the Site and its services (including via your Realedgeassociates Limited email account) if we have a good faith belief that disclosure of such information is helpful or reasonably necessary to i) comply with any applicable law, regulation, legal process or governmental request, ii) enforce our Terms of Service including investigations of potential violations thereof, iii) detect, prevent, or otherwise address fraud or security issues, or iv) protect against harm to the rights, property or safety of Realedgeassociates Limited, its users, yourself or the public.</p><h3>2. Cookies and Other Tracking Technologies</h3><p>A \"Web Cookie\" is a string of information that a website stores on a user’s computer, and that the user’s browser provides to the website each time the user submits a query to the site. We use Web Cookies to track the pages that users visit during each Site session, both to help us improve users’ experiences and to help us understand how the Site is being used. As with other non-Personal Information gathered from users of the Site, we analyze and disclose in aggregated form information gathered using Web Cookies, so as to help us, our partners and others better understand how the Site is being used. We do not attempt to link information gathered using Web Cookies to Personal Information. USERS WHO DO NOT WISH TO HAVE WEB COOKIES PLACED ON THEIR COMPUTERS SHOULD SET THEIR BROWSERS TO REFUSE WEB COOKIES BEFORE ACCESSING THE SITE, WITH THE UNDERSTANDING THAT CERTAIN FEATURES OF THE SITE MAY NOT FUNCTION PROPERLY WITHOUT THE AID OF WEB COOKIES. USERS WHO REFUSE WEB COOKIES ASSUME ALL RESPONSIBILITY FOR ANY RESULTING LOSS OF FUNCTIONALITY.</p><h3>3. Links to Other Sites</h3><p>Our Site may contain links to other sites. Other sites may also reference or link to our site. We are not responsible for the privacy practices or the content of such other sites.</p><h3>4. Commitment</h3><p>We are committed to protecting your privacy. Protecting your privacy online is an evolving area, and Realedgeassociates Limited's Sites are constantly evolving to meet these demands. If you have any comments or questions regarding our Privacy Policy, please contact us at{\" \"} <a href=\"mailto:privacy@Realedgeassociates.com\" rel=\"noopener noreferrer\" target=\"_blank\"> privacy@Realedgeassociates.com </a> . While we cannot guarantee privacy perfection, we will address any issue to the best of our abilities as soon as possible.</p><h3>5. Your Consent</h3><p>By using this Site, you consent to the terms of our Privacy Policy and to Realedgeassociates Limited's processing of Personal Information for the purposes given above. If you do not agree to this Privacy Policy, please do not use our Site. We reserve the right, at our discretion, to change, modify, add, or remove portions from this Privacy Policy at any time. Your continued use of our Site following the posting of changes to these terms means you accept these changes.</p>",
+    "DropDownFamily": "0",
+    "HeaderTitle": "Privacy Policy",
+    "PageName": "Privacy",
+    "PageType": "Text",
+    "PageURL": "Privacy",
+    "Template": "Template1",
+    "TopColor": "#ffffff",
+    "TopTitle": "",
+    "id": "17"
+  },
+  "Product": {
+    "BG": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2F19%2FBG.jpg?alt=media&token=5a2f1927-5460-48bc-bf40-d713f581e015",
+    "BottomColor": "#ffffff",
+    "BottomTitle": "",
+    "DropDownFamily": "2",
+    "Fulfillment": "Professional Services",
+    "HeaderTitle": "",
+    "HighlightsBody": "<h2>highlights</h2><ul><li><span style=\"color: rgb(0, 0, 0);\"> ipsum dolor sit amet, consectetur adipiscing elit. Integer nec dignissim orci. Orci varius natoque penatibus et magnis dis parturient montes,</span></li><li><span style=\"color: rgb(0, 0, 0);\">nascetur ridiculus mus. Praesent bibendum sagittis maximus. Etiam convallis sodales euismod. Sed pulvinar est ac velit porta placerat</span></li><li><span style=\"color: rgb(0, 0, 0);\">roin sit amet iaculis risus. Phasellus scelerisque rutrum rhoncus. Aenean posuere neque non libero pellentesque varius. Aliquam interdum sed diam id facilisis.</span></li></ul>",
+    "OverViewBody": "<h2>Overview</h2><p class=\"ql-align-justify\"> ipsum dolor sit amet, consectetur adipiscing elit. Integer nec dignissim orci. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent bibendum sagittis maximus. Etiam convallis sodales euismod. Sed pulvinar est ac velit porta placerat. Proin sit amet iaculis risus. Phasellus scelerisque rutrum rhoncus. Aenean posuere neque non libero pellentesque varius. Aliquam interdum sed diam id facilisis.</p><p class=\"ql-align-justify\">Donec pellentesque massa urna, ac lobortis risus viverra eu. Aenean congue nulla ligula, eget tempus enim mattis non. Duis tempor nulla eu tortor posuere ultricies. Nunc rutrum diam non ante euismod dictum nec non lectus. Nunc eleifend elit purus. Quisque vehicula vel orci nec tincidunt. Nunc lacinia ex id egestas mattis. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p><p class=\"ql-align-justify\">Phasellus quis purus ut diam malesuada efficitur. Aenean tincidunt augue sed felis egestas, eu molestie nibh feugiat. In malesuada commodo arcu sit amet gravida. Vivamus ut molestie elit. Aenean eros sapien, porta convallis eros sit amet, volutpat egestas mi. Nunc ut fringilla enim. Nulla tincidunt enim vel diam sodales lacinia. Cras ut mauris a turpis suscipit sollicitudin facilisis varius sem. Pellentesque ut massa sed dui fringilla luctus nec nec massa. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent id dui eget eros aliquet semper non et neque. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse porttitor congue risus, vel ultrices dolor porta suscipit.</p><p class=\"ql-align-justify\"><br></p><ul><li><span style=\"color: rgb(0, 0, 0);\"> ipsum dolor sit amet, consectetur adipiscing elit. Integer nec dignissim orci. Orci varius natoque penatibus et magnis dis parturient montes,</span></li><li><span style=\"color: rgb(0, 0, 0);\">nascetur ridiculus mus. Praesent bibendum sagittis maximus. Etiam convallis sodales euismod. Sed pulvinar est ac velit porta placerat</span></li><li><span style=\"color: rgb(0, 0, 0);\">roin sit amet iaculis risus. Phasellus scelerisque rutrum rhoncus. Aenean posuere neque non libero pellentesque varius. Aliquam interdum sed diam id facilisis.</span></li></ul>",
+    "PageName": "Information Security As A Service",
+    "PageType": "Product",
+    "PageURL": "",
+    "Pricing": [],
+    "PricingTableHeader": {
+      "Cost": "Cost",
+      "Type": "Type"
+    },
+    "SoldBy": "Realedgeassociates",
+    "SupportBody": "<h2>Support</h2><p><span style=\"color: rgb(0, 0, 0);\"> ipsum dolor sit amet</span></p>",
+    "Template": "Template7",
+    "TopColor": "#ffffff",
+    "TopTitle": "",
+    "Video": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2F19%2FVideo?alt=media&token=681d30fd-2ac2-4499-a4e1-633e785c98fe",
+    "documents": [],
+    "id": "19"
+  },
+  "Product10": {
+    "BG": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2F28%2FBG.jpg?alt=media&token=3fdca154-7bb3-43b5-b07f-3a8193e8e65e",
+    "BottomColor": "#ffffff",
+    "BottomTitle": "",
+    "DropDownFamily": "2",
+    "Fulfillment": "",
+    "HeaderTitle": "",
+    "HighlightsBody": " <p><br></p>",
+    "OverViewBody": " <p><br></p>",
+    "PageName": "Product10",
+    "PageType": "Product",
+    "PageURL": "",
+    "Pricing": [],
+    "PricingTableHeader": {
+      "Cost": "Cost",
+      "Type": "Type"
+    },
+    "SoldBy": "",
+    "SupportBody": "<p><br></p>",
+    "Template": "Template7",
+    "TopColor": "#ffffff",
+    "TopTitle": "",
+    "documents": [],
+    "id": "28"
+  },
+  "Product2": {
+    "BG": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2F20%2FBG.jpg?alt=media&token=48cccce3-cc1a-4bf2-8961-ae424e4002d6",
+    "BottomColor": "#ffffff",
+    "BottomTitle": "",
+    "DropDownFamily": "2",
+    "Fulfillment": "",
+    "HeaderTitle": "ATRS",
+    "HighlightsBody": "<p><br></p>",
+    "OverViewBody": "<p>A Total Return Swap (TRS) is a type of over-the-counter financial derivative that enables one party to receive the total return (capital gains plus income) of a specified asset, and the other party to receive a set payment, typically based on a benchmark interest rate or the total return from another asset. This instrument is often used for trading and hedging purposes, and it's particularly popular among hedge funds and investment firms.</p><p><br></p><p>### Components Involved in TRS Trading:</p><p><br></p><p>1. **Total Return Receiver:** This party receives the total return (including capital gains and losses, interest, fees, etc.) of an asset over the period of the swap.</p><p>&nbsp;&nbsp;</p><p>2. **Total Return Payer:** This party typically pays the total return receiver any positive return on the asset and receives any negative return. In exchange, this party receives a set payment, which is often based on a benchmark interest rate, over the period of the swap.</p><p><br></p><p>3. **Underlying Asset:** This could be an equity, a bond, a loan, an index, or another asset whose total return is transferred from the payer to the receiver.</p><p><br></p><p>4. **Notional Amount:** The hypothetical amount used to calculate payment obligations, it does not get exchanged between the counterparties but is used to calculate the amounts that are exchanged.</p><p><br></p><p>5. **Swap Tenor:** The duration of the swap agreement.</p><p><br></p><p>### How TRS Trading Works:</p><p><br></p><p>1. **Initiating a TRS:** Two parties agree to enter into a TRS contract, specifying the underlying asset, notional amount, the duration of the swap, and the payment basis.</p><p><br></p><p>2. **Receiving/Paying Returns:** During the swap period, the total return receiver obtains the economic benefit of any capital appreciation and income (like dividends or interest) from the underlying asset. If the asset depreciates, the receiver compensates the payer for the loss.</p><p><br></p><p>3. **Paying the Set Rate:** In return, the total return receiver makes payments to the payer based on a predetermined rate or the return of another asset.</p><p><br></p><p>4. **Settlement:** The swap can be cash-settled, where net payments are made, or physically settled, where the asset is transferred.</p><p><br></p><p>### Purposes of TRS Trading:</p><p><br></p><p>- **Hedging:** Investors might use TRS to hedge against the risks associated with the underlying asset without actually owning it.</p><p><br></p><p>- **Gaining Exposure:** It allows investors to gain exposure to an asset’s performance without having to buy it.</p><p><br></p><p>- **Leverage:** Investors can leverage their position since they can gain exposure to the asset's return without committing the full capital to own it.</p><p><br></p><p>- **Avoiding Transaction Costs:** TRS allows investors to gain exposure to an asset without incurring transaction costs, such as taxes and commissions, related to direct ownership.</p><p><br></p><p>### Risks Associated with TRS Trading:</p><p><br></p><p>- **Counterparty Risk:** The risk that the other party might default on their obligations.</p><p><br></p><p>- **Market Risk:** The risk associated with the overall movement of the financial markets.</p><p><br></p><p>- **Leverage Risk:** Leverage might amplify losses, particularly in volatile markets.</p><p><br></p><p>- **Liquidity Risk:** The risk of being unable to exit the position due to market conditions.</p><p><br></p><p>- **Legal/Regulatory Risk:** The risk arising from regulatory changes that might impact the utilization or cost-effectiveness of TRS.</p><p><br></p><p>TRS trading allows for flexible, leveraged exposure to a wide range of assets and can be a valuable tool for hedging, speculation, and managing asset exposure. However, it also involves several risks and complexities, making it vital for participants to understand thoroughly the mechanics, purposes, and risks associated with TRS before engaging in trading.</p>",
+    "PageName": "ATRS",
+    "PageType": "Product",
+    "PageURL": "ATRS",
+    "Pricing": [
+      {
+        "Cost": "Please contact us for pricing",
+        "Type": "SaaS or Dedicated Enterprise Deployments",
+        "id": "0"
+      }
+    ],
+    "PricingTableHeader": {
+      "Cost": "Cost",
+      "Type": "Type"
+    },
+    "SoldBy": "Realedge Associates Ltd",
+    "SupportBody": "<p><br></p>",
+    "Template": "Template7",
+    "TopColor": "#ffffff",
+    "TopTitle": "Empowering OTC equity derivative trading automation. ",
+    "Video": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2F20%2FVideo?alt=media&token=ac2f8924-0be3-4b8d-997a-e913bc3b443b",
+    "documents": [],
+    "id": "20"
+  },
+  "Product3": {
+    "BG": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2F21%2FBG.jpg?alt=media&token=c2763032-7bcd-4fff-a949-10ecdc9d8472",
+    "BottomColor": "#f2eded",
+    "BottomTitle": "",
+    "DropDownFamily": "2",
+    "Fulfillment": "Enterprise License.  Hosting and Management.  Development Consultancy.",
+    "HeaderTitle": "LTOS",
+    "HighlightsBody": " <p><br></p>",
+    "OverViewBody": "<p>Does your Secondary Loan Trading operation have a dependency on multiple XLS spreadsheets, VB Macros, Scripts, or similar Ad Hoc technologies for core processes?</p><p><br></p><p>Do you have the following problems?</p><p><br></p><ul><li>Overloaded spreadsheets.</li><li>Inability to scale.</li><li>Errors in data management.</li><li>Significant key man risk as processes are hard to migrate to other resources.</li><li>Audit concerns.</li></ul><p><br></p><p>Would you like the following benefits based on the LTOS Platform:</p><p><br></p><ul><li>A technology layer proven to increase trading capacity.</li><li>Clean structured loan trading data.</li><li>Automation of pre and post-trade workflows.</li><li>Faster reactivity to both expected and unexpected workflows.</li><li>Ability to audit the transaction workflow.</li><li>A single layer for the global organization.</li></ul><p><br></p><p>LTOS</p><p><br></p><ul><li>Proven to address issues of ad hoc technology layers.</li><li>Cost-effective packages that scale with your business.</li><li>Flexible to build up further.</li></ul>",
+    "PageName": "LTOS",
+    "PageType": "Product",
+    "PageURL": "LTOS",
+    "Pricing": [],
+    "PricingTableHeader": {
+      "Cost": "Cost",
+      "Type": "Type"
+    },
+    "SoldBy": "Realedge Associates Ltd",
+    "SupportBody": "<p><br></p>",
+    "Template": "Template7",
+    "TopColor": "#ffffff",
+    "TopTitle": "",
+    "Video": "",
+    "documents": [],
+    "id": "21"
+  },
+  "Product4": {
+    "BG": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2F22%2FBG.jpg?alt=media&token=b36d0feb-2eff-4845-98e4-3797fe487982",
+    "BottomColor": "#ffffff",
+    "BottomTitle": "",
+    "DropDownFamily": "2",
+    "Fulfillment": "",
+    "HeaderTitle": "",
+    "HighlightsBody": "<p><br></p>",
+    "OverViewBody": "<p><br></p>",
+    "PageName": "Product4",
+    "PageType": "Product",
+    "PageURL": "",
+    "Pricing": [],
+    "PricingTableHeader": {
+      "Cost": "Cost",
+      "Type": "Type"
+    },
+    "SoldBy": "",
+    "SupportBody": "<p><br></p>",
+    "Template": "Template7",
+    "TopColor": "#ffffff",
+    "TopTitle": "",
+    "documents": [],
+    "id": "22"
+  },
+  "Product5": {
+    "BG": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2F23%2FBG.jpg?alt=media&token=f9e4127c-d3df-4531-975c-ce2c300a9866",
+    "BottomColor": "#ffffff",
+    "BottomTitle": "",
+    "DropDownFamily": "2",
+    "Fulfillment": "",
+    "HeaderTitle": "",
+    "HighlightsBody": " <p><br></p>",
+    "OverViewBody": " <p><br></p>",
+    "PageName": "Product5",
+    "PageType": "Product",
+    "PageURL": "",
+    "Pricing": [],
+    "PricingTableHeader": {
+      "Cost": "Cost",
+      "Type": "Type"
+    },
+    "SoldBy": "",
+    "SupportBody": "<p><br></p>",
+    "Template": "Template7",
+    "TopColor": "#ffffff",
+    "TopTitle": "",
+    "documents": [],
+    "id": "23"
+  },
+  "Product6": {
+    "BG": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2F24%2FBG.jpg?alt=media&token=c9f5a0bd-6d1e-4968-883c-766f1b9251c6",
+    "BottomColor": "#ffffff",
+    "BottomTitle": "",
+    "DropDownFamily": "2",
+    "Fulfillment": "",
+    "HeaderTitle": "Software Product Development",
+    "HighlightsBody": " <p><br></p>",
+    "OverViewBody": "<p>Software product development refers to the process of creating and delivering software products, applications, or solutions. It involves a series of activities, methodologies, and techniques aimed at designing, developing, testing, and deploying software to meet specific user needs or market requirements. The process typically follows a systematic approach, ensuring that the resulting software is of high quality, functionality, and usability.</p><p>Key stages involved in software product development:</p><ol><li>Requirements Gathering: The first step is to understand the needs and expectations of users or customers. This involves gathering and documenting requirements, defining the purpose of the software, and identifying the features and functionalities it should possess.</li><li>Design and Planning: Once the requirements are established, the design and planning phase begins. It involves creating a high-level architecture and system design, deciding on the technologies and platforms to be used, and creating a detailed project plan that includes timelines, resources, and milestones.</li><li>Development: In this phase, the actual coding and development of the software take place. Developers write code according to the design specifications, utilizing programming languages, frameworks, libraries, and tools. They follow best practices, coding standards, and adhere to quality assurance processes.</li><li>Testing and Quality Assurance: The software goes through rigorous testing to identify and rectify any defects, bugs, or functional issues. This involves various types of testing, such as unit testing, integration testing, system testing, and user acceptance testing. Quality assurance ensures that the software meets the specified requirements, functions as intended, and delivers a high-quality user experience.</li><li>Deployment and Release: Once the software has undergone thorough testing and is deemed ready, it is deployed to the production environment or made available for distribution. This may involve setting up servers, configuring databases, and ensuring the software is operational and accessible to end-users.</li><li>Maintenance and Updates: After the software is released, ongoing maintenance, support, and updates are necessary. This includes bug fixes, feature enhancements, performance optimization, and addressing any issues that arise after deployment. Regular updates and patches are released to improve the software's functionality, security, and reliability.</li></ol><p>Throughout the software product development process, various methodologies and approaches can be utilized, such as Waterfall, Agile, Scrum, or DevOps. These methodologies determine the project management and collaboration processes, ensuring efficient development, communication, and iterative improvements.</p><p>Additionally, collaboration tools, version control systems, and project management software are often employed to facilitate teamwork, document sharing, and code management.</p><p>Software product development requires a multidisciplinary team, including software developers, designers, quality assurance specialists, project managers, and domain experts. Collaboration and communication within the team are essential to ensure successful development and timely delivery of the software product.</p><p>Overall, software product development is a complex and iterative process that aims to create high-quality software solutions that meet user needs and market demands. It involves a combination of technical expertise, project management skills, and a user-centric approach to deliver valuable and competitive software products.</p>",
+    "PageName": "Software Product Development",
+    "PageType": "Product",
+    "PageURL": "",
+    "Pricing": [],
+    "PricingTableHeader": {
+      "Cost": "Cost",
+      "Type": "Type"
+    },
+    "SoldBy": "Realedgeassociates Limited",
+    "SupportBody": "<p><br></p>",
+    "Template": "Template7",
+    "TopColor": "#ffffff",
+    "TopTitle": "",
+    "documents": [],
+    "id": "24"
+  },
+  "Product7": {
+    "BG": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2F25%2FBG.jpg?alt=media&token=2b087821-58b9-421b-9070-f2faee621955",
+    "BottomColor": "#ffffff",
+    "BottomTitle": "",
+    "DropDownFamily": "2",
+    "Fulfillment": "",
+    "HeaderTitle": "Information Security as a Service",
+    "HighlightsBody": " <p><br></p>",
+    "OverViewBody": "<p><br></p>",
+    "PageName": "Information Security as a Service",
+    "PageType": "Product",
+    "PageURL": "",
+    "Pricing": [],
+    "PricingTableHeader": {
+      "Cost": "Cost",
+      "Type": "Type"
+    },
+    "SoldBy": "Realedgeassociates Limited",
+    "SupportBody": "<p><br></p>",
+    "Template": "Template7",
+    "TopColor": "#ffffff",
+    "TopTitle": "",
+    "documents": [],
+    "id": "25"
+  },
+  "Product8": {
+    "BG": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2F26%2FBG.jpg?alt=media&token=76e93c50-f6c3-4d28-8dc9-5d59f011fcd5",
+    "BottomColor": "#152161",
+    "BottomTitle": "",
+    "DropDownFamily": "2",
+    "Fulfillment": "",
+    "HeaderTitle": "LPM",
+    "HighlightsBody": "<p><br></p>",
+    "OverViewBody": "<p>Bridge loan portfolio management involves the strategic handling of a collection of bridge loans to achieve specific financial objectives while managing risk. Bridge loans, which are short-term financing tools utilized until permanent financing is secured, play a crucial role in facilitating transitions for individuals or businesses facing a temporal gap in funding. Managing a portfolio of such loans necessitates expertise in risk management, credit analysis, and strategic planning.</p><p><br></p><p>### Key Elements of Bridge Loan Portfolio Management:</p><p><br></p><p>1. **Risk Management:**</p><p>&nbsp;&nbsp;- **Credit Risk:** Evaluation of borrowers' creditworthiness and ability to repay the loan.</p><p>&nbsp;&nbsp;- **Interest Rate Risk:** Managing the potential impact of interest rate fluctuations on the portfolio.</p><p>&nbsp;&nbsp;- **Liquidity Risk:** Ensuring sufficient liquidity to meet any short-term obligations.</p><p>&nbsp;&nbsp;</p><p>2. **Loan Underwriting:**</p><p>&nbsp;&nbsp;- Conducting thorough due diligence on borrowers to evaluate their capacity and intent to repay the loan.</p><p>&nbsp;&nbsp;- Assessing the value and quality of collateral, if applicable.</p><p><br></p><p>3. **Diversification:**</p><p>&nbsp;&nbsp;- Allocating resources across various sectors, regions, and borrower profiles to mitigate concentration risk.</p><p>&nbsp;&nbsp;</p><p>4. **Compliance Management:**</p><p>&nbsp;&nbsp;- Ensuring all loans and practices comply with relevant regulatory requirements and internal policies.</p><p><br></p><p>5. **Loan Structuring and Pricing:**</p><p>&nbsp;&nbsp;- Crafting loan terms that align with both risk and return expectations.</p><p>&nbsp;&nbsp;- Setting interest rates and fees that accurately reflect the risk profile of the borrower and market conditions.</p><p><br></p><p>6. **Monitoring and Reporting:**</p><p>&nbsp;&nbsp;- Keeping track of borrower performance, portfolio metrics, and any potential red flags.</p><p>&nbsp;&nbsp;- Regularly reporting to stakeholders about portfolio performance and risks.</p><p><br></p><p>7. **Collection and Recovery:**</p><p>&nbsp;&nbsp;- Implementing efficient systems for payment collection and managing any late or defaulted payments.</p><p>&nbsp;&nbsp;- Employing strategies for loan recovery in scenarios of defaults, including legal actions or asset liquidation if the loan is secured.</p><p><br></p><p>8. **Client Management:**</p><p>&nbsp;&nbsp;- Maintaining healthy relationships with borrowers, ensuring clear communication and support.</p><p>&nbsp;&nbsp;- Managing potential loan modifications, extensions, or refinancing as needed.</p><p><br></p><p>### Strategy Implementation:</p><p><br></p><p>- **Yield Optimization:** Seeking opportunities to maximize returns while maintaining a prudent risk profile.</p><p>- **Active Management:** Proactively adjusting the portfolio in response to market dynamics and emerging opportunities or threats.</p><p>- **Strategic Exits:** Timely exiting positions, either through loan repayments, sales, or securitizations, to optimize portfolio returns and risk.</p><p><br></p><p>### Technology Utilization:</p><p><br></p><p>- **Automation:** Employing technology to automate processes like underwriting, monitoring, and reporting.</p><p>- **Data Analytics:** Leveraging data analytics to derive insights into portfolio performance and potential risks.</p><p>- **Cybersecurity:** Ensuring robust cybersecurity to protect data and digital transactions.</p><p><br></p><p>### Challenges in Bridge Loan Portfolio Management:</p><p><br></p><p>- **Economic Volatility:** Managing the impact of economic fluctuations and market volatility on borrowers and portfolio performance.</p><p>- **Regulatory Changes:** Navigating through regulatory amendments and ensuring ongoing compliance.</p><p>- **Competition:** Staying competitive in terms of loan pricing and terms in a potentially crowded market.</p><p><br></p><p>Effective bridge loan portfolio management involves a blend of strategic planning, risk mitigation, client management, and regulatory compliance, and it often employs technological solutions to enhance efficiency and analytical capabilities. It plays a pivotal role in safeguarding the lender’s capital, ensuring regulatory compliance, and achieving financial objectives.</p>",
+    "PageName": "LPM",
+    "PageType": "Product",
+    "PageURL": "LPM",
+    "Pricing": [
+      {
+        "Cost": "Please contact us for pricing information.",
+        "Type": "Dedicated or SaaS Deployments",
+        "id": "0"
+      }
+    ],
+    "PricingTableHeader": {
+      "Cost": "Cost",
+      "Type": "Type"
+    },
+    "SoldBy": "Realedgeassociates Limited",
+    "SupportBody": "<p><br></p>",
+    "Template": "Template7",
+    "TopColor": "#ffffff",
+    "TopTitle": "Loan Portfolio Management",
+    "documents": [
+      {
+        "Document": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2F26%2FAbout%20us.pdf?alt=media&token=3fc477ff-6111-42a4-bd0d-f8930c026044",
+        "fileExtension": "pdf",
+        "id": "0",
+        "name": "ipnd-reference-sheet-css-syntax"
+      }
+    ],
+    "id": "26"
+  },
+  "Product9": {
+    "BG": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2F27%2FBG.jpg?alt=media&token=e5d8a47d-701c-4f17-930b-e914470d20d6",
+    "BottomColor": "#ffffff",
+    "BottomTitle": "",
+    "DropDownFamily": "2",
+    "Fulfillment": "Enterprise Deployment",
+    "HeaderTitle": "OSCEAN",
+    "HighlightsBody": "<p><br></p>",
+    "OverViewBody": "<p><span style=\"color: rgb(0, 0, 0); background-color: transparent;\">A single adaptive layer to automate middle office workflows and remove spreadsheets, macros, and unstable inefficient patchwork fixes.</span></p><p><br></p><p><span style=\"color: rgb(0, 0, 0); background-color: transparent;\">This product is for Middle Office professionals looking to move ahead of ad hoc processes towards a faster single layer of software for transaction management workflows.&nbsp;Our typical start point is where the business has reached a size that makes spreadsheets, VB Macros, and scripts problematic.&nbsp;Concerns around errors, deal capacity, and time wasted in manual processes can be addressed with the OCSEAN layer.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p><p><br></p><p><span style=\"color: rgb(0, 0, 0); background-color: transparent;\">Over-the-counter (OTC) structured products are complex, customized financial instruments traded directly between two parties without going through an exchange. These products can be tailored to meet specific risk-return objectives and are often used for hedging, diversification, or speculative purposes. However, the management of OTC structured products transactions involves numerous challenges, owing to their complexity, customization, and the decentralized nature of OTC markets.&nbsp;Transaction workflows are currently largely manual, with xls and ad hoc technology patchwork environments.&nbsp;This limits client services and errors undermine operational confidence.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p><p><br></p><p><span style=\"color: rgb(0, 0, 0); background-color: transparent;\">Transaction managers need to ensure timely and complete management of numerous event workflows.&nbsp;OSCEAN is a core solution to create the operational static for OTC structured products management and increase workflow automation.</span></p>",
+    "PageName": "OSCEAN",
+    "PageType": "Product",
+    "PageURL": "OSCEAN",
+    "Pricing": [
+      {
+        "Cost": "Please email info@Realedgeassociates.com for pricing.",
+        "Type": "Turnkey Solution",
+        "id": "0"
+      }
+    ],
+    "PricingTableHeader": {
+      "Cost": "Cost",
+      "Type": "Type"
+    },
+    "SoldBy": "Realedge Associates Limited",
+    "SupportBody": "<p><br></p>",
+    "Template": "Template7",
+    "TopColor": "#ffffff",
+    "TopTitle": "",
+    "documents": [],
+    "id": "27"
+  },
+  "Software": {
+    "BG": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2FSoftware%2FBG.jpg?alt=media&token=ccbb5daf-08b0-4925-86a2-5896d74fb199",
+    "BottomColor": "#eae9f1",
+    "BottomTitle": "",
+    "Content": "<p><span style=\"font-size: 20px\">Our services in building out automation technology center on a clear return on investment.  We understand that high-quality software solutions are required across financial markets and in order to be effective they have to be well thought through and value-creating.  We work with our clients to establish a clear picture of the solution required and all benefits expected.  </span></p><p><span style=\"font-size: 20px\">From that point, we recommend an interactive approach where investment and results are visible so that we know we are succeeding.</span></p><p><span style=\"font-size: 20px\">We have successfully completed automation technology in Credit Markets, Equities, OTC Structured Products, and Securities Finance.  We have acquired high-value experience that will be applied from day one of our conversation to ensure your objectives are met.</span></p><p><span style=\"font-size: 20px\">Reach out to info@realedgeassociates.com to find out more.</span></p><h2><span style=\"font-size: 20px\"><br></span></h2>",
+    "DropDownFamily": "1",
+    "HeaderTitle": "Financial Markets Automation",
+    "PageName": "Financial Markets Automation",
+    "PageType": "text",
+    "PageURL": "FMA",
+    "Template": "Template1",
+    "TopColor": "#ffffff",
+    "TopTitle": "",
+    "id": "3"
+  },
+  "TOU": {
+    "BG": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2FTOU%2FBG.jpg?alt=media&token=b117549f-4a4e-4ac7-95f4-168c7ecd5977",
+    "BottomColor": "#ffffff",
+    "BottomTitle": "",
+    "Content": "<h2>Terms Of Use</h2><p>PLEASE READ OUR TERMS OF USE CAREFULLY BEFORE YOU USE OUR WEB SITE</p><p>Realedgeassociates Limited (\"Realedgeassociates Limited\" \"we,\" or \"us\") provides its web site, Realedgeassociates Limited, located at{\" \"} <a href=\"http://www.Realedgeassociates.com/\" rel=\"noopener noreferrer\" target=\"_blank\"> www.Realedgeassociates.com </a>{\" \"} (together with all other websites and services operated by or on behalf of Realedgeassociates Limited, the \"Site\"), to you, an individual user (\"you\") for your individual usage, subject to compliance with the terms and conditions set forth herein.</p><h3>1. Agreement</h3><p>By using the Site, you agree to be bound by our Terms of Use (the \"TOU\"). If you do not agree to the terms and conditions contained in the TOU and Realedgeassociates Limited's{\" \"} <a href=\"../privacy-policy.aspx\" rel=\"noopener noreferrer\" target=\"_blank\"> privacy policy </a> , please do not access or otherwise use the Site or any information contained herein.</p><p>You affirm that you are over the age of 18, as the Site is not intended for children under 18. If it comes to Realedgeassociates Limited's attention through reliable means that a registered user is a child under 18 years of age, Realedgeassociates Limited will cancel that user's account.</p><h3>2. Changes to the TOU</h3><ol><li>We reserve the right at any time to :</li><li>Change the terms and conditions of the TOU;</li><li>Change the Site, including eliminating or discontinuing any content or feature of the Site; or</li><li>Impose fees, charges or other conditions for use of the Site or parts thereof (with reasonable notice).</li></ol><p>Realedgeassociates Limited may modify the Site at any time without prior notice, and you accept those modifications if you continue to use the Site. You should check the Site frequently to see recent changes.</p><h3>3. Important Securities Disclaimer</h3><p>You understand that no content published on the Site constitutes a recommendation that any particular investment strategy is suitable for any specific person. You further understand that none of the bloggers, information providers, App providers, or their affiliates are advising you personally concerning the nature, potential, value or suitability of any particular security, portfolio of securities, transaction, investment strategy or other matter.</p><h3>4. Copyright, Linking Policy and Trademarks</h3><p>The Site and the content contained herein, as well as all copyrights, including without limitation, the text, documents, articles, products, software, graphics, photos, sounds, videos, interactive features, services, links, User Submissions (as defined below), third-party Apps, and any other content on the Site (\"Content\") and the trademarks, service marks and logos contained therein are the property of Realedgeassociates Limited and its third-party licensors or providers. You may access and use the Content, and download and/or print out copies of any content from the Site, solely for your personal, non-commercial use. If you download or print a copy of the Content for personal use, you must retain all copyright and other proprietary notices contained therein. You acknowledge that you do not acquire any ownership rights by using the Site. Realedgeassociates Limited reserves all rights not expressly granted in and to the Site.</p><p>The Site contains links to other Internet websites or links to Content created by third parties which is published on the Site. We neither control nor endorse such other websites or Content, nor have we reviewed or approved any Content that appears on such other websites or on our Site. Please read the terms of use and privacy policy of any such third party sites that you interact with before you engage in any activity. You are solely responsible and liable for your use of and linking to all third party sites. You acknowledge and agree that we shall not be held responsible for the legality, accuracy, or appropriateness of any Content, advertising, products, services, or information located on our Site or any other websites, nor for any loss or damages caused or alleged to have been caused by the use of or reliance on any such content. Similarly, while we do endeavor to facilitate the provision of quality Apps, we are not responsible for any loss or damages caused or alleged to have been caused by their use.</p><p>You may link to any content on the Site. If you are interested in reprinting, republishing or distributing content from Realedgeassociates Limited, please contact Realedgeassociates Limited to obtain written consent. All other trademarks, service marks, and logos used on our web sites are the trademarks, service marks, or logos of their respective owners.</p><p>This section shall survive any termination of these TOU.</p><h3>5. User Conduct</h3><p>You may not use, copy, display, sell, license, de-compile, republish, upload, post, transmit, distribute, create derivative works or otherwise exploit Content from the Site to online bulletin boards, message boards, newsgroups, chat rooms, or in other any manner, without our prior written permission. Modification of the Content or use of the Content for any purpose other than your own personal, non-commercial use is a violation of our copyright and other proprietary rights, and can subject you to legal liability.</p><p>In addition, in connection with your use of the Site and its services (including by sending private messages to other registered users of the Site via your Realedgeassociates Limited direct messaging account), you agree not to:</p><ol><li>Restrict or inhibit any other visitor from using the Site, including, without limitation, by means of \"hacking\" or defacing any portion of the Site;</li><li>Use the Site for any unlawful purpose;</li><li>Express or imply that any statements you make are endorsed by us, without our prior written consent;</li><li>Modify, adapt, sublicense, translate, sell, reverse engineer, decompile or disassemble any portion of the Site;</li><li>\"Frame\" or \"mirror\" any part of the Site without our prior written authorization;</li><li>Use any robot, spider, site search/retrieval application, or other manual or automatic device or process to download, retrieve, index, \"data mine\", \"scrape\", \"harvest\" or in any way reproduce or circumvent the navigational structure or presentation of the Site or its contents;</li><li>Harvest or collect information about visitors to the Site without their express consent;</li><li>Send unsolicited or unauthorized advertisements, spam, chain letters, etc to other users of the Site;</li><li>Transmit any Content which contains software viruses, or other harmful computer code, files or programs.</li></ol><p>You also agree to comply with all applicable laws, rules and regulations in connection with your use of the Site and the content made available therein.</p><p>In order to access some of the services of the Site, you will have to create an account. By creating this account you agree to the following:</p><ol><li>You may only maintain a single account;</li><li>You may never share your account user name or password or knowingly provide or authorize access to your account (including without limitation a “Subscription”, as defined below in Section 18);</li><li>You may never use another user's account without permission;</li><li>When creating your account, you must provide accurate and complete information;</li><li>You are solely responsible for the activity that occurs on your account, and you must keep your account password secure;</li><li>You must notify us immediately of any breach of security or unauthorized use of your account;</li></ol><p>You will be liable for any use made of your account or password and the losses of Realedgeassociates Limited or others due to such unauthorized use. We will not be liable for your losses caused by any unauthorized use of your account.</p><p>Realedgeassociates Limited has the right to terminate your access to the Site, in its sole discretion.</p><h3>6. Disclosure</h3><p>We reserve the right to access, read, preserve, and disclose any User Submissions (whether published or not) or any other information we believe is reasonably necessary to</p><ol><li>comply with any applicable law, regulation, legal process, subpoena or governmental or regulatory request,</li><li>enforce these TOU, including investigation of potential violations of it,</li><li>detect, prevent, or otherwise address fraud, security or technical issues,</li><li>respond to user support requests or</li><li>protect the rights, property or safety of Realedgeassociates Limited, its users, yourself or the public.</li></ol><h3>7. Disclaimer of Warranties</h3><p>THE SITE, AND ANY PRODUCT OR SERVICE OBTAINED OR ACCESSED THROUGH THE SITE, IS PROVIDED \"AS IS\" AND WITHOUT REPRESENTATIONS OR WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, Realedgeassociates Limited, ITS OFFICERS, DIRECTORS, EMPLOYEES, AFFILIATES, SUPPLIERS, ADVERTISERS, AND AGENTS DISCLAIM ALL WARRANTIES, EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, WARRANTIES OF TITLE AND NON-INFRINGEMENT, IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE, AND ALL WARRANTIES RELATING TO THE ADEQUACY, ACCURACY OR COMPLETENESS OF ANY INFORMATION ON OUR SITE.</p><p>Some jurisdictions do not allow the exclusion of implied warranties, so the above exclusions may not apply to you.</p><p>Realedgeassociates Limited AND ITS AFFILIATES, SUPPLIERS, AGENTS AND SPONSORS DO NOT WARRANT THAT YOUR USE OF THE SITE WILL BE UNINTERRUPTED, ERROR-FREE OR SECURE, OR THAT THE SITE OR THE SERVER(S) ON WHICH THE SITE IS HOSTED ARE FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS. YOU ASSUME TOTAL RESPONSIBILITY AND RISK FOR YOUR USE OF THE SITE AND YOUR RELIANCE THEREON. NO OPINION, ADVICE, OR STATEMENT OF Realedgeassociates Limited OR ITS AFFILIATES, SUPPLIERS, AGENTS, MEMBERS, OR VISITORS, WHETHER MADE ON THE SITE OR OTHERWISE, SHALL CREATE ANY WARRANTY.</p><h3>8. Limitation of Liability</h3><p>NEITHER Realedgeassociates Limited NOR ITS AFFILIATES AND THEIR RESPECTIVE OFFICERS, DIRECTORS, EMPLOYEES, SUPPLIERS, ADVERTISERS, AGENTS AND SPONSORS ARE LIABLE FOR ANY INDIRECT, INCIDENTAL, CONSEQUENTIAL, SPECIAL, EXEMPLARY, PUNITIVE OR OTHER DAMAGES UNDER ANY CONTRACT, NEGLIGENCE, STRICT LIABILITY OR OTHER THEORY ARISING OUT OF OR RELATING IN ANY WAY TO THE SITE AND/OR ANY CONTENT CONTAINED THEREIN, OR ANY PRODUCT OR SERVICE USED OR PURCHASED THROUGH Realedgeassociates Limited. YOUR SOLE REMEDY FOR DISSATISFACTION WITH THE SITE IS TO STOP USING IT. THE SOLE AND EXCLUSIVE MAXIMUM LIABILITY TO Realedgeassociates Limited FOR ALL DAMAGES, LOSSES, AND CAUSES OF ACTION (WHETHER IN CONTRACT, TORT (INCLUDING, WITHOUT LIMITATION, NEGLIGENCE), OR OTHERWISE) SHALL NOT EXCEED THE TOTAL AMOUNT PAID TO US BY YOU, IF ANY, FOR ACCESS TO THE SITE OR ANY SERVICES, DURING THE PREVIOUS SIX (6) MONTHS PRIOR TO BRINGING THE CLAIM</p><p>Some jurisdictions do not allow the limitation or exclusion of liability for incidental or consequential damages, so the above limitations may not apply to you.</p>",
+    "DropDownFamily": "0",
+    "HeaderTitle": "Terms of Use",
+    "PageName": "Terms",
+    "PageType": "Text",
+    "PageURL": "TOU",
+    "Template": "Template1",
+    "TopColor": "#ffffff",
+    "TopTitle": "",
+    "id": "16"
+  },
+  "Team": {
+    "BG": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2FTeam%2FBG.jpg?alt=media&token=c4db680c-2b1d-4c61-acaf-7311d4fa0448",
+    "BottomColor": "#ffffff",
+    "BottomTitle": "",
+    "DropDownFamily": "3",
+    "HeaderTitle": "Our Team",
+    "PageName": "Meet us",
+    "PageType": "Team",
+    "PageURL": "our-team",
+    "Template": "Template8",
+    "TopColor": "#ffffff",
+    "TopTitle": "",
+    "id": "18"
+  },
+  "WebDesign": {
+    "BG": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2FWeb%20Design%2FBG.jpg?alt=media&token=4ef3a1a2-bac1-4732-a331-87d0e67c7974",
+    "BottomColor": "#ffffff",
+    "BottomTitle": "",
+    "DropDownFamily": "2",
+    "HeaderTitle": "Information Security",
+    "PageName": "Information Security",
+    "PageType": "text,text Cards",
+    "PageURL": "",
+    "Sec1Body": "<p><span style=\"background-color: transparent;\">Information security measures, such as encryption, access controls, and data loss prevention (DLP) solutions, help safeguard sensitive data from unauthorized access, theft, or manipulation. This protects valuable assets, such as customer information, intellectual property, financial data, and trade secrets.</span></p><p><br></p><p><strong style=\"background-color: transparent; color: rgb(0, 23, 97);\"><u>Network Security</u></strong></p>",
+    "Sec1Title": "NLP  and Generative AI",
+    "Sec2Body": "<p><br></p>",
+    "Sec2Title": "WHAT IS THE WEB?",
+    "Sec3Elements": [],
+    "Sec3Title": "A RANGE OF WEBSITES",
+    "Sec4Body": "<p><br></p>",
+    "Sec4Subtitle": "",
+    "Sec4Title": "",
+    "Sec5Body": "<p><br></p>",
+    "Sec5Title": "TICK LIST TO DESIGN A WEBSITE",
+    "Sec6Body": "<p><br></p>",
+    "Sec6Title": "WHY USE REALEDGEASSOCIATES WEB SERVICES",
+    "Sec7Body": "<p><br></p>",
+    "Sec7Title": "TYPES OF WEBSITES WE DEVELOP",
+    "Template": "Template9",
+    "TopColor": "#ffffff",
+    "TopTitle": "",
+    "id": "4"
+  },
+  "WebTechnologies": {
+    "BG": "https://firebasestorage.googleapis.com/v0/b/realedge-f7346.appspot.com/o/customization%2FSidePages%2FWeb%20Technologies%2FBG.jpg?alt=media&token=2a1f5609-0dbd-4555-a34d-46c2ff9f3d70",
+    "BottomColor": "#ffffff",
+    "BottomTitle": "",
+    "Cards": [
+      {
+        "id": 2,
+        "text": "Active Server Pages (ASP), also known as Classic ASP or ASP Classic, was Microsoft's first server-side script engine for dynamically generated web pages. The default scripting language used for writing ASP is VBScript.",
+        "title": "CLASSIC ASP"
+      },
+      {
+        "id": 3,
+        "text": "Model–view–controller (MVC) is a software architectural pattern for implementing user interfaces. The model-view-controller pattern proposes three main components or objects to be used in software development",
+        "title": "MVC"
+      },
+      {
+        "id": 4,
+        "text": "HTML5 is the newest hyper text markup language for websites from the World Wide Web Consortium (W3C). It offers new features that not only provides rich media support, but also enhance support for creating web applications that can interact with the user.",
+        "title": "HTML5"
+      },
+      {
+        "id": 5,
+        "text": "C# (pronounced C sharp) is a simple, modern, object-oriented, and type-safe programming language. It will immediately be familiar to C and C++ programmers. C# combines the high productivity of Rapid Application Development (RAD) languages.",
+        "title": "C#"
+      },
+      {
+        "id": 6,
+        "text": "XML stands for EXtensible Markup Language. XML specifies neither semantics nor a tag set. In fact XML is really a meta-language for describing markup languages. In other words, XML provides a facility to define custom tags and use them.",
+        "title": "XML"
+      },
+      {
+        "id": 7,
+        "text": "Stands for 'JavaScript Object Notation' and is pronounced like the name 'Jason.'' It is a lightweight data-interchange format. It is easy for humans to read and write. It is easy for machines to parse and generate.",
+        "title": "JSON"
+      },
+      {
+        "id": 8,
+        "text": "jQuery is a JavaScript library that allows web developers to add extra functionality to their websites. To implement jQuery, a web developer simply needs to refer to the jQuery JavaScript file within the HTML of a webpage and use it as per their requirements.",
+        "title": "JQUERY"
+      },
+      {
+        "id": 9,
+        "text": "JavaScript is an interpreted scripting language commonly used on the Internet for creating Web pages that respond to user actions, such as when a user moves a mouse pointer over an image or clicks a form button.",
+        "title": "JAVASCRIPT"
+      },
+      {
+        "id": 10,
+        "text": "Bootstrap is the most popularly reliable HTML, CSS, and JavaScript framework for developing responsive front end and web applications. Web applications developed using Bootstrap framework are mobile friendly thus removing the need for making a separate mobile friendly website.",
+        "title": "BOOTSTRAP"
+      },
+      {
+        "id": 11,
+        "text": "CSS3 is the latest evolution of the Cascading Style Sheets language and aims at extending CSS2.1. It brings a lot of long-awaited novelties, like rounded corners, shadows, gradients, transitions or animations, as well as new layouts like multi-columns, flexible box or grid layouts.",
+        "title": "CSS3"
+      },
+      {
+        "id": 12,
+        "text": "ASP.NET is a web development platform, which provides a programming model, comprehensive software infrastructure and various services required to build up robust web applications for PC as well as mobile devices.",
+        "title": "ASP.NET"
+      }
+    ],
+    "DropDownFamily": "1",
+    "HeaderTitle": "",
+    "PageName": "Software Product Development",
+    "PageType": "text cards with title",
+    "PageURL": "",
+    "Para": " In most cases we will have already applied the technology required but         we are equally happy to use new technologies to make sure you get         exactly what you wanted. We have core teams in C#, ASP.Net, Java, JavaFx         … etc. Below you can find a little about how these technologies make up         the web.",
+    "Template": "Template10",
+    "Title": "We build best in class software solutions for clients",
+    "TopColor": "#ffffff",
+    "TopTitle": "",
+    "id": "6"
+  }
 }

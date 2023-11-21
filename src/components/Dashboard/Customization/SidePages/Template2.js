@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { UPLOADPHOTO } from "../../../../server";
 import { CreateToast } from "../../../../App";
 import Upload from "../../../../assets/upload.png";
@@ -8,7 +8,7 @@ import date from "date-and-time";
 const pattern = date.compile("MMM DD YYYY");
 import TipTap from "./RichTextEditor/tiptap";
 import MyModal from "../../../PopUps/Confirm/Confirm";
-const Template2 = ({ Data, UpdateData, BackEndName }) => {
+const Template2 = ({ Data, UpdateData, BackEndName, setEdited }) => {
   const [data, setData] = useState(Data);
   const [editingState, setEditingState] = useState(null);
   const [NewJob, setNewJob] = useState({
@@ -93,6 +93,15 @@ const Template2 = ({ Data, UpdateData, BackEndName }) => {
       return { ...prev, [valueToChange]: value };
     });
   };
+  const firstRender = useRef(true);
+  useEffect(() => {
+    if (firstRender.current) {
+      // Skip the first render
+      firstRender.current = false;
+    } else {
+      setEdited(true);
+    }
+  }, [data]);
   const handleInput = async (e) => {
     const { name, value } = e.target;
 

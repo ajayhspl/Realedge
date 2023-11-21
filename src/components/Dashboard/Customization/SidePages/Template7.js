@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import DataTable from "react-data-table-component";
 
 import { CreateToast } from "../../../../App";
@@ -8,7 +8,7 @@ import sortBy from "sort-by";
 import VideoPlayer from "../../../VideoPlayer";
 import shortid from "shortid";
 import TipTap from "./RichTextEditor/tiptap";
-const Template7 = ({ Data, UpdateData, BackEndName }) => {
+const Template7 = ({ Data, UpdateData, BackEndName, setEdited }) => {
   const [data, setData] = useState(Data);
   const [ShowAddDocument, setShowAddDocument] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
@@ -217,7 +217,15 @@ const Template7 = ({ Data, UpdateData, BackEndName }) => {
       return { ...prev, [valueToChange]: value };
     });
   };
-
+  const firstRender = useRef(true);
+  useEffect(() => {
+    if (firstRender.current) {
+      // Skip the first render
+      firstRender.current = false;
+    } else {
+      setEdited(true);
+    }
+  }, [data]);
   const columnsDoc = [
     {
       name: "FileName",

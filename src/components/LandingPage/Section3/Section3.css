@@ -6,8 +6,9 @@
   align-items: flex-start;
 }
 .Section3 h2 {
-  padding-left: 30px;
+  margin-bottom: 3rem !important;
 }
+
 .Swiper {
   height: 200px;
   max-width: 100%;

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { UPLOADPHOTO } from "../../../../server";
 import Upload from "../../../../assets/upload.png";
 import { CreateToast } from "../../../../App";
-const Section4 = ({ FetchedData, UpdateData }) => {
+const Section4 = ({ FetchedData, UpdateData, setEdited }) => {
   const [data, setData] = useState(FetchedData);
   const [photoUploaded, setPhotoUploaded] = useState(true);
 
@@ -13,6 +13,7 @@ const Section4 = ({ FetchedData, UpdateData }) => {
       const Photo = e.target.files[0];
       const URL = await UPLOADPHOTO(`/customization/Section4/BG`, Photo);
       setData((prev) => ({ ...prev, URL }));
+
       CreateToast("photo uploaded", "success");
       setPhotoUploaded(true);
       return;
@@ -24,6 +25,15 @@ const Section4 = ({ FetchedData, UpdateData }) => {
   const handleCheckboxChange = () => {
     setData((prev) => ({ ...prev, Show: !prev.Show }));
   };
+  const firstRender = useRef(true);
+  useEffect(() => {
+    if (firstRender.current) {
+      // Skip the first render
+      firstRender.current = false;
+    } else {
+      setEdited(true);
+    }
+  }, [data]);
   return (
     <div className="DataEntry section4">
       <div className="formItem form-check CheckBox">

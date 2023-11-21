@@ -1,12 +1,13 @@
 /* eslint-disable no-debugger */
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Upload from "../../../../assets/upload.png";
 import { CreateToast } from "../../../../App";
 import { UPLOADPHOTO, UPLOADVIDEO, DELETEPHOTO } from "../../../../server";
 import "../DataEntry.css";
 import VideoPlayer from "../../../VideoPlayer";
-const HeaderSettings = ({ Data, UpdateData }) => {
+const HeaderSettings = ({ Data, UpdateData, setEdited }) => {
   const [data, setData] = useState(Data);
+
   const [uploadProgress, setUploadProgress] = useState(0);
   const [videoUploading, setVideoUploading] = useState(false);
   const handleCheckboxChange = (e) => {
@@ -72,6 +73,15 @@ const HeaderSettings = ({ Data, UpdateData }) => {
       setVideoUploading(false);
     }
   };
+  const firstRender = useRef(true);
+  useEffect(() => {
+    if (firstRender.current) {
+      // Skip the first render
+      firstRender.current = false;
+    } else {
+      setEdited(true);
+    }
+  }, [data]);
   return (
     <div className="DataEntry Head">
       <div className="FormItem">

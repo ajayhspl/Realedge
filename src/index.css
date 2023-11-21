@@ -64,13 +64,14 @@ p {
   opacity: 0;
   z-index: -1 !important;
 }
+
 section {
-  padding: 70px 0;
+  padding: 70px 0 !important;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  margin: 0 auto;
+  width: 95% !important;
+  margin: 0 auto !important;
   overflow-x: hidden;
 }
 blockquote {

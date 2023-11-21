@@ -1,17 +1,13 @@
-/* eslint-disable no-debugger */
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { CreateToast } from "../../../App";
 import { UPLOADPHOTO } from "../../../server";
 import Upload from "../../../assets/upload.png";
 
-const General = ({ Data, UpdateGeneralData }) => {
+const General = ({ Data, UpdateGeneralData, setEdited }) => {
   const [data, setData] = useState(Data);
-  const [emailChanged, setEmailChanged] = useState(false);
   const handleInput = async (e) => {
     const { name, value } = e.target;
-    if (name === "Email") {
-      setEmailChanged(true);
-    }
+
     if (name === "Logo") {
       CreateToast("uploading photo", "info", 2000);
 
@@ -49,6 +45,15 @@ const General = ({ Data, UpdateGeneralData }) => {
       },
     }));
   };
+  const firstRender = useRef(true);
+  useEffect(() => {
+    if (firstRender.current) {
+      // Skip the first render
+      firstRender.current = false;
+    } else {
+      setEdited(true);
+    }
+  }, [data]);
   let RenderColors = Object.entries(data.Colors).map(
     ([colorName, colorValue]) => {
       let nameToRender = "";

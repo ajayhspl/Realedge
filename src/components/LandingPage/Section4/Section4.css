@@ -1,6 +1,8 @@
 .Section4 {
   flex-direction: row;
   background-color: #020d1c;
+  width: 100vw !important;
+  margin-right: auto;
 }
 .Left {
   flex-direction: column;
@@ -18,7 +20,8 @@
 .Left p {
   font-weight: 400;
   line-height: 26px;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  margin-top: 20px;
   width: 80%;
   color: white;
   text-align: left;

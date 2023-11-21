@@ -21,6 +21,7 @@ const Main = ({
   setFetchedData,
   setSaving,
   Tabs,
+  setEdited,
 }) => {
   const keysArray = Object.keys(Data);
   const sortedArray = keysArray.sort((a, b) => {
@@ -87,37 +88,74 @@ const Main = ({
         </ul>
       )}
       {ActivePage === "Header" && (
-        <HeaderSettings Data={Data.Header} UpdateData={UpdateData} />
+        <HeaderSettings
+          Data={Data.Header}
+          UpdateData={UpdateData}
+          setEdited={setEdited}
+        />
       )}
       {ActivePage === "Section1" && (
-        <Section1 FetchedData={Data.Section1} UpdateData={UpdateData} />
+        <Section1
+          FetchedData={Data.Section1}
+          UpdateData={UpdateData}
+          setEdited={setEdited}
+        />
       )}
       {ActivePage === "Section8" && (
-        <Section2 FetchedData={Data.Section8} UpdateData={UpdateData} />
+        <Section2
+          FetchedData={Data.Section8}
+          UpdateData={UpdateData}
+          setEdited={setEdited}
+        />
       )}
       {ActivePage === "Section3" && (
-        <Section3 FetchedData={Data.Section3} UpdateData={UpdateData} />
+        <Section3
+          FetchedData={Data.Section3}
+          UpdateData={UpdateData}
+          setEdited={setEdited}
+        />
       )}
       {ActivePage === "Section4" && (
-        <Section4 FetchedData={Data.Section4} UpdateData={UpdateData} />
+        <Section4
+          FetchedData={Data.Section4}
+          UpdateData={UpdateData}
+          setEdited={setEdited}
+        />
       )}
       {ActivePage === "Section5" && (
-        <Section5 FetchedData={Data.Section5} UpdateData={UpdateData} />
+        <Section5
+          FetchedData={Data.Section5}
+          UpdateData={UpdateData}
+          setEdited={setEdited}
+        />
       )}
       {ActivePage === "Section6" && (
-        <Section6 FetchedData={Data.Section6} UpdateData={UpdateData} />
+        <Section6
+          FetchedData={Data.Section6}
+          UpdateData={UpdateData}
+          setEdited={setEdited}
+        />
       )}
       {ActivePage === "Section7" && (
-        <Section7 FetchedData={Data.Section7} UpdateData={UpdateData} />
+        <Section7
+          FetchedData={Data.Section7}
+          UpdateData={UpdateData}
+          setEdited={setEdited}
+        />
       )}
       {ActivePage === "PageOrder" && (
-        <PageOrder FetchedData={Data.PageOrder} UpdateData={UpdateData} />
+        <PageOrder
+          FetchedData={Data.PageOrder}
+          UpdateData={UpdateData}
+          setEdited={setEdited}
+        />
       )}
       {ActivePage === "FooterData" && (
         <FooterEdit
           FetchedData={Data.FooterData}
           UpdateData={UpdateData}
           Tabs={Tabs}
+          setEdited={setEdited}
         />
       )}
     </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { UPLOADPHOTO, DELETEPHOTO } from "../../../../server";
 import { CreateToast } from "../../../../App";
 import Upload from "../../../../assets/upload.png";
@@ -6,7 +6,7 @@ import sortBy from "sort-by";
 import DataTable from "react-data-table-component";
 import MyModal from "../../../PopUps/Confirm/Confirm";
 import TipTap from "./RichTextEditor/tiptap";
-const Template3 = ({ Data, UpdateData, BackEndName }) => {
+const Template3 = ({ Data, UpdateData, BackEndName, setEdited }) => {
   const [data, setData] = useState(Data);
   const [NewCard, setNewCard] = useState({
     img: "",
@@ -73,6 +73,15 @@ const Template3 = ({ Data, UpdateData, BackEndName }) => {
       });
     }
   };
+  const firstRender = useRef(true);
+  useEffect(() => {
+    if (firstRender.current) {
+      // Skip the first render
+      firstRender.current = false;
+    } else {
+      setEdited(true);
+    }
+  }, [data]);
   const Cardscolumns = [
     {
       name: "Title",

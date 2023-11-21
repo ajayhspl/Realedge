@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { CreateToast } from "../../../../App";
 import Upload from "../../../../assets/upload.png";
 import {
@@ -8,10 +8,9 @@ import {
   DELETEDOC,
 } from "../../../../server";
 import sortBy from "sort-by";
-import { useEffect } from "react";
 import MyModal from "../../../PopUps/Confirm/Confirm";
 import TeamCard from "../../../Cards/Team/TeamCard";
-const Template8 = ({ Data, UpdateData, BackEndName }) => {
+const Template8 = ({ Data, UpdateData, BackEndName, setEdited }) => {
   const [photoUploaded, setPhotoUploaded] = useState(true);
   const [newPerson, setNewPerson] = useState({
     LinkedIn: "",
@@ -55,7 +54,7 @@ const Template8 = ({ Data, UpdateData, BackEndName }) => {
       name: "",
       overview: "",
     });
-    setPhotoUploaded(false);
+    setPhotoUploaded(true);
   };
   const HandleNewInput = async (e) => {
     const { name, value } = e.target;
@@ -139,6 +138,15 @@ const Template8 = ({ Data, UpdateData, BackEndName }) => {
     setTeam(await GETCOLLECTION("Team"));
     CreateToast("deleted", "success");
   };
+  const firstRender = useRef(true);
+  useEffect(() => {
+    if (firstRender.current) {
+      // Skip the first render
+      firstRender.current = false;
+    } else {
+      setEdited(true);
+    }
+  }, [data]);
   const renderTeam = Team.map((Person, index) => {
     const delayString = (index * 0.05).toString() + "s";
 

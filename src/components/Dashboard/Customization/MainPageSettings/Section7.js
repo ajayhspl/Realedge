@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import DataTable from "react-data-table-component";
 import MyModal from "../../../PopUps/Confirm/Confirm";
 import { CreateToast } from "../../../../App";
@@ -6,7 +6,7 @@ import sortBy from "sort-by";
 import Upload from "../../../../assets/upload.png";
 import { DELETEPHOTO, UPLOADPHOTO } from "../../../../server";
 
-const Section7 = ({ FetchedData, UpdateData }) => {
+const Section7 = ({ FetchedData, UpdateData, setEdited }) => {
   const [data, setData] = useState(FetchedData);
   const [photoUploaded, setPhotoUploaded] = useState(true);
   const [showModal, setShowModal] = useState(false);
@@ -16,9 +16,20 @@ const Section7 = ({ FetchedData, UpdateData }) => {
     Name: "",
     Link: "",
   });
+  const firstRender = useRef(true);
+  useEffect(() => {
+    if (firstRender.current) {
+      // Skip the first render
+      firstRender.current = false;
+    } else {
+      setEdited(true);
+    }
+  }, [data]);
   const handleShowModal = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
   const handlePrimaryAction = () => {
+    setEdited(true);
+
     if (!photoUploaded) {
       CreateToast("photo uploading please wait", "error");
       return;

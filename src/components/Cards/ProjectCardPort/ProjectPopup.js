@@ -15,8 +15,8 @@ function ProjectPopup(props) {
           {props.Data.ExtraImages.length > 0 && (
             <Carousel id="one" images={props.Data.ExtraImages} />
           )}
-          {props.Data.Title && <h3>{props.Data.Title}</h3>}
           <div className="ProjectData">
+            {props.Data.Title && <h3>{props.Data.Title}</h3>}
             {props.Data.Description && <p>{props.Data.Description}</p>}
             {props.Data.Category && <p>Category: {props.Data.Category}</p>}
             {props.Data.Country && <p>Country: {props.Data.Country}</p>}

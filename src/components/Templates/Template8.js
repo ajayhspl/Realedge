@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import TeamCard from "../Cards/Team/TeamCard";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import { Autoplay, Navigation } from "swiper";
+import "swiper/css/navigation";
 
 const Template8 = ({ Teams }) => {
   const [activeTab, setActiveTab] = React.useState("All");
@@ -48,7 +52,20 @@ const Template8 = ({ Teams }) => {
     });
     setRenderedPeople(filteredProjects);
   }, [activeTab]);
-
+  const RenderSlider = roles.map((Role) => {
+    return (
+      <SwiperSlide key={Role}>
+        <li
+          onClick={() => {
+            setActiveTab(Role);
+          }}
+          className={`TabItem  Slider ${Role === activeTab ? "active" : ""}`}
+        >
+          {Role}
+        </li>
+      </SwiperSlide>
+    );
+  });
   return (
     <div className="Outsource">
       <ul className="Roles">
@@ -60,7 +77,33 @@ const Template8 = ({ Teams }) => {
         >
           All
         </li>
-        {RenderRoles}
+        {roles.length < 5 ? (
+          RenderRoles
+        ) : (
+          <Swiper
+            navigation={true}
+            slidesPerView={3}
+            spaceBetween={10}
+            modules={[Autoplay, Navigation]}
+            autoplay={{
+              delay: 2000,
+              disableOnInteraction: false,
+            }}
+            breakpoints={{
+              900: {
+                slidesPerView: 4,
+                spaceBetween: 20,
+              },
+              250: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+              },
+            }}
+            className="mySwiper"
+          >
+            {RenderSlider}
+          </Swiper>
+        )}
       </ul>
       <ul className="Team-wrapper">{renderTeam}</ul>
     </div>

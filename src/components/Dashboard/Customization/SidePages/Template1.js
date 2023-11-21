@@ -1,11 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { CreateToast } from "../../../../App";
 import { UPLOADPHOTO } from "../../../../server";
 import Upload from "../../../../assets/upload.png";
 import TipTap from "./RichTextEditor/tiptap";
-const Template1 = ({ Data, UpdateData, BackEndName }) => {
+const Template1 = ({ Data, UpdateData, BackEndName, setEdited }) => {
   const [data, setData] = useState(Data);
   const [photoUploading, setPhotoUploading] = useState(false);
+  const firstRender = useRef(true);
+  useEffect(() => {
+    if (firstRender.current) {
+      // Skip the first render
+      firstRender.current = false;
+    } else {
+      setEdited(true);
+    }
+  }, [data]);
   const handleInput = async (e) => {
     const { name, value } = e.target;
 

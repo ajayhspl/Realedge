@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { GETCOLLECTION } from "../../../../server";
 import sortBy from "sort-by";
 import DataTable from "react-data-table-component";
 
-const Section5 = ({ FetchedData, UpdateData }) => {
+const Section5 = ({ FetchedData, UpdateData, setEdited }) => {
   const [data, setData] = useState(FetchedData);
   const [showAdd, setShowAdd] = useState(false);
   const [projects, SetProjects] = useState([]);
@@ -129,6 +129,15 @@ const Section5 = ({ FetchedData, UpdateData }) => {
       width: "150px",
     },
   ];
+  const firstRender = useRef(true);
+  useEffect(() => {
+    if (firstRender.current) {
+      // Skip the first render
+      firstRender.current = false;
+    } else {
+      setEdited(true);
+    }
+  }, [data]);
   const DeleteCard = (id) => {
     const Testimoinals = data.Testimoinals.filter((Card) => {
       return Card.id !== id;

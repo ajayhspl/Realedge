@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   UPLOADPHOTO,
   DELETEPHOTO,
@@ -17,7 +17,7 @@ import { con } from "../../../../Conf";
 import ProjectCardPort from "../../../Cards/ProjectCardPort/ProjectCardPort";
 const app = initializeApp(con);
 const storage = getStorage(app);
-const Template5 = ({ Data, UpdateData, BackEndName }) => {
+const Template5 = ({ Data, UpdateData, BackEndName, setEdited }) => {
   const [data, setData] = useState(Data);
   const [activeTab, setActiveTab] = useState("All");
   const [DisplayedProjects, setDisplayedProjects] = useState([]);
@@ -213,7 +213,15 @@ const Template5 = ({ Data, UpdateData, BackEndName }) => {
     });
     setDisplayedProjects(filteredProjects);
   }, [activeTab]);
-
+  const firstRender = useRef(true);
+  useEffect(() => {
+    if (firstRender.current) {
+      // Skip the first render
+      firstRender.current = false;
+    } else {
+      setEdited(true);
+    }
+  }, [data]);
   const RenderProjects = DisplayedProjects?.map((project, index) => {
     return (
       <div

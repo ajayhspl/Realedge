@@ -1,9 +1,11 @@
 .Outsource {
   display: flex;
   flex-direction: column;
-  padding: 30px;
   gap: 15px;
   align-items: flex-start;
+  width: 95%;
+  margin: auto;
+  padding-bottom: 10px;
 }
 .Outsource h2 {
   font-size: 2rem;
@@ -398,6 +400,14 @@
   align-items: center;
   height: -moz-fit-content;
   height: fit-content;
+}
+.Outsource .Roles .swiper-button-prev:after,
+.Outsource .Roles .swiper-button-next:after {
+  font-size: 1rem !important;
+}
+.Outsource .Roles .Slider {
+  padding-left: 20px;
+  padding-right: 20px;
 }
 @media (max-width: 800px) {
   .Portfolio .Categories {

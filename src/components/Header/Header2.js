@@ -60,9 +60,7 @@ const Header2 = (props) => {
         }}
       ></div>
     </div>
-  ) : (
-    <h2 style={{ padding: "2vw" }}>{props.title}</h2>
-  );
+  ) : null;
 };
 
 export default Header2;

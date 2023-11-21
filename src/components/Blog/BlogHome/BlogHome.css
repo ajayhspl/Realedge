@@ -1,21 +1,15 @@
 .BlogPage {
-  max-width: 98vw;
-  padding-top: 70px;
+  margin: auto;
+  width: 95%;
 }
 .BlogMain {
   align-items: flex-start;
-  padding: 0 20px;
+
   padding-left: 0;
   display: flex;
   gap: 2%;
 }
-.FeaturedArticles {
-  margin: 50px 0;
-  margin-top: 180px;
-}
-.FeaturedArticles .swiper {
-  max-width: 98vw;
-}
+
 .BlogMain .Recent-Blogs {
   width: 80%;
   height: 100%;
@@ -25,12 +19,12 @@
 }
 .BlogMain .SideBar {
   width: 25%;
-  padding: 15px;
   padding-top: 0;
   height: 100%;
   display: flex;
   flex-direction: column;
   gap: 30px;
+  padding-bottom: 10px;
 }
 .Featured-Articles {
   width: 100%;

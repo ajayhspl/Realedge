@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { UPLOADPHOTO } from "../../../../server";
 import { CreateToast } from "../../../../App";
 import Upload from "../../../../assets/upload.png";
 import sortBy from "sort-by";
 import DataTable from "react-data-table-component";
 import MyModal from "../../../PopUps/Confirm/Confirm";
-const Template10 = ({ Data, UpdateData, BackEndName }) => {
+const Template10 = ({ Data, UpdateData, BackEndName, setEdited }) => {
   const [data, setData] = useState(Data);
   const [NewCard, setNewCard] = useState({
     text: "",
@@ -130,6 +130,15 @@ const Template10 = ({ Data, UpdateData, BackEndName }) => {
       return { ...prev, id };
     });
   }, []);
+  const firstRender = useRef(true);
+  useEffect(() => {
+    if (firstRender.current) {
+      // Skip the first render
+      firstRender.current = false;
+    } else {
+      setEdited(true);
+    }
+  }, [data]);
   return (
     <div className="DataEntry Hosting">
       {showModal && (

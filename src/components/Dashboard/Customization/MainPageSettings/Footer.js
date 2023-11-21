@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { CreateToast } from "../../../../App";
 import OtherLink from "./OtherLink";
 import sortBy from "sort-by";
 import MyModal from "../../../PopUps/Confirm/Confirm";
 
-const FooterEdit = ({ FetchedData, UpdateData, Tabs }) => {
+const FooterEdit = ({ FetchedData, UpdateData, Tabs, setEdited }) => {
   const [Data, setData] = React.useState(FetchedData);
   const [showModal, setShowModal] = useState(false);
 
@@ -147,6 +147,15 @@ const FooterEdit = ({ FetchedData, UpdateData, Tabs }) => {
       </div>
     ));
   }
+  const firstRender = useRef(true);
+  useEffect(() => {
+    if (firstRender.current) {
+      // Skip the first render
+      firstRender.current = false;
+    } else {
+      setEdited(true);
+    }
+  }, [Data]);
   useEffect(() => {
     const GetID = () => {
       let id;

@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 
 import ProjectCardPort from "../Cards/ProjectCardPort/ProjectCardPort";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import { Autoplay, Navigation } from "swiper";
+import "swiper/css/navigation";
 
 const Template5 = ({ Data, FetchedProjects }) => {
   const [activeTab, setActiveTab] = React.useState("All");
@@ -44,11 +48,24 @@ const Template5 = ({ Data, FetchedProjects }) => {
       <ProjectCardPort key={project.ProjectID} data={project} delay={index} />
     );
   });
-
+  const RenderSlider = categories.map((cate) => {
+    return (
+      <SwiperSlide key={cate}>
+        <li
+          onClick={() => {
+            setActiveTab(cate);
+          }}
+          className={`TabItem  Slider ${cate === activeTab ? "active" : ""}`}
+        >
+          {cate}
+        </li>
+      </SwiperSlide>
+    );
+  });
   return (
     <div className="Outsource Portfolio">
       {Data.Title && <h2>{Data.Title}</h2>}
-      <ul className="Categories">
+      <ul className="Roles">
         <li
           className={`TabItem ${"All" === activeTab ? "active" : ""}`}
           onClick={() => {
@@ -57,7 +74,33 @@ const Template5 = ({ Data, FetchedProjects }) => {
         >
           All
         </li>
-        {renderCate}
+        {categories.length < 5 ? (
+          renderCate
+        ) : (
+          <Swiper
+            navigation={true}
+            slidesPerView={3}
+            spaceBetween={10}
+            modules={[Autoplay, Navigation]}
+            autoplay={{
+              delay: 2000,
+              disableOnInteraction: false,
+            }}
+            breakpoints={{
+              900: {
+                slidesPerView: 4,
+                spaceBetween: 20,
+              },
+              250: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+              },
+            }}
+            className="mySwiper"
+          >
+            {RenderSlider}
+          </Swiper>
+        )}
       </ul>
       <ul className="Projects-wrapper">{RenderProjects}</ul>
     </div>

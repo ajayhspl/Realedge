@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import DataTable from "react-data-table-component";
 import MyModal from "../../../PopUps/Confirm/Confirm";
 import { CreateToast } from "../../../../App";
@@ -6,7 +6,7 @@ import sortBy from "sort-by";
 import Upload from "../../../../assets/upload.png";
 import { DELETEPHOTO, UPLOADPHOTO } from "../../../../server";
 
-const Section2 = ({ FetchedData, UpdateData }) => {
+const Section2 = ({ FetchedData, UpdateData, setEdited }) => {
   const maxCharacters = 300;
   const [data, setData] = useState(FetchedData);
   const [photoUploaded, setPhotoUploaded] = useState(true);
@@ -208,6 +208,15 @@ const Section2 = ({ FetchedData, UpdateData }) => {
   const handleCheckboxChange = () => {
     setData((prev) => ({ ...prev, Show: !prev.Show }));
   };
+  const firstRender = useRef(true);
+  useEffect(() => {
+    if (firstRender.current) {
+      // Skip the first render
+      firstRender.current = false;
+    } else {
+      setEdited(true);
+    }
+  }, [data]);
   return (
     <div className="DataEntry section8">
       {showModal && (

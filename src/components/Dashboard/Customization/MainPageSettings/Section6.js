@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { GETCOLLECTION } from "../../../../server";
-const Section6 = ({ FetchedData, UpdateData }) => {
+const Section6 = ({ FetchedData, UpdateData, setEdited }) => {
   const [projects, SetProjects] = useState([]);
   const [data, setData] = useState(FetchedData);
   const handleSelectChange = (event, Position) => {
@@ -42,6 +42,7 @@ const Section6 = ({ FetchedData, UpdateData }) => {
   });
   const handleInput = async (e) => {
     const { name, value } = e.target;
+
     setData((prev) => {
       return { ...prev, [name]: value };
     });
@@ -55,6 +56,15 @@ const Section6 = ({ FetchedData, UpdateData }) => {
   const handleCheckboxChange = () => {
     setData((prev) => ({ ...prev, Show: !prev.Show }));
   };
+  const firstRender = useRef(true);
+  useEffect(() => {
+    if (firstRender.current) {
+      // Skip the first render
+      firstRender.current = false;
+    } else {
+      setEdited(true);
+    }
+  }, [data]);
   return (
     <div className="DataEntry section6">
       <div className="formItem form-check CheckBox">

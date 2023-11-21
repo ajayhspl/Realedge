@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import DataTable from "react-data-table-component";
 import MyModal from "../../../PopUps/Confirm/Confirm";
 import { CreateToast } from "../../../../App";
@@ -7,7 +7,7 @@ import { DELETEPHOTO, UPLOADPHOTO } from "../../../../server";
 import sortBy from "sort-by";
 import "./SidePages.css";
 import PriceCard from "../../../Cards/PriceCard/PriceCard";
-const Template4 = ({ Data, UpdateData, BackEndName }) => {
+const Template4 = ({ Data, UpdateData, BackEndName, setEdited }) => {
   const [data, setData] = useState(Data);
   const [photoUploaded, setPhotoUploaded] = useState(true);
   const [proText, setProText] = useState("");
@@ -262,6 +262,15 @@ const Template4 = ({ Data, UpdateData, BackEndName }) => {
     setPricingCard((prev) => {
       return { ...prev, id: PricingID };
     });
+  }, [data]);
+  const firstRender = useRef(true);
+  useEffect(() => {
+    if (firstRender.current) {
+      // Skip the first render
+      firstRender.current = false;
+    } else {
+      setEdited(true);
+    }
   }, [data]);
   const renderDummyPricingData = data.Pricing.map((PricePlan) => {
     return (

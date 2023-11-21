@@ -6,7 +6,7 @@
   align-items: center;
   min-width: 700px;
   width: 1300px;
-  height: 95vh;
+  height: calc(100vh - 90px);
   margin: auto;
   margin-bottom: 20px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;

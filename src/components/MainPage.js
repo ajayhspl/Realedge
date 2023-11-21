@@ -19,7 +19,7 @@ const MainPage = ({ width, FetchedData, Projects, Tabs, PageOrder }) => {
   };
 
   return (
-    <div>
+    <div className="section-wrapper">
       {sortedEntries.map(([key, value]) => {
         let Data;
         switch (key) {
