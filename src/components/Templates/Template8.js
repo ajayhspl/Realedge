@@ -99,7 +99,7 @@ const Template8 = ({ Teams }) => {
                 spaceBetween: 10,
               },
             }}
-            className="mySwiper"
+            className="Category-swiper"
           >
             {RenderSlider}
           </Swiper>

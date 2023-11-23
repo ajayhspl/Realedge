@@ -60,7 +60,6 @@ const ArticlePage = ({ Categories, Users, width }) => {
       const TargetArticle = FetchedArticles?.find((Article) => {
         return Article.id == ID;
       });
-      console.log(TargetArticle);
       setArticles(FetchedArticles);
       await UPDATEDOC("Articles", ID, {
         ...TargetArticle,

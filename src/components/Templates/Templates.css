@@ -401,6 +401,7 @@
   height: -moz-fit-content;
   height: fit-content;
 }
+
 .Outsource .Roles .swiper-button-prev:after,
 .Outsource .Roles .swiper-button-next:after {
   font-size: 1rem !important;
@@ -410,6 +411,9 @@
   padding-right: 20px;
 }
 @media (max-width: 800px) {
+  .Outsource .Category-swiper .swiper-wrapper {
+    min-height: unset;
+  }
   .Portfolio .Categories {
     flex-wrap: wrap;
     width: 100%;

@@ -1,7 +1,6 @@
 import React from "react";
 import "./SkillCard.css";
 const SkillCard = (prop) => {
-  console.log(prop.Data.Link);
   return (
     <div
       className="SkillCard"
