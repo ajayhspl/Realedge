@@ -15,7 +15,8 @@ import "../../Blog/ArticleBuilder/ArticleBuilder.css";
 import { CreateToast } from "../../../App";
 import date from "date-and-time";
 import Upload from "../../../assets/upload.png";
-import MyEditor from "../../Blog/ArticleBuilder/Editor";
+import Input from "../../Input/Input";
+import TipTap from "../Customization/SidePages/RichTextEditor/tiptap";
 const pattern = date.compile("HH A ,MMM DD YYYY");
 
 const EditBlog = () => {
@@ -66,29 +67,25 @@ const EditBlog = () => {
   };
   const updatePost = async (e) => {
     e.preventDefault();
-    if (!Updated) {
-      CreateToast("Please click on Save first", "warning");
-    } else {
-      if (isArticleEmpty()) {
-        CreateToast("please fill all the fields", "error");
-        return;
-      }
-      CreateToast("updating Article", "info");
-
-      await SETDOC(
-        "Articles",
-        article.id,
-        {
-          ...article,
-          OriginallyMadeBy: ActiveUser,
-          Author: chosenAuthor === null ? ActiveUser : chosenAuthor,
-        },
-        true
-      );
-      const articles = await GETCOLLECTION("Articles");
-      Distributor(articles, Categories);
-      CreateToast("Article updated", "info");
+    if (isArticleEmpty()) {
+      CreateToast("please fill all the fields", "error");
+      return;
     }
+    CreateToast("updating Article", "info");
+
+    await SETDOC(
+      "Articles",
+      article.id,
+      {
+        ...article,
+        OriginallyMadeBy: ActiveUser,
+        Author: chosenAuthor === null ? ActiveUser : chosenAuthor,
+      },
+      true
+    );
+    const articles = await GETCOLLECTION("Articles");
+    Distributor(articles, Categories);
+    CreateToast("Article updated", "info");
   };
   useEffect(() => {
     const GetUser = async () => {
@@ -177,17 +174,16 @@ const EditBlog = () => {
   };
   return authorized && article ? (
     <form className="ArticleBuilder">
-      <div className="FormItem" id="Title">
-        <label htmlFor="Title">Title:</label>
-        <input
-          type="text"
-          required
-          id="Title"
-          name="Title"
-          value={article.Title}
-          onChange={handleInput}
-        />
-      </div>
+      <Input
+        label="Title:"
+        type="text"
+        required={true}
+        id="Title"
+        name="Title"
+        value={article.Title}
+        onChangeFunction={handleInput}
+      />
+
       <div className="FormItem" id="Category">
         <label htmlFor="last-name">Category:</label>
         <div className="select-container">
@@ -237,12 +233,10 @@ const EditBlog = () => {
         </div>
       </div>
       {article.id && (
-        <MyEditor
-          handlePostBodyChange={handlePostBodyChange}
-          SetUpdated={SetUpdated}
-          ArticleID={article.id}
-          Content={article.PostBody}
-          updatePhotoList={setImageContainer}
+        <TipTap
+          editorClassName="First"
+          setHTML={handlePostBodyChange}
+          OldData={article.PostBody}
         />
       )}
 

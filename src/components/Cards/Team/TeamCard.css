@@ -41,7 +41,6 @@
   font-size: 1rem;
   opacity: 0.7;
   margin: 0;
-  margin-left: 40px;
 }
 .TeamCard .Details {
   margin: auto;
@@ -49,8 +48,8 @@
   display: flex;
   width: 90%;
   flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 5px;
 }
 .TeamCard .Details img {
   max-width: 25px;

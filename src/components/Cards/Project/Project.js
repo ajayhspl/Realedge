@@ -12,7 +12,7 @@ const Project = ({ project, ProjectTab, ClassName, ViewPort }) => {
           <p>{data.Description}</p>
         </div>
       )}
-      {ViewPort && (
+      {ViewPort && ProjectTab.PageURL && (
         <a className="Link" href={`/${ProjectTab.PageURL}`}>
           Explore our Portfolio
         </a>

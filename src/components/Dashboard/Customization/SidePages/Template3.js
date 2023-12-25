@@ -1,13 +1,24 @@
 import React, { useState, useEffect, useRef } from "react";
-import { UPLOADPHOTO, DELETEPHOTO } from "../../../../server";
+import { UPLOADPHOTO, DELETEPHOTO, UPLOADVIDEO } from "../../../../server";
 import { CreateToast } from "../../../../App";
 import Upload from "../../../../assets/upload.png";
 import sortBy from "sort-by";
 import DataTable from "react-data-table-component";
 import MyModal from "../../../PopUps/Confirm/Confirm";
 import TipTap from "./RichTextEditor/tiptap";
-const Template3 = ({ Data, UpdateData, BackEndName, setEdited }) => {
+import Input from "../../../Input/Input";
+import Select from "react-select";
+import VideoPlayer from "../../../VideoPlayer";
+const HeaderContent = [
+  { value: "Video", label: "Video" },
+  { value: "Text", label: "Text" },
+];
+
+const Template3 = ({ Data, UpdateData, BackEndName, setEdited, edited }) => {
   const [data, setData] = useState(Data);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [videoUploading, setVideoUploading] = useState(false);
+
   const [NewCard, setNewCard] = useState({
     img: "",
     text: "",
@@ -30,6 +41,29 @@ const Template3 = ({ Data, UpdateData, BackEndName, setEdited }) => {
       return { ...prev, PageText: value };
     });
   };
+  const DeleteVideo = async () => {
+    if (videoUploading) {
+      CreateToast("Video Uploading, please wait...", "error", 2000);
+      return;
+    }
+    CreateToast("deleting video", "info");
+    await DELETEPHOTO(`/customization/SidePages/${BackEndName}/Video`);
+    await UpdateData(BackEndName, { ...data, Video: "", WhatToShow: "Text" });
+    setData((prev) => ({ ...prev, Video: "" }));
+    CreateToast("video deleted", "success");
+  };
+  const handleProgress = (progress) => {
+    setUploadProgress(progress);
+    if (progress === 100) {
+      setVideoUploading(false);
+    }
+  };
+  const handleHeaderDataChange = (value) => {
+    setData((prev) => {
+      return { ...prev, HeaderData: value };
+    });
+  };
+
   const handleInput = async (e) => {
     const { name, value } = e.target;
     if (name === "URL") {
@@ -66,6 +100,28 @@ const Template3 = ({ Data, UpdateData, BackEndName, setEdited }) => {
       CreateToast("photo uploaded", "success", 2000);
       setPhotoUploading(false);
 
+      return;
+    } else if (name === "Video") {
+      if (videoUploading) {
+        CreateToast("uploading Video", "error", 2000);
+        return;
+      }
+      setVideoUploading(true);
+      CreateToast("uploading Video", "info", 10000);
+      const file = e.target.files[0];
+      const url = await UPLOADVIDEO(
+        `/customization/SidePages/${BackEndName}/Video`,
+        file,
+        handleProgress
+      );
+
+      setData((prev) => {
+        return { ...prev, Video: url };
+      });
+      setUploadProgress(0);
+      CreateToast("Video uploaded", "success", 2000);
+
+      UpdateData(BackEndName, { ...data, Video: url });
       return;
     } else {
       setData((prev) => {
@@ -137,13 +193,22 @@ const Template3 = ({ Data, UpdateData, BackEndName, setEdited }) => {
     };
     return {
       id: Card.id,
-      title: <input name="title" value={Card.title} onChange={handleChange} />,
+      title: (
+        <Input
+          type="text"
+          id="title"
+          name="title"
+          value={Card.title}
+          onChangeFunction={handleChange}
+        />
+      ),
       Description: (
-        <textarea
-          style={{ minWidth: "500px" }}
+        <Input
+          textarea={true}
           name="text"
-          onChange={handleChange}
+          onChangeFunction={handleChange}
           value={Card.text}
+          customWidth="500px"
         />
       ),
       img: <img src={Card.img} style={{ maxWidth: "50px", margin: "10px" }} />,
@@ -202,33 +267,30 @@ const Template3 = ({ Data, UpdateData, BackEndName, setEdited }) => {
                 onChange={handleInput}
               />
             </div>
-            <div className="formItem ">
-              <label htmlFor="title">title:</label>
-              <input
-                type="text"
-                id="title"
-                name="title"
-                value={NewCard.title}
-                onChange={(event) => {
-                  setNewCard((prev) => {
-                    return { ...prev, [event.target.name]: event.target.value };
-                  });
-                }}
-              ></input>
-            </div>
-            <div className="formItem ">
-              <label htmlFor="text">Description:</label>
-              <textarea
-                id="text"
-                name="text"
-                value={NewCard.text}
-                onChange={(event) => {
-                  setNewCard((prev) => {
-                    return { ...prev, [event.target.name]: event.target.value };
-                  });
-                }}
-              ></textarea>
-            </div>
+            <Input
+              label="Title"
+              type="text"
+              id="title"
+              name="title"
+              value={NewCard.title}
+              onChangeFunction={(event) => {
+                setNewCard((prev) => {
+                  return { ...prev, [event.target.name]: event.target.value };
+                });
+              }}
+            />
+            <Input
+              label="Description"
+              type="textarea"
+              id="text"
+              name="text"
+              value={NewCard.text}
+              onChangeFunction={(event) => {
+                setNewCard((prev) => {
+                  return { ...prev, [event.target.name]: event.target.value };
+                });
+              }}
+            />
           </>
         </MyModal>
       )}
@@ -249,45 +311,43 @@ const Template3 = ({ Data, UpdateData, BackEndName, setEdited }) => {
       <span style={{ margin: "20px" }}>
         to hide a page just leave the <strong>Page URL</strong> field empty
       </span>
-      <div className="FormItem" id="Title">
-        <label htmlFor="PageURL">Page URL:</label>
-        <input
+      <Input
+        label="Page URL"
+        type="text"
+        id="PageURL"
+        name="PageURL"
+        value={data.PageURL}
+        onChangeFunction={handleInput}
+        customWidth="70%"
+      />
+      <Input
+        label="Page Name in navigation "
+        type="text"
+        id="PageName"
+        name="PageName"
+        value={data.PageName}
+        onChangeFunction={handleInput}
+        customWidth="70%"
+      />
+      <Input
+        label="Header Title"
+        type="text"
+        id="HeaderTitle"
+        name="HeaderTitle"
+        value={data.HeaderTitle}
+        onChangeFunction={handleInput}
+        customWidth="70%"
+      />
+
+      <div className="FormItem" style={{ width: "70%" }}>
+        <Input
+          label="Top Title"
           type="text"
-          id="PageURL"
-          name="PageURL"
-          value={data.PageURL}
-          onChange={handleInput}
-        />
-      </div>
-      <div className="FormItem" id="Title">
-        <label htmlFor="PageName">Page Name:</label>
-        <input
-          type="text"
-          id="PageName"
-          name="PageName"
-          value={data.PageName}
-          onChange={handleInput}
-        />
-      </div>
-      <div className="FormItem" id="Title">
-        <label htmlFor="HeaderTitle">Header Title:</label>
-        <input
-          type="text"
-          id="HeaderTitle"
-          name="HeaderTitle"
-          value={data.HeaderTitle}
-          onChange={handleInput}
-        />
-      </div>
-      <div className="FormItem">
-        <label htmlFor="TopTitle">Top Title:</label>
-        <input
-          type="text"
-          required
           id="TopTitle"
           name="TopTitle"
           value={data.TopTitle}
-          onChange={handleInput}
+          onChangeFunction={handleInput}
+          customWidth="70%"
         />
         <input
           className="ColorPicker"
@@ -297,15 +357,15 @@ const Template3 = ({ Data, UpdateData, BackEndName, setEdited }) => {
           onChange={handleInput}
         />
       </div>
-      <div className="FormItem">
-        <label htmlFor="BottomTitle">Bottom Title:</label>
-        <input
+      <div className="FormItem" style={{ width: "70%" }}>
+        <Input
+          label="Bottom Title"
           type="text"
-          required
           id="BottomTitle"
           name="BottomTitle"
           value={data.BottomTitle}
-          onChange={handleInput}
+          onChangeFunction={handleInput}
+          customWidth="70%"
         />
         <input
           className="ColorPicker"
@@ -315,6 +375,69 @@ const Template3 = ({ Data, UpdateData, BackEndName, setEdited }) => {
           onChange={handleInput}
         />
       </div>
+      <h2>Media</h2>
+      <div>
+        <label>What To Show:</label>
+        <Select
+          options={HeaderContent}
+          value={HeaderContent.find(
+            (object) => object.value === data.WhatToShow
+          )}
+          onChange={(selectedOption) =>
+            setData((prev) => {
+              return { ...prev, WhatToShow: selectedOption.value };
+            })
+          }
+        />
+      </div>
+      <div className="HeaderContent">
+        <div className="video">
+          <div className="UploadWrapper">
+            <div className="FormItem">
+              <span>Video: </span>
+              <label htmlFor="Video">
+                <img
+                  src={Upload}
+                  style={{ width: "25px", cursor: "pointer" }}
+                />
+              </label>
+              <input
+                type="file"
+                accept="video/*"
+                hidden
+                id="Video"
+                name="Video"
+                onChange={handleInput}
+              />
+            </div>
+          </div>
+          {uploadProgress != 0 && (
+            <div className="video-progress-bar">
+              <div
+                className="video-progress-bar-fill"
+                style={{ width: `${uploadProgress}%` }}
+              ></div>
+            </div>
+          )}
+          {data.Video && (
+            <div style={{ width: "500px" }}>
+              <VideoPlayer videoUrl={data.Video} />
+
+              <button className="Button Danger" onClick={DeleteVideo}>
+                Delete Video
+              </button>
+            </div>
+          )}
+        </div>
+        <div className="textEditor">
+          <TipTap
+            editorClassName="smallEditor"
+            setHTML={handleHeaderDataChange}
+            OldData={data.HeaderData}
+          />
+        </div>
+      </div>
+
       <TipTap setHTML={handlePostBodyChange} OldData={data.PageText} />
 
       <button
@@ -333,19 +456,21 @@ const Template3 = ({ Data, UpdateData, BackEndName, setEdited }) => {
         columns={Cardscolumns}
         data={CardsData}
       />
-      <button
-        className="Button View"
-        id="Submit"
-        onClick={() => {
-          if (photoUploading) {
-            CreateToast("uploading Photo,please wait...", "error", 2000);
-            return;
-          }
-          UpdateData(BackEndName, data);
-        }}
-      >
-        Save
-      </button>
+      <div className={`SubmitWrapper ${edited ? "fixed" : ""}`}>
+        <button
+          className="Button View"
+          id="Submit"
+          onClick={() => {
+            if (photoUploading) {
+              CreateToast("uploading Photo,please wait...", "error", 2000);
+              return;
+            }
+            UpdateData(BackEndName, data);
+          }}
+        >
+          Save
+        </button>
+      </div>
     </div>
   );
 };

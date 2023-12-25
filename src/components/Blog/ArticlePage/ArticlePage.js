@@ -22,20 +22,24 @@ import { AiOutlineLike, AiFillLike } from "react-icons/ai";
 import { BiCategory } from "react-icons/bi";
 
 const ArticlePage = ({ Categories, Users, width }) => {
-  const [Articles, setArticles] = useState([]);
   const isFirstRender = useRef(true);
   const pattern = date.compile("ddd, MMM DD YYYY");
   const ID = useParams().ID;
   let lastID;
   let firstID;
+  let TargetCategory = null;
+  let nextArticleUrl;
+  let previousArticleUrl;
+  const [Articles, setArticles] = useState([]);
+  const [UserLiked, setUserLiked] = useState(false);
+  const [TargetArticle, setTargetArticle] = useState(null);
   const [User, setUser] = useState(null);
   const [comment, setComment] = useState({
     replyText: "",
     PersonId: User,
     Date: "",
   });
-  let nextArticleUrl;
-  let previousArticleUrl;
+
   if (Articles.length > 0) {
     Articles.sort(sortBy("id"));
     firstID = Articles[0].id;
@@ -51,9 +55,6 @@ const ArticlePage = ({ Categories, Users, width }) => {
       : "#";
   }
 
-  const [UserLiked, setUserLiked] = useState(false);
-  const [TargetArticle, setTargetArticle] = useState(null);
-  let TargetCategory = null;
   useEffect(() => {
     const FetchData = async () => {
       const FetchedArticles = await GETCOLLECTION("Articles");
@@ -76,7 +77,7 @@ const ArticlePage = ({ Categories, Users, width }) => {
     );
   }, [Articles]);
   const RenderAuthors = Users.map((User) => {
-    if (User.Role === "User") {
+    if (User.Role !== "Author") {
       return;
     }
     if (User.deleteUser) {
@@ -151,7 +152,7 @@ const ArticlePage = ({ Categories, Users, width }) => {
       CreateToast("Article Liked", "success");
     }
   };
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchUser = async () => {
       await GETDOC(
         "users",
@@ -162,7 +163,7 @@ const ArticlePage = ({ Categories, Users, width }) => {
       fetchUser();
     }
   }, []);
-  React.useEffect(() => {
+  useEffect(() => {
     if (User) {
       const PrevLiked = TargetArticle?.liked.find((UsersWhoLiked) => {
         return UsersWhoLiked == User.id;

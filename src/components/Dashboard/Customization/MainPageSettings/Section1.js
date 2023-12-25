@@ -3,8 +3,9 @@ import DataTable from "react-data-table-component";
 import MyModal from "../../../PopUps/Confirm/Confirm";
 import { CreateToast } from "../../../../App";
 import sortBy from "sort-by";
+import Input from "../../../Input/Input";
 
-const Section1 = ({ FetchedData, UpdateData, setEdited }) => {
+const Section1 = ({ FetchedData, UpdateData, setEdited, edited }) => {
   const maxCharacters = 120;
 
   const [data, setData] = useState(FetchedData);
@@ -13,6 +14,7 @@ const Section1 = ({ FetchedData, UpdateData, setEdited }) => {
     MainNumber: "",
     subTitle: "",
     Description: "",
+    Link: "",
     id: "",
   });
   const handleShowModal = () => setShowModal(true);
@@ -62,6 +64,13 @@ const Section1 = ({ FetchedData, UpdateData, setEdited }) => {
     {
       name: "Name",
       selector: (row) => row.subTitle,
+      sortable: true,
+      center: true,
+      width: "200px",
+    },
+    {
+      name: "Link",
+      selector: (row) => row.Link,
       sortable: true,
       center: true,
       width: "200px",
@@ -120,21 +129,29 @@ const Section1 = ({ FetchedData, UpdateData, setEdited }) => {
     return {
       id: Card.id,
       Description: (
-        <textarea
-          style={{ minWidth: "500px" }}
+        <Input
+          textarea={true}
           name="Description"
           onChange={handleChange}
           value={Card.Description}
+          customWidth="500px"
         />
       ),
       subTitle: (
-        <input name="subTitle" value={Card.subTitle} onChange={handleChange} />
+        <Input
+          name="subTitle"
+          value={Card.subTitle}
+          onChangeFunction={handleChange}
+        />
+      ),
+      Link: (
+        <Input name="Link" value={Card.Link} onChangeFunction={handleChange} />
       ),
       MainNumber: (
-        <input
+        <Input
           name="MainNumber"
           value={Card.MainNumber}
-          onChange={handleChange}
+          onChangeFunction={handleChange}
         />
       ),
       Options: (
@@ -185,58 +202,65 @@ const Section1 = ({ FetchedData, UpdateData, setEdited }) => {
           handlePrimaryAction={handlePrimaryAction}
         >
           <>
-            <div className="formItem ">
-              <label htmlFor="SubTitle">SubTitle:</label>
-              <input
-                type="text"
-                id="SubTitle"
-                name="subTitle"
-                value={NewCard.subTitle}
-                onChange={(event) => {
-                  const { name, value } = event.target;
-                  if (value.length >= 15) {
-                    CreateToast("max words reached", "error", 2000);
-                    return;
-                  }
-                  setNewCard((prev) => {
-                    return { ...prev, [name]: value };
-                  });
-                }}
-              ></input>
-            </div>
-            <div className="formItem ">
-              <label htmlFor="MainNumber">MainNumber:</label>
-              <input
-                type="text"
-                id="MainNumber"
-                name="MainNumber"
-                value={NewCard.MainNumber}
-                onChange={(event) => {
-                  setNewCard((prev) => {
-                    return { ...prev, [event.target.name]: event.target.value };
-                  });
-                }}
-              ></input>
-            </div>
-            <div className="formItem ">
-              <label htmlFor="MainNumber">Description:</label>
-              <textarea
-                type="number"
-                id="Description"
-                name="Description"
-                value={NewCard.Description}
-                onChange={(event) => {
-                  const { name, value } = event.target;
-                  if (value.length >= maxCharacters) {
-                    CreateToast("max words reached", "error", 2000);
-                    return;
-                  }
-                  setNewCard((prev) => {
-                    return { ...prev, [name]: value };
-                  });
-                }}
-              ></textarea>
-            </div>
+            <Input
+              label="SubTitle"
+              type="text"
+              id="SubTitle"
+              name="subTitle"
+              value={NewCard.subTitle}
+              onChangeFunction={(event) => {
+                const { name, value } = event.target;
+                if (value.length >= 15) {
+                  CreateToast("Max words reached", "error", 2000);
+                  return;
+                }
+                setNewCard((prev) => {
+                  return { ...prev, [name]: value };
+                });
+              }}
+            />
+            <Input
+              label="Link"
+              type="text"
+              id="Link"
+              name="Link"
+              value={NewCard.Link}
+              onChangeFunction={(event) => {
+                const { name, value } = event.target;
+                setNewCard((prev) => {
+                  return { ...prev, [name]: value };
+                });
+              }}
+            />
+            <Input
+              label="MainNumber"
+              type="text"
+              id="MainNumber"
+              name="MainNumber"
+              value={NewCard.MainNumber}
+              onChangeFunction={(event) => {
+                setNewCard((prev) => {
+                  return { ...prev, [event.target.name]: event.target.value };
+                });
+              }}
+            />
+            <Input
+              textarea={true}
+              label="Description"
+              id="Description"
+              name="Description"
+              value={NewCard.Description}
+              onChangeFunction={(event) => {
+                const { name, value } = event.target;
+                if (value.length >= maxCharacters) {
+                  CreateToast("Max words reached", "error", 2000);
+                  return;
+                }
+                setNewCard((prev) => {
+                  return { ...prev, [name]: value };
+                });
+              }}
+            />
           </>
         </MyModal>
       )}
@@ -252,17 +276,15 @@ const Section1 = ({ FetchedData, UpdateData, setEdited }) => {
         </label>
       </div>
 
-      <div className="FormItem" id="Title">
-        <label htmlFor="Title">Title:</label>
-        <textarea
-          type="text"
-          required
-          id="Title"
-          name="Title"
-          value={data.Title}
-          onChange={handleInput}
-        />
-      </div>
+      <Input
+        label="Title"
+        id="Title"
+        name="Title"
+        required={true}
+        value={data.Title}
+        onChangeFunction={handleInput}
+        customWidth="70%"
+      />
       <button
         className="Button Add"
         style={{ margin: "0px auto" }}
@@ -278,15 +300,18 @@ const Section1 = ({ FetchedData, UpdateData, setEdited }) => {
         columns={columns}
         data={TableData}
       />
-      <button
-        className="Button View"
-        id="Submit"
-        onClick={() => {
-          UpdateData("Section1", data);
-        }}
-      >
-        Save
-      </button>
+      <div className={`SubmitWrapper ${edited ? "fixed" : ""}`}>
+        <button
+          className="Button View"
+          id="Submit"
+          onClick={() => {
+            setEdited(false);
+            UpdateData("Section1", data);
+          }}
+        >
+          Save
+        </button>
+      </div>
     </div>
   );
 };

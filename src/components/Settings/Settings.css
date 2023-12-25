@@ -65,9 +65,8 @@
   margin-bottom: 5px;
 }
 
-.Settings .General input,
 .Settings .General select,
-.Settings .Privacy input {
+.Settings .General input[type="date"] {
   margin: 10px 0 20px 0;
   border: none;
   border-bottom: 1px solid var(--buttons);

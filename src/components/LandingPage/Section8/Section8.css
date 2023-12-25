@@ -1,8 +1,7 @@
 .Section8 {
   flex-direction: column;
   background-color: #020d1c;
-  padding-bottom: 30px;
-  padding-top: 30px;
+  padding: 70px 0;
 }
 .Section8 h2,
 .Section8 p {

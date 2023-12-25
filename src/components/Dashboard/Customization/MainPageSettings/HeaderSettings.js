@@ -5,6 +5,7 @@ import { CreateToast } from "../../../../App";
 import { UPLOADPHOTO, UPLOADVIDEO, DELETEPHOTO } from "../../../../server";
 import "../DataEntry.css";
 import VideoPlayer from "../../../VideoPlayer";
+import Input from "../../../Input/Input";
 const HeaderSettings = ({ Data, UpdateData, setEdited }) => {
   const [data, setData] = useState(Data);
 
@@ -84,17 +85,18 @@ const HeaderSettings = ({ Data, UpdateData, setEdited }) => {
   }, [data]);
   return (
     <div className="DataEntry Head">
-      <div className="FormItem">
-        <label htmlFor="Title">Title:</label>
-        <input
+      <div className="FormItem" style={{ width: "70%" }}>
+        <Input
+          label="Title"
           type="text"
-          required
+          required={true}
           id="Title"
           name="Title"
           value={data.Title}
-          onChange={handleInput}
+          onChangeFunction={handleInput}
         />
         <input
+          style={{ marginLeft: "10px" }}
           className="ColorPicker"
           type="color"
           value={data.TitleColor}
@@ -102,17 +104,18 @@ const HeaderSettings = ({ Data, UpdateData, setEdited }) => {
           onChange={handleInput}
         />
       </div>
-      <div className="FormItem">
-        <label htmlFor="SubTitle">Sub Title:</label>
-        <textarea
-          type="text"
-          required
+      <div className="FormItem" style={{ width: "70%" }}>
+        <Input
+          textarea={true}
+          label="Sub Title"
+          required={true}
           id="SubTitle"
           name="SubTitle"
           value={data.SubTitle}
-          onChange={handleInput}
+          onChangeFunction={handleInput}
         />
         <input
+          style={{ marginLeft: "10px" }}
           className="ColorPicker"
           type="color"
           value={data.SubTitleColor}
@@ -120,10 +123,17 @@ const HeaderSettings = ({ Data, UpdateData, setEdited }) => {
           onChange={handleInput}
         />
       </div>
-      <div className="CheckMarkWrapper">
+      <div className="CheckMarkWrapper" style={{ width: "70%" }}>
+        <Input
+          label="Button Text"
+          required={true}
+          id="buttonText"
+          name="buttonText"
+          value={data.buttonText}
+          onChangeFunction={handleInput}
+        />
         <div className="CheckBox">
           <span>Show</span>
-
           <input
             className="form-check-input"
             type="checkbox"
@@ -132,26 +142,24 @@ const HeaderSettings = ({ Data, UpdateData, setEdited }) => {
             onChange={handleCheckboxChange}
           />
         </div>
-        <div className="FormItem">
-          <label htmlFor="buttonText">button Text:</label>
-          <input
-            type="text"
-            required
-            id="buttonText"
-            name="buttonText"
-            value={data.buttonText}
-            onChange={handleInput}
-          />
-          <input
-            className="ColorPicker"
-            type="color"
-            value={data.ButtonTextColor}
-            name="ButtonTextColor"
-            onChange={handleInput}
-          />
-        </div>
+        <input
+          style={{ marginLeft: "10px" }}
+          className="ColorPicker"
+          type="color"
+          value={data.ButtonTextColor}
+          name="ButtonTextColor"
+          onChange={handleInput}
+        />
       </div>
-      <div className="CheckMarkWrapper">
+      <div className="CheckMarkWrapper" style={{ width: "70%" }}>
+        <Input
+          label="Contact Button Text"
+          required={true}
+          id="ContactText"
+          name="ContactText"
+          value={data.ContactText}
+          onChangeFunction={handleInput}
+        />
         <div className="CheckBox">
           <span>Show</span>
 
@@ -163,26 +171,15 @@ const HeaderSettings = ({ Data, UpdateData, setEdited }) => {
             onChange={handleCheckboxChange}
           />
         </div>
-        <div className="FormItem">
-          <label htmlFor="ContactText" style={{ width: "200px" }}>
-            Contact Button Text:
-          </label>
-          <input
-            type="text"
-            required
-            id="ContactText"
-            name="ContactText"
-            value={data.ContactText}
-            onChange={handleInput}
-          />
-          <input
-            className="ColorPicker"
-            type="color"
-            value={data.ContactColor}
-            name="ContactColor"
-            onChange={handleInput}
-          />
-        </div>
+
+        <input
+          style={{ marginLeft: "10px" }}
+          className="ColorPicker"
+          type="color"
+          value={data.ContactColor}
+          name="ContactColor"
+          onChange={handleInput}
+        />
       </div>
       <h2>Media</h2>
       <div className="UploadWrapper">

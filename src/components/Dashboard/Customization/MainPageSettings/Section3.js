@@ -5,14 +5,16 @@ import { CreateToast } from "../../../../App";
 import sortBy from "sort-by";
 import Upload from "../../../../assets/upload.png";
 import { DELETEPHOTO, UPLOADPHOTO } from "../../../../server";
+import Input from "../../../Input/Input";
 
-const Section3 = ({ FetchedData, UpdateData, setEdited }) => {
+const Section3 = ({ FetchedData, UpdateData, setEdited, edited }) => {
   const [data, setData] = useState(FetchedData);
   const [photoUploaded, setPhotoUploaded] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [NewCard, setNewCard] = useState({
     url: "",
     id: "",
+    Link: "",
   });
   const handleShowModal = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
@@ -93,6 +95,13 @@ const Section3 = ({ FetchedData, UpdateData, setEdited }) => {
       width: "150px",
     },
     {
+      name: "Link",
+      selector: (row) => row.Link,
+      sortable: true,
+      center: true,
+      width: "150px",
+    },
+    {
       name: "image",
       selector: (row) => row.url,
       sortable: true,
@@ -108,8 +117,26 @@ const Section3 = ({ FetchedData, UpdateData, setEdited }) => {
     },
   ];
   const TableData = data.imgList.map((Card) => {
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      let oldData = data.imgList;
+      let newData = oldData.map((oldCard) => {
+        if (oldCard.id === Card.id) {
+          return {
+            ...oldCard,
+            [name]: value,
+          };
+        } else {
+          return oldCard;
+        }
+      });
+      setData((prev) => ({ ...prev, imgList: newData }));
+    };
     return {
       id: Card.id,
+      Link: (
+        <Input name="Link" value={Card.Link} onChangeFunction={handleChange} />
+      ),
       url: (
         <img style={{ maxWidth: "200px", margin: "20px 0" }} src={Card.url} />
       ),
@@ -119,7 +146,7 @@ const Section3 = ({ FetchedData, UpdateData, setEdited }) => {
           <button
             className="Button Danger"
             onClick={() => {
-              DeleteCard(Card.ID);
+              DeleteCard(Card.id);
             }}
           >
             Delete
@@ -180,6 +207,19 @@ const Section3 = ({ FetchedData, UpdateData, setEdited }) => {
           handlePrimaryAction={handlePrimaryAction}
         >
           <>
+            <Input
+              label="Link"
+              type="text"
+              id="Link"
+              name="Link"
+              value={NewCard.Link}
+              onChangeFunction={(event) => {
+                const { name, value } = event.target;
+                setNewCard((prev) => {
+                  return { ...prev, [name]: value };
+                });
+              }}
+            />
             <div className="FormItem" id="logo">
               <span>Logo:</span>
               <label htmlFor="thumbnailInput">
@@ -211,17 +251,16 @@ const Section3 = ({ FetchedData, UpdateData, setEdited }) => {
           />
         </label>
       </div>
-      <div className="FormItem" id="Title">
-        <label htmlFor="title">Title:</label>
-        <textarea
-          type="text"
-          required
-          id="title"
-          name="title"
-          value={data.title}
-          onChange={handleInput}
-        />
-      </div>
+      <Input
+        label="Title"
+        textarea={true}
+        required={true}
+        id="title"
+        name="title"
+        value={data.title}
+        onChangeFunction={handleInput}
+        customWidth="70%"
+      />
       <button
         className="Button Add"
         style={{ margin: "0px auto" }}
@@ -237,15 +276,18 @@ const Section3 = ({ FetchedData, UpdateData, setEdited }) => {
         columns={columns}
         data={TableData}
       />
-      <button
-        className="Button View"
-        id="Submit"
-        onClick={() => {
-          UpdateData("Section3", data);
-        }}
-      >
-        Save
-      </button>
+      <div className={`SubmitWrapper ${edited ? "fixed" : ""}`}>
+        <button
+          className="Button View"
+          id="Submit"
+          onClick={() => {
+            setEdited(false);
+            UpdateData("Section3", data);
+          }}
+        >
+          Save
+        </button>
+      </div>
     </div>
   );
 };

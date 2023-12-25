@@ -14,7 +14,7 @@
 .Outsource h4 {
   font-size: 1.25rem;
 }
-.Outsource h3::after {
+/* .Outsource h3::after {
   position: absolute;
   content: "";
   bottom: -10px;
@@ -22,7 +22,7 @@
   width: 100%;
   height: 2px;
   background-color: #e0e1e1;
-}
+} */
 .Outsource p {
   font-size: 1.1rem;
   color: var(--text);
@@ -67,7 +67,6 @@
   flex-direction: column;
 }
 .Outsource ul {
-  width: 45%;
   list-style: none; /* Remove default list style */
   padding: 0;
 }
@@ -340,7 +339,7 @@
   height: 50px;
 }
 .ProductVideo {
-  width: 85%;
+  width: 60%;
   margin: auto;
 }
 .Product .RightSide {

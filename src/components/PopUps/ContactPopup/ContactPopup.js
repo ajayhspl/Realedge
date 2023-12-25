@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
 import "./ContactPopup.css";
-import Phone from "../../../assets/phone.png";
-import Email from "../../../assets/mail.png";
+import { MdOutlineEmail } from "react-icons/md";
+import { FaPhoneAlt } from "react-icons/fa";
 import { GETCOLLECTION, SENDMAIL } from "../../../server";
 import ContactEmailTemplate from "./ContactEmailTemplate";
+import Input from "../../Input/Input";
 function ContactPopUp(props) {
   const [email, setEmail] = useState("");
   const [webName, setWebName] = useState("");
+  const [formColor, setFormColor] = useState("");
   const [Data, setData] = useState({
     Phone: "",
     Email: "",
@@ -123,6 +125,7 @@ function ContactPopUp(props) {
       const res = await GETCOLLECTION("customization");
       setEmail(res[2].Email);
       setWebName(res[2].WebsiteName);
+      setFormColor(res[2].Colors.formsBackground);
       setData({
         Email: res[0].FooterData.Email,
         Phone: res[0].FooterData.Phone,
@@ -270,153 +273,174 @@ function ContactPopUp(props) {
           <div className={`Form-wrapper ${width < 1000 ? "small" : ""}`}>
             <h2>{formType?.title}</h2>
             <form className="ContactForm">
-              <input
+              <Input
+                label="First Name:"
+                type="text"
+                required={true}
                 id="Fname"
-                required
-                type="text"
                 name="Fname"
-                placeholder="First Name"
                 value={formValues.Fname}
-                onChange={handleFormInput}
+                onChangeFunction={handleFormInput}
+                customWidth="45%"
               />
-              <input
-                required
+
+              <Input
+                label="Last Name:"
                 type="text"
-                name="Lname"
-                placeholder="Last Name"
+                required={true}
                 id="Lname"
+                name="Lname"
                 value={formValues.Lname}
-                onChange={handleFormInput}
+                onChangeFunction={handleFormInput}
+                customWidth="45%"
               />
-              <input
-                required
+
+              <Input
+                label="Email:"
                 type="email"
-                name="Email"
-                placeholder="Email"
+                required={true}
                 id="Email"
+                name="Email"
                 value={formValues.Email}
-                onChange={handleFormInput}
+                onChangeFunction={handleFormInput}
               />
-              <input
-                required
+
+              <Input
+                label="Contact Number:"
                 type="number"
+                required={true}
+                id="Number"
                 name="Number"
-                placeholder="Contact Number"
-                id="number"
                 value={formValues.Number}
-                onChange={handleFormInput}
+                onChangeFunction={handleFormInput}
               />
+
               {formType.ExtraProperties?.ProjectType && (
-                <input
+                <Input
                   required
                   type="text"
                   name="ProjectType"
-                  placeholder="Project Type"
+                  label="Project Type"
                   id="ProjectType"
                   value={formValues.ProjectDiscuss.ProjectType}
-                  onChange={handleFormInput}
+                  onChangeFunction={handleFormInput}
                 />
               )}
               {formType.ExtraProperties?.JobTitle && (
-                <input
+                <Input
                   required
                   type="text"
                   name="JobTitle"
-                  placeholder="Job Title"
-                  id="Job Title"
+                  label="Job Title"
+                  id="JobTitle"
                   value={formValues.JobOffering.JobTitle}
-                  onChange={handleFormInput}
+                  onChangeFunction={handleFormInput}
+                  customWidth="100%"
                 />
               )}
+
               {formType.ExtraProperties?.Experience && (
-                <input
+                <Input
                   required
                   type="text"
                   name="Experience"
-                  placeholder="Experience"
+                  label="Experience"
                   id="Experience"
                   value={formValues.JobOffering.Experience}
-                  onChange={handleFormInput}
+                  onChangeFunction={handleFormInput}
+                  customWidth="45%"
                 />
               )}
+
               {formType.ExtraProperties?.Qualification && (
-                <input
+                <Input
                   required
                   type="text"
                   name="Qualification"
-                  placeholder="qualification"
+                  label="Qualification"
                   id="Qualification"
                   value={formValues.JobOffering.Qualification}
-                  onChange={handleFormInput}
+                  onChangeFunction={handleFormInput}
+                  customWidth="45%"
                 />
               )}
+
               {formType.ExtraProperties?.NoticePeriod && (
-                <input
+                <Input
                   required
                   type="text"
                   name="NoticePeriod"
-                  placeholder="NoticePeriod"
+                  label="Notice Period"
                   id="NoticePeriod"
                   value={formValues.JobOffering.NoticePeriod}
-                  onChange={handleFormInput}
+                  onChangeFunction={handleFormInput}
                 />
               )}
+
               {formType.ExtraProperties?.CurrentEmployer && (
-                <input
+                <Input
                   required
                   type="text"
                   name="CurrentEmployer"
-                  placeholder="Current Employer"
+                  label="Current Employer"
                   id="CurrentEmployer"
                   value={formValues.JobOffering.CurrentEmployer}
-                  onChange={handleFormInput}
+                  onChangeFunction={handleFormInput}
                 />
               )}
+
               {formType.ExtraProperties?.ExpectedCTCPerMonth && (
-                <input
+                <Input
                   required
                   type="text"
                   name="ExpectedCTCPerMonth"
-                  placeholder="Expected CTC Per Month"
+                  label="Expected CTC Per Month"
                   id="ExpectedCTCPerMonth"
                   value={formValues.JobOffering.ExpectedCTCPerMonth}
-                  onChange={handleFormInput}
+                  onChangeFunction={handleFormInput}
+                  customWidth="45%"
                 />
               )}
+
               {formType.ExtraProperties?.CurrentCTCPerMonth && (
-                <input
+                <Input
                   required
                   type="text"
                   name="CurrentCTCPerMonth"
-                  placeholder="Current CTC Per Month"
+                  label="Current CTC Per Month"
                   id="CurrentCTCPerMonth"
                   value={formValues.JobOffering.CurrentCTCPerMonth}
-                  onChange={handleFormInput}
+                  onChangeFunction={handleFormInput}
+                  customWidth="45%"
                 />
               )}
-              <input
-                required
+
+              <Input
+                label="Subject:"
                 type="text"
-                name="Subject"
-                placeholder="Subject"
+                required={true}
                 id="Subject"
+                name="Subject"
                 value={formValues.Subject}
-                onChange={handleFormInput}
+                onChangeFunction={handleFormInput}
               />
-              <textarea
-                required
-                type="text"
-                name="Message"
-                placeholder="Message"
+
+              <Input
+                textarea={true}
+                label="Message:"
+                type="textarea"
+                required={true}
                 id="Message"
+                name="Message"
                 value={formValues.Message}
-                onChange={handleFormInput}
+                onChangeFunction={handleFormInput}
               />
+
               <button onClick={sendEmail}>Send</button>
             </form>
           </div>
           {width > 1000 ? (
-            <div className="SidePanel">
+            <div className="SidePanel" style={{ backgroundColor: formColor }}>
               <div className="section">
                 <h2>{formType?.Description}</h2>
               </div>
@@ -424,10 +448,16 @@ function ContactPopUp(props) {
                 <h5>Contact Us</h5>
                 <div className="ContactInfo">
                   <a href={`tel:${Data.Phone}`}>
-                    <img src={Phone} /> {Data.Phone}
+                    <FaPhoneAlt
+                      style={{ fontSize: "1.2rem", color: "var(--icons)" }}
+                    />
+                    {Data.Phone}
                   </a>
                   <a href={`mailto:${Data.Email}`}>
-                    <img src={Email} /> {Data.Email}
+                    <MdOutlineEmail
+                      style={{ fontSize: "1.5rem", color: "var(--icons)" }}
+                    />
+                    {Data.Email}
                   </a>
                 </div>
               </div>

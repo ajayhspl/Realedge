@@ -5,6 +5,7 @@ import { GETCOLLECTION, DELETEDOC, SETDOC, GETDOC } from "../../../server";
 import MyModal from "../../PopUps/Confirm/Confirm";
 import sort from "../../../assets/sort.png";
 import sortBy from "sort-by";
+import Input from "../../Input/Input";
 const DropDowns = ({ SetCustomizationPage, setActivePageDash }) => {
   const [dropDowns, setDropDowns] = useState([]);
   const [targetDropDown, setTargetDropDown] = useState(null);
@@ -444,21 +445,18 @@ const DropDowns = ({ SetCustomizationPage, setActivePageDash }) => {
           }}
         >
           <>
-            <div className="formItem ">
-              <label htmlFor="Name">DropDown Name:</label>
-              <input
-                required
-                type="text"
-                id="Name"
-                name="Name"
-                value={newDropDown.Name}
-                onChange={() => {
-                  SetNewDropDown((prev) => {
-                    return { ...prev, Name: event.target.value };
-                  });
-                }}
-              ></input>
-            </div>
+            <Input
+              label="DropDown Name"
+              type="text"
+              id="Name"
+              name="Name"
+              value={newDropDown.Name}
+              onChangeFunction={() => {
+                SetNewDropDown((prev) => {
+                  return { ...prev, Name: event.target.value };
+                });
+              }}
+            />
           </>
         </MyModal>
       )}
@@ -492,16 +490,16 @@ const DropDowns = ({ SetCustomizationPage, setActivePageDash }) => {
             Go Back
           </span>
           <h1 style={{ textAlign: "center" }}>{SelectedDropDown.Name}</h1>
-          <div className="FormItem" id="Title">
-            <label htmlFor="Name">DropDown Name:</label>
-            <input
-              type="text"
-              id="Name"
-              name="Name"
-              value={SelectedDropDown.Name}
-              onChange={handleInput}
-            />
-          </div>
+          <Input
+            startWithContent={true}
+            customWidth="70%"
+            label="DropDown Name"
+            type="text"
+            id="Name"
+            name="Name"
+            value={SelectedDropDown.Name}
+            onChangeFunction={handleInput}
+          />
           <button className="Button" onClick={UpdateName}>
             Save
           </button>

@@ -18,14 +18,17 @@ const Section8 = (props) => {
   });
 
   return (
-    <div className="Section8">
+    <div
+      className="Section8"
+      style={{ backgroundColor: props.ServerData.sectionColor }}
+    >
       {severData.Title && <h2 data-aos="fade-down">{severData.Title}</h2>}
       {severData.Paragraph && <p data-aos="fade-up">{severData.Paragraph}</p>}
       <div className="Slider-wrapper">
         <Swiper
           freeMode={true}
           loop={true}
-          slidesPerView={props.screenWidth > 1000 ? 2 : 1}
+          slidesPerView={props.screenWidth > 1000 ? 3 : 1}
           spaceBetween={10}
           pagination={{
             clickable: true,
@@ -36,7 +39,7 @@ const Section8 = (props) => {
           }}
           breakpoints={{
             900: {
-              slidesPerView: 2,
+              slidesPerView: 3,
               spaceBetween: 20,
             },
             250: {

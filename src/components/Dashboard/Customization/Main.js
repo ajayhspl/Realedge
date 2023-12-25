@@ -22,6 +22,7 @@ const Main = ({
   setSaving,
   Tabs,
   setEdited,
+  edited,
 }) => {
   const keysArray = Object.keys(Data);
   const sortedArray = keysArray.sort((a, b) => {
@@ -92,6 +93,7 @@ const Main = ({
           Data={Data.Header}
           UpdateData={UpdateData}
           setEdited={setEdited}
+          edited={edited}
         />
       )}
       {ActivePage === "Section1" && (
@@ -99,6 +101,7 @@ const Main = ({
           FetchedData={Data.Section1}
           UpdateData={UpdateData}
           setEdited={setEdited}
+          edited={edited}
         />
       )}
       {ActivePage === "Section8" && (
@@ -106,6 +109,7 @@ const Main = ({
           FetchedData={Data.Section8}
           UpdateData={UpdateData}
           setEdited={setEdited}
+          edited={edited}
         />
       )}
       {ActivePage === "Section3" && (
@@ -113,6 +117,7 @@ const Main = ({
           FetchedData={Data.Section3}
           UpdateData={UpdateData}
           setEdited={setEdited}
+          edited={edited}
         />
       )}
       {ActivePage === "Section4" && (
@@ -120,6 +125,7 @@ const Main = ({
           FetchedData={Data.Section4}
           UpdateData={UpdateData}
           setEdited={setEdited}
+          edited={edited}
         />
       )}
       {ActivePage === "Section5" && (
@@ -127,6 +133,7 @@ const Main = ({
           FetchedData={Data.Section5}
           UpdateData={UpdateData}
           setEdited={setEdited}
+          edited={edited}
         />
       )}
       {ActivePage === "Section6" && (
@@ -134,6 +141,7 @@ const Main = ({
           FetchedData={Data.Section6}
           UpdateData={UpdateData}
           setEdited={setEdited}
+          edited={edited}
         />
       )}
       {ActivePage === "Section7" && (
@@ -141,6 +149,7 @@ const Main = ({
           FetchedData={Data.Section7}
           UpdateData={UpdateData}
           setEdited={setEdited}
+          edited={edited}
         />
       )}
       {ActivePage === "PageOrder" && (
@@ -148,6 +157,7 @@ const Main = ({
           FetchedData={Data.PageOrder}
           UpdateData={UpdateData}
           setEdited={setEdited}
+          edited={edited}
         />
       )}
       {ActivePage === "FooterData" && (
@@ -156,6 +166,7 @@ const Main = ({
           UpdateData={UpdateData}
           Tabs={Tabs}
           setEdited={setEdited}
+          edited={edited}
         />
       )}
     </div>

@@ -11,6 +11,7 @@ import date from "date-and-time";
 import EmailTemplate from "./EmailTemplate";
 import ReactDOMServer from "react-dom/server";
 import EmailTemplate2 from "../PopUps/EmailTemplate2";
+import Input from "../Input/Input";
 
 const pattern = date.compile("MMM DD YYYY");
 const Template7 = ({ Data }) => {
@@ -74,13 +75,35 @@ const Template7 = ({ Data }) => {
   const columns = [
     {
       name: Data.PricingTableHeader.Type,
-      selector: (row) => <div className="no-wrap">{row.Type}</div>,
+      selector: (row) => (
+        <div
+          className="no-wrap"
+          style={{
+            fontFamily: Data.Font ? Data.Font : "",
+            color: Data.Color ? Data.Color : "",
+            fontSize: "1.2rem",
+          }}
+        >
+          {row.Type}
+        </div>
+      ),
       sortable: true,
       center: true,
     },
     {
       name: Data.PricingTableHeader.Cost,
-      selector: (row) => <div className="no-wrap">{row.Cost}</div>,
+      selector: (row) => (
+        <div
+          className="no-wrap"
+          style={{
+            fontFamily: Data.Font ? Data.Font : "",
+            color: Data.Color ? Data.Color : "",
+            fontSize: "1.2rem",
+          }}
+        >
+          {row.Cost}
+        </div>
+      ),
       sortable: true,
       center: true,
     },
@@ -278,13 +301,13 @@ const Template7 = ({ Data }) => {
     setShowHint(true);
   };
   return (
-    <div className="Outsource Product">
-      {Data.Video && (
-        <div className="ProductVideo">
-          <VideoPlayer videoUrl={Data.Video} />
-        </div>
-      )}
-
+    <div
+      className="Outsource Product"
+      style={{
+        fontFamily: Data.Font ? Data.Font : "",
+        color: Data.Color ? Data.Color : "",
+      }}
+    >
       <div className="LeftSide">
         {Data.OverViewBody != " <p><br></p>" &&
           Data.OverViewBody != "<p><br></p>" && (
@@ -306,7 +329,9 @@ const Template7 = ({ Data }) => {
 
         {Data.Pricing.length != 0 && (
           <div className="pricing">
-            <h2>Pricing Information</h2>
+            <h2 style={{ fontFamily: Data.Font ? Data.Font : "" }}>
+              Pricing Information
+            </h2>
             <DataTable
               className="Table animate__animated animate__fadeIn"
               style={{ animationDelay: ".4s" }}
@@ -335,8 +360,13 @@ const Template7 = ({ Data }) => {
         )}
 
         {Data.documents.length != 0 && (
-          <div className="Additional">
-            <h2>Additional Resources</h2>
+          <div
+            className="Additional"
+            style={{ fontFamily: Data.Font ? Data.Font : "" }}
+          >
+            <h2 style={{ fontFamily: Data.Font ? Data.Font : "" }}>
+              Additional Resources
+            </h2>
             <p>Thank you for your interest in {webName}</p>
             <span>
               Fill the below form and we will send the document to your email
@@ -369,76 +399,70 @@ const Template7 = ({ Data }) => {
               </div>
             )}
             <form>
-              <div className="formItem" id="Fname">
-                <input
-                  required
-                  type="Text"
-                  name="Fname"
-                  placeholder="First name"
-                  value={formData.Fname}
-                  onChange={handleFormChange}
-                ></input>
-              </div>
-              <div className="formItem" id="Lname">
-                <input
-                  required
-                  type="Text"
-                  name="Lname"
-                  placeholder="Last name"
-                  value={formData.Lname}
-                  onChange={handleFormChange}
-                ></input>
-              </div>
-              <div className="formItem" id="JobTitle">
-                <input
-                  required
-                  type="Text"
-                  name="JobTitle"
-                  placeholder="Job title"
-                  value={formData.JobTitle}
-                  onChange={handleFormChange}
-                ></input>
-              </div>
-              <div className="formItem" id="Company">
-                <input
-                  required
-                  type="Text"
-                  name="Company"
-                  placeholder="Company"
-                  value={formData.Company}
-                  onChange={handleFormChange}
-                ></input>
-              </div>
-              <div className="formItem" id="Phone">
-                <input
-                  type="Text"
-                  name="Phone"
-                  placeholder="Contact Phone (optional)"
-                  value={formData.Phone}
-                  onChange={handleFormChange}
-                ></input>
-              </div>
-              <div className="formItem " id="Country">
-                <Select
-                  value={formData.Country}
-                  onChange={handleCountryChange}
-                  options={countries}
-                  className="Select"
-                  required
-                  isSearchable={true}
-                  placeholder="Select country"
-                />
-              </div>
-              <div className="formItem" id="Email">
-                <input
-                  required
-                  type="email"
-                  name="Email"
-                  placeholder="Professional email"
-                  value={formData.Email}
-                  onChange={handleFormChange}
-                ></input>
-              </div>
+              <Input
+                required
+                type="Text"
+                name="Fname"
+                label="First name:"
+                value={formData.Fname}
+                onChange={handleFormChange}
+              />
+
+              <Input
+                required
+                type="Text"
+                name="Lname"
+                label="Last name:"
+                value={formData.Lname}
+                onChange={handleFormChange}
+              />
+
+              <Input
+                required
+                type="Text"
+                name="JobTitle"
+                label="Job title:"
+                value={formData.JobTitle}
+                onChange={handleFormChange}
+              />
+
+              <Input
+                required
+                type="Text"
+                name="Company"
+                label="Company:"
+                value={formData.Company}
+                onChange={handleFormChange}
+              />
+
+              <Input
+                type="Text"
+                name="Phone"
+                label="Contact Phone (optional):"
+                placeholder="Contact Phone (optional)"
+                value={formData.Phone}
+                onChange={handleFormChange}
+              />
+
+              <Input
+                required
+                type="email"
+                name="Email"
+                id="Email"
+                label="Professional email:"
+                placeholder="Professional email"
+                value={formData.Email}
+                onChange={handleFormChange}
+              />
+              <Select
+                value={formData.Country}
+                onChange={handleCountryChange}
+                options={countries}
+                label="Country:"
+                className="Select"
+                required
+                isSearchable={true}
+              />
               <div className="formItem " id="FollowUp">
                 <Select
                   value={formData.FollowUp}
@@ -480,6 +504,7 @@ const Template7 = ({ Data }) => {
         {Data.SupportBody != "<p><br></p>" && (
           <div
             className="Support"
+            style={{ fontFamily: Data.Font ? Data.Font : "" }}
             dangerouslySetInnerHTML={{ __html: Data.SupportBody }}
           ></div>
         )}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { UPLOADPHOTO } from "../../../../server";
+import { DELETEPHOTO, UPLOADPHOTO, UPLOADVIDEO } from "../../../../server";
 import { CreateToast } from "../../../../App";
 import Upload from "../../../../assets/upload.png";
 import sortBy from "sort-by";
@@ -8,9 +8,20 @@ import date from "date-and-time";
 const pattern = date.compile("MMM DD YYYY");
 import TipTap from "./RichTextEditor/tiptap";
 import MyModal from "../../../PopUps/Confirm/Confirm";
-const Template2 = ({ Data, UpdateData, BackEndName, setEdited }) => {
+import Input from "../../../Input/Input";
+import Select from "react-select";
+import VideoPlayer from "../../../VideoPlayer";
+const HeaderContent = [
+  { value: "Video", label: "Video" },
+  { value: "Text", label: "Text" },
+];
+
+const Template2 = ({ Data, UpdateData, BackEndName, setEdited, edited }) => {
   const [data, setData] = useState(Data);
   const [editingState, setEditingState] = useState(null);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [videoUploading, setVideoUploading] = useState(false);
+
   const [NewJob, setNewJob] = useState({
     DateAdded: "",
     DescriptionContent: "",
@@ -102,6 +113,29 @@ const Template2 = ({ Data, UpdateData, BackEndName, setEdited }) => {
       setEdited(true);
     }
   }, [data]);
+  const DeleteVideo = async () => {
+    if (videoUploading) {
+      CreateToast("Video Uploading, please wait...", "error", 2000);
+      return;
+    }
+    CreateToast("deleting video", "info");
+    await DELETEPHOTO(`/customization/SidePages/${BackEndName}/Video`);
+    await UpdateData(BackEndName, { ...data, Video: "", WhatToShow: "Text" });
+    setData((prev) => ({ ...prev, Video: "" }));
+    CreateToast("video deleted", "success");
+  };
+  const handleProgress = (progress) => {
+    setUploadProgress(progress);
+    if (progress === 100) {
+      setVideoUploading(false);
+    }
+  };
+  const handleHeaderDataChange = (value) => {
+    setData((prev) => {
+      return { ...prev, HeaderData: value };
+    });
+  };
+
   const handleInput = async (e) => {
     const { name, value } = e.target;
 
@@ -118,6 +152,28 @@ const Template2 = ({ Data, UpdateData, BackEndName, setEdited }) => {
       });
       CreateToast("photo uploaded", "success", 2000);
 
+      return;
+    } else if (name === "Video") {
+      if (videoUploading) {
+        CreateToast("uploading Video", "error", 2000);
+        return;
+      }
+      setVideoUploading(true);
+      CreateToast("uploading Video", "info", 10000);
+      const file = e.target.files[0];
+      const url = await UPLOADVIDEO(
+        `/customization/SidePages/${BackEndName}/Video`,
+        file,
+        handleProgress
+      );
+
+      setData((prev) => {
+        return { ...prev, Video: url };
+      });
+      setUploadProgress(0);
+      CreateToast("Video uploaded", "success", 2000);
+
+      UpdateData(BackEndName, { ...data, Video: url });
       return;
     } else {
       setData((prev) => {
@@ -268,56 +324,52 @@ const Template2 = ({ Data, UpdateData, BackEndName, setEdited }) => {
           handlePrimaryAction={editingState ? SaveJob : handlePrimaryAction}
         >
           <>
-            <div className="formItem ">
-              <label htmlFor="title">Designation:</label>
-              <input
-                type="text"
-                id="Designation"
-                name="Designation"
-                value={NewJob.Designation}
-                onChange={handleJobUpdate}
-              ></input>
-            </div>
-            <div className="formItem ">
-              <label htmlFor="text">Experience:</label>
-              <input
-                name="Experience"
-                id="Experience"
-                type="text"
-                value={NewJob.Experience}
-                onChange={handleJobUpdate}
-              />
-            </div>
-            <div className="formItem ">
-              <label htmlFor="text">Qualification:</label>
-              <input
-                type="text"
-                id="Qualification"
-                name="Qualification"
-                value={NewJob.Qualification}
-                onChange={handleJobUpdate}
-              />
-            </div>
-            <div className="formItem ">
-              <label htmlFor="text">Vacancy:</label>
-              <input
-                type="text"
-                id="Vacancy"
-                name="Vacancy"
-                value={NewJob.Vacancy}
-                onChange={handleJobUpdate}
-              />
-            </div>
-            <div className="formItem ">
-              <label htmlFor="text">Job Location:</label>
-              <input
-                type="text"
-                id="JobLocation"
-                name="JobLocation"
-                value={NewJob.JobLocation}
-                onChange={handleJobUpdate}
-              />
-            </div>
+            <Input
+              label="Designation"
+              type="text"
+              id="Designation"
+              name="Designation"
+              value={NewJob.Designation}
+              onChangeFunction={handleJobUpdate}
+              customWidth="70%"
+            />
+            <Input
+              label="Experience"
+              type="text"
+              id="Experience"
+              name="Experience"
+              value={NewJob.Experience}
+              onChangeFunction={handleJobUpdate}
+              customWidth="70%"
+            />
+            <Input
+              label="Qualification"
+              type="text"
+              id="Qualification"
+              name="Qualification"
+              value={NewJob.Qualification}
+              onChangeFunction={handleJobUpdate}
+              customWidth="70%"
+            />
+            <Input
+              label="Vacancy"
+              type="text"
+              id="Vacancy"
+              name="Vacancy"
+              value={NewJob.Vacancy}
+              onChangeFunction={handleJobUpdate}
+              customWidth="70%"
+            />
+            <Input
+              label="Job Location"
+              type="text"
+              id="JobLocation"
+              name="JobLocation"
+              value={NewJob.JobLocation}
+              onChangeFunction={handleJobUpdate}
+              customWidth="70%"
+            />
+
             <div className="formItem" style={{ flexDirection: "column" }}>
               <label htmlFor="DescriptionContent">Description:</label>
               <TipTap
@@ -356,91 +408,135 @@ const Template2 = ({ Data, UpdateData, BackEndName, setEdited }) => {
       <span style={{ margin: "20px" }}>
         to hide a page just leave the <strong>Page URL</strong> field empty
       </span>
-      <div className="FormItem" id="Title">
-        <label htmlFor="PageURL">Page URL:</label>
-        <input
-          type="text"
-          id="PageURL"
-          name="PageURL"
-          value={data.PageURL}
-          onChange={handleInput}
+      <Input
+        label="Page URL"
+        type="text"
+        id="PageURL"
+        name="PageURL"
+        value={data.PageURL}
+        onChangeFunction={handleInput}
+        customWidth="70%"
+      />
+      <Input
+        label="Page Name in navigation "
+        type="text"
+        id="PageName"
+        name="PageName"
+        value={data.PageName}
+        onChangeFunction={handleInput}
+        customWidth="70%"
+      />
+      <Input
+        label="Header Title"
+        type="text"
+        id="HeaderTitle"
+        name="HeaderTitle"
+        value={data.HeaderTitle}
+        onChangeFunction={handleInput}
+        customWidth="70%"
+      />
+      <Input
+        label="Top Title"
+        type="text"
+        id="TopTitle"
+        name="TopTitle"
+        required={true}
+        value={data.TopTitle}
+        onChangeFunction={handleInput}
+        customWidth="70%"
+      />
+      <Input
+        label="Bottom Title"
+        type="text"
+        id="BottomTitle"
+        name="BottomTitle"
+        required={true}
+        value={data.BottomTitle}
+        onChangeFunction={handleInput}
+        customWidth="70%"
+      />
+      <Input
+        label="Sub Title"
+        type="text"
+        id="Title"
+        name="Title"
+        value={data.Title}
+        onChangeFunction={handleInput}
+        customWidth="70%"
+      />
+      <Input
+        textarea={true}
+        label="Paragraph"
+        type="textarea"
+        id="Para"
+        name="Para"
+        value={data.Para}
+        onChangeFunction={handleInput}
+        customWidth="70%"
+      />
+      <h2>Media</h2>
+      <div>
+        <label>What To Show:</label>
+        <Select
+          options={HeaderContent}
+          value={HeaderContent.find(
+            (object) => object.value === data.WhatToShow
+          )}
+          onChange={(selectedOption) =>
+            setData((prev) => {
+              return { ...prev, WhatToShow: selectedOption.value };
+            })
+          }
         />
       </div>
-      <div className="FormItem" id="Title">
-        <label htmlFor="PageName">Page Name:</label>
-        <input
-          type="text"
-          id="PageName"
-          name="PageName"
-          value={data.PageName}
-          onChange={handleInput}
-        />
+      <div className="HeaderContent">
+        <div className="video">
+          <div className="UploadWrapper">
+            <div className="FormItem">
+              <span>Video: </span>
+              <label htmlFor="Video">
+                <img
+                  src={Upload}
+                  style={{ width: "25px", cursor: "pointer" }}
+                />
+              </label>
+              <input
+                type="file"
+                accept="video/*"
+                hidden
+                id="Video"
+                name="Video"
+                onChange={handleInput}
+              />
+            </div>
+          </div>
+          {uploadProgress != 0 && (
+            <div className="video-progress-bar">
+              <div
+                className="video-progress-bar-fill"
+                style={{ width: `${uploadProgress}%` }}
+              ></div>
+            </div>
+          )}
+          {data.Video && (
+            <div style={{ width: "500px" }}>
+              <VideoPlayer videoUrl={data.Video} />
+
+              <button className="Button Danger" onClick={DeleteVideo}>
+                Delete Video
+              </button>
+            </div>
+          )}
+        </div>
+        <div className="textEditor">
+          <TipTap
+            editorClassName="smallEditor"
+            setHTML={handleHeaderDataChange}
+            OldData={data.HeaderData}
+          />
+        </div>
       </div>
-      <div className="FormItem" id="Title">
-        <label htmlFor="HeaderTitle">Header Title:</label>
-        <input
-          type="text"
-          id="HeaderTitle"
-          name="HeaderTitle"
-          value={data.HeaderTitle}
-          onChange={handleInput}
-        />
-      </div>
-      <div className="FormItem">
-        <label htmlFor="TopTitle">Top Title:</label>
-        <input
-          type="text"
-          required
-          id="TopTitle"
-          name="TopTitle"
-          value={data.TopTitle}
-          onChange={handleInput}
-        />
-        <input
-          className="ColorPicker"
-          type="color"
-          value={data.TopColor}
-          name="TopColor"
-          onChange={handleInput}
-        />
-      </div>
-      <div className="FormItem">
-        <label htmlFor="BottomTitle">Bottom Title:</label>
-        <input
-          type="text"
-          required
-          id="BottomTitle"
-          name="BottomTitle"
-          value={data.BottomTitle}
-          onChange={handleInput}
-        />
-        <input
-          className="ColorPicker"
-          type="color"
-          value={data.BottomColor}
-          name="BottomColor"
-          onChange={handleInput}
-        />
-      </div>
-      <div className="FormItem" id="Title">
-        <label htmlFor="Title">Sub Title:</label>
-        <input
-          type="text"
-          id="Title"
-          name="Title"
-          value={data.Title}
-          onChange={handleInput}
-        />
-      </div>
-      <div className="FormItem" id="Para">
-        <label htmlFor="Para">Paragraph:</label>
-        <textarea
-          id="Para"
-          name="Para"
-          value={data.Para}
-          onChange={handleInput}
-        />
-      </div>
+
       <button
         className="Button Add"
         style={{ margin: "0px 20px" }}
@@ -457,15 +553,17 @@ const Template2 = ({ Data, UpdateData, BackEndName, setEdited }) => {
         columns={jobsColumns}
         data={jobsData}
       />
-      <button
-        className="Button View"
-        id="Submit"
-        onClick={() => {
-          UpdateData(BackEndName, data);
-        }}
-      >
-        Save
-      </button>
+      <div className={`SubmitWrapper ${edited ? "fixed" : ""}`}>
+        <button
+          className="Button View"
+          id="Submit"
+          onClick={() => {
+            UpdateData(BackEndName, data);
+          }}
+        >
+          Save
+        </button>
+      </div>
     </div>
   );
 };

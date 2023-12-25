@@ -2,7 +2,10 @@ import React from "react";
 import "./Section4.css";
 const Section4 = (props) => {
   return (
-    <section className="Section4">
+    <section
+      className="Section4"
+      style={{ backgroundColor: props.ServerData.sectionColor }}
+    >
       <div className="Left">
         {props.ServerData.title && (
           <h2 data-aos="fade-down">{props.ServerData.title}</h2>

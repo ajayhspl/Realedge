@@ -17,6 +17,7 @@ import {
   encrypt,
 } from "../../server";
 import "./Settings.css";
+import Input from "../Input/Input";
 export default function Settings() {
   const [activePage, setActivePage] = React.useState("Login");
   const [showModal, setShowModal] = React.useState(false);
@@ -26,10 +27,7 @@ export default function Settings() {
     email: "",
     Password: "",
   });
-  const [ActiveUser, setActiveUser] = React.useState(
-    decrypt(JSON.parse(sessionStorage.getItem("activeUser")).id)
-  );
-
+  const [ActiveUser, setActiveUser] = React.useState("");
   const handleInput = (e) => {
     const { name, value } = e.target;
     setActiveUser((prev) => {
@@ -86,7 +84,10 @@ export default function Settings() {
 
   useEffect(() => {
     const FetchUser = async () => {
-      await GETDOC("users", ActiveUser).then((res) => {
+      await GETDOC(
+        "users",
+        decrypt(JSON.parse(sessionStorage.getItem("activeUser")).id)
+      ).then((res) => {
         setActiveUser(res), setOldEmail(res.email), setOldUser(res.Username);
       });
     };
@@ -162,33 +163,29 @@ export default function Settings() {
         <div className="Portal">
           <h3> please login once more </h3>
           <form className="animate__animated animate__fadeInDown">
-            <div className="formItem ">
-              <label htmlFor="email">Email:</label>
-              <input
-                required
-                type="email"
-                id="email"
-                name="email"
-                value={loginData.email}
-                onChange={UpdateInput}
-              ></input>
-            </div>
-            <div className="formItem " style={{ animationDelay: ".7s" }}>
-              <label htmlFor="Password">Password:</label>
-              <input
-                min={8}
-                required
-                type="password"
-                id="Password"
-                name="Password"
-                value={loginData.Password}
-                onChange={UpdateInput}
-              ></input>
-            </div>
+            <Input
+              label="Email"
+              type="email"
+              required={true}
+              id="email"
+              name="email"
+              value={loginData.email}
+              onChangeFunction={UpdateInput}
+            />
+            <Input
+              label="Password"
+              type="password"
+              required={true}
+              id="Password"
+              name="Password"
+              value={loginData.Password}
+              onChangeFunction={UpdateInput}
+            />
+
             <input
               type="submit"
-              className="Button"
               value="login"
+              className="Button"
               onClick={signIn}
             ></input>
           </form>
@@ -220,56 +217,53 @@ export default function Settings() {
               <div className="General">
                 <h1>General info</h1>
                 <form>
-                  <div id="Fname">
-                    <label htmlFor="first-name">First Name:</label>
-                    <input
-                      type="text"
-                      id="first-name"
-                      name="Fname"
-                      value={ActiveUser.Fname}
-                      onChange={handleInput}
-                    />
-                  </div>
-                  <div id="Lname">
-                    <label htmlFor="last-name">Last Name:</label>
-                    <input
-                      type="text"
-                      id="last-name"
-                      name="Lname"
-                      value={ActiveUser.Lname}
-                      onChange={handleInput}
-                    />
-                  </div>
-                  <div id="Username">
-                    <label htmlFor="username">Username:</label>
-                    <input
-                      type="text"
-                      id="username"
-                      name="Username"
-                      value={ActiveUser.Username}
-                      onChange={handleInput}
-                    />
-                  </div>
-                  <div id="Phone">
-                    <label htmlFor="phone">Phone Number:</label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={ActiveUser.phone}
-                      onChange={handleInput}
-                    />
-                  </div>
-                  <div id="Email">
-                    <label htmlFor="email">Email:</label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={ActiveUser.email}
-                      onChange={handleInput}
-                    />
-                  </div>
+                  <Input
+                    label="First Name"
+                    type="text"
+                    id="Fname"
+                    name="Fname"
+                    value={ActiveUser.Fname}
+                    startWithContent={ActiveUser.Fname}
+                    onChangeFunction={handleInput}
+                  />
+
+                  <Input
+                    label="Last Name"
+                    type="text"
+                    id="Lname"
+                    name="Lname"
+                    value={ActiveUser.Lname}
+                    startWithContent={ActiveUser.Lname}
+                    onChangeFunction={handleInput}
+                  />
+
+                  <Input
+                    label="Username"
+                    type="text"
+                    id="Username"
+                    name="Username"
+                    value={ActiveUser.Username}
+                    startWithContent={ActiveUser.Username}
+                    onChangeFunction={handleInput}
+                  />
+                  <Input
+                    startWithContent={ActiveUser.phone}
+                    label="Phone Number"
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={ActiveUser.phone}
+                    onChangeFunction={handleInput}
+                  />
+                  <Input
+                    startWithContent={ActiveUser.email}
+                    label="Email"
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={ActiveUser.email}
+                    onChangeFunction={handleInput}
+                  />
 
                   <div id="Gender">
                     <label htmlFor="gender">Gender:</label>

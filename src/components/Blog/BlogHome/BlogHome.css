@@ -9,7 +9,13 @@
   display: flex;
   gap: 2%;
 }
-
+.FeaturedArticles {
+  width: 80%;
+}
+.blogHead {
+  justify-content: space-between;
+  display: flex;
+}
 .BlogMain .Recent-Blogs {
   width: 80%;
   height: 100%;
@@ -17,8 +23,8 @@
 .BlogMain .Recent-Blogs h2 {
   margin-bottom: 40px;
 }
-.BlogMain .SideBar {
-  width: 25%;
+.SideBar {
+  width: 19%;
   padding-top: 0;
   height: 100%;
   display: flex;

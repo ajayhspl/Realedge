@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from "react";
 import "./Footer.css";
-import Facebook from "../../assets/facebook.png";
-import Youtube from "../../assets/youtube.png";
-import Twitter from "../../assets/twitter.png";
-import Telegram from "../../assets/telegram.png";
-import Linkedin from "../../assets/linkedin.png";
-import Pinterest from "../../assets/pinterest.png";
-import Phone from "../../assets/phone.png";
-import Email from "../../assets/mail.png";
-import Instagram from "../../assets/instagram.png";
-import WhatsApp from "../../assets/whatsapp.png";
-import Skype from "../../assets/skype.png";
-import { useRef } from "react";
+
+import {
+  FaFacebook,
+  FaYoutube,
+  FaTelegram,
+  FaPinterest,
+  FaInstagram,
+  FaWhatsapp,
+  FaSkype,
+  FaLinkedin,
+  FaPhoneAlt,
+} from "react-icons/fa";
+import { MdOutlineEmail } from "react-icons/md";
+
+import { RiTwitterXFill } from "react-icons/ri";
 
 const Footer = ({ ServerData, Tabs }) => {
-  const Location = useRef(window.location.href).current;
   const [socialContainer, SetSocialContainer] = useState([]);
   const objectToArray = (obj) => {
     return Object.keys(obj).map((key) => ({
@@ -32,68 +34,72 @@ const Footer = ({ ServerData, Tabs }) => {
     }
   }, []);
   const RenderSocials = socialContainer?.map((Social) => {
-    let img = "";
+    let icon;
     let link;
+
     switch (Social.name) {
       case "Facebook":
-        img = Facebook;
+        icon = (
+          <FaFacebook style={{ fontSize: "2rem", color: "var(--icons)" }} />
+        );
         link = Social.Link;
-
         break;
       case "Youtube":
-        img = Youtube;
+        icon = (
+          <FaYoutube style={{ fontSize: "2rem", color: "var(--icons)" }} />
+        );
         link = Social.Link;
-
         break;
       case "Twitter":
-        img = Twitter;
+        icon = (
+          <RiTwitterXFill style={{ fontSize: "2rem", color: "var(--icons)" }} />
+        );
         link = Social.Link;
-
         break;
       case "Telegram":
-        img = Telegram;
+        icon = (
+          <FaTelegram style={{ fontSize: "2rem", color: "var(--icons)" }} />
+        );
         link = Social.Link;
-
         break;
       case "Pinterest":
-        img = Pinterest;
+        icon = (
+          <FaPinterest style={{ fontSize: "2rem", color: "var(--icons)" }} />
+        );
         link = Social.Link;
-
         break;
       case "Instagram":
-        img = Instagram;
+        icon = (
+          <FaInstagram style={{ fontSize: "2rem", color: "var(--icons)" }} />
+        );
         link = Social.Link;
-
         break;
       case "WhatsApp":
-        img = WhatsApp;
+        icon = (
+          <FaWhatsapp style={{ fontSize: "2rem", color: "var(--icons)" }} />
+        );
         link = `https://wa.me/${Social.Link}`;
         break;
       case "Skype":
-        img = Skype;
+        icon = <FaSkype style={{ fontSize: "2rem", color: "var(--icons)" }} />;
         link = Social.Link;
-
         break;
       case "Linkedin":
-        img = Linkedin;
+        icon = (
+          <FaLinkedin style={{ fontSize: "2rem", color: "var(--icons)" }} />
+        );
         link = Social.Link;
-
         break;
       default:
         link = Social.Link;
-
         break;
     }
 
     return Social.Link ? (
-      <li>
-        <a href={link}>
-          <img src={img} />
-        </a>
+      <li key={Social.name}>
+        <a href={link}>{icon}</a>
       </li>
-    ) : (
-      ""
-    );
+    ) : null;
   });
 
   const renderLinks = ServerData.Links.map((link) => {
@@ -123,13 +129,17 @@ const Footer = ({ ServerData, Tabs }) => {
           <p>CONTACT</p>
           {ServerData.Email && (
             <a className="ContactIcon" href={`mailto:${ServerData.Email}`}>
-              <img src={Email} />
+              <MdOutlineEmail
+                style={{ fontSize: "2rem", color: "var(--icons)" }}
+              />
               {ServerData.Email}
             </a>
           )}
           {ServerData.Phone && (
             <a className="ContactIcon" href={`tel:${ServerData.Phone}`}>
-              <img src={Phone} />
+              <FaPhoneAlt
+                style={{ fontSize: "1.2rem", color: "var(--icons)" }}
+              />
               {ServerData.Phone}
             </a>
           )}
@@ -177,13 +187,10 @@ const Footer = ({ ServerData, Tabs }) => {
           <span>&</span>
           <a href={Tabs.Privacy.PageURL}>Privacy Policy</a>
         </div>
-        {Location.includes("Dashboard") || Location.includes("Portal") ? (
-          <p style={{ marginLeft: "auto", color: "white" }}>
-            Website Version: 2.2
-          </p>
-        ) : (
-          ""
-        )}
+
+        <p style={{ marginLeft: "auto", color: "white" }}>
+          Website Version: 4.3
+        </p>
       </div>
     </div>
   );

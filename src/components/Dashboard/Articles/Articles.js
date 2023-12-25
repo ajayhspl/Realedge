@@ -121,6 +121,13 @@ const Articles = () => {
       width: "80px",
     },
     {
+      name: "Views",
+      selector: (row) => row.Views,
+      sortable: true,
+      center: true,
+      width: "100px",
+    },
+    {
       name: "Replies",
       selector: (row) => row.ReplyCount,
       sortable: true,
@@ -203,6 +210,7 @@ const Articles = () => {
       ReadTime: Article.ReadTime + "m",
       LikeCount: Article.liked.length,
       ReplyCount: Article.replies.length,
+      Views: Article.views,
       MakerName: (
         <a href={`/Dashboard/User/${Article.OriginallyMadeBy.id}`}>
           {Article.OriginallyMadeBy.Fname} {Article.OriginallyMadeBy.Lname}

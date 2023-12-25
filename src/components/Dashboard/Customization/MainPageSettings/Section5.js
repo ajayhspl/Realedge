@@ -2,8 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { GETCOLLECTION } from "../../../../server";
 import sortBy from "sort-by";
 import DataTable from "react-data-table-component";
+import Input from "../../../Input/Input";
 
-const Section5 = ({ FetchedData, UpdateData, setEdited }) => {
+const Section5 = ({ FetchedData, UpdateData, setEdited, edited }) => {
   const [data, setData] = useState(FetchedData);
   const [showAdd, setShowAdd] = useState(false);
   const [projects, SetProjects] = useState([]);
@@ -97,6 +98,8 @@ const Section5 = ({ FetchedData, UpdateData, setEdited }) => {
     },
     {
       name: "Title",
+      width: "190px",
+
       selector: (row) => <div className="text-wrap">{row.Title}</div>,
     },
     {
@@ -109,11 +112,13 @@ const Section5 = ({ FetchedData, UpdateData, setEdited }) => {
       name: <div className="text-wrap">Testimonial Giver</div>,
       selector: (row) => <div className="text-wrap">{row.PersonName}</div>,
       center: true,
+      width: "190px",
     },
     {
       name: <div className="text-wrap">Testimonial giver Position</div>,
       selector: (row) => <div className="text-wrap">{row.PersonPosition}</div>,
       center: true,
+      width: "190px",
     },
     {
       name: <div className="text-wrap">Testimonial giver Company</div>,
@@ -176,10 +181,11 @@ const Section5 = ({ FetchedData, UpdateData, setEdited }) => {
           return {
             id: Card.id,
             Title: (
-              <textarea
-                style={{ minWidth: "200px" }}
+              <Input
+                textarea={true}
+                customWidth="150px"
                 name="Title"
-                onChange={handleChange}
+                onChangeFunction={handleChange}
                 value={Card.Testimonial.Title}
               />
             ),
@@ -187,27 +193,26 @@ const Section5 = ({ FetchedData, UpdateData, setEdited }) => {
               ? targetProject.Title
               : "Project Deleted",
             Description: (
-              <textarea
-                style={{ minWidth: "300px" }}
+              <Input
+                textarea={true}
+                customWidth="300px"
                 name="Description"
-                onChange={handleChange}
+                onChangeFunction={handleChange}
                 value={Card.Testimonial.Description}
               />
             ),
             PersonName: (
-              <input
-                style={{ minWidth: "100px" }}
+              <Input
                 name="PersonName"
+                onChangeFunction={handleChange}
                 value={Card.Testimonial.PersonName}
-                onChange={handleChange}
               />
             ),
             PersonPosition: (
-              <input
-                style={{ minWidth: "100px" }}
+              <Input
                 name="PersonPosition"
+                onChangeFunction={handleChange}
                 value={Card.Testimonial.PersonPosition}
-                onChange={handleChange}
               />
             ),
             Company: targetProject
@@ -258,28 +263,27 @@ const Section5 = ({ FetchedData, UpdateData, setEdited }) => {
           />
         </label>
       </div>
-      <div className="FormItem" id="Title">
-        <label htmlFor="Title">Section Title:</label>
-        <input
-          type="text"
-          required
-          id="Title"
-          name="Title"
-          value={data.Title}
-          onChange={handleInput}
-        />
-      </div>
-      <div className="FormItem">
-        <label htmlFor="SubTitle">Paragraph:</label>
-        <textarea
-          type="text"
-          required
-          id="SubTitle"
-          name="paragraph"
-          value={data.paragraph}
-          onChange={handleInput}
-        />
-      </div>
+      <Input
+        label="Section Title"
+        type="text"
+        required={true}
+        id="Title"
+        name="Title"
+        value={data.Title}
+        onChangeFunction={handleInput}
+        customWidth="70%"
+      />
+      <Input
+        label="Paragraph"
+        textarea={true}
+        required={true}
+        id="paragraph"
+        name="paragraph"
+        value={data.paragraph}
+        onChangeFunction={handleInput}
+        customWidth="70%"
+      />
+
       <button
         onClick={() => {
           setShowAdd((prev) => !prev);
@@ -291,36 +295,34 @@ const Section5 = ({ FetchedData, UpdateData, setEdited }) => {
       {showAdd && (
         <>
           <form className="Add-Testimonial">
-            <div className="FormItem">
-              <label htmlFor="Title">Title:</label>
-              <input
-                type="text"
-                id="Title"
-                name="Title"
-                value={newTestimonial.Testimonial.Title}
-                onChange={handleNew}
-              />
-            </div>
-            <div className="FormItem">
-              <label htmlFor="PersonName">Person Name:</label>
-              <input
-                type="text"
-                id="PersonName"
-                name="PersonName"
-                value={newTestimonial.Testimonial.PersonName}
-                onChange={handleNew}
-              />
-            </div>
-            <div className="FormItem">
-              <label htmlFor="PersonPosition">Person Position:</label>
-              <input
-                type="text"
-                id="PersonPosition"
-                name="PersonPosition"
-                value={newTestimonial.Testimonial.PersonPosition}
-                onChange={handleNew}
-              />
-            </div>
+            <Input
+              label="Title"
+              type="text"
+              id="Title"
+              name="Title"
+              value={newTestimonial.Testimonial.Title}
+              onChangeFunction={handleNew}
+              customWidth="45%"
+            />
+            <Input
+              label="Person Name"
+              type="text"
+              id="PersonName"
+              name="PersonName"
+              value={newTestimonial.Testimonial.PersonName}
+              onChangeFunction={handleNew}
+              customWidth="45%"
+            />
+            <Input
+              label="Person Position"
+              type="text"
+              id="PersonPosition"
+              name="PersonPosition"
+              value={newTestimonial.Testimonial.PersonPosition}
+              onChangeFunction={handleNew}
+              customWidth="45%"
+            />
+
             <div className="FormItem select-container">
               <label htmlFor="PersonPosition">Project: </label>
               <select
@@ -332,16 +334,14 @@ const Section5 = ({ FetchedData, UpdateData, setEdited }) => {
                 {renderIDs}
               </select>
             </div>
-            <div className="FormItem Description">
-              <label htmlFor="Description">Description:</label>
-              <textarea
-                type="text"
-                id="Description"
-                name="Description"
-                value={newTestimonial.Testimonial.Description}
-                onChange={handleNew}
-              />
-            </div>
+            <Input
+              label="Description"
+              textarea={true}
+              id="Description"
+              name="Description"
+              value={newTestimonial.Testimonial.Description}
+              onChangeFunction={handleNew}
+            />
           </form>
 
           <div className="Button-wrapper">
@@ -363,16 +363,18 @@ const Section5 = ({ FetchedData, UpdateData, setEdited }) => {
         columns={Cardscolumns}
         data={CardsData}
       />
-
-      <button
-        className="Button View"
-        id="Submit"
-        onClick={() => {
-          UpdateData("Section5", data);
-        }}
-      >
-        Save
-      </button>
+      <div className={`SubmitWrapper ${edited ? "fixed" : ""}`}>
+        <button
+          className="Button View"
+          id="Submit"
+          onClick={() => {
+            setEdited(false);
+            UpdateData("Section5", data);
+          }}
+        >
+          Save
+        </button>
+      </div>
     </div>
   );
 };

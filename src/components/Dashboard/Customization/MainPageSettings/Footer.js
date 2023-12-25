@@ -3,8 +3,9 @@ import { CreateToast } from "../../../../App";
 import OtherLink from "./OtherLink";
 import sortBy from "sort-by";
 import MyModal from "../../../PopUps/Confirm/Confirm";
+import Input from "../../../Input/Input";
 
-const FooterEdit = ({ FetchedData, UpdateData, Tabs, setEdited }) => {
+const FooterEdit = ({ FetchedData, UpdateData, Tabs, setEdited, edited }) => {
   const [Data, setData] = React.useState(FetchedData);
   const [showModal, setShowModal] = useState(false);
 
@@ -75,6 +76,7 @@ const FooterEdit = ({ FetchedData, UpdateData, Tabs, setEdited }) => {
       );
       return;
     }
+    setEdited(false);
     UpdateData("FooterData", Data);
   };
 
@@ -135,16 +137,15 @@ const FooterEdit = ({ FetchedData, UpdateData, Tabs, setEdited }) => {
       link,
     }));
     socialElements = socialArray.map((social) => (
-      <div className="formItem" key={social.name}>
-        <label htmlFor={social.name}>{social.name}:</label>
-        <input
-          type="text"
-          id={social.name}
-          name={social.name}
-          onChange={handleInput}
-          value={social.link}
-        />
-      </div>
+      <Input
+        key={social.name}
+        label={social.name}
+        type="text"
+        id={social.name}
+        name={social.name}
+        onChangeFunction={handleInput}
+        value={social.link}
+      />
     ));
   }
   const firstRender = useRef(true);
@@ -210,76 +211,71 @@ const FooterEdit = ({ FetchedData, UpdateData, Tabs, setEdited }) => {
         </MyModal>
       )}
       <div className="FirstPart">
-        <div className="formItem">
-          <label htmlFor="BottomText">Bottom Text:</label>
-          <input
-            type="text"
-            id="BottomText"
-            name="BottomText"
-            value={Data.BottomText}
-            onChange={handleInput}
-          />
-        </div>
+        <Input
+          label="Bottom Text"
+          type="text"
+          id="BottomText"
+          name="BottomText"
+          onChangeFunction={handleInput}
+          value={Data.BottomText}
+        />
+
         <h3>Contact Info</h3>
-        <div className="formItem">
-          <label htmlFor="Email">Email:</label>
-          <input
-            type="email"
-            id="Email"
-            name="Email"
-            value={Data.Email}
-            onChange={handleInput}
-          />
-        </div>
-        <div className="formItem">
-          <label htmlFor="Phone">Phone:</label>
-          <input
-            type="text"
-            id="Phone"
-            name="Phone"
-            value={Data.Phone}
-            onChange={handleInput}
-          />
-        </div>
+        <Input
+          label="Email"
+          type="email"
+          id="Email"
+          name="Email"
+          onChangeFunction={handleInput}
+          value={Data.Email}
+        />
+
+        <Input
+          label="Phone"
+          type="text"
+          id="Phone"
+          name="Phone"
+          onChangeFunction={handleInput}
+          value={Data.Phone}
+        />
 
         <div className="formItem Address">
-          <label htmlFor="FirstAddressText">Label:</label>
-
-          <input
+          <Input
+            label="Label"
             type="text"
             id="FirstAddressText"
             name="FirstAddressText"
             value={Data.address.title}
-            onChange={handleInput}
+            onChangeFunction={handleInput}
           />
-          <label htmlFor="FirstAddressValue">Address:</label>
-          <input
+
+          <Input
+            label="Address"
             type="text"
             id="FirstAddressValue"
             name="FirstAddressValue"
             value={Data.address.Address}
-            onChange={handleInput}
+            onChangeFunction={handleInput}
           />
         </div>
 
         <div className="formItem Address">
-          <label htmlFor="SecondAddressText">Second Label:</label>
-
-          <input
+          <Input
+            label="Second Label"
             type="text"
             id="SecondAddressText"
             name="SecondAddressText"
             value={Data.ExtraAddress.title}
-            onChange={handleInput}
+            onChangeFunction={handleInput}
           />
-          <label htmlFor="SecondAddressValue">Second Address:</label>
 
-          <input
+          <Input
+            label="Second Address"
             type="text"
             id="SecondAddressValue"
             name="SecondAddressValue"
             value={Data.ExtraAddress.Address}
-            onChange={handleInput}
+            onChangeFunction={handleInput}
           />
         </div>
       </div>
@@ -296,14 +292,16 @@ const FooterEdit = ({ FetchedData, UpdateData, Tabs, setEdited }) => {
         </button>
         <div className="LinkWrapper">{RenderOtherLinks}</div>
       </div>
-      <button
-        style={{ margin: "auto" }}
-        className="Button View"
-        id="Submit"
-        onClick={ValidateData}
-      >
-        Save
-      </button>
+      <div className={`SubmitWrapper ${edited ? "fixed" : ""}`}>
+        <button
+          style={{ margin: "auto" }}
+          className="Button View"
+          id="Submit"
+          onClick={ValidateData}
+        >
+          Save
+        </button>
+      </div>
     </div>
   );
 };

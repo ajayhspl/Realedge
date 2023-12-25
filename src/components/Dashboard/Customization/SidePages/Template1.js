@@ -1,12 +1,22 @@
 import React, { useState, useEffect, useRef } from "react";
 import { CreateToast } from "../../../../App";
-import { UPLOADPHOTO } from "../../../../server";
+import { DELETEPHOTO, UPLOADPHOTO, UPLOADVIDEO } from "../../../../server";
 import Upload from "../../../../assets/upload.png";
 import TipTap from "./RichTextEditor/tiptap";
-const Template1 = ({ Data, UpdateData, BackEndName, setEdited }) => {
+import Input from "../../../Input/Input";
+import VideoPlayer from "../../../VideoPlayer";
+import Select from "react-select";
+
+const Template1 = ({ Data, UpdateData, BackEndName, setEdited, edited }) => {
   const [data, setData] = useState(Data);
   const [photoUploading, setPhotoUploading] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [videoUploading, setVideoUploading] = useState(false);
   const firstRender = useRef(true);
+  const HeaderContent = [
+    { value: "Video", label: "Video" },
+    { value: "Text", label: "Text" },
+  ];
   useEffect(() => {
     if (firstRender.current) {
       // Skip the first render
@@ -34,15 +44,59 @@ const Template1 = ({ Data, UpdateData, BackEndName, setEdited }) => {
       setPhotoUploading(false);
 
       return;
+    } else if (name === "Video") {
+      if (videoUploading) {
+        CreateToast("uploading Video", "error", 2000);
+        return;
+      }
+      setVideoUploading(true);
+      CreateToast("uploading Video", "info", 10000);
+      const file = e.target.files[0];
+      const url = await UPLOADVIDEO(
+        `/customization/SidePages/${BackEndName}/Video`,
+        file,
+        handleProgress
+      );
+
+      setData((prev) => {
+        return { ...prev, Video: url };
+      });
+      setUploadProgress(0);
+      CreateToast("Video uploaded", "success", 2000);
+
+      UpdateData(BackEndName, { ...data, Video: url });
+      return;
     } else {
       setData((prev) => {
         return { ...prev, [name]: value };
       });
     }
   };
+  const DeleteVideo = async () => {
+    if (videoUploading) {
+      CreateToast("Video Uploading, please wait...", "error", 2000);
+      return;
+    }
+    CreateToast("deleting video", "info");
+    await DELETEPHOTO(`/customization/SidePages/${BackEndName}/Video`);
+    await UpdateData(BackEndName, { ...data, Video: "", WhatToShow: "Text" });
+    setData((prev) => ({ ...prev, Video: "" }));
+    CreateToast("video deleted", "success");
+  };
+  const handleProgress = (progress) => {
+    setUploadProgress(progress);
+    if (progress === 100) {
+      setVideoUploading(false);
+    }
+  };
   const handlePostBodyChange = (value) => {
     setData((prev) => {
       return { ...prev, Content: value };
+    });
+  };
+  const handleHeaderDataChange = (value) => {
+    setData((prev) => {
+      return { ...prev, HeaderData: value };
     });
   };
   return (
@@ -64,46 +118,44 @@ const Template1 = ({ Data, UpdateData, BackEndName, setEdited }) => {
       <span style={{ margin: "20px" }}>
         to hide a page just leave the <strong>Page URL</strong> field empty
       </span>
-      <div className="FormItem" id="Title">
-        <label htmlFor="PageURL">Page URL:</label>
-        <input
+      <Input
+        label="Page URL"
+        type="text"
+        id="PageURL"
+        name="PageURL"
+        value={data.PageURL}
+        onChangeFunction={handleInput}
+        customWidth="70%"
+      />
+      <Input
+        label="Page Name in navigation "
+        type="text"
+        id="PageName"
+        name="PageName"
+        required={true}
+        value={data.PageName}
+        onChangeFunction={handleInput}
+        customWidth="70%"
+      />
+      <Input
+        label="Header Title"
+        type="text"
+        id="HeaderTitle"
+        name="HeaderTitle"
+        value={data.HeaderTitle}
+        onChangeFunction={handleInput}
+        customWidth="70%"
+      />
+
+      <div className="FormItem" style={{ width: "70%" }}>
+        <Input
+          label="Top Title"
           type="text"
-          id="PageURL"
-          name="PageURL"
-          value={data.PageURL}
-          onChange={handleInput}
-        />
-      </div>
-      <div className="FormItem" id="Title">
-        <label htmlFor="PageName">Page Name:</label>
-        <input
-          type="text"
-          id="PageName"
-          required={true}
-          name="PageName"
-          value={data.PageName}
-          onChange={handleInput}
-        />
-      </div>
-      <div className="FormItem" id="Title">
-        <label htmlFor="HeaderTitle">Header Title:</label>
-        <input
-          type="text"
-          id="HeaderTitle"
-          name="HeaderTitle"
-          value={data.HeaderTitle}
-          onChange={handleInput}
-        />
-      </div>
-      <div className="FormItem">
-        <label htmlFor="TopTitle">Top Title:</label>
-        <input
-          type="text"
-          required
           id="TopTitle"
           name="TopTitle"
+          required={true}
           value={data.TopTitle}
-          onChange={handleInput}
+          onChangeFunction={handleInput}
         />
         <input
           className="ColorPicker"
@@ -113,15 +165,15 @@ const Template1 = ({ Data, UpdateData, BackEndName, setEdited }) => {
           onChange={handleInput}
         />
       </div>
-      <div className="FormItem">
-        <label htmlFor="BottomTitle">Bottom Title:</label>
-        <input
+      <div className="FormItem" style={{ width: "70%" }}>
+        <Input
+          label="Bottom Title"
           type="text"
-          required
           id="BottomTitle"
           name="BottomTitle"
+          required={true}
           value={data.BottomTitle}
-          onChange={handleInput}
+          onChangeFunction={handleInput}
         />
         <input
           className="ColorPicker"
@@ -131,20 +183,84 @@ const Template1 = ({ Data, UpdateData, BackEndName, setEdited }) => {
           onChange={handleInput}
         />
       </div>
-      <TipTap setHTML={handlePostBodyChange} OldData={data.Content} />
-      <button
-        className="Button View"
-        id="Submit"
-        onClick={() => {
-          if (photoUploading) {
-            CreateToast("uploading Photo,please wait...", "error", 2000);
-            return;
+      <h2>Media</h2>
+      <div>
+        <label>What To Show:</label>
+        <Select
+          options={HeaderContent}
+          value={HeaderContent.find(
+            (object) => object.value === data.WhatToShow
+          )}
+          onChange={(selectedOption) =>
+            setData((prev) => {
+              return { ...prev, WhatToShow: selectedOption.value };
+            })
           }
-          UpdateData(BackEndName, data);
-        }}
-      >
-        Save
-      </button>
+        />
+      </div>
+      <div className="HeaderContent">
+        <div className="video">
+          <div className="UploadWrapper">
+            <div className="FormItem">
+              <span>Video: </span>
+              <label htmlFor="Video">
+                <img
+                  src={Upload}
+                  style={{ width: "25px", cursor: "pointer" }}
+                />
+              </label>
+              <input
+                type="file"
+                accept="video/*"
+                hidden
+                id="Video"
+                name="Video"
+                onChange={handleInput}
+              />
+            </div>
+          </div>
+          {uploadProgress != 0 && (
+            <div className="video-progress-bar">
+              <div
+                className="video-progress-bar-fill"
+                style={{ width: `${uploadProgress}%` }}
+              ></div>
+            </div>
+          )}
+          {data.Video && (
+            <div style={{ width: "500px" }}>
+              <VideoPlayer videoUrl={data.Video} />
+
+              <button className="Button Danger" onClick={DeleteVideo}>
+                Delete Video
+              </button>
+            </div>
+          )}
+        </div>
+        <div className="textEditor">
+          <TipTap
+            editorClassName="smallEditor"
+            setHTML={handleHeaderDataChange}
+            OldData={data.HeaderData}
+          />
+        </div>
+      </div>
+      <TipTap setHTML={handlePostBodyChange} OldData={data.Content} />
+      <div className={`SubmitWrapper ${edited ? "fixed" : ""}`}>
+        <button
+          className="Button View"
+          id="Submit"
+          onClick={() => {
+            if (photoUploading) {
+              CreateToast("uploading Photo,please wait...", "error", 2000);
+              return;
+            }
+            UpdateData(BackEndName, data);
+          }}
+        >
+          Save
+        </button>
+      </div>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Input from "../../../Input/Input";
 
 const OtherLink = ({
   Link,
@@ -106,26 +107,22 @@ const OtherLink = ({
       )}
       {!link.FromPages && (
         <div style={{ margin: "20px" }}>
-          <div className="formItem">
-            <label htmlFor="LinkLabel">Link Title:</label>
-            <input
-              type="text"
-              id="LinkLabel"
-              name="LinkLabel"
-              value={link.LinkLabel}
-              onChange={handleInputLink}
-            />
-          </div>
-          <div className="formItem">
-            <label htmlFor="link">Link:</label>
-            <input
-              type="text"
-              id="link"
-              name="link"
-              value={link.link}
-              onChange={handleInputLink}
-            />
-          </div>
+          <Input
+            label="Link Title"
+            id="LinkLabel"
+            name="LinkLabel"
+            value={link.LinkLabel}
+            onChangeFunction={handleInputLink}
+          />
+
+          <Input
+            label="Link"
+            id="link"
+            name="link"
+            value={link.link}
+            onChangeFunction={handleInputLink}
+          />
+
           {!link.ValidLink && (
             <p className="Error">Not a valid website link.</p>
           )}

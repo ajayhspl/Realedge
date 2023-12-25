@@ -26,6 +26,38 @@
 .Hosting .Team-wrapper .Card-wrapper {
   width: 30%;
 }
+.HeaderContent {
+  margin: 30px 0;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  align-items: flex-start;
+}
+.HeaderContent .video,
+.HeaderContent .textEditor {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.smallEditor .Editor {
+  margin-top: 0;
+}
+.SubmitWrapper {
+  position: static;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  transition: 0.5s all;
+}
+.fixed {
+  backdrop-filter: blur(10px);
+  position: sticky;
+  bottom: 0px;
+  padding-bottom: 10px;
+  right: 38%;
+}
 .Hosting .EditorWrapper {
   display: grid;
   width: 95%;
@@ -53,13 +85,14 @@
   border-radius: 10px;
 }
 
-.Hosting .Team-wrapper .Card-wrapper .Button-wrapper {
+.Hosting .Team-wrapper .Button-wrapper {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  width: 50%;
+  width: 100%;
   margin: auto;
-  margin-top: 20px;
+}
+.Hosting .Button-wrapper .View {
+  width: fit-content;
 }
 .Hosting .Team-wrapper .Card-wrapper .TeamCard {
   width: 100%;
@@ -76,6 +109,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 10px;
 }
 .PricingModal .Pros-Wrapper {
   align-items: center;

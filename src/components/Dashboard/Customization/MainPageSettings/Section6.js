@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { GETCOLLECTION } from "../../../../server";
-const Section6 = ({ FetchedData, UpdateData, setEdited }) => {
+import Input from "../../../Input/Input";
+const Section6 = ({ FetchedData, UpdateData, setEdited, edited }) => {
   const [projects, SetProjects] = useState([]);
   const [data, setData] = useState(FetchedData);
   const handleSelectChange = (event, Position) => {
@@ -78,45 +79,51 @@ const Section6 = ({ FetchedData, UpdateData, setEdited }) => {
           />
         </label>
       </div>
-      <div className="FormItem" id="Title">
-        <label htmlFor="Title">Section Title:</label>
-        <input
-          type="text"
-          required
-          id="Title"
-          name="Title"
-          value={data.Title}
-          onChange={handleInput}
-        />
-      </div>
-      <div className="FormItem">
-        <label htmlFor="SubTitle">Paragraph:</label>
-        <textarea
-          type="text"
-          required
-          id="SubTitle"
-          name="paragraph"
-          value={data.paragraph}
-          onChange={handleInput}
-        />
-      </div>
+      <p>Section color</p>
+      <input
+        style={{ marginLeft: "10px" }}
+        className="ColorPicker"
+        type="color"
+        value={data.sectionColor}
+        name="sectionColor"
+        onChange={handleInput}
+      />
+      <Input
+        label="Section Title"
+        type="text"
+        required={true}
+        id="Title"
+        name="Title"
+        value={data.Title}
+        onChangeFunction={handleInput}
+        customWidth="70%"
+      />
+
+      <Input
+        textarea={true}
+        label="Paragraph"
+        required={true}
+        id="paragraph"
+        name="paragraph"
+        value={data.paragraph}
+        onChangeFunction={handleInput}
+        customWidth="70%"
+      />
       <div className="Select-wrapper">{renderSelectElements}</div>
-      <button
-        className="Button View"
-        id="Submit"
-        onClick={() => {
-          UpdateData("Section6", data);
-        }}
-      >
-        Save
-      </button>
+      <div className={`SubmitWrapper ${edited ? "fixed" : ""}`}>
+        <button
+          className="Button View"
+          id="Submit"
+          onClick={() => {
+            setEdited(false);
+            UpdateData("Section6", data);
+          }}
+        >
+          Save
+        </button>
+      </div>
     </div>
   );
 };
 
 export default Section6;
-/*  categories.sort(sortBy("id"));
-      categories.forEach((category) => {
-        id = +category.id + 1;
-      });
-      */

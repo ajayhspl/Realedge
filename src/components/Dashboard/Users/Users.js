@@ -9,6 +9,7 @@ import {
   NEWUSER,
 } from "../../../server";
 import MyModal from "../../PopUps/Confirm/Confirm";
+import Input from "../../Input/Input";
 const Users = () => {
   const [ActiveUser, setActiveUser] = useState(
     decrypt(JSON.parse(sessionStorage.getItem("activeUser")).id)
@@ -290,63 +291,53 @@ const Users = () => {
           }}
         >
           <form className="SignupForm" style={{ width: "100%" }}>
-            <div className="formItem ">
-              <label htmlFor="email">Email:</label>
-              <input
-                required
-                type="email"
-                id="email"
-                name="email"
-                value={newUser.email}
-                onChange={UpdateInput}
-              ></input>
-            </div>
-            <div className="formItem ">
-              <label htmlFor="username">Username:</label>
-              <input
-                required
-                type="text"
-                id="username"
-                name="Username"
-                value={newUser.Username}
-                onChange={UpdateInput}
-              ></input>
-            </div>
+            <Input
+              label="Email"
+              type="email"
+              required={true}
+              id="email"
+              name="email"
+              value={newUser.email}
+              onChangeFunction={UpdateInput}
+            />
+            <Input
+              label="Username"
+              type="text"
+              required={true}
+              id="Username"
+              name="Username"
+              value={newUser.Username}
+              onChangeFunction={UpdateInput}
+            />
             <div className="NameWrapper">
-              <div className="formItem">
-                <label htmlFor="Fname">FirstName:</label>
-                <input
-                  required
-                  type="text"
-                  id="Fname"
-                  name="Fname"
-                  value={newUser.Fname}
-                  onChange={UpdateInput}
-                ></input>
-              </div>
-              <div className="formItem">
-                <label htmlFor="Lname">LastName:</label>
-                <input
-                  required
-                  type="text"
-                  id="Lname"
-                  name="Lname"
-                  value={newUser.Lname}
-                  onChange={UpdateInput}
-                ></input>
-              </div>
+              <Input
+                label="FirstName"
+                type="text"
+                required={true}
+                id="Fname"
+                name="Fname"
+                value={newUser.Fname}
+                onChangeFunction={UpdateInput}
+              />
+              <Input
+                label="LastName"
+                type="text"
+                required={true}
+                id="Lname"
+                name="Lname"
+                value={newUser.Lname}
+                onChangeFunction={UpdateInput}
+              />
             </div>
-            <div className="formItem ">
-              <label htmlFor="Password">Password:</label>
-              <input
-                required
-                type="password"
-                id="Password"
-                name="Password"
-                value={newUser.Password}
-                onChange={UpdateInput}
-              ></input>
-            </div>
+            <Input
+              label="Password"
+              type="password"
+              required={true}
+              id="Password"
+              name="Password"
+              value={newUser.Password}
+              onChangeFunction={UpdateInput}
+            />
           </form>
         </MyModal>
       )}

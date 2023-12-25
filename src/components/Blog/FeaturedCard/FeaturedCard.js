@@ -15,36 +15,35 @@ const FeaturedCard = ({ Article }) => {
     >
       <div className="MainData">
         <h3 className="animate__animated animate__fadeInUp">{Article.Title}</h3>
-        <p className="animate__animated animate__fadeInUp">
-          by {Article.Author.Fname} {Article.Author.Lname}
-        </p>
-      </div>
-      <div className="ExtraData animate__animated animate__fadeInUp">
-        <span className="Date">
-          <SlCalender className="icon" />
-          {Article.DateAdded}
-        </span>
-        <span>
-          <FiEye className="icon" />
-          {Article.views}
-        </span>
-        <span>
-          <CiClock1 className="icon" />
-          {Article.ReadTime} min(s)
-        </span>
-        <span className="LikeButton">
-          <AiOutlineLike className="icon" /> {Article.liked.length}
-        </span>
-        <Link to={`/BlogMain/Article/${Article.id}`} className="Category">
-          {Article.category}
-        </Link>
 
-        <Link to={`/BlogMain/Article/${Article.id}`} className="Link">
-          Continue Reading
-        </Link>
-      </div>
+        <div className="ExtraData animate__animated animate__fadeInUp">
+          <p className="animate__animated animate__fadeInUp">
+            by {Article.Author.Fname} {Article.Author.Lname}
+          </p>
+          <span className="Date">
+            <SlCalender className="icon" />
+            {Article.DateAdded}
+          </span>
+          <span>
+            <FiEye className="icon" />
+            {Article.views}
+          </span>
+          <span>
+            <CiClock1 className="icon" />
+            {Article.ReadTime} min(s)
+          </span>
+          <span className="LikeButton">
+            <AiOutlineLike className="icon" /> {Article.liked.length}
+          </span>
+          <Link to={`/BlogMain/Article/${Article.id}`} className="Category">
+            {Article.category}
+          </Link>
 
-      <div className="overlay"></div>
+          <Link to={`/BlogMain/Article/${Article.id}`} className="Link">
+            Continue Reading
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };

@@ -31,7 +31,7 @@ const Section7 = (props) => {
             clickable: true,
           }}
           autoplay={{
-            delay: 2000,
+            delay: 5000,
             disableOnInteraction: false,
           }}
           breakpoints={{
@@ -40,11 +40,11 @@ const Section7 = (props) => {
               spaceBetween: 20,
             },
             250: {
-              slidesPerView: 2,
+              slidesPerView: 1,
               spaceBetween: 10,
             },
           }}
-          modules={[Pagination, Autoplay]}
+          modules={[Pagination]}
           className="Swiper-Skills"
         >
           {renderDummyData}

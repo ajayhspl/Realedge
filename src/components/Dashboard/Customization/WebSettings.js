@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./WebSettings.css";
 import { GETCOLLECTION, SETDOC } from "../../../server";
 import Main from "./Main";
-import Loading from "../../../assets/Loading.gif";
 import Template1 from "./SidePages/Template1";
 import Template2 from "./SidePages/Template2";
 import Template3 from "./SidePages/Template3";
@@ -16,6 +15,8 @@ import Template10 from "./SidePages/Template10";
 import { CreateToast } from "../../../App";
 import General from "./General";
 import MyModal from "../../PopUps/Confirm/Confirm";
+import Loading from "../../Loading/Loading";
+import Forms from "./Forms";
 const WebSettings = ({ SetCustomizationPage, customizationPage }) => {
   const [edited, setEdited] = useState(false);
   const [storedNav, setStoredNav] = useState(null);
@@ -123,6 +124,8 @@ const WebSettings = ({ SetCustomizationPage, customizationPage }) => {
               <p>Page ID : {Page.id}</p>
 
               <p>Page Type : {Page.PageType}</p>
+
+              <p>Template:{Page.Template}</p>
             </div>
           </li>
         );
@@ -233,8 +236,11 @@ const WebSettings = ({ SetCustomizationPage, customizationPage }) => {
               ? "Main Page"
               : customizationPage === "General"
               ? "General Settings"
+              : customizationPage === "Forms"
+              ? "Forms Settings"
               : FindPage(customizationPage).PageName}
           </h1>
+
           {customizationPage === "Nav1" && (
             <p style={{ textAlign: "center", color: "green" }}>
               Ctrl+F to search
@@ -258,6 +264,14 @@ const WebSettings = ({ SetCustomizationPage, customizationPage }) => {
                   }}
                 >
                   Landing Page
+                </li>
+                <li
+                  className="animate__animated animate__fadeIn"
+                  onClick={() => {
+                    SetCustomizationPage("Forms");
+                  }}
+                >
+                  Contact Forms
                 </li>
                 {RenderNav}
               </>
@@ -285,11 +299,8 @@ const WebSettings = ({ SetCustomizationPage, customizationPage }) => {
           )}
         </>
       )}
-      {isLoading && (
-        <div className={`Loading-wrapper ${isLoading ? "" : "FADE"}`}>
-          <img src={Loading} />
-        </div>
-      )}
+      <Loading loading={isLoading} />
+
       {customizationPage === "Landing Page" && (
         <Main
           Data={fetchedData[0]}
@@ -300,10 +311,18 @@ const WebSettings = ({ SetCustomizationPage, customizationPage }) => {
           setSaving={SetSaving}
           Tabs={fetchedData[1]}
           setEdited={setEdited}
+          edited={edited}
         />
       )}
       {customizationPage === "General" && (
         <General
+          Data={fetchedData[2]}
+          UpdateGeneralData={UpdateGeneralData}
+          setEdited={setEdited}
+        />
+      )}
+      {customizationPage === "Forms" && (
+        <Forms
           Data={fetchedData[2]}
           UpdateGeneralData={UpdateGeneralData}
           setEdited={setEdited}
@@ -320,6 +339,7 @@ const WebSettings = ({ SetCustomizationPage, customizationPage }) => {
               UpdateData={UpdateData}
               BackEndName={DataToFetch}
               setEdited={setEdited}
+              edited={edited}
             />
           );
         }

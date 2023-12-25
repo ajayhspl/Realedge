@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { UPLOADPHOTO } from "../../../../server";
 import Upload from "../../../../assets/upload.png";
 import { CreateToast } from "../../../../App";
-const Section4 = ({ FetchedData, UpdateData, setEdited }) => {
+import Input from "../../../Input/Input";
+const Section4 = ({ FetchedData, UpdateData, setEdited, edited }) => {
   const [data, setData] = useState(FetchedData);
   const [photoUploaded, setPhotoUploaded] = useState(true);
 
@@ -62,41 +63,52 @@ const Section4 = ({ FetchedData, UpdateData, setEdited }) => {
           onChange={handleInput}
         />
       </div>
-      <div className="FormItem" id="Title">
-        <label htmlFor="Title">Section Title:</label>
-        <input
-          type="text"
-          required
-          id="Title"
-          name="title"
-          value={data.title}
-          onChange={handleInput}
-        />
+      <p>Section color</p>
+      <input
+        style={{ marginLeft: "10px" }}
+        className="ColorPicker"
+        type="color"
+        value={data.sectionColor}
+        name="sectionColor"
+        onChange={handleInput}
+      />
+      <Input
+        label="Section Title"
+        type="text"
+        required={true}
+        id="title"
+        name="title"
+        value={data.title}
+        onChangeFunction={handleInput}
+        customWidth="70%"
+      />
+
+      <Input
+        textarea={true}
+        label="Paragraph"
+        required={true}
+        id="paragraph"
+        name="paragraph"
+        value={data.paragraph}
+        onChangeFunction={handleInput}
+        customWidth="70%"
+      />
+      <div className={`SubmitWrapper ${edited ? "fixed" : ""}`}>
+        <button
+          className="Button View"
+          id="Submit"
+          onClick={() => {
+            if (!photoUploaded) {
+              CreateToast("photo uploading please wait", "error");
+              return;
+            }
+            setEdited(false);
+            UpdateData("Section4", data);
+          }}
+        >
+          Save
+        </button>
       </div>
-      <div className="FormItem">
-        <label htmlFor="SubTitle">Paragraph:</label>
-        <textarea
-          type="text"
-          required
-          id="SubTitle"
-          name="paragraph"
-          value={data.paragraph}
-          onChange={handleInput}
-        />
-      </div>
-      <button
-        className="Button View"
-        id="Submit"
-        onClick={() => {
-          if (!photoUploaded) {
-            CreateToast("photo uploading please wait", "error");
-            return;
-          }
-          UpdateData("Section4", data);
-        }}
-      >
-        Save
-      </button>
     </div>
   );
 };

@@ -9,7 +9,12 @@ const SkillCard = (prop) => {
         prop.Data.Link ? (window.location.href = prop.Data.Link) : "";
       }}
     >
-      {prop.Data.URL && <img src={prop.Data.URL} />}
+      {prop.Data.URL && (
+        <img
+          className={`${prop.Data.Name ? "" : "fullWidth"}`}
+          src={prop.Data.URL}
+        />
+      )}
       {prop.Data.Name && <p>{prop.Data.Name}</p>}
     </div>
   );

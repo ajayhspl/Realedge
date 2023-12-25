@@ -5,12 +5,12 @@
   height: calc(100vh - 90px);
 }
 .Header.Second {
-  height: 130vh;
+  height: 110vh;
 }
 .Content {
   position: relative;
   color: var(--text);
-  height: 92%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -39,7 +39,7 @@
 }
 .Content .BTM h1 {
   user-select: none;
-  margin: 0;
+  margin-bottom: 40px;
   width: 70%;
   font-size: 3.5rem;
   font-weight: 300;
@@ -96,8 +96,34 @@
 .Header.Second h1 {
   width: 100%;
 }
+.Header.Second .Content {
+  align-items: flex-start;
+}
+.Header.Second .Content .TopBar {
+  width: 55%;
+}
+.Header.Second .Content .TopBar h2 {
+  margin: 0;
+}
+.Header.Second .Content .BTM {
+  max-height: 130px;
+  overflow-y: hidden;
+}
 .Header.Second .overlay {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  width: 55%;
   height: calc(100vh - 90px);
+}
+.SideContent {
+  max-height: 85vh;
+  overflow-y: scroll;
+  z-index: 1;
+  position: absolute;
+  top: 15%;
+  right: 0;
+  width: 44%;
+  margin-left: 10px;
 }
 .overlay {
   position: absolute;
@@ -155,33 +181,60 @@
   .Content {
     height: 95%;
   }
-  .Content .BTM h3 {
-    color: white;
+  .Content .BTM {
+    text-align: center;
   }
-
+  .Header {
+    height: 70vh;
+    min-height: fit-content;
+  }
+  .Header .overlay {
+    background-size: cover;
+  }
+  .Header .overlay::before {
+    display: none;
+  }
+  .Header.Second {
+    height: fit-content;
+  }
   .Header.Second.NoOverlay .TopBar {
     height: 90%;
   }
-  .Header.Second {
-    height: 100%;
-  }
+
   .Header.Second .overlay {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    width: 100%;
     height: 100%;
     background-size: 100%;
   }
-
+  .Header.Second .Content {
+    align-items: center;
+  }
+  .Header.Second .Content .TopBar {
+    height: 25vh;
+    width: 100%;
+  }
+  .Header.Second .Content .TopBar h2 {
+    text-align: center;
+  }
+  .Header.Second .Content .BTM {
+    text-align: center;
+    max-height: unset;
+  }
   .Second .Content {
     height: 100%;
   }
   .Second .Content .BTM h3,
   .Second .Content .BTM h1 {
+    font-size: 2rem;
     color: var(--text) !important;
   }
   .Content .BTM h1 {
     color: white;
     font-size: 2.7rem;
     width: 100% !important;
-    margin-top: 100px;
+    margin-top: 45%;
   }
   .Content .BTM h3 {
     width: 100% !important;

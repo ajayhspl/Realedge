@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { GETDOC, decrypt } from "../../../server";
 import NotFound from "../../NotFound/NotFound";
-import Loading from "../../../assets/Loading.gif";
 import Calender from "../../../assets/calendar.png";
 import Gender from "../../../assets/gender.png";
 import Location from "../../../assets/address.png";
 import Active from "../../../assets/add-contact.png";
 import Phone from "../../../assets/phone.png";
 import "./UserDetails.css";
+import Loading from "../../Loading/Loading";
 const UserDetails = () => {
   const [ActiveUser, setActiveUser] = useState(
     decrypt(JSON.parse(sessionStorage.getItem("activeUser")).id)
@@ -65,16 +65,13 @@ const UserDetails = () => {
   }, []);
   return (
     <div className="ViewUser">
+      <Loading loading={loading} />
       {!ActiveUser ? (
         <NotFound />
       ) : ActiveUser.Role === "User" || ActiveUser.Role === "Author" ? (
         <NotFound />
       ) : Error ? (
         <NotFound />
-      ) : loading ? (
-        <div className="Loading-wrapper">
-          <img src={Loading} />
-        </div>
       ) : (
         user && (
           <>

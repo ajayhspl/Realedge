@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.css";
 import { useParams } from "react-router-dom";
-const ArticleHeader = ({ Articles, bg, Users }) => {
+const ArticleHeader = ({ Articles, Users, screenWidth }) => {
   const Article = useParams().ID;
   let TargetArticle = Articles.find((blog) => {
     return blog.id == Article;
@@ -14,12 +14,24 @@ const ArticleHeader = ({ Articles, bg, Users }) => {
   return (
     <>
       {TargetArticle ? (
-        <div className="Header Second NoOverlay">
-          <div className="Content" style={{ height: "92%" }}>
-            <div className="TopBar"></div>
-            <div className="BTM" style={{ gap: "10px" }}>
-              <h1>{TargetArticle.Title}</h1>
-              <span>
+        <div
+          className="Header Second Article"
+          style={{ height: screenWidth > 1000 ? "calc(100vh - 90px)" : "60vh" }}
+        >
+          <div className="Content">
+            <div
+              className="TopBar"
+              style={{ height: screenWidth > 1000 ? "50vh" : "" }}
+            ></div>
+            <div className="BTM" style={{ gap: "10px", maxHeight: "unset" }}>
+              <h1
+                style={{
+                  fontSize: TargetArticle.Title.length > 40 ? "3rem" : "3.5rem",
+                }}
+              >
+                {TargetArticle.Title}
+              </h1>
+              <span style={{ marginBottom: "10px" }}>
                 by {TargetArticle.Author.Fname} {TargetArticle.Author.Lname}
                 {Creator ? "" : " (Deleted User)"}
               </span>
@@ -29,6 +41,7 @@ const ArticleHeader = ({ Articles, bg, Users }) => {
             className="overlay Photo"
             style={{
               backgroundImage: `url(${TargetArticle.thumbnail})`,
+              width: "100%",
             }}
           ></div>
         </div>

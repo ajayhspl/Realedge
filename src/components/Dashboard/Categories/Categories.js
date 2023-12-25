@@ -5,6 +5,7 @@ import { CreateToast } from "../../../App";
 import { GETCOLLECTION, DELETEDOC, SETDOC, Distributor } from "../../../server";
 import MyModal from "../../PopUps/Confirm/Confirm";
 import sortBy from "sort-by";
+import Input from "../../Input/Input";
 const Categories = () => {
   const [categories, setCategories] = useState([]);
   const [targetCategory, setTargetCategory] = useState(null);
@@ -330,21 +331,19 @@ const Categories = () => {
           }}
         >
           <>
-            <div className="formItem ">
-              <label htmlFor="Name">Category Name:</label>
-              <input
-                required
-                type="text"
-                id="Name"
-                name="Name"
-                value={newCategory.Name}
-                onChange={() => {
-                  SetNewCategory((prev) => {
-                    return { ...prev, Name: event.target.value };
-                  });
-                }}
-              ></input>
-            </div>
+            <Input
+              label="Category Name"
+              type="text"
+              required={true}
+              id="Name"
+              name="Name"
+              value={newCategory.Name}
+              onChangeFunction={(e) => {
+                SetNewCategory((prev) => {
+                  return { ...prev, Name: e.target.value };
+                });
+              }}
+            />
           </>
         </MyModal>
       )}

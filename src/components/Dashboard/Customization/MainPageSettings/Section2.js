@@ -5,8 +5,9 @@ import { CreateToast } from "../../../../App";
 import sortBy from "sort-by";
 import Upload from "../../../../assets/upload.png";
 import { DELETEPHOTO, UPLOADPHOTO } from "../../../../server";
+import Input from "../../../Input/Input";
 
-const Section2 = ({ FetchedData, UpdateData, setEdited }) => {
+const Section2 = ({ FetchedData, UpdateData, setEdited, edited }) => {
   const maxCharacters = 300;
   const [data, setData] = useState(FetchedData);
   const [photoUploaded, setPhotoUploaded] = useState(true);
@@ -101,6 +102,13 @@ const Section2 = ({ FetchedData, UpdateData, setEdited }) => {
       width: "200px",
     },
     {
+      name: "Link",
+      selector: (row) => row.Link,
+      sortable: true,
+      center: true,
+      width: "200px",
+    },
+    {
       name: "Description",
       selector: (row) => <div className="text-wrap">{row.Description}</div>,
       sortable: true,
@@ -148,13 +156,23 @@ const Section2 = ({ FetchedData, UpdateData, setEdited }) => {
     };
     return {
       id: Card.id,
-      Name: <input name="title" value={Card.title} onChange={handleChange} />,
+      Name: (
+        <Input
+          name="title"
+          value={Card.title}
+          onChangeFunction={handleChange}
+        />
+      ),
+      Link: (
+        <Input name="Link" value={Card.Link} onChangeFunction={handleChange} />
+      ),
       Description: (
-        <textarea
-          style={{ minWidth: "500px" }}
+        <Input
+          textarea={true}
           name="description"
-          onChange={handleChange}
+          onChangeFunction={handleChange}
           value={Card.description}
+          customWidth="500px"
         />
       ),
 
@@ -165,7 +183,7 @@ const Section2 = ({ FetchedData, UpdateData, setEdited }) => {
           <button
             className="Button Danger"
             onClick={() => {
-              DeleteCard(Card.ID);
+              DeleteCard(Card.id);
             }}
           >
             Delete
@@ -229,29 +247,34 @@ const Section2 = ({ FetchedData, UpdateData, setEdited }) => {
           handlePrimaryAction={handlePrimaryAction}
         >
           <>
-            <div className="formItem" id="Name">
-              <label htmlFor="title">Name:</label>
-              <input
-                type="text"
-                required
-                id="title"
-                autoComplete="false"
-                name="title"
-                value={NewCard.title}
-                onChange={handleInput}
-              />
-            </div>
-            <div className="formItem" id="Name">
-              <label htmlFor="description">description:</label>
-              <textarea
-                type="text"
-                required
-                id="description"
-                name="description"
-                value={NewCard.description}
-                onChange={handleInput}
-              />
-            </div>
+            <Input
+              label="Name"
+              type="text"
+              required={true}
+              id="title"
+              autoComplete="false"
+              name="title"
+              value={NewCard.title}
+              onChangeFunction={handleInput}
+            />
+            <Input
+              label="Link"
+              type="text"
+              required={true}
+              autoComplete="false"
+              name="Link"
+              value={NewCard.Link}
+              onChangeFunction={handleInput}
+            />
+            <Input
+              label="description"
+              textarea={true}
+              name="description"
+              required={true}
+              id="description"
+              value={NewCard.description}
+              onChangeFunction={handleInput}
+            />
             <div className="formItem" id="logo">
               <span>Logo:</span>
               <label htmlFor="thumbnailInput">
@@ -272,17 +295,16 @@ const Section2 = ({ FetchedData, UpdateData, setEdited }) => {
           </>
         </MyModal>
       )}
-      <div className="FormItem">
-        <label htmlFor="title">Title:</label>
-        <input
-          type="text"
-          required
-          id="title"
-          name="Title"
-          value={data.Title}
-          onChange={handleMainInput}
-        />
-      </div>
+      <Input
+        label="Title"
+        type="text"
+        required={true}
+        id="Title"
+        name="Title"
+        value={data.Title}
+        customWidth="70%"
+        onChangeFunction={handleMainInput}
+      />
       <div className="formItem form-check CheckBox">
         <label className="form-check-label">
           Show Section:
@@ -294,17 +316,25 @@ const Section2 = ({ FetchedData, UpdateData, setEdited }) => {
           />
         </label>
       </div>
-      <div className="FormItem">
-        <label htmlFor="SubTitle">Paragraph:</label>
-        <textarea
-          type="text"
-          required
-          id="SubTitle"
-          name="Paragraph"
-          value={data.Paragraph}
-          onChange={handleMainInput}
-        />
-      </div>
+      <p>Section color</p>
+      <input
+        style={{ marginLeft: "10px" }}
+        className="ColorPicker"
+        type="color"
+        value={data.sectionColor}
+        name="sectionColor"
+        onChange={handleMainInput}
+      />
+      <Input
+        label="Description"
+        customWidth="70%"
+        textarea={true}
+        required={true}
+        id="Paragraph"
+        name="Paragraph"
+        value={data.Paragraph}
+        onChangeFunction={handleMainInput}
+      />
       <button
         className="Button Add"
         style={{ margin: "0px auto" }}
@@ -320,15 +350,18 @@ const Section2 = ({ FetchedData, UpdateData, setEdited }) => {
         columns={columns}
         data={TableData}
       />
-      <button
-        className="Button View"
-        id="Submit"
-        onClick={() => {
-          UpdateData("Section8", data);
-        }}
-      >
-        Save
-      </button>
+      <div className={`SubmitWrapper ${edited ? "fixed" : ""}`}>
+        <button
+          className="Button View"
+          id="Submit"
+          onClick={() => {
+            setEdited(false);
+            UpdateData("Section8", data);
+          }}
+        >
+          Save
+        </button>
+      </div>
     </div>
   );
 };

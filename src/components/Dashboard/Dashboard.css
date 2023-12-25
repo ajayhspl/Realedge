@@ -48,11 +48,11 @@
 .Dashboard .SideBar .Link:before {
   left: 0;
 }
-.Dashboard input:focus,
+/* .Dashboard input:focus,
 .Dashboard textarea:focus {
   outline: 1px solid var(--borders) !important;
   border-radius: 5px;
-}
+} */
 .Reject {
   width: 70%;
   margin: 0 auto;

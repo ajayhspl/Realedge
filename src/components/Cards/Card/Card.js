@@ -6,6 +6,10 @@ const Card = (props) => {
   const [showDescription, setShowDescription] = useState(false);
   return (
     <div
+      style={{ cursor: Data.Link ? "pointer" : "" }}
+      onClick={() => {
+        Data.Link ? (window.location.href = Data.Link) : "";
+      }}
       data-aos="flip-left"
       className="Card"
       onMouseEnter={() => {

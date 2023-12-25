@@ -9,12 +9,6 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.ArticlePreview::after {
-  content: "";
-  background-color: var(--Lines);
-  height: 2px;
-  width: 100%;
-}
 .TopPart {
   display: flex;
   height: 20%;
@@ -72,6 +66,9 @@
     min-width: unset;
     width: 90%;
     margin: 0;
+  }
+  .ArticlePreview .Link:after {
+    display: none;
   }
   .ArticlePreview .bottomPART {
     flex-direction: column;

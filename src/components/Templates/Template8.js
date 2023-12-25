@@ -5,9 +5,12 @@ import "swiper/css";
 import { Autoplay, Navigation } from "swiper";
 import "swiper/css/navigation";
 
-const Template8 = ({ Teams }) => {
+const Template8 = ({ Teams, Data }) => {
+  const orderedTeams = Data.Order.map(({ id }) =>
+    Teams.find((item) => item.id === id)
+  );
   const [activeTab, setActiveTab] = React.useState("All");
-  const [renderedPeople, setRenderedPeople] = useState(Teams);
+  const [renderedPeople, setRenderedPeople] = useState(orderedTeams);
   const [roles, setRoles] = useState([]);
   const renderTeam = renderedPeople.map((Person, index) => {
     const delayString = (index * 0.05).toString() + "s";
@@ -23,7 +26,7 @@ const Template8 = ({ Teams }) => {
   });
   useEffect(() => {
     const uniqueRoles = new Set(roles); // Create a Set to store unique roles
-    Teams.forEach((Person) => {
+    orderedTeams.forEach((Person) => {
       uniqueRoles.add(Person.Role); // Add each person's role to the Set
     });
 
@@ -47,7 +50,7 @@ const Template8 = ({ Teams }) => {
   });
   useEffect(() => {
     setRenderedPeople([]);
-    const filteredProjects = Teams.filter((Person) => {
+    const filteredProjects = orderedTeams.filter((Person) => {
       return Person.Role == activeTab || activeTab === "All";
     });
     setRenderedPeople(filteredProjects);
@@ -77,7 +80,7 @@ const Template8 = ({ Teams }) => {
         >
           All
         </li>
-        {roles.length < 5 ? (
+        {roles.length < 4 ? (
           RenderRoles
         ) : (
           <Swiper
@@ -91,7 +94,7 @@ const Template8 = ({ Teams }) => {
             }}
             breakpoints={{
               900: {
-                slidesPerView: 4,
+                slidesPerView: 3,
                 spaceBetween: 20,
               },
               250: {

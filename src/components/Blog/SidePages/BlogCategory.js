@@ -14,7 +14,7 @@ const BlogCategory = ({ Categories, Articles, Users, width }) => {
     setTargetCategory(TempBlog);
   }, []);
   const RenderAuthors = Users.map((author) => {
-    if (author.Role === "User") {
+    if (author.Role !== "Author") {
       return;
     }
     if (author.deleteUser) {

@@ -12,7 +12,7 @@ import Template7 from "./Templates/Template7";
 import Template8 from "./Templates/Template8";
 import Template9 from "./Templates/Template9";
 import Template10 from "./Templates/Template10";
-const Redirect = ({ data, Projects, Teams }) => {
+const Redirect = ({ data, Projects, Teams, screenWidth }) => {
   const PageURL = useParams().NAME;
   const [TargetPage, setTargetPage] = useState(null);
   let ArPages = [];
@@ -54,17 +54,28 @@ const Redirect = ({ data, Projects, Teams }) => {
     TopColor,
     BottomTitle,
     BottomColor,
+    Font,
+    Color,
+    HeaderData,
+    WhatToShow,
+    Video,
   } = TargetPage;
   const Component = templateComponents[Template];
   return (
     <>
       <Header2
+        screenWidth={screenWidth}
         title={HeaderTitle}
         bg={BG}
         TopTitle={TopTitle}
         TopColor={TopColor}
         BottomTitle={BottomTitle}
         BottomColor={BottomColor}
+        Font={Font}
+        Color={Color}
+        HeaderData={HeaderData}
+        WhatToShow={WhatToShow}
+        Video={Video}
       />
       {Component && (
         <Component Data={TargetPage} FetchedProjects={Projects} Teams={Teams} />

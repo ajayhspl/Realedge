@@ -59,7 +59,10 @@ const Section6 = (props) => {
     }
   });
   return (
-    <section className="Section6">
+    <section
+      className="Section6"
+      style={{ backgroundColor: props.ServerData.sectionColor }}
+    >
       {props.ServerData.Title && (
         <h2 data-aos="fade-down">{props.ServerData.Title}</h2>
       )}

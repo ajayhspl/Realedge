@@ -65,7 +65,7 @@ const BlogHome = ({ users, General, Categories }) => {
   });
 
   const RenderAuthors = users.map((user) => {
-    if (user.Role === "User") {
+    if (user.Role !== "Author") {
       return;
     }
     if (user.deleteUser) {
@@ -87,38 +87,52 @@ const BlogHome = ({ users, General, Categories }) => {
 
   return (
     <div className="BlogPage">
-      {filteredBlogs && (
-        <div className="FeaturedArticles">
-          {filteredBlogs.length === 0 && (
-            <h4 style={{ textAlign: "center" }}>No Featured Articles yet</h4>
-          )}
-          <Swiper
-            freeMode={true}
-            loop={true}
-            slidesPerView={1}
-            spaceBetween={10}
-            modules={[Autoplay]}
-            autoplay={{
-              delay: 4000,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: true,
-            }}
-            breakpoints={{
-              900: {
-                slidesPerView: 1,
-                spaceBetween: 20,
-              },
-              250: {
-                slidesPerView: 1,
-                spaceBetween: 0,
-              },
-            }}
-            className="mySwiper"
-          >
-            {RenderFeatured}
-          </Swiper>
-        </div>
-      )}
+      <div className="blogHead">
+        {filteredBlogs && (
+          <div className="FeaturedArticles">
+            {filteredBlogs.length === 0 && (
+              <h4 style={{ textAlign: "center" }}>No Featured Articles yet</h4>
+            )}
+            <Swiper
+              freeMode={true}
+              loop={true}
+              slidesPerView={1}
+              spaceBetween={10}
+              modules={[Autoplay]}
+              autoplay={{
+                delay: 4000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+              }}
+              breakpoints={{
+                900: {
+                  slidesPerView: 1,
+                  spaceBetween: 20,
+                },
+                250: {
+                  slidesPerView: 1,
+                  spaceBetween: 0,
+                },
+              }}
+              className="mySwiper"
+            >
+              {RenderFeatured}
+            </Swiper>
+          </div>
+        )}
+        {width > 600 && (
+          <div className="SideBar">
+            <div className="Categories">
+              <h6>CATEGORY LIST</h6>
+              <ul>{RenderCategories}</ul>
+            </div>
+            <div className="Categories">
+              <h6>AUTHOR LIST</h6>
+              <ul>{RenderAuthors}</ul>
+            </div>
+          </div>
+        )}
+      </div>
       {width < 600 && (
         <div className="DropdownsWrapper">
           <div className="dropdown">
@@ -154,18 +168,6 @@ const BlogHome = ({ users, General, Categories }) => {
             Articles={articles}
             Users={users}
           />
-        )}
-        {width > 600 && (
-          <div className="SideBar">
-            <div className="Categories">
-              <h6>CATEGORY LIST</h6>
-              <ul>{RenderCategories}</ul>
-            </div>
-            <div className="Categories">
-              <h6>AUTHOR LIST</h6>
-              <ul>{RenderAuthors}</ul>
-            </div>
-          </div>
         )}
       </div>
     </div>

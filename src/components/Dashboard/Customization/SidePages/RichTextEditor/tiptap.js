@@ -4,7 +4,7 @@ import ListItem from "@tiptap/extension-list-item";
 import TextStyle from "@tiptap/extension-text-style";
 import { EditorProvider, useCurrentEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Underline from "@tiptap/extension-underline";
 import TextAlign from "@tiptap/extension-text-align";
 import Link from "@tiptap/extension-link";
@@ -30,6 +30,7 @@ import { FaUndo, FaRedo } from "react-icons/fa";
 import { RiFormatClear } from "react-icons/ri";
 import { MdHorizontalRule } from "react-icons/md";
 import "./styles.css";
+import HardBreak from "@tiptap/extension-hard-break";
 
 const MenuBar = () => {
   const fontSizes = [
@@ -308,6 +309,7 @@ const extensions = [
       keepAttributes: false,
     },
   }),
+  HardBreak,
 ];
 
 const TipTap = ({ setHTML, OldData, editorClassName }) => {

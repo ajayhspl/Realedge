@@ -8,8 +8,13 @@ import "swiper/css/pagination";
 const Section3 = (props) => {
   const RenderSlider = props.ServerData.imgList.map((img) => {
     return (
-      <SwiperSlide key={img.id}>
-        <img src={img.url} />
+      <SwiperSlide key={img.id} style={{ cursor: img.Link ? "pointer" : "" }}>
+        <img
+          onClick={() => {
+            img.Link ? (window.location.href = img.Link) : "";
+          }}
+          src={img.url}
+        />
       </SwiperSlide>
     );
   });

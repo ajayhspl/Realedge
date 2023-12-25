@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useEffect, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { CreateToast } from "../../App";
@@ -13,25 +14,28 @@ import {
   encrypt,
   decrypt,
 } from "../../server";
-import Loading from "../../assets/Loading.gif";
 import "./Portal.css";
 import MyModal from "../PopUps/Confirm/Confirm";
 import Dashboard from "../Dashboard/Dashboard";
+import Loading from "../Loading/Loading";
+import Input from "../Input/Input";
+import ReCAPTCHA from "react-google-recaptcha";
+
 export default function Portal() {
   const [greeting, setGreeting] = useState("hello");
   const [user, setUser] = React.useState(
     JSON.parse(sessionStorage.getItem("activeUser")) || ""
   );
-
   const [isLoading, setIsLoading] = React.useState(true);
   const [IsAdmin, setIsAdmin] = React.useState(false);
   const [showSignup, setShowSignUp] = React.useState(false);
   const [email, setEmail] = React.useState("");
+  const [recaptchaValue, setRecaptchaValue] = useState(null);
+  const [disableRecaptcha, setDisableRecaptcha] = useState(null);
   const [newUser, setNewUser] = React.useState({
     Active: false,
     Lname: "",
     Fname: "",
-
     Role: "User",
     dateOfBirth: "",
     email: "",
@@ -42,6 +46,14 @@ export default function Portal() {
     Password: "",
     phone: "",
   });
+  const recaptchaRef = React.createRef();
+  useEffect(() => {
+    const getData = async () => {
+      const disableRecaptcha = await GETDOC("customization", "Website");
+      setDisableRecaptcha(disableRecaptcha.disableRecaptcha);
+    };
+    getData();
+  }, []);
   const [showModal, setShowModal] = React.useState(false);
   const handleShowModal = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
@@ -161,6 +173,11 @@ export default function Portal() {
   };
   const signIn = async (e) => {
     e.preventDefault();
+    if (!recaptchaValue && !disableRecaptcha) {
+      alert("Please complete the reCAPTCHA challenge");
+      return;
+    }
+
     CreateToast("logging in", "info");
 
     try {
@@ -252,7 +269,6 @@ export default function Portal() {
         fetchedData.Role === "Admin" || fetchedData.Role === "Owner"
           ? setIsAdmin(true)
           : setIsAdmin(false);
-        setIsLoading(false);
         setUser(fetchedData);
         if (fetchedData.Role === "Author" || fetchedData.Role === "User") {
           CheckInfo(fetchedData);
@@ -261,9 +277,14 @@ export default function Portal() {
     };
     if (user) {
       checkData();
+      setIsLoading(false);
+    } else {
+      setIsLoading(false);
     }
   }, []);
-
+  function onChange(value) {
+    setRecaptchaValue(value);
+  }
   return (
     <>
       {user ? (
@@ -324,73 +345,66 @@ export default function Portal() {
           </h3>
           {showSignup ? (
             <form className="animate__animated animate__fadeInDown SignupForm">
-              <div className="formItem ">
-                <label htmlFor="email">Email:</label>
-                <input
-                  required
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={newUser.email}
-                  onChange={() => {
-                    UpdateInput("newUser", event);
-                  }}
-                ></input>
-              </div>
-              <div className="formItem ">
-                <label htmlFor="username">Username:</label>
-                <input
-                  required
-                  type="text"
-                  id="username"
-                  name="Username"
-                  value={newUser.Username}
-                  onChange={() => {
-                    UpdateInput("newUser", event);
-                  }}
-                ></input>
-              </div>
+              <Input
+                label="Email"
+                type="email"
+                required={true}
+                id="email"
+                name="email"
+                value={newUser.email}
+                onChangeFunction={() => {
+                  UpdateInput("newUser", event);
+                }}
+              />
+
+              <Input
+                label="Username"
+                type="text"
+                required={true}
+                id="username"
+                name="Username"
+                value={newUser.Username}
+                onChangeFunction={() => {
+                  UpdateInput("newUser", event);
+                }}
+              />
+
               <div className="NameWrapper">
-                <div className="formItem animate__animated animate__fadeIn">
-                  <label htmlFor="Fname">FirstName:</label>
-                  <input
-                    required
-                    type="text"
-                    id="Fname"
-                    name="Fname"
-                    value={newUser.Fname}
-                    onChange={() => {
-                      UpdateInput("newUser", event);
-                    }}
-                  ></input>
-                </div>
-                <div className="formItem animate__animated animate__fadeIn">
-                  <label htmlFor="Lname">LastName:</label>
-                  <input
-                    required
-                    type="text"
-                    id="Lname"
-                    name="Lname"
-                    value={newUser.Lname}
-                    onChange={() => {
-                      UpdateInput("newUser", event);
-                    }}
-                  ></input>
-                </div>
-              </div>
-              <div className="formItem ">
-                <label htmlFor="Password">Password:</label>
-                <input
-                  required
-                  type="password"
-                  id="Password"
-                  name="Password"
-                  value={newUser.Password}
-                  onChange={() => {
+                <Input
+                  label="FirstName"
+                  type="text"
+                  required={true}
+                  id="Fname"
+                  name="Fname"
+                  value={newUser.Fname}
+                  onChangeFunction={() => {
                     UpdateInput("newUser", event);
                   }}
-                ></input>
+                />
+                <Input
+                  label="LastName"
+                  type="text"
+                  required={true}
+                  id="Lname"
+                  name="Lname"
+                  value={newUser.Lname}
+                  onChangeFunction={() => {
+                    UpdateInput("newUser", event);
+                  }}
+                />
               </div>
+              <Input
+                label="Password"
+                type="password"
+                required={true}
+                id="Password"
+                name="Password"
+                value={newUser.Password}
+                onChangeFunction={() => {
+                  UpdateInput("newUser", event);
+                }}
+              />
+
               <input
                 type="submit"
                 className="Button"
@@ -400,33 +414,35 @@ export default function Portal() {
             </form>
           ) : (
             <form className="animate__animated animate__fadeInDown">
-              <div className="formItem ">
-                <label htmlFor="email">Email:</label>
-                <input
-                  required
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={loginData.email}
-                  onChange={() => {
-                    UpdateInput("login", event);
-                  }}
-                ></input>
-              </div>
-              <div className="formItem " style={{ animationDelay: ".7s" }}>
-                <label htmlFor="Password">Password:</label>
-                <input
-                  min={8}
-                  required
-                  type="password"
-                  id="Password"
-                  name="Password"
-                  value={loginData.Password}
-                  onChange={() => {
-                    UpdateInput("login", event);
-                  }}
-                ></input>
-              </div>
+              <Input
+                label="Email"
+                type="email"
+                required={true}
+                id="email"
+                name="email"
+                value={loginData.email}
+                onChangeFunction={() => {
+                  UpdateInput("login", event);
+                }}
+              />
+              <Input
+                label="Password"
+                type="password"
+                required={true}
+                id="Password"
+                name="Password"
+                value={loginData.Password}
+                onChangeFunction={() => {
+                  UpdateInput("login", event);
+                }}
+              />
+              {!disableRecaptcha && (
+                <ReCAPTCHA
+                  ref={recaptchaRef}
+                  sitekey={process.env.REACT_APP_RECAPTCHA_KEY}
+                  onChange={onChange}
+                />
+              )}
               <input
                 type="submit"
                 value="login"
@@ -474,24 +490,21 @@ export default function Portal() {
                 please put your email and if its a valid email we will send a
                 reset password link to it
               </p>
-              <div className="formItem ">
-                <label htmlFor="email">Email:</label>
-                <input
-                  required
-                  type="email"
-                  value={email}
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                ></input>
-              </div>
+              <Input
+                required
+                type="email"
+                name="email"
+                label="Email:"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+              />
             </>
           </MyModal>
         </div>
       )}
-      <div className={`Loading-wrapper ${isLoading ? "" : "FADE"}`}>
-        <img src={Loading} />
-      </div>
+      <Loading loading={isLoading} />
     </>
   );
 }

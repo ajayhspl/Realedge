@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { CreateToast } from "../../../App";
 import { UPLOADPHOTO } from "../../../server";
 import Upload from "../../../assets/upload.png";
+import Input from "../../Input/Input";
+import Select from "react-select";
 
 const General = ({ Data, UpdateGeneralData, setEdited }) => {
   const [data, setData] = useState(Data);
@@ -36,6 +38,23 @@ const General = ({ Data, UpdateGeneralData, setEdited }) => {
       });
     }
   };
+  const fontFamilyOptions = [
+    { value: "Roboto", label: "Roboto" },
+    { value: "Inter", label: "Inter" },
+    { value: "Comic Sans MS", label: "Comic Sans MS" },
+    { value: "serif", label: "serif" },
+    { value: "Sans-Serif", label: "Sans-Serif" },
+    { value: "monospace", label: "monospace" },
+    { value: "Fantasy", label: "Fantasy" },
+    { value: "Arial Black", label: "Arial Black" },
+    { value: "Verdana", label: "Verdana" },
+    { value: "Tahoma", label: "Tahoma" },
+    { value: "Trebuchet MS", label: "Trebuchet MS" },
+    { value: "Georgia", label: "Georgia" },
+    { value: "Courier", label: "Courier" },
+    { value: "Bradley Hand", label: "Bradley Hand" },
+    { value: "Luminari", label: "Luminari" },
+  ];
   const handleColorChange = (colorName, newColor) => {
     setData((prevData) => ({
       ...prevData,
@@ -43,6 +62,12 @@ const General = ({ Data, UpdateGeneralData, setEdited }) => {
         ...prevData.Colors,
         [colorName]: newColor,
       },
+    }));
+  };
+  const handleCheckboxChange = () => {
+    setData((prev) => ({
+      ...prev,
+      disableRecaptcha: !prev.disableRecaptcha,
     }));
   };
   const firstRender = useRef(true);
@@ -67,6 +92,12 @@ const General = ({ Data, UpdateGeneralData, setEdited }) => {
         case "HoverText":
           nameToRender = "Text on hover";
           break;
+        case "formsBackground":
+          nameToRender = "Forms Background";
+          break;
+        case "FooterBackground":
+          nameToRender = "Footer Background";
+          break;
         default:
           nameToRender = colorName;
           break;
@@ -86,204 +117,98 @@ const General = ({ Data, UpdateGeneralData, setEdited }) => {
       );
     }
   );
-  const handleCheckboxChange = () => {
-    setData((prev) => ({
-      ...prev,
-      DefaultJobContactTitle: !prev.DefaultJobContactTitle,
-    }));
-  };
+
   return (
     <div className="DataEntry section4">
-      <div className="formItem">
-        <span>Tab Icon:</span>
-        <label htmlFor="FavIcon">
-          <img
-            src={Upload}
-            style={{ width: "25px", cursor: "pointer", marginLeft: "20px" }}
+      <div
+        style={{
+          display: "flex",
+          gap: "50px",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <div className="formItem">
+          <span>Tab Icon:</span>
+          <label htmlFor="FavIcon">
+            <img
+              src={Upload}
+              style={{ width: "25px", cursor: "pointer", marginLeft: "20px" }}
+            />
+          </label>
+          <input
+            type="file"
+            hidden
+            id="FavIcon"
+            name="FavIcon"
+            onChange={handleInput}
           />
-        </label>
-        <input
-          type="file"
-          hidden
-          id="FavIcon"
-          name="FavIcon"
-          onChange={handleInput}
-        />
-      </div>
-      <div className="formItem">
-        <span>Logo:</span>
-        <label htmlFor="Logo">
-          <img
-            src={Upload}
-            style={{ width: "25px", cursor: "pointer", marginLeft: "20px" }}
+        </div>
+        <div className="formItem">
+          <span>Logo:</span>
+          <label htmlFor="Logo">
+            <img
+              src={Upload}
+              style={{ width: "25px", cursor: "pointer", marginLeft: "20px" }}
+            />
+          </label>
+          <input
+            type="file"
+            hidden
+            id="Logo"
+            name="Logo"
+            onChange={handleInput}
           />
-        </label>
-        <input
-          type="file"
-          hidden
-          id="Logo"
-          name="Logo"
-          onChange={handleInput}
-        />
-      </div>
+        </div>
 
-      <span>
-        hint: the Email that you will receive the any kind of form submits on
-      </span>
-      <div className="FormItem" id="Title">
-        <label htmlFor="Email">Email:</label>
-        <input
-          type="email"
-          id="Email"
-          name="Email"
-          value={data.Email}
-          onChange={handleInput}
-        />
-      </div>
-      <h3>Contact forms</h3>
-
-      <div className="FormItem" id="Title">
-        <label htmlFor="NavBarContactDescription">
-          Nav bar contact form Description:
-        </label>
-        <input
-          type="text"
-          id="NavBarContactDescription"
-          name="NavBarContactDescription"
-          value={data.NavBarContactDescription}
-          onChange={handleInput}
-        />
-      </div>
-      <div className="FormItem" id="Title">
-        <label htmlFor="NavBarContactTitle">NavBar contact form title:</label>
-        <input
-          type="text"
-          id="NavBarContactTitle"
-          name="NavBarContactTitle"
-          value={data.NavBarContactTitle}
-          onChange={handleInput}
-        />
-      </div>
-      <div className="FormItem" id="Title">
-        <label htmlFor="HeaderContactTitle">header contact form title:</label>
-        <input
-          type="text"
-          id="HeaderContactTitle"
-          name="HeaderContactTitle"
-          value={data.HeaderContactTitle}
-          onChange={handleInput}
-        />
-      </div>
-      <div className="FormItem" id="Title">
-        <label htmlFor="HeaderContactDescription">
-          header contact form Description:
-        </label>
-        <input
-          type="text"
-          id="HeaderContactDescription"
-          name="HeaderContactDescription"
-          value={data.HeaderContactDescription}
-          onChange={handleInput}
-        />
-      </div>
-      <div className="FormItem" id="Title">
-        <label htmlFor="JobRequestDescription">
-          Job Request form Description:
-        </label>
-        <input
-          type="text"
-          id="JobRequestDescription"
-          name="JobRequestDescription"
-          value={data.JobRequestDescription}
-          onChange={handleInput}
-        />
-      </div>
-      <div className="FormItem" id="Title">
-        <label htmlFor="JobRequestTitle">Job Request form Title:</label>
-        <input
-          type="text"
-          id="JobRequestTitle"
-          name="JobRequestTitle"
-          value={data.JobRequestTitle}
-          onChange={handleInput}
-        />
         <div className="formItem form-check CheckBox">
           <label className="form-check-label">
-            Default Naming:
+            Disable recaptcha:
             <input
               className="form-check-input"
               type="checkbox"
-              checked={data.DefaultJobContactTitle}
+              checked={data.disableRecaptcha}
               onChange={handleCheckboxChange}
             />
           </label>
         </div>
-      </div>
-
-      <div className="FormItem" id="Title">
-        <label htmlFor="PriceContactDescription">
-          Price Plan Request form Description:
-        </label>
-        <input
-          type="text"
-          id="PriceContactDescription"
-          name="PriceContactDescription"
-          value={data.PriceContactDescription}
-          onChange={handleInput}
-        />
-      </div>
-      <div className="FormItem" id="Title">
-        <label htmlFor="PriceContactTitle">
-          Price Plan Request form Title:
-        </label>
-        <input
-          type="text"
-          id="PriceContactTitle"
-          name="PriceContactTitle"
-          value={data.PriceContactTitle}
-          onChange={handleInput}
-        />
-        <div className="formItem form-check CheckBox">
-          <label className="form-check-label">
-            Default Naming:
-            <input
-              className="form-check-input"
-              type="checkbox"
-              checked={data.DefaultPriceContactTitle}
-              onChange={() => {
-                setData((prev) => ({
-                  ...prev,
-                  DefaultPriceContactTitle: !prev.DefaultPriceContactTitle,
-                }));
-              }}
-            />
-          </label>
+        <div className="FormItem" style={{ width: "auto" }}>
+          <label htmlFor="fontSelect">website Font:</label>
+          <Select
+            options={fontFamilyOptions}
+            value={fontFamilyOptions.find((font) => font.value === data.Font)}
+            onChange={(selectedOption) =>
+              setData((prev) => {
+                return { ...prev, Font: selectedOption.value };
+              })
+            }
+          />
         </div>
       </div>
       <h3>Meta Data</h3>
       <span style={{ color: "red" }}>
         Warning: the below changes might effect the search engine results
       </span>
-      <div className="FormItem" id="Title">
-        <label htmlFor="WebsiteName">Website Name:</label>
-        <input
-          type="text"
-          id="WebsiteName"
-          name="WebsiteName"
-          value={data.WebsiteName}
-          onChange={handleInput}
-        />
-      </div>
-      <div className="FormItem" id="Title">
-        <label htmlFor="Description">Website Description:</label>
-        <input
-          type="text"
-          id="Description"
-          name="Description"
-          value={data.Description}
-          onChange={handleInput}
-        />
-      </div>
+      <Input
+        label="Website Name"
+        type="text"
+        id="WebsiteName"
+        name="WebsiteName"
+        value={data.WebsiteName}
+        onChangeFunction={handleInput}
+        customWidth="70%"
+      />
+
+      <Input
+        label="Website Description"
+        type="text"
+        id="Description"
+        name="Description"
+        value={data.Description}
+        onChangeFunction={handleInput}
+        customWidth="70%"
+      />
+
       <h3>Website Colors</h3>
       <div className="WebTheme">
         <ul>{RenderColors}</ul>

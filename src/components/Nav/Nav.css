@@ -54,7 +54,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-family: "Roboto";
+  font-family: var(--Font);
   font-size: 1rem;
   color: var(--text);
   white-space: nowrap;
@@ -96,7 +96,9 @@
 .navbar li:hover > a {
   color: black;
 }
-
+a:hover {
+  color: var(--HoverText) !important;
+}
 .navbar .dropdown ul {
   display: block;
   position: absolute;
@@ -131,7 +133,7 @@
 .navbar .dropdown ul a:hover,
 .navbar .dropdown ul .active:hover,
 .navbar .dropdown ul li:hover > a {
-  color: #68a4c4;
+  color: var(--HoverText);
 }
 .ActiveLink:before {
   display: block;

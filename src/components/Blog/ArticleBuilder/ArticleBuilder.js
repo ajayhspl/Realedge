@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import MyEditor from "./Editor";
 import date from "date-and-time";
 import { CreateToast } from "../../../App";
 import {
@@ -14,7 +13,9 @@ import sortBy from "sort-by";
 import "./ArticleBuilder.css";
 import Upload from "../../../assets/upload.png";
 import NotFound from "../../NotFound/NotFound";
-const pattern = date.compile("HH A ,MMM DD YYYY");
+import Input from "../../Input/Input";
+import TipTap from "../../Dashboard/Customization/SidePages/RichTextEditor/tiptap";
+const pattern = date.compile("hh A ,MMM DD YYYY");
 const ArticleBuilder = () => {
   const [Categories, setCategories] = useState(null);
   const [authorList, setAuthorList] = useState([]);
@@ -38,7 +39,6 @@ const ArticleBuilder = () => {
     thumbnail: "",
     views: 0,
   });
-  const [Updated, SetUpdated] = useState(false);
   const handleInput = async (e) => {
     const now = new Date();
     const { name, value } = e.target;
@@ -99,11 +99,6 @@ const ArticleBuilder = () => {
     });
     setChosenAuthor(Author);
   };
-  const setImageContainer = (imageContainer) => {
-    setArticle((prev) => {
-      return { ...prev, imageContainer };
-    });
-  };
   const RenderCategories = Categories?.map((category) => {
     return (
       <option key={category.id} value={category.Name}>
@@ -118,37 +113,33 @@ const ArticleBuilder = () => {
   };
   const updatePost = async (e) => {
     e.preventDefault();
-    if (!Updated) {
-      CreateToast("Please click on Save first", "warning");
-    } else {
-      if (isArticleEmpty()) {
-        CreateToast("please fill all the fields", "error");
-        return;
-      }
-      CreateToast("uploading Article", "info");
-
-      await SETDOC(
-        "Articles",
-        Article.id,
-        {
-          ...Article,
-          OriginallyMadeBy: ActiveUser,
-          Author: chosenAuthor === null ? ActiveUser : chosenAuthor,
-        },
-        true
-      );
-      const articles = await GETCOLLECTION("Articles");
-      Distributor(articles, Categories);
-      CreateToast("Article Uploaded", "info");
-      setArticle((prev) => ({
-        ...prev,
-        thumbnail: "",
-        Description: "",
-        Title: "",
-      }));
-      setChosenAuthor(null);
-      GetID();
+    if (isArticleEmpty()) {
+      CreateToast("please fill all the fields", "error");
+      return;
     }
+    CreateToast("uploading Article", "info");
+
+    await SETDOC(
+      "Articles",
+      Article.id,
+      {
+        ...Article,
+        OriginallyMadeBy: ActiveUser,
+        Author: chosenAuthor === null ? ActiveUser : chosenAuthor,
+      },
+      true
+    );
+    const articles = await GETCOLLECTION("Articles");
+    Distributor(articles, Categories);
+    CreateToast("Article Uploaded", "info");
+    setArticle((prev) => ({
+      ...prev,
+      thumbnail: "",
+      Description: "",
+      Title: "",
+    }));
+    setChosenAuthor(null);
+    GetID();
   };
   const isArticleEmpty = () => {
     for (const key in Article) {
@@ -210,17 +201,15 @@ const ArticleBuilder = () => {
             <NotFound />
           ) : (
             <form className="ArticleBuilder">
-              <div className="FormItem" id="Title">
-                <label htmlFor="Title">Title:</label>
-                <input
-                  type="text"
-                  required
-                  id="Title"
-                  name="Title"
-                  value={Article.Title}
-                  onChange={handleInput}
-                />
-              </div>
+              <Input
+                label="Title"
+                type="text"
+                required={true}
+                id="Title"
+                name="Title"
+                value={Article.Title}
+                onChangeFunction={handleInput}
+              />
               <div className="FormItem" id="Category">
                 <label htmlFor="last-name">Category:</label>
                 <div className="select-container">
@@ -253,16 +242,16 @@ const ArticleBuilder = () => {
                   onChange={handleInput}
                 />
               </div>
-              <div className="FormItem" id="Description">
-                <label htmlFor="Description">Description:</label>
-                <textarea
-                  id="Description"
-                  name="Description"
-                  required
-                  value={Article.Description}
-                  onChange={handleInput}
-                />
-              </div>
+              <Input
+                textarea={true}
+                label="Description"
+                type=""
+                required={true}
+                id="Description"
+                name="Description"
+                value={Article.Description}
+                onChangeFunction={handleInput}
+              />
               <div className="FormItem" id="UnderName">
                 <label htmlFor="last-name">Post on behalf of:</label>
                 <div className="select-container">
@@ -276,13 +265,10 @@ const ArticleBuilder = () => {
                 </div>
               </div>
               {Article.id && (
-                <MyEditor
-                  handlePostBodyChange={handlePostBodyChange}
-                  SetUpdated={SetUpdated}
-                  ArticleID={Article.id}
-                  updatePhotoList={(photolist) => {
-                    setImageContainer(photolist);
-                  }}
+                <TipTap
+                  editorClassName="First"
+                  setHTML={handlePostBodyChange}
+                  OldData={Article.PostBody}
                 />
               )}
 

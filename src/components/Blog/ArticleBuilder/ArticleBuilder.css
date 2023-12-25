@@ -1,6 +1,6 @@
 .ArticleBuilder {
   display: grid;
-
+  margin-left: 20px;
   place-items: center;
 
   grid-template-areas:
@@ -34,29 +34,29 @@
   border-color: #007bff;
   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
-.ArticleBuilder #Editor {
+.ArticleBuilder .First {
   grid-area: Editor;
   width: 90%;
   margin: auto;
 }
-.ArticleBuilder #Editor .Preview {
+.ArticleBuilder .First .Preview {
   margin-top: 20px;
   border: 1px solid var(--borders);
   border-radius: 15px;
   padding: 15px;
 }
-.ArticleBuilder #Editor #toolbar {
+.ArticleBuilder .First #toolbar {
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   border: 1px solid var(--borders);
 }
-.ArticleBuilder #Editor .quill,
-.ArticleBuilder #Editor .ql-container {
+.ArticleBuilder .First .quill,
+.ArticleBuilder .First .ql-container {
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
   border-top: none;
 }
-.ArticleBuilder #Editor .Button {
+.ArticleBuilder .First .Button {
   margin: auto;
   padding: 10px;
   margin-top: 20px;
@@ -65,7 +65,6 @@
   grid-area: Thumbnail;
 }
 .ArticleBuilder #Description {
-  width: 70%;
   grid-area: Description;
 }
 .ArticleBuilder #Category {
@@ -89,15 +88,7 @@
   width: fit-content;
   margin: 20px;
 }
-.ArticleBuilder input[type="text"],
-.ArticleBuilder textarea {
-  margin: 0 20px;
-  border: none;
-  border-bottom: 1px solid#A4AAB3;
-}
-.ArticleBuilder input:focus {
-  outline: none;
-}
+
 .ArticleBuilder textarea {
   margin: 0;
 }

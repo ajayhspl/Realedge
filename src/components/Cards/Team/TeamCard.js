@@ -1,7 +1,9 @@
 import React from "react";
 import "./TeamCard.css";
-import linkedin from "../../../assets/linkedin.png";
-import Whatsapp from "../../../assets/whatsapp.png";
+
+import { FaWhatsapp } from "react-icons/fa";
+import { CiLinkedin } from "react-icons/ci";
+
 const TeamCard = ({ Data, delayString, admin }) => {
   return (
     <div
@@ -25,20 +27,21 @@ const TeamCard = ({ Data, delayString, admin }) => {
         >
           {Data.name}
         </p>
-        <br />
-        {Data.Whatsapp && (
-          <a
-            href={`https://wa.me/${Data.Whatsapp}`}
-            style={{ marginLeft: "auto", marginRight: "10px" }}
-          >
-            <img src={Whatsapp} />
-          </a>
-        )}
-        {Data.LinkedIn && (
-          <a href={Data.LinkedIn}>
-            <img src={linkedin} />
-          </a>
-        )}
+        <div>
+          {Data.Whatsapp && (
+            <a
+              href={`https://wa.me/${Data.Whatsapp}`}
+              style={{ marginLeft: "auto", marginRight: "10px" }}
+            >
+              <FaWhatsapp style={{ fontSize: "2rem", color: "var(--icons)" }} />
+            </a>
+          )}
+          {Data.LinkedIn && (
+            <a href={Data.LinkedIn}>
+              <CiLinkedin style={{ fontSize: "2rem", color: "var(--icons)" }} />
+            </a>
+          )}
+        </div>
         {Data.Role && <p className="Role">{Data.Role}</p>}
       </div>
     </div>

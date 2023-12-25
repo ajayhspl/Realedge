@@ -27,7 +27,7 @@
   gap: 10px;
 }
 .ViewMember .content .Picture {
-  width: 40%;
+  width: 37%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,26 +37,40 @@
   width: 90%;
 }
 .ViewMember .content .Details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   width: 60%;
   padding-left: 30px;
-  border-left: 1px solid var(--borders);
 }
 .ViewMember .content .Details h6 {
-  text-align: center;
+  text-align: left;
   letter-spacing: 1px;
   font-weight: 300;
 }
+.ViewMember .content .Details .phone {
+  margin-right: 10px;
+  margin-left: auto;
+  background-color: transparent;
+  border: 1px solid var(--borders);
+  border-radius: 5px;
+  padding: 5px 10px;
+}
 .ViewMember .content .Details h5 {
-  letter-spacing: 3px;
-  font-size: 1.1rem;
-  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 300;
 }
 .ViewMember .content .Details img {
   width: 25px;
   height: 25px;
 }
 .ViewMember .content .Details .OverView {
+  border: none;
+  box-shadow: none;
   width: 95%;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
 }
 @media (max-width: 800px) {
   .ViewMember .content {

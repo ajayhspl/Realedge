@@ -1,9 +1,10 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import "./ViewMember.css";
-import linkedin from "../../assets/linkedin.png";
-import Whatsapp from "../../assets/whatsapp.png";
 import NotFound from "../NotFound/NotFound";
+import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
+import { CiLinkedin } from "react-icons/ci";
+
 const ViewMember = ({ AllData, Tabs }) => {
   const id = useParams().ID;
   let Target = AllData.find((Team) => {
@@ -22,29 +23,45 @@ const ViewMember = ({ AllData, Tabs }) => {
             <img src={Target.image} />
           </div>
           <div className="Details">
+            <h5> {Target.name}</h5>
             <h6>
-              &#8226; {Target.Role ? Target.Role : ""} &mdash;{"  "}
+              {Target.Role ? Target.Role : ""} &mdash;{"  "}
               {Target.Location ? Target.Location : ""}
             </h6>
 
             {Target.overview && (
               <div className="OverView">
-                <h5>Who is {Target.name}:</h5> <p>{Target.overview}</p>
+                <p>{Target.overview}</p>
               </div>
             )}
             <div className="Socials">
-              <h5>Socials:</h5>
               {Target.Whatsapp && (
                 <a
                   href={`https://wa.me/${Target.Whatsapp}`}
                   style={{ marginLeft: "auto", marginRight: "10px" }}
                 >
-                  <img src={Whatsapp} />
+                  <FaWhatsapp
+                    style={{ fontSize: "2rem", color: "var(--icons)" }}
+                  />
                 </a>
+              )}
+              {Target.Whatsapp && (
+                <button className="phone">
+                  <FaPhoneAlt
+                    style={{
+                      fontSize: "1.2rem",
+                      color: "var(--icons)",
+                      marginRight: "5px",
+                    }}
+                  />
+                  {Target.Whatsapp}
+                </button>
               )}
               {Target.LinkedIn && (
                 <a href={`${Target.LinkedIn}`}>
-                  <img src={linkedin} />
+                  <CiLinkedin
+                    style={{ fontSize: "2rem", color: "var(--icons)" }}
+                  />
                 </a>
               )}
             </div>

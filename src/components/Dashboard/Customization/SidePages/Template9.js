@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { UPLOADPHOTO } from "../../../../server";
+import { DELETEPHOTO, UPLOADPHOTO, UPLOADVIDEO } from "../../../../server";
 import { CreateToast } from "../../../../App";
 import DataTable from "react-data-table-component";
 import MyModal from "../../../PopUps/Confirm/Confirm";
@@ -8,7 +8,15 @@ import sortBy from "sort-by";
 import Upload from "../../../../assets/upload.png";
 import "./SidePages.css";
 import TipTap from "./RichTextEditor/tiptap";
-const Template9 = ({ Data, UpdateData, BackEndName, setEdited }) => {
+import Input from "../../../Input/Input";
+import Select from "react-select";
+import VideoPlayer from "../../../VideoPlayer";
+const HeaderContent = [
+  { value: "Video", label: "Video" },
+  { value: "Text", label: "Text" },
+];
+
+const Template9 = ({ Data, UpdateData, BackEndName, setEdited, edited }) => {
   const [data, setData] = useState(Data);
   const [NewCard, setNewCard] = useState({
     Content: "",
@@ -16,6 +24,9 @@ const Template9 = ({ Data, UpdateData, BackEndName, setEdited }) => {
     id: "",
   });
   const [showModal, setShowModal] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [videoUploading, setVideoUploading] = useState(false);
+
   const handleShowModal = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
   const handlePrimaryAction = () => {
@@ -93,12 +104,57 @@ const Template9 = ({ Data, UpdateData, BackEndName, setEdited }) => {
       CreateToast("photo uploaded", "success", 2000);
 
       return;
+    } else if (name === "Video") {
+      if (videoUploading) {
+        CreateToast("uploading Video", "error", 2000);
+        return;
+      }
+      setVideoUploading(true);
+      CreateToast("uploading Video", "info", 10000);
+      const file = e.target.files[0];
+      const url = await UPLOADVIDEO(
+        `/customization/SidePages/${BackEndName}/Video`,
+        file,
+        handleProgress
+      );
+
+      setData((prev) => {
+        return { ...prev, Video: url };
+      });
+      setUploadProgress(0);
+      CreateToast("Video uploaded", "success", 2000);
+
+      UpdateData(BackEndName, { ...data, Video: url });
+      return;
     } else {
       setData((prev) => {
         return { ...prev, [name]: value };
       });
     }
   };
+  const DeleteVideo = async () => {
+    if (videoUploading) {
+      CreateToast("Video Uploading, please wait...", "error", 2000);
+      return;
+    }
+    CreateToast("deleting video", "info");
+    await DELETEPHOTO(`/customization/SidePages/${BackEndName}/Video`);
+    await UpdateData(BackEndName, { ...data, Video: "", WhatToShow: "Text" });
+    setData((prev) => ({ ...prev, Video: "" }));
+    CreateToast("video deleted", "success");
+  };
+  const handleProgress = (progress) => {
+    setUploadProgress(progress);
+    if (progress === 100) {
+      setVideoUploading(false);
+    }
+  };
+  const handleHeaderDataChange = (value) => {
+    setData((prev) => {
+      return { ...prev, HeaderData: value };
+    });
+  };
+
   const DeleteCard = (id) => {
     const NewCards = data.Sec3Elements.filter((Card) => {
       return Card.id !== id;
@@ -187,20 +243,19 @@ const Template9 = ({ Data, UpdateData, BackEndName, setEdited }) => {
           handlePrimaryAction={handlePrimaryAction}
         >
           <>
-            <div className="formItem ">
-              <label htmlFor="Name">Tab Name:</label>
-              <input
-                type="text"
-                id="Name"
-                name="Name"
-                value={NewCard.Name}
-                onChange={(event) => {
-                  setNewCard((prev) => {
-                    return { ...prev, [event.target.name]: event.target.value };
-                  });
-                }}
-              ></input>
-            </div>
+            <Input
+              label="Tab Name:"
+              type="text"
+              id="Name"
+              name="Name"
+              value={NewCard.Name}
+              onChangeFunction={(event) => {
+                setNewCard((prev) => {
+                  return { ...prev, [event.target.name]: event.target.value };
+                });
+              }}
+            />
+
             <TipTap
               setHTML={(value) => {
                 handlePostBodyChange(value, "NewCard");
@@ -227,45 +282,45 @@ const Template9 = ({ Data, UpdateData, BackEndName, setEdited }) => {
       <span style={{ margin: "20px" }}>
         to hide a page just leave the <strong>Page URL</strong> field empty
       </span>
-      <div className="FormItem" id="Title">
-        <label htmlFor="PageURL">Page URL:</label>
-        <input
+      <Input
+        label="Page URL:"
+        type="text"
+        id="PageURL"
+        name="PageURL"
+        value={data.PageURL}
+        onChangeFunction={handleInput}
+        customWidth="70%"
+      />
+
+      <Input
+        label="Page Name in navigation :"
+        type="text"
+        id="PageName"
+        name="PageName"
+        value={data.PageName}
+        onChangeFunction={handleInput}
+        customWidth="70%"
+      />
+
+      <Input
+        label="Header Title:"
+        type="text"
+        id="HeaderTitle"
+        name="HeaderTitle"
+        value={data.HeaderTitle}
+        onChangeFunction={handleInput}
+        customWidth="70%"
+      />
+
+      <div className="FormItem" style={{ width: "70%" }}>
+        <Input
+          label="Top Title:"
           type="text"
-          id="PageURL"
-          name="PageURL"
-          value={data.PageURL}
-          onChange={handleInput}
-        />
-      </div>
-      <div className="FormItem" id="Title">
-        <label htmlFor="PageName">Page Name:</label>
-        <input
-          type="text"
-          id="PageName"
-          name="PageName"
-          value={data.PageName}
-          onChange={handleInput}
-        />
-      </div>
-      <div className="FormItem" id="Title">
-        <label htmlFor="HeaderTitle">Header Title:</label>
-        <input
-          type="text"
-          id="HeaderTitle"
-          name="HeaderTitle"
-          value={data.HeaderTitle}
-          onChange={handleInput}
-        />
-      </div>
-      <div className="FormItem">
-        <label htmlFor="TopTitle">Top Title:</label>
-        <input
-          type="text"
-          required
+          required={true}
           id="TopTitle"
           name="TopTitle"
           value={data.TopTitle}
-          onChange={handleInput}
+          onChangeFunction={handleInput}
         />
         <input
           className="ColorPicker"
@@ -275,15 +330,16 @@ const Template9 = ({ Data, UpdateData, BackEndName, setEdited }) => {
           onChange={handleInput}
         />
       </div>
-      <div className="FormItem">
-        <label htmlFor="BottomTitle">Bottom Title:</label>
-        <input
+
+      <div className="FormItem" style={{ width: "70%" }}>
+        <Input
+          label="Bottom Title:"
           type="text"
-          required
+          required={true}
           id="BottomTitle"
           name="BottomTitle"
           value={data.BottomTitle}
-          onChange={handleInput}
+          onChangeFunction={handleInput}
           style={{ color: data.BottomColor }}
         />
         <input
@@ -293,6 +349,68 @@ const Template9 = ({ Data, UpdateData, BackEndName, setEdited }) => {
           name="BottomColor"
           onChange={handleInput}
         />
+      </div>
+      <h2>Media</h2>
+      <div>
+        <label>What To Show:</label>
+        <Select
+          options={HeaderContent}
+          value={HeaderContent.find(
+            (object) => object.value === data.WhatToShow
+          )}
+          onChange={(selectedOption) =>
+            setData((prev) => {
+              return { ...prev, WhatToShow: selectedOption.value };
+            })
+          }
+        />
+      </div>
+      <div className="HeaderContent">
+        <div className="video">
+          <div className="UploadWrapper">
+            <div className="FormItem">
+              <span>Video: </span>
+              <label htmlFor="Video">
+                <img
+                  src={Upload}
+                  style={{ width: "25px", cursor: "pointer" }}
+                />
+              </label>
+              <input
+                type="file"
+                accept="video/*"
+                hidden
+                id="Video"
+                name="Video"
+                onChange={handleInput}
+              />
+            </div>
+          </div>
+          {uploadProgress != 0 && (
+            <div className="video-progress-bar">
+              <div
+                className="video-progress-bar-fill"
+                style={{ width: `${uploadProgress}%` }}
+              ></div>
+            </div>
+          )}
+          {data.Video && (
+            <div style={{ width: "500px" }}>
+              <VideoPlayer videoUrl={data.Video} />
+
+              <button className="Button Danger" onClick={DeleteVideo}>
+                Delete Video
+              </button>
+            </div>
+          )}
+        </div>
+        <div className="textEditor">
+          <TipTap
+            editorClassName="smallEditor"
+            setHTML={handleHeaderDataChange}
+            OldData={data.HeaderData}
+          />
+        </div>
       </div>
       <button className="Button View" onClick={handleShowModal}>
         AddCard
@@ -305,18 +423,19 @@ const Template9 = ({ Data, UpdateData, BackEndName, setEdited }) => {
         columns={CardsColumns}
         data={CardsData}
       />
+
       <div className="Section-wrapper">
         <h3>Section one</h3>
-        <div className="FormItem" id="Title">
-          <label htmlFor="Sec1Title">Section one Title:</label>
-          <input
-            type="text"
-            id="Sec1Title"
-            name="Sec1Title"
-            value={data.Sec1Title}
-            onChange={handleInput}
-          />
-        </div>
+        <Input
+          label="Section one Title:"
+          type="text"
+          id="Sec1Title"
+          name="Sec1Title"
+          value={data.Sec1Title}
+          onChangeFunction={handleInput}
+          customWidth="70%"
+        />
+
         <TipTap
           setHTML={(value) => {
             handlePostBodyChange(value, "Section1");
@@ -326,16 +445,16 @@ const Template9 = ({ Data, UpdateData, BackEndName, setEdited }) => {
       </div>
       <div className="Section-wrapper">
         <h3>Section Two</h3>
-        <div className="FormItem" id="Title">
-          <label htmlFor="Sec2Title">Section Two Title:</label>
-          <input
-            type="text"
-            id="Sec2Title"
-            name="Sec2Title"
-            value={data.Sec2Title}
-            onChange={handleInput}
-          />
-        </div>
+        <Input
+          label="Section Two Title:"
+          type="text"
+          id="Sec2Title"
+          name="Sec2Title"
+          value={data.Sec2Title}
+          onChangeFunction={handleInput}
+          customWidth="70%"
+        />
+
         <TipTap
           setHTML={(value) => {
             handlePostBodyChange(value, "Section2");
@@ -345,26 +464,26 @@ const Template9 = ({ Data, UpdateData, BackEndName, setEdited }) => {
       </div>
       <div className="Section-wrapper">
         <h3>Section Four</h3>
-        <div className="FormItem" id="Title">
-          <label htmlFor="Sec4Title">Section Four Title:</label>
-          <input
-            type="text"
-            id="Sec4Title"
-            name="Sec4Title"
-            value={data.Sec4Title}
-            onChange={handleInput}
-          />
-        </div>
-        <div className="FormItem" id="Title">
-          <label htmlFor="Sec4Subtitle">Section Four Sub Title:</label>
-          <input
-            type="text"
-            id="Sec4Subtitle"
-            name="Sec4Subtitle"
-            value={data.Sec4Subtitle}
-            onChange={handleInput}
-          />
-        </div>
+        <Input
+          label="Section Four Title:"
+          type="text"
+          id="Sec4Title"
+          name="Sec4Title"
+          value={data.Sec4Title}
+          onChangeFunction={handleInput}
+          customWidth="70%"
+        />
+
+        <Input
+          label="Section Four Sub Title:"
+          type="text"
+          id="Sec4Subtitle"
+          name="Sec4Subtitle"
+          value={data.Sec4Subtitle}
+          onChangeFunction={handleInput}
+          customWidth="70%"
+        />
+
         <TipTap
           setHTML={(value) => {
             handlePostBodyChange(value, "Section4");
@@ -374,16 +493,15 @@ const Template9 = ({ Data, UpdateData, BackEndName, setEdited }) => {
       </div>
       <div className="Section-wrapper">
         <h3>Section Five</h3>
-        <div className="FormItem" id="Title">
-          <label htmlFor="Sec5Title">Section Five Title:</label>
-          <input
-            type="text"
-            id="Sec5Title"
-            name="Sec5Title"
-            value={data.Sec5Title}
-            onChange={handleInput}
-          />
-        </div>
+        <Input
+          label="Section Five Title:"
+          type="text"
+          id="Sec5Title"
+          name="Sec5Title"
+          value={data.Sec5Title}
+          onChangeFunction={handleInput}
+          customWidth="70%"
+        />
 
         <TipTap
           setHTML={(value) => {
@@ -394,16 +512,15 @@ const Template9 = ({ Data, UpdateData, BackEndName, setEdited }) => {
       </div>
       <div className="Section-wrapper">
         <h3>Section Six</h3>
-        <div className="FormItem" id="Title">
-          <label htmlFor="Sec6Title">Section Six Title:</label>
-          <input
-            type="text"
-            id="Sec6Title"
-            name="Sec6Title"
-            value={data.Sec6Title}
-            onChange={handleInput}
-          />
-        </div>
+        <Input
+          label="Section Six Title:"
+          type="text"
+          id="Sec6Title"
+          name="Sec6Title"
+          value={data.Sec6Title}
+          onChangeFunction={handleInput}
+          customWidth="70%"
+        />
 
         <TipTap
           setHTML={(value) => {
@@ -414,16 +531,15 @@ const Template9 = ({ Data, UpdateData, BackEndName, setEdited }) => {
       </div>
       <div className="Section-wrapper">
         <h3>Section Seven</h3>
-        <div className="FormItem" id="Title">
-          <label htmlFor="Sec7Title">Section Seven Title:</label>
-          <input
-            type="text"
-            id="Sec7Title"
-            name="Sec7Title"
-            value={data.Sec7Title}
-            onChange={handleInput}
-          />
-        </div>
+        <Input
+          label="Section Seven Title:"
+          type="text"
+          id="Sec7Title"
+          name="Sec7Title"
+          value={data.Sec7Title}
+          onChangeFunction={handleInput}
+          customWidth="70%"
+        />
 
         <TipTap
           setHTML={(value) => {
@@ -432,15 +548,17 @@ const Template9 = ({ Data, UpdateData, BackEndName, setEdited }) => {
           oldData={data.Sec7Body}
         />
       </div>
-      <button
-        className="Button View"
-        id="Submit"
-        onClick={() => {
-          UpdateData(BackEndName, data);
-        }}
-      >
-        Save
-      </button>
+      <div className={`SubmitWrapper ${edited ? "fixed" : ""}`}>
+        <button
+          className="Button View"
+          id="Submit"
+          onClick={() => {
+            UpdateData(BackEndName, data);
+          }}
+        >
+          Save
+        </button>
+      </div>
     </div>
   );
 };

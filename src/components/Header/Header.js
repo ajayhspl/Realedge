@@ -21,7 +21,7 @@ const Header = (props) => {
             </div>
           )}
         </div>
-        <div className="BTM">
+        <div className="BTM" style={{ marginBottom: "20px", gap: "0" }}>
           {severData.Title && (
             <h1
               id="HeaderTitle"

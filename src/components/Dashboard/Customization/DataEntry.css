@@ -12,6 +12,7 @@
   justify-items: center; /* Center items horizontally */
 }
 .DataEntry .ColorPicker {
+  margin-left: 20px;
   width: 30px;
   height: 30px;
   border: 1px solid black;
@@ -52,9 +53,7 @@
   width: 20px;
   height: 20px;
 }
-.DataEntry.Head .CheckMarkWrapper .FormItem label {
-  width: 100px;
-}
+
 .DataEntry .video-progress-bar {
   width: 100px;
   margin-top: 10px;
@@ -157,7 +156,8 @@
   display: flex;
   width: 100%;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 0 30px;
   align-items: center;
 }
 .DataEntry .Add-Testimonial .FormItem {
@@ -216,9 +216,7 @@
 .modal-body .formItem textarea,
 .modal-body .formItem input {
   width: 100%;
-  margin: 10px 0 20px 20px;
   border: none;
-  border-bottom: 1px solid var(--buttons);
   height: 50px;
 }
 .DataEntry textarea {

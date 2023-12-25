@@ -8,12 +8,37 @@ import sortBy from "sort-by";
 import VideoPlayer from "../../../VideoPlayer";
 import shortid from "shortid";
 import TipTap from "./RichTextEditor/tiptap";
-const Template7 = ({ Data, UpdateData, BackEndName, setEdited }) => {
+import Input from "../../../Input/Input";
+import Select from "react-select";
+
+const HeaderContent = [
+  { value: "Video", label: "Video" },
+  { value: "Text", label: "Text" },
+];
+const fontFamilyOptions = [
+  { value: "", label: "Default" },
+  { value: "Inter", label: "Inter" },
+  { value: "Comic Sans MS", label: "Comic Sans MS" },
+  { value: "serif", label: "serif" },
+  { value: "Sans-Serif", label: "Sans-Serif" },
+  { value: "monospace", label: "monospace" },
+  { value: "Fantasy", label: "Fantasy" },
+  { value: "Arial Black", label: "Arial Black" },
+  { value: "Verdana", label: "Verdana" },
+  { value: "Tahoma", label: "Tahoma" },
+  { value: "Trebuchet MS", label: "Trebuchet MS" },
+  { value: "Georgia", label: "Georgia" },
+  { value: "Courier", label: "Courier" },
+  { value: "Bradley Hand", label: "Bradley Hand" },
+  { value: "Luminari", label: "Luminari" },
+];
+const Template7 = ({ Data, UpdateData, BackEndName, setEdited, edited }) => {
   const [data, setData] = useState(Data);
   const [ShowAddDocument, setShowAddDocument] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [videoUploading, setVideoUploading] = useState(false);
   const [showPrice, setShowPrice] = useState(false);
+
   const [newDocument, setNewDocument] = useState({
     Document: "",
     name: "",
@@ -48,6 +73,7 @@ const Template7 = ({ Data, UpdateData, BackEndName, setEdited }) => {
     });
     GetID();
   };
+
   const handleDocEdit = async (e) => {
     const { name, value } = e.target;
     if (name === "Document") {
@@ -74,6 +100,7 @@ const Template7 = ({ Data, UpdateData, BackEndName, setEdited }) => {
   };
   const AddDocument = () => {
     if (newDocument.name === "" || newDocument.Document === "") {
+      CreateToast("document name or file are missing", "error");
       return;
     }
     setData((prev) => ({
@@ -151,6 +178,12 @@ const Template7 = ({ Data, UpdateData, BackEndName, setEdited }) => {
       setVideoUploading(false);
     }
   };
+  const handleHeaderDataChange = (value) => {
+    setData((prev) => {
+      return { ...prev, HeaderData: value };
+    });
+  };
+
   const handleInput = async (e) => {
     const { name, value } = e.target;
     if (name === "Video") {
@@ -305,64 +338,83 @@ const Template7 = ({ Data, UpdateData, BackEndName, setEdited }) => {
   return (
     <div className="DataEntry Hosting">
       <h2>General</h2>
-      <div className="formItem">
-        <span>Background:</span>
-        <label htmlFor="BG">
-          <img src={Upload} style={{ width: "25px", cursor: "pointer" }} />
-        </label>
+      <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
+        <div className="formItem">
+          <span>Background:</span>
+          <label htmlFor="BG">
+            <img src={Upload} style={{ width: "25px", cursor: "pointer" }} />
+          </label>
 
-        <input
-          type="file"
-          accept="image/*"
-          hidden
-          id="BG"
-          name="BG"
-          onChange={handleInput}
+          <input
+            type="file"
+            accept="image/*"
+            hidden
+            id="BG"
+            name="BG"
+            onChange={handleInput}
+          />
+        </div>
+        <div>
+          <label htmlFor="generalColor">page text Color</label>
+          <input
+            className="ColorPicker"
+            type="color"
+            id="generalColor"
+            value={data.Color ? data.Color : ""}
+            name="Color"
+            onChange={handleInput}
+          />
+        </div>
+        <label htmlFor="fontSelect">page Font Family:</label>
+        <Select
+          options={fontFamilyOptions}
+          value={fontFamilyOptions.find((font) => font.value === data.Font)}
+          onChange={(selectedOption) =>
+            setData((prev) => {
+              return { ...prev, Font: selectedOption.value };
+            })
+          }
         />
       </div>
-
       <span style={{ margin: "20px" }}>
         to hide a page just leave the <strong>Page URL</strong> field empty
       </span>
-      <div className="FormItem" id="Title">
-        <label htmlFor="PageURL">Page URL:</label>
-        <input
+      <Input
+        label="Page URL:"
+        type="text"
+        id="PageURL"
+        name="PageURL"
+        value={data.PageURL}
+        onChangeFunction={handleInput}
+        customWidth="70%"
+      />
+      <Input
+        label="Page Name in navigation :"
+        type="text"
+        id="PageName"
+        name="PageName"
+        value={data.PageName}
+        onChangeFunction={handleInput}
+        customWidth="70%"
+      />
+      <Input
+        label="Header Title:"
+        type="text"
+        id="HeaderTitle"
+        name="HeaderTitle"
+        value={data.HeaderTitle}
+        onChangeFunction={handleInput}
+        customWidth="70%"
+      />
+      <div className="FormItem" style={{ width: "70%" }}>
+        <Input
+          label="Top Title:"
           type="text"
-          id="PageURL"
-          name="PageURL"
-          value={data.PageURL}
-          onChange={handleInput}
-        />
-      </div>
-      <div className="FormItem" id="Title">
-        <label htmlFor="PageName">Page Name:</label>
-        <input
-          type="text"
-          id="PageName"
-          name="PageName"
-          value={data.PageName}
-          onChange={handleInput}
-        />
-      </div>
-      <div className="FormItem" id="Title">
-        <label htmlFor="HeaderTitle">Header Title:</label>
-        <input
-          type="text"
-          id="HeaderTitle"
-          name="HeaderTitle"
-          value={data.HeaderTitle}
-          onChange={handleInput}
-        />
-      </div>
-      <div className="FormItem">
-        <label htmlFor="TopTitle">Top Title:</label>
-        <input
-          type="text"
-          required
+          required={true}
           id="TopTitle"
           name="TopTitle"
           value={data.TopTitle}
-          onChange={handleInput}
+          onChangeFunction={handleInput}
         />
         <input
           className="ColorPicker"
@@ -372,15 +424,15 @@ const Template7 = ({ Data, UpdateData, BackEndName, setEdited }) => {
           onChange={handleInput}
         />
       </div>
-      <div className="FormItem">
-        <label htmlFor="BottomTitle">Bottom Title:</label>
-        <input
+      <div className="FormItem" style={{ width: "70%" }}>
+        <Input
+          label="Bottom Title:"
           type="text"
-          required
+          required={true}
           id="BottomTitle"
           name="BottomTitle"
           value={data.BottomTitle}
-          onChange={handleInput}
+          onChangeFunction={handleInput}
           style={{ color: data.BottomColor }}
         />
         <input
@@ -391,26 +443,88 @@ const Template7 = ({ Data, UpdateData, BackEndName, setEdited }) => {
           onChange={handleInput}
         />
       </div>
-      <div className="FormItem">
-        <label htmlFor="SoldBy">Product SoldBy:</label>
-        <input
-          type="text"
-          id="SoldBy"
-          name="SoldBy"
-          value={data.SoldBy}
-          onChange={handleInput}
+
+      <Input
+        label="Product SoldBy:"
+        type="text"
+        id="SoldBy"
+        name="SoldBy"
+        value={data.SoldBy}
+        onChangeFunction={handleInput}
+        customWidth="70%"
+      />
+      <Input
+        label="Fulfillment method:"
+        type="text"
+        id="Fulfillment"
+        name="Fulfillment"
+        value={data.Fulfillment}
+        onChangeFunction={handleInput}
+        customWidth="70%"
+      />
+      <h2>Media</h2>
+      <div>
+        <label>What To Show:</label>
+        <Select
+          options={HeaderContent}
+          value={HeaderContent.find(
+            (object) => object.value === data.WhatToShow
+          )}
+          onChange={(selectedOption) =>
+            setData((prev) => {
+              return { ...prev, WhatToShow: selectedOption.value };
+            })
+          }
         />
       </div>
-      <div className="FormItem">
-        <label htmlFor="Fulfillment">Fulfillment method:</label>
-        <input
-          type="text"
-          id="Fulfillment"
-          name="Fulfillment"
-          value={data.Fulfillment}
-          onChange={handleInput}
-        />
+      <div className="HeaderContent">
+        <div className="video">
+          <div className="UploadWrapper">
+            <div className="FormItem">
+              <span>Video: </span>
+              <label htmlFor="Video">
+                <img
+                  src={Upload}
+                  style={{ width: "25px", cursor: "pointer" }}
+                />
+              </label>
+              <input
+                type="file"
+                accept="video/*"
+                hidden
+                id="Video"
+                name="Video"
+                onChange={handleInput}
+              />
+            </div>
+          </div>
+          {uploadProgress != 0 && (
+            <div className="video-progress-bar">
+              <div
+                className="video-progress-bar-fill"
+                style={{ width: `${uploadProgress}%` }}
+              ></div>
+            </div>
+          )}
+          {data.Video && (
+            <div style={{ width: "500px" }}>
+              <VideoPlayer videoUrl={data.Video} />
+
+              <button className="Button Danger" onClick={DeleteVideo}>
+                Delete Video
+              </button>
+            </div>
+          )}
+        </div>
+        <div className="textEditor">
+          <TipTap
+            editorClassName="smallEditor"
+            setHTML={handleHeaderDataChange}
+            OldData={data.HeaderData}
+          />
+        </div>
       </div>
+
       <h2>Sections</h2>
       <div className="EditorWrapper">
         <TipTap
@@ -446,26 +560,23 @@ const Template7 = ({ Data, UpdateData, BackEndName, setEdited }) => {
       </button>
       {showPrice && (
         <div className="PriceAdding">
-          <div className="FormItem">
-            <label htmlFor="Cost">Cost:</label>
-            <input
-              type="text"
-              id="Cost"
-              name="Cost"
-              value={newPrice.Cost}
-              onChange={handlePriceEdit}
-            />
-          </div>
-          <div className="FormItem">
-            <label htmlFor="Type">Type:</label>
-            <input
-              type="text"
-              id="SoldBy"
-              name="Type"
-              value={newPrice.Type}
-              onChange={handlePriceEdit}
-            />
-          </div>
+          <Input
+            label="Cost:"
+            type="text"
+            id="Cost"
+            name="Cost"
+            value={newPrice.Cost}
+            onChangeFunction={handlePriceEdit}
+          />
+          <Input
+            label="Type:"
+            type="text"
+            id="Type"
+            name="Type"
+            value={newPrice.Type}
+            onChangeFunction={handlePriceEdit}
+          />
+
           <div className="Button-wrapper">
             <button className="Button View" onClick={AddData}>
               Add
@@ -494,28 +605,34 @@ const Template7 = ({ Data, UpdateData, BackEndName, setEdited }) => {
       <button
         className="Button View"
         onClick={() => {
-          setShowAddDocument(true);
+          setShowAddDocument((prev) => !prev);
         }}
       >
-        Add Document
+        {ShowAddDocument ? "close add Document menu" : "open add Document menu"}
       </button>
       {ShowAddDocument && (
         <div className="PriceAdding">
-          <div className="FormItem">
-            <label htmlFor="FileName">File Name:</label>
-            <input
-              type="text"
-              id="FileName"
-              name="name"
-              value={newDocument.name}
-              onChange={handleDocEdit}
-            />
-          </div>
+          <Input
+            label="File Name:"
+            type="text"
+            id="name"
+            name="name"
+            value={newDocument.name}
+            onChangeFunction={handleDocEdit}
+          />
+
           <div className="formItem">
             <span>Document:</span>
-            <label htmlFor="Document">
-              <img src={Upload} style={{ width: "25px", cursor: "pointer" }} />
-            </label>
+            {newDocument.name ? (
+              <label htmlFor="Document">
+                <img
+                  src={Upload}
+                  style={{ width: "25px", cursor: "pointer" }}
+                />
+              </label>
+            ) : (
+              <p>choose a name first for the doucment</p>
+            )}
             <input
               type="file"
               accept=".ppt, .pptx, .doc, .docx, .xls, .xlsx, .txt, .pdf"
@@ -548,51 +665,21 @@ const Template7 = ({ Data, UpdateData, BackEndName, setEdited }) => {
         columns={columnsDoc}
         data={infoDoc}
       />
-      <h2>Video</h2>
-      <div className="formItem">
-        <span>Video:</span>
-        <label htmlFor="Video">
-          <img src={Upload} style={{ width: "25px", cursor: "pointer" }} />
-        </label>
-        <input
-          type="file"
-          accept="video/*"
-          hidden
-          id="Video"
-          name="Video"
-          onChange={handleInput}
-        />
+      <div className={`SubmitWrapper ${edited ? "fixed" : ""}`}>
+        <button
+          className="Button View"
+          id="Submit"
+          onClick={() => {
+            if (videoUploading) {
+              CreateToast("Video Uploading, please wait...", "error", 2000);
+              return;
+            }
+            UpdateData(BackEndName, data);
+          }}
+        >
+          Save
+        </button>
       </div>
-      {uploadProgress != 0 && (
-        <div className="video-progress-bar">
-          <div
-            className="video-progress-bar-fill"
-            style={{ width: `${uploadProgress}%` }}
-          ></div>
-        </div>
-      )}
-      {data.Video && (
-        <div style={{ width: "500px" }}>
-          <VideoPlayer videoUrl={data.Video} />
-
-          <button className="Button Danger" onClick={DeleteVideo}>
-            Delete Video
-          </button>
-        </div>
-      )}
-      <button
-        className="Button View"
-        id="Submit"
-        onClick={() => {
-          if (videoUploading) {
-            CreateToast("Video Uploading, please wait...", "error", 2000);
-            return;
-          }
-          UpdateData(BackEndName, data);
-        }}
-      >
-        Save
-      </button>
     </div>
   );
 };

@@ -5,8 +5,9 @@ import { CreateToast } from "../../../../App";
 import sortBy from "sort-by";
 import Upload from "../../../../assets/upload.png";
 import { DELETEPHOTO, UPLOADPHOTO } from "../../../../server";
+import Input from "../../../Input/Input";
 
-const Section7 = ({ FetchedData, UpdateData, setEdited }) => {
+const Section7 = ({ FetchedData, UpdateData, setEdited, edited }) => {
   const [data, setData] = useState(FetchedData);
   const [photoUploaded, setPhotoUploaded] = useState(true);
   const [showModal, setShowModal] = useState(false);
@@ -154,9 +155,25 @@ const Section7 = ({ FetchedData, UpdateData, setEdited }) => {
     };
     return {
       id: Card.ID,
-      Name: <input name="Name" value={Card.Name} onChange={handleChange} />,
+      Name: (
+        <Input
+          type="text"
+          id="Name"
+          name="Name"
+          value={Card.Name}
+          onChangeFunction={handleChange}
+        />
+      ),
       url: <img src={Card.URL} style={{ maxWidth: "75px", margin: "20px" }} />,
-      Link: <input name="Link" value={Card.Link} onChange={handleChange} />,
+      Link: (
+        <Input
+          type="url"
+          id="Link"
+          name="Link"
+          value={Card.Link}
+          onChangeFunction={handleChange}
+        />
+      ),
       Options: (
         <div className="Button-wrapper">
           <button
@@ -232,27 +249,24 @@ const Section7 = ({ FetchedData, UpdateData, setEdited }) => {
               />
             </div>
 
-            <div className="FormItem" id="Name">
-              <label htmlFor="title">Name:</label>
-              <input
-                type="text"
-                required
-                id="title"
-                name="Name"
-                value={NewCard.Name}
-                onChange={handleInput}
-              />
-            </div>
-            <div className="FormItem" id="Name">
-              <label htmlFor="title">Link(optional):</label>
-              <input
-                type="text"
-                id="title"
-                name="Link"
-                value={NewCard.Link}
-                onChange={handleInput}
-              />
-            </div>
+            <Input
+              label="Name (optional)"
+              type="text"
+              required={true}
+              id="Name"
+              name="Name"
+              value={NewCard.Name}
+              onChangeFunction={handleInput}
+            />
+
+            <Input
+              label="Link (optional)"
+              type="url"
+              id="Link"
+              name="Link"
+              value={NewCard.Link}
+              onChangeFunction={handleInput}
+            />
           </>
         </MyModal>
       )}
@@ -267,28 +281,28 @@ const Section7 = ({ FetchedData, UpdateData, setEdited }) => {
           />
         </label>
       </div>
-      <div className="FormItem">
-        <label htmlFor="title">Title:</label>
-        <input
-          type="text"
-          required
-          id="title"
-          name="Title"
-          value={data.Title}
-          onChange={handleMainInput}
-        />
-      </div>
-      <div className="FormItem">
-        <label htmlFor="SubTitle">Paragraph:</label>
-        <textarea
-          type="text"
-          required
-          id="SubTitle"
-          name="paragraph"
-          value={data.paragraph}
-          onChange={handleMainInput}
-        />
-      </div>
+      <Input
+        label="Title"
+        type="text"
+        required={true}
+        id="Title"
+        name="Title"
+        value={data.Title}
+        onChangeFunction={handleMainInput}
+        customWidth="70%"
+      />
+      <Input
+        label="Paragraph"
+        type="text"
+        required={true}
+        id="paragraph"
+        name="paragraph"
+        value={data.paragraph}
+        onChangeFunction={handleMainInput}
+        textarea={true}
+        customWidth="70%"
+      />
+
       <button
         className="Button Add"
         style={{ margin: "0px auto" }}
@@ -304,22 +318,20 @@ const Section7 = ({ FetchedData, UpdateData, setEdited }) => {
         columns={columns}
         data={TableData}
       />
-      <button
-        className="Button View"
-        id="Submit"
-        onClick={() => {
-          UpdateData("Section7", data);
-        }}
-      >
-        Save
-      </button>
+      <div className={`SubmitWrapper ${edited ? "fixed" : ""}`}>
+        <button
+          className="Button View"
+          id="Submit"
+          onClick={() => {
+            setEdited(false);
+            UpdateData("Section7", data);
+          }}
+        >
+          Save
+        </button>
+      </div>
     </div>
   );
 };
 
 export default Section7;
-/*  categories.sort(sortBy("id"));
-      categories.forEach((category) => {
-        id = +category.id + 1;
-      });
-      */

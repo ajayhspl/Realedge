@@ -9,7 +9,6 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Header2 from "./components/Header/Header2";
 
-import Loading from "./assets/Loading.gif";
 import { GETCOLLECTION, GETDOC } from "./server";
 import NotFound from "./components/NotFound/NotFound.js";
 import MainPage from "./components/MainPage";
@@ -29,6 +28,7 @@ import CookiePopup from "./components/PopUps/CookiePopup";
 import ViewMember from "./components/ViewMember/ViewMember";
 import EditMember from "./components/Dashboard/Memebers/EditMember";
 import EditBlog from "./components/Dashboard/EditBlog/EditBlog.js";
+import Loading from "./components/Loading/Loading.js";
 
 export const CreateToast = (text, type, duration = 4000) => {
   let value;
@@ -139,9 +139,12 @@ function App() {
       root.style.setProperty("--buttons", webData.Colors.ButtonColors);
       root.style.setProperty("--text", webData.Colors.Text);
       root.style.setProperty("--borders", webData.Colors.Borders);
+      root.style.setProperty("--icons", webData.Colors.Icons);
       root.style.setProperty("--Lines", webData.Colors.Lines);
       root.style.setProperty("--HoverText", webData.Colors.HoverText);
       root.style.setProperty("--LinkLines", webData.Colors.LinkLines);
+      root.style.setProperty("--formsBG", webData.Colors.formsBackground);
+      root.style.setProperty("--Font", webData.Font);
     }
   }, [webData]);
   useEffect(() => {
@@ -161,9 +164,7 @@ function App() {
         pauseOnHover
         theme="colored"
       />
-      <div className={`Loading-wrapper ${loading ? "" : "FADE"}`}>
-        <img src={Loading} />
-      </div>
+      <Loading loading={loading} />
       {loading ? (
         ""
       ) : (
@@ -221,6 +222,7 @@ function App() {
               element={
                 <>
                   <Redirect
+                    screenWidth={width}
                     data={FetchedData[1]}
                     Projects={Projects}
                     Teams={Teams}
@@ -233,6 +235,7 @@ function App() {
               element={
                 <>
                   <ArticleHeader
+                    screenWidth={width}
                     Articles={Articles}
                     bg={BlogData[0].BG}
                     Users={users}
@@ -272,12 +275,6 @@ function App() {
               path="/Member/:ID"
               element={
                 <>
-                  <Header2
-                    Teams={Teams}
-                    title={FetchedData[1].Team.HeaderTitle}
-                    bg={FetchedData[1].Team.BG}
-                  />
-
                   <ViewMember AllData={Teams} Tabs={FetchedData[1]} />
                 </>
               }
@@ -303,6 +300,7 @@ function App() {
             ></Route>
           </Routes>
           <Footer
+            backgroundColor={webData?.Colors.FooterBackground}
             ServerData={FetchedData[0].FooterData}
             Tabs={FetchedData[1]}
           />

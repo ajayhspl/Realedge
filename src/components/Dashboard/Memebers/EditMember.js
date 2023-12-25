@@ -5,6 +5,7 @@ import Upload from "../../../assets/upload.png";
 import { CreateToast } from "../../../App";
 import { GETDOC, SETDOC, UPLOADPHOTO, decrypt } from "../../../server";
 import NotFound from "../../NotFound/NotFound";
+import Input from "../../Input/Input";
 
 const EditMember = ({ AllData }) => {
   const [ActiveUser, setActiveUser] = useState(
@@ -78,78 +79,76 @@ const EditMember = ({ AllData }) => {
         </a>
       </div>
       <div className="DataEntry Hosting">
-        <div className="formItem" id="Name">
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            required
-            id="name"
-            autoComplete="false"
-            name="name"
-            value={Data.name}
-            onChange={HandleNewInput}
-          />
-        </div>
-        <div className="formItem" id="Name">
-          <label htmlFor="Location">Location:</label>
-          <input
-            type="text"
-            required
-            id="Location"
-            autoComplete="false"
-            name="Location"
-            value={Data.Location}
-            onChange={HandleNewInput}
-          />
-        </div>
-        <div className="formItem" id="Name">
-          <label htmlFor="LinkedIn">LinkedIn:</label>
-          <input
-            type="text"
-            required
-            id="LinkedIn"
-            autoComplete="false"
-            name="LinkedIn"
-            value={Data.LinkedIn}
-            onChange={HandleNewInput}
-          />
-        </div>
-        <div className="formItem" id="Name">
-          <label htmlFor="Whatsapp">Whatsapp:</label>
-          <input
-            type="number"
-            required
-            id="Whatsapp"
-            autoComplete="false"
-            name="Whatsapp"
-            value={Data.Whatsapp}
-            onChange={HandleNewInput}
-          />
-        </div>
-        <div className="formItem" id="Name">
-          <label htmlFor="Role">Role:</label>
-          <input
-            type="text"
-            required
-            id="Role"
-            autoComplete="false"
-            name="Role"
-            value={Data.Role}
-            onChange={HandleNewInput}
-          />
-        </div>
-        <div className="formItem" id="Name">
-          <label htmlFor="overview">overview:</label>
-          <textarea
-            type="text"
-            required
-            id="overview"
-            autoComplete="false"
-            name="overview"
-            value={Data.overview}
-            onChange={HandleNewInput}
-          />
-        </div>
+        <Input
+          label="Name:"
+          type="text"
+          required={true}
+          id="name"
+          autoComplete="false"
+          name="name"
+          value={Data.name}
+          onChangeFunction={HandleNewInput}
+          customWidth="45%"
+        />
+
+        <Input
+          label="Location:"
+          type="text"
+          required={true}
+          id="Location"
+          autoComplete="false"
+          name="Location"
+          value={Data.Location}
+          onChangeFunction={HandleNewInput}
+          customWidth="45%"
+        />
+
+        <Input
+          label="LinkedIn:"
+          type="text"
+          required={true}
+          id="LinkedIn"
+          autoComplete="false"
+          name="LinkedIn"
+          value={Data.LinkedIn}
+          onChangeFunction={HandleNewInput}
+        />
+
+        <Input
+          label="Whatsapp:"
+          type="number"
+          required={true}
+          id="Whatsapp"
+          autoComplete="false"
+          name="Whatsapp"
+          value={Data.Whatsapp}
+          onChangeFunction={HandleNewInput}
+          customWidth="45%"
+        />
+
+        <Input
+          label="Role:"
+          type="text"
+          required={true}
+          id="Role"
+          autoComplete="false"
+          name="Role"
+          value={Data.Role}
+          onChangeFunction={HandleNewInput}
+          customWidth="45%"
+        />
+
+        <Input
+          textarea={true}
+          label="Overview:"
+          type="textarea"
+          required={true}
+          id="overview"
+          autoComplete="false"
+          name="overview"
+          value={Data.overview}
+          onChangeFunction={HandleNewInput}
+        />
       </div>
       <div className="formItem" id="logo">
         <span>Picture:</span>

@@ -2,6 +2,7 @@ import React from "react";
 import "./Header.css";
 import { useParams } from "react-router-dom";
 import { encrypt } from "../../server";
+import VideoPlayer from "../VideoPlayer";
 
 const Header2 = (props) => {
   const ID = useParams().ID;
@@ -35,7 +36,15 @@ const Header2 = (props) => {
     } else if (Location.includes("Member")) {
       return <h1>{Target?.name}</h1>;
     } else {
-      return <h1>{props.title}</h1>;
+      return (
+        <h1
+          style={{
+            fontFamily: props.Font ? `${props.Font} ` : "",
+          }}
+        >
+          {props.title}
+        </h1>
+      );
     }
   };
   return props.bg ? (
@@ -59,6 +68,21 @@ const Header2 = (props) => {
           transform: "ScaleX(1)",
         }}
       ></div>
+      {props.screenWidth > 1000 && (
+        <div
+          className="SideContent"
+          style={{ top: props.WhatToShow === "Text" ? "0%" : "15%" }}
+        >
+          {props.WhatToShow === "Video" ? (
+            <VideoPlayer videoUrl={props.Video} />
+          ) : (
+            <div
+              className="Outsource"
+              dangerouslySetInnerHTML={{ __html: props.HeaderData }}
+            ></div>
+          )}
+        </div>
+      )}
     </div>
   ) : null;
 };

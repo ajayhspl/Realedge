@@ -1,3 +1,6 @@
+.BlogMain {
+  margin-top: 20px;
+}
 .ArticlePage {
   display: flex;
   flex-direction: column;
