@@ -109,8 +109,12 @@ const Dashboard = () => {
             <h3 className="Greet">
               {expanded && (
                 <p
-                  className=" animate__animated animate__fadeInDown"
-                  style={{ position: "absolute", top: "-15px" }}
+                  className="animate__animated animate__fadeInDown"
+                  style={{
+                    position: "absolute",
+                    top: "-15px",
+                    right: "27%",
+                  }}
                 >
                   {greeting}
                 </p>

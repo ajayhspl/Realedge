@@ -4,6 +4,8 @@ import "./NavMobile.css";
 import ContactPopUp from "../PopUps/ContactPopup/ContactPopup";
 import sortBy from "sort-by";
 import { GETCOLLECTION } from "../../server";
+import { Link } from "react-router-dom";
+
 const NavMobile = ({ Tabs }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showModal, setShowModal] = React.useState(false);
@@ -42,6 +44,9 @@ const NavMobile = ({ Tabs }) => {
       setNonList(TempNon.sort(sortBy("id")));
     }
   }, [Tabs]);
+  const toggleMenu = (isOpen) => {
+    setIsMenuOpen(isOpen);
+  };
   const RenderNonList = nonList?.map((link) => {
     if (link.id === "16" || link.id === "17") {
       return;
@@ -49,12 +54,15 @@ const NavMobile = ({ Tabs }) => {
     if (link.PageURL) {
       return (
         <li key={link.id}>
-          <a
+          <Link
             className={urlFormatted === link ? "ActiveLink" : ""}
-            href={`/${link.PageURL}`}
+            onClick={() => {
+              setIsMenuOpen(false);
+            }}
+            to={`/${link.PageURL}`}
           >
             {link.PageName}
-          </a>
+          </Link>
         </li>
       );
     }
@@ -84,24 +92,25 @@ const NavMobile = ({ Tabs }) => {
         <ul>
           {TabsToRender.map((link) => (
             <li key={link.id}>
-              <a
+              <Link
                 className={urlFormatted === link ? "ActiveLink" : ""}
-                href={`/${link.PageURL}`}
+                onClick={() => {
+                  setIsMenuOpen(false);
+                }}
+                to={`/${link.PageURL}`}
               >
                 {link.PageName}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
       </li>
     );
   });
-  const toggleMenu = (isOpen) => {
-    setIsMenuOpen(isOpen);
-  };
+
   return (
     <>
-      <HamburgerButton onToggleMenu={toggleMenu} />
+      <HamburgerButton onToggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />
       {isMenuOpen && (
         <div className="SideMenu animate__animated animate__fadeInRight">
           <nav id="navbar" className="navbar">

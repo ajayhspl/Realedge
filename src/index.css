@@ -48,6 +48,12 @@
 *::-webkit-scrollbar-thumb {
   background-color: var(--borders);
 }
+@font-face {
+  font-family: "Inter";
+  src: url("./fonts/inter/Inter-VariableFont_slnt\,wght.ttf") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
 body {
   font-family: var(--Font) !important;
   margin: 0;

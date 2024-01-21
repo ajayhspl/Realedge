@@ -261,7 +261,6 @@
     "Submit Submit"
     "disclaimer disclaimer";
   gap: 20px;
-  padding: 15px;
 }
 .Additional form #Fname {
   grid-area: Fname;
@@ -272,6 +271,7 @@
 .Additional form #disclaimer {
   grid-area: disclaimer;
   margin: 0;
+  text-align: left;
 }
 .Additional form #Company {
   grid-area: Company;
@@ -296,7 +296,6 @@
 }
 .Additional p {
   margin-left: 0;
-  text-align: center;
 }
 .Additional .Submit {
   grid-area: Submit;
@@ -355,6 +354,8 @@
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   border: 1px solid var(--borders);
   margin: 20px 0;
+  text-align: left !important;
+
   padding-left: 25px;
   border-radius: 10px;
 }

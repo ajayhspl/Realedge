@@ -12,7 +12,7 @@ const ViewMember = ({ AllData, Tabs }) => {
   });
   return (
     <div className="ViewMember">
-      <div className="Nav">
+      <div style={{ width: "95%", margin: " 0 20px" }}>
         <a href={`/${Tabs.Team.PageURL}`} className="Link Reverse">
           Go Back to Teams
         </a>

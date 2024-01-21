@@ -16,10 +16,7 @@
 .ViewMember.Edit .Hosting .formItem {
   width: 40%;
 }
-.ViewMember .Nav {
-  width: 90%;
-  margin: 20px auto;
-}
+
 .ViewMember .content {
   display: flex;
   flex-direction: row;

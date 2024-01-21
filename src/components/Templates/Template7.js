@@ -81,13 +81,12 @@ const Template7 = ({ Data }) => {
           style={{
             fontFamily: Data.Font ? Data.Font : "",
             color: Data.Color ? Data.Color : "",
-            fontSize: "1.2rem",
+            fontSize: "1rem",
           }}
         >
           {row.Type}
         </div>
       ),
-      sortable: true,
       center: true,
     },
     {
@@ -98,13 +97,12 @@ const Template7 = ({ Data }) => {
           style={{
             fontFamily: Data.Font ? Data.Font : "",
             color: Data.Color ? Data.Color : "",
-            fontSize: "1.2rem",
+            fontSize: "1rem",
           }}
         >
           {row.Cost}
         </div>
       ),
-      sortable: true,
       center: true,
     },
   ];
@@ -329,9 +327,9 @@ const Template7 = ({ Data }) => {
 
         {Data.Pricing.length != 0 && (
           <div className="pricing">
-            <h2 style={{ fontFamily: Data.Font ? Data.Font : "" }}>
+            <p style={{ fontFamily: Data.Font ? Data.Font : "" }}>
               Pricing Information
-            </h2>
+            </p>
             <DataTable
               className="Table animate__animated animate__fadeIn"
               style={{ animationDelay: ".4s" }}
@@ -364,13 +362,10 @@ const Template7 = ({ Data }) => {
             className="Additional"
             style={{ fontFamily: Data.Font ? Data.Font : "" }}
           >
-            <h2 style={{ fontFamily: Data.Font ? Data.Font : "" }}>
+            <p style={{ fontFamily: Data.Font ? Data.Font : "" }}>
               Additional Resources
-            </h2>
-            <p>Thank you for your interest in {webName}</p>
-            <span>
-              Fill the below form and we will send the document to your email
-            </span>
+            </p>
+
             {SavedData && (
               <div className="button-wrapper">
                 <button className="Submit" onClick={ReplaceData}>
@@ -405,7 +400,7 @@ const Template7 = ({ Data }) => {
                 name="Fname"
                 label="First name:"
                 value={formData.Fname}
-                onChange={handleFormChange}
+                onChangeFunction={handleFormChange}
               />
 
               <Input
@@ -414,7 +409,7 @@ const Template7 = ({ Data }) => {
                 name="Lname"
                 label="Last name:"
                 value={formData.Lname}
-                onChange={handleFormChange}
+                onChangeFunction={handleFormChange}
               />
 
               <Input
@@ -423,7 +418,7 @@ const Template7 = ({ Data }) => {
                 name="JobTitle"
                 label="Job title:"
                 value={formData.JobTitle}
-                onChange={handleFormChange}
+                onChangeFunction={handleFormChange}
               />
 
               <Input
@@ -432,7 +427,7 @@ const Template7 = ({ Data }) => {
                 name="Company"
                 label="Company:"
                 value={formData.Company}
-                onChange={handleFormChange}
+                onChangeFunction={handleFormChange}
               />
 
               <Input
@@ -441,7 +436,7 @@ const Template7 = ({ Data }) => {
                 label="Contact Phone (optional):"
                 placeholder="Contact Phone (optional)"
                 value={formData.Phone}
-                onChange={handleFormChange}
+                onChangeFunction={handleFormChange}
               />
 
               <Input
@@ -452,7 +447,7 @@ const Template7 = ({ Data }) => {
                 label="Professional email:"
                 placeholder="Professional email"
                 value={formData.Email}
-                onChange={handleFormChange}
+                onChangeFunction={handleFormChange}
               />
               <Select
                 value={formData.Country}
@@ -462,6 +457,7 @@ const Template7 = ({ Data }) => {
                 className="Select"
                 required
                 isSearchable={true}
+                placeholder="Country"
               />
               <div className="formItem " id="FollowUp">
                 <Select

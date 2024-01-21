@@ -13,6 +13,7 @@
 .NavContainer-bg {
   position: fixed;
   height: 60px;
+  top: 0;
   background-color: #f3f3f3;
 }
 

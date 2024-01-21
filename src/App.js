@@ -15,7 +15,6 @@ import MainPage from "./components/MainPage";
 import Aos from "aos";
 import BlogHome from "./components/Blog/BlogHome/BlogHome";
 import BlogCategory from "./components/Blog/SidePages/BlogCategory";
-import ArticleHeader from "./components/Header/ArticleHeader";
 import BlogAuthor from "./components/Blog/SidePages/BlogAuthor";
 import ArticlePage from "./components/Blog/ArticlePage/ArticlePage";
 import Portal from "./components/Portal/Portal";
@@ -234,12 +233,6 @@ function App() {
               path="BlogMain/Article/:ID"
               element={
                 <>
-                  <ArticleHeader
-                    screenWidth={width}
-                    Articles={Articles}
-                    bg={BlogData[0].BG}
-                    Users={users}
-                  />
                   <ArticlePage
                     Categories={Categories}
                     Users={users}
@@ -252,11 +245,6 @@ function App() {
               path="BlogMain/Author/:ID"
               element={
                 <>
-                  <Header2
-                    title={BlogData[0].Title}
-                    bg={BlogData[0].BG}
-                    Users={users}
-                  />
                   <BlogAuthor
                     width={width}
                     Users={users}
@@ -284,12 +272,8 @@ function App() {
               path="BlogMain/Category/:ID"
               element={
                 <>
-                  <Header2
-                    title={BlogData[0].Title}
-                    bg={BlogData[0].BG}
-                    BlogCategory={Categories}
-                  />
                   <BlogCategory
+                    title={BlogData[0].Title}
                     width={width}
                     Categories={Categories}
                     Articles={Articles}

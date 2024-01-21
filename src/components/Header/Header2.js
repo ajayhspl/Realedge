@@ -71,7 +71,7 @@ const Header2 = (props) => {
       {props.screenWidth > 1000 && (
         <div
           className="SideContent"
-          style={{ top: props.WhatToShow === "Text" ? "0%" : "15%" }}
+          style={{ top: props.WhatToShow === "Video" ? "15%" : "0%" }}
         >
           {props.WhatToShow === "Video" ? (
             <VideoPlayer videoUrl={props.Video} />

@@ -54,15 +54,16 @@ const Template7 = ({ Data, UpdateData, BackEndName, setEdited, edited }) => {
     const TargetDoc = data.documents.find((document) => {
       return document.id == id;
     });
-    await DELETEPHOTO(
-      `/customization/SidePages/${Data.id}/${TargetDoc.name}.${TargetDoc.fileExtension}`
-    );
+
     let tempList = data.documents.filter((document) => {
       return document.id != id;
     });
     setData((prev) => {
       return { ...prev, documents: tempList };
     });
+    await DELETEPHOTO(
+      `/customization/SidePages/${Data.id}/${TargetDoc.name}.${TargetDoc.fileExtension}`
+    );
   };
   const DeletePlan = (id) => {
     let tempList = data.Pricing.filter((Price) => {

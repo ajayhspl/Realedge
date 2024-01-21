@@ -48,6 +48,9 @@ const BlogCategory = ({ Categories, Articles, Users, width }) => {
   });
   return (
     <div>
+      {TargetCategory?.Name && (
+        <h1 style={{ margin: "auto", width: "95%" }}>{TargetCategory?.Name}</h1>
+      )}
       <div className="BlogPage">
         {width < 600 && (
           <div className="DropdownsWrapper">

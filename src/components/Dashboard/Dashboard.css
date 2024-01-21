@@ -10,14 +10,15 @@
 .Dashboard .SideBar {
   margin-top: 15px;
   border-right: 1px solid var(--Lines);
-  width: 5%;
-  min-width: fit-content;
+  max-width: 70px;
   padding-right: 20px;
   padding-left: 20px;
   transition: 0.2s all;
+  overflow: hidden; /* Hide any overflowed content */
 }
 .Dashboard .Expanded {
-  width: 12%;
+  max-width: fit-content;
+  overflow: unset;
 }
 .Dashboard .SideBar .Icon {
   cursor: pointer;
@@ -34,7 +35,7 @@
   scale: 1.1;
 }
 .Dashboard .SideBar .Greet {
-  font-size: 20px;
+  font-size: 15px;
   width: 100%;
   position: relative;
   margin: auto;

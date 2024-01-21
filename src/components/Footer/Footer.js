@@ -189,7 +189,7 @@ const Footer = ({ ServerData, Tabs }) => {
         </div>
 
         <p style={{ marginLeft: "auto", color: "white" }}>
-          Website Version: 4.3
+          Website Version: 4.6
         </p>
       </div>
     </div>

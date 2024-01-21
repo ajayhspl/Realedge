@@ -26,7 +26,10 @@ const Header = (props) => {
             <h1
               id="HeaderTitle"
               className="animate__animated animate__fadeInDown"
-              style={{ color: severData.TitleColor }}
+              style={{
+                color: severData.TitleColor,
+                marginTop: props.screenWidth < 600 ? 0 : "unset",
+              }}
             >
               {severData.Title}
             </h1>

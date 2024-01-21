@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ArticlePreview from "../ArticlePreview/ArticlePreview";
 import { encrypt, decrypt } from "../../../server";
 const BlogAuthor = ({ Users, Articles, Categories, width }) => {
   const AuthorID = encrypt(useParams().ID);
-
+  const [author, setAuthor] = useState(null);
   const RenderAuthors = Users.map((author) => {
     if (author.Role !== "Author") {
       return;
@@ -18,7 +18,6 @@ const BlogAuthor = ({ Users, Articles, Categories, width }) => {
 
     const NameToRender = author.Fname + " " + author.Lname;
     const decryptedID = decrypt(author.id);
-
     return (
       <li key={decryptedID}>
         <Link to={`/BlogMain/Author/${decryptedID}`}>
@@ -27,6 +26,14 @@ const BlogAuthor = ({ Users, Articles, Categories, width }) => {
       </li>
     );
   });
+  useEffect(() => {
+    setAuthor(
+      Users.find((author) => {
+        return author.id === AuthorID;
+      })
+    );
+  }, []);
+
   const RenderBlogs = Articles.map((Article, index) => {
     if (Article.Author.id == AuthorID) {
       return (
@@ -45,7 +52,10 @@ const BlogAuthor = ({ Users, Articles, Categories, width }) => {
   });
 
   return (
-    <div>
+    <div style={{ paddingBottom: "10px" }}>
+      <h1 style={{ width: "95%", margin: "auto" }}>
+        {author?.Fname} {author?.Lname}'s posts
+      </h1>
       <div className="BlogPage">
         {width < 600 && (
           <div className="DropdownsWrapper">

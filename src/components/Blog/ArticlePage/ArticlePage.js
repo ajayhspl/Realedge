@@ -218,7 +218,7 @@ const ArticlePage = ({ Categories, Users, width }) => {
       });
     }
   };
-
+  console.log(User);
   return (
     <div className="BlogPage">
       {width < 600 && (
@@ -275,17 +275,24 @@ const ArticlePage = ({ Categories, Users, width }) => {
                 <h4>Comments</h4>
                 <div className="AddComment">
                   <label htmlFor="CommentArea">Leave your comment Below:</label>
-                  <textarea
-                    id="CommentArea"
-                    value={comment.replyText}
-                    onChange={(e) => {
-                      handleChange(e);
-                    }}
-                    name="replyText"
-                  ></textarea>
-                  <button className="Button" onClick={AddComment}>
-                    Post Comment
-                  </button>
+                  {User ? (
+                    <>
+                      <textarea
+                        id="CommentArea"
+                        value={comment.replyText}
+                        onChange={(e) => {
+                          handleChange(e);
+                        }}
+                        name="replyText"
+                      ></textarea>
+
+                      <button className="Button" onClick={AddComment}>
+                        Post Comment
+                      </button>
+                    </>
+                  ) : (
+                    <p>login to be able to comment</p>
+                  )}
                 </div>
                 {RenderComments}
               </div>

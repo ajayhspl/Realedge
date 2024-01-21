@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./HamburgerButton.css";
-const HamburgerButton = ({ onToggleMenu }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const HamburgerButton = ({ onToggleMenu, isMenuOpen }) => {
+  const [isOpen, setIsOpen] = useState(isMenuOpen ? isMenuOpen : false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
