@@ -484,8 +484,8 @@ const Template7 = ({ Data }) => {
                 />
               </div>
               <span id="disclaimer">
-                By submitting my information, I agree to the realedgeAssociates
-                Privacy Policy and Terms and Conditions.
+                By submitting my information, I agree to the {webName} Privacy
+                Policy and Terms and Conditions.
               </span>
               <button
                 className="Submit"

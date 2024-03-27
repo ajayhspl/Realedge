@@ -10,6 +10,7 @@ import NotFound from "../NotFound/NotFound";
 import ArticleBuilder from "../Blog/ArticleBuilder/ArticleBuilder";
 import Settings from "../Settings/Settings";
 import DropDowns from "./DropDowns/DropDowns";
+import JobsIcon from "../../assets/Jobs.png";
 import DropDownsIcon from "../../assets/Dropdowns.png";
 import logout from "../../assets/logout.png";
 import customization from "../../assets/customization.png";
@@ -22,6 +23,7 @@ import expand from "../../assets/Expand.png";
 import Shrink from "../../assets/Shrink.png";
 import forms from "../../assets/forms.png";
 import FormSubmits from "./FormSubmits/FormSubmits";
+import Jobs from "./Jobs/Jobs";
 const Dashboard = () => {
   const [greeting, setGreeting] = useState("");
   const [activePage, setActivePage] = useState("Users");
@@ -171,7 +173,26 @@ const Dashboard = () => {
                   />
                 )}
               </li>
-
+              {/* <li
+                onClick={() => {
+                  setActivePage("Jobs");
+                }}
+                style={{ animationDelay: ".5s" }}
+                className="animate__animated animate__fadeInLeft"
+              >
+                {expanded ? (
+                  <span
+                    className={`${activePage === "Jobs" ? "focus" : ""} Link`}
+                  >
+                    -Jobs
+                  </span>
+                ) : (
+                  <img
+                    src={JobsIcon}
+                    className={`${activePage === "Jobs" ? "focus" : ""} Icon`}
+                  />
+                )}
+              </li> */}
               <li
                 onClick={() => {
                   setActivePage("Create");
@@ -353,6 +374,7 @@ const Dashboard = () => {
               />
             )}
             {activePage === "Categories" && <Categories />}
+            {/* {activePage === "Jobs" && <Jobs />} */}
             {activePage === "Profile" && <Settings />}
             {activePage === "Dropdowns" && (
               <DropDowns

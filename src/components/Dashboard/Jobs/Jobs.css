@@ -1,0 +1,14 @@
+.Jobs {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 35px;
+}
+.Jobs .Nav {
+  display: flex;
+  width: 70%;
+  margin: auto;
+  justify-content: space-between;
+  list-style: none;
+}

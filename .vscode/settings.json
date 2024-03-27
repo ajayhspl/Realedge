@@ -17,5 +17,6 @@
         "UPLOADPHOTO",
         "UPLOADVIDEO",
         "uuidv"
-    ]
+    ],
+    "git.ignoreLimitWarning": true
 }
